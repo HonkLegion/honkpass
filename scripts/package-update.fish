@@ -41,7 +41,7 @@ test -s "$logs/signer-0"; or exit 1
 set identity (shasum -a 1 "$logs/signer-0" | string split ' ')[1]
 string match -rq '^[0-9a-f]{40}$' -- "$identity"; or exit 1
 run_step 'Preparing disk image' "$logs/image-source.log" ditto "$app" "$output/image/HonkPass.app"; or exit $status
-cp "$output/HonkPass-source.tar.gz" "$output/image/HonkPass-source.tar.gz"; or exit 1
+# Publish the paired source archive beside the DMG as a separate download.
 ln -s /Applications "$output/image/Applications"; or exit 1
 run_step 'Creating disk image' "$logs/image.log" hdiutil create -volname HonkPass -srcfolder "$output/image" -format UDZO -ov "$dmg"; or exit $status
 run_step 'Signing disk image' "$logs/dmg-sign.log" codesign --force --timestamp --sign "$identity" "$dmg"; or exit $status

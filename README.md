@@ -69,6 +69,10 @@ Enable system AutoFill in HonkPass.
 Select HonkPass as a provider in macOS System Settings.
 For shortcut filling in other applications, grant HonkPass Accessibility permission.
 
+An unlocked vault uses passkeys after your selection without another prompt when the website does not require identity verification.
+Required verification uses Touch ID or the Mac password, unless you unlock the vault within that passkey request.
+Selecting a passkey gives consent but does not count as identity verification.
+
 Shortcut filling uses the active application or website to find matching logins.
 It fills an authenticator code when the login contains one and the form exposes a clearly identified code field.
 If that code field has focus, the shortcut fills only the code.
@@ -158,13 +162,17 @@ make notarize NOTARY_PROFILE=your-notary-profile
 `make notarize` sends that export to Apple and packages the accepted application as a ZIP.
 These commands do not install the application.
 
-Distribute the notarized ZIP, matching `HonkPass-source.tar.gz` and `release-manifest.json` together.
+Offer the notarized ZIP or DMG, matching `HonkPass-source.tar.gz` and `release-manifest.json` as separate downloads on the same release page.
+The DMG contains the application and an Applications shortcut. It does not contain the source archive.
+Keep a clear source download link beside each binary download, including update downloads.
 The manifest records their hashes. The signed application records its source revision and archive hash.
 Rebuilding requires the tools above and network access for dependencies.
 
 The [public source list](support/public-source-files.txt) selects files for both source publication and the corresponding source archive.
 Add new build inputs to this list before packaging a release.
 Public release commits also include `public-source.json`, which records the original revision and the exported file hashes.
+For releases prepared from a tag, `project.yml` contains the release version and build number.
+The metadata also records the original project version, build number and file hash.
 
 ## License
 

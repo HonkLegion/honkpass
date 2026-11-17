@@ -228,10 +228,13 @@ public final class ProviderModel {
         switch status.vault {
         case .unlocked: await proceed()
         case .locked:
+            hasUnlockedHere = false
             screen = .locked(account: status.account, withPin: status.canUnlockWithPin, withTouchID: status.canUnlockWithTouchID)
             // "Ask for Touch ID on app start" of the account: the window asks once by itself.
             wantsTouchIDAtOnce = status.canUnlockWithTouchID && status.asksForTouchIDAtOnce && !hasAskedForTouchID
-        case .loggedOut: screen = .loggedOut
+        case .loggedOut:
+            hasUnlockedHere = false
+            screen = .loggedOut
         }
     }
 
@@ -257,8 +260,10 @@ public final class ProviderModel {
             guard case .passkeys(let found) = await asking.ask(.passkeys(rpID: question.rpID,
                                                                          allowedCredentialIDs: question.allowedCredentialIDs)) else { return }
             passkeys = found
-            if found.count == 1, !found[0].asksForMasterPassword {
-                // One passkey and nothing to choose: the reference shows no list for it either.
+            if found.count == 1, !found[0].asksForMasterPassword,
+               question.userVerification == .required || hasUnlockedHere {
+                // Required verification or unlocking here collects consent. Otherwise the
+                // user must select the passkey, even when there is only one.
                 await sign(with: found[0].itemID, username: found[0].username, question, wasChosenHere: false)
             } else {
                 screen = found.isEmpty ? .noPasskeys : .passkeys
@@ -270,19 +275,23 @@ public final class ProviderModel {
                 return
             }
             targets = found
-            // Without a login of the website there is nothing to choose: the passkey gets a new login.
-            if found.isEmpty { await register(request, into: nil) } else { screen = .passkeyTargets }
+            if found.isEmpty, request.userVerification == .required || hasUnlockedHere {
+                await register(request, into: nil)
+            } else {
+                // Creating a credential still needs consent when verification is optional.
+                screen = .passkeyTargets
+            }
         }
     }
 
     // MARK: Passkeys
 
-    /// Whether the user counts as verified for a passkey. The PIN typed for this request does
-    /// it. Else the system asks, when the website wants a verified user or would rather have
-    /// one. nil: the user closed the question of the system, which ends the request.
+    /// Unlocking here verifies this request. Otherwise only required verification prompts.
+    /// Selection gives consent, but never claims that the user was verified.
+    /// nil means that the user cancelled the system prompt.
     private func isUserVerified(_ wanted: PasskeyUserVerification, for purpose: Verification) async -> Bool? {
         if hasUnlockedHere { return true }
-        guard wanted != .discouraged else { return false }
+        guard wanted == .required else { return false }
         return await actions.verifyUser(purpose)
     }
 
@@ -291,6 +300,7 @@ public final class ProviderModel {
                                                     for: .assertion(rpID: question.rpID, username: username)) else {
             return finish(.cancelled)
         }
+        guard !isFinished else { return }
         guard isVerified || question.userVerification != .required else { return finish(.failed) }
         let request = PasskeyAssertionRequest(rpID: question.rpID, clientDataHash: question.clientDataHash,
                                               allowedCredentialIDs: question.allowedCredentialIDs, itemID: itemID,
@@ -311,6 +321,7 @@ public final class ProviderModel {
         let purpose: Verification = login?.hasPasskey == true ? .overwrite(rpID: request.rpID, username: request.userName)
             : .registration(rpID: request.rpID, username: request.userName)
         guard let isVerified = await isUserVerified(request.userVerification, for: purpose) else { return finish(.cancelled) }
+        guard !isFinished else { return }
         guard isVerified || request.userVerification != .required else { return finish(.failed) }
         var request = request
         request.itemID = login?.itemID

@@ -185,8 +185,10 @@ private final class PasskeyDecisions: Fido2UserInterface {
             checkUserResult: CheckUserResult(userPresent: true, userVerified: isUserVerified))
     }
 
-    /// The extension can verify the user: with the PIN, with Touch ID or with the password of the Mac.
+    /// This non-interactive adapter can supply only the verification already completed by
+    /// the provider. Advertising verification without that result makes the SDK require it
+    /// even for a preferred request. Required requests are also checked by the engine.
     func isVerificationEnabled() -> Bool {
-        true
+        isUserVerified
     }
 }

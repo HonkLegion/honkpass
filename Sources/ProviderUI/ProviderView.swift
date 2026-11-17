@@ -170,12 +170,17 @@ public struct ProviderView: View {
     /// so and has the one button that saves the passkey as a new login.
     @ViewBuilder private var targetList: some View {
         if model.targets.isEmpty {
-            StatusLockup(illustration: .noResults, title: BWText["noMatchingLoginsForSite"], description: "") {
+            StatusLockup(illustration: .gooseKey, title: BWText["noMatchingLoginsForSite"], description: registrationContext) {
                 BWButton(BWText["savePasskeyNewLogin"], kind: .primary, isBlock: false) { model.save(into: nil) }
             }
         } else {
             targetRows
         }
+    }
+
+    private var registrationContext: String {
+        guard case .newPasskey(let request) = model.request else { return "" }
+        return [request.rpID, request.userName].filter { !$0.isEmpty }.joined(separator: "\n")
     }
 
     private var targetRows: some View {

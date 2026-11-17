@@ -55,13 +55,13 @@ final class CredentialProviderViewController: ASCredentialProviderViewController
                 }
             }
         case .passkeyAssertion:
-            // Without a window nobody can be verified. A website that does not care gets its
-            // signature at once: the user is present, they took the entry in the list of the system.
+            // Selecting the system suggestion gives consent, without claiming verification.
+            // Only a required verification needs another prompt when the vault is open.
             guard let question = Self.question(of: credentialRequest) else { return cancel(.failed) }
-            guard question.userVerification == .discouraged else { return cancel(.userInteractionRequired) }
+            guard question.userVerification != .required else { return cancel(.userInteractionRequired) }
             let request = PasskeyAssertionRequest(rpID: question.rpID, clientDataHash: question.clientDataHash,
                                                   allowedCredentialIDs: question.allowedCredentialIDs, itemID: itemID,
-                                                  userVerification: .discouraged, isUserVerified: false)
+                                                  userVerification: question.userVerification, isUserVerified: false)
             Task {
                 switch await Self.asking(patience: .seconds(2)).ask(.passkeyAssertion(request)) {
                 case .passkeyAssertion(let assertion): Self.complete(assertion, question.clientDataHash, context)
@@ -135,7 +135,8 @@ final class CredentialProviderViewController: ASCredentialProviderViewController
         switch preference {
         case .required: .required
         case .preferred: .preferred
-        default: .discouraged
+        case .discouraged: .discouraged
+        default: .required
         }
     }
 

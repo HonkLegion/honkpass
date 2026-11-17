@@ -21,7 +21,7 @@ class WorkflowTests(unittest.TestCase):
         scripts = self.root / "scripts"
         scripts.mkdir()
         for name in ("make.fish", "progress.fish", "step-output.py", "archive-developer-id.fish",
-                     "notarize-developer-id.fish", "release-check.fish", "source-python.fish"):
+                     "notarize-developer-id.fish", "release-check.fish", "source-python.fish", "package-update.fish"):
             shutil.copyfile(SOURCE / name, scripts / name)
         (scripts / "verify_release.py").write_text("print('OK: synthetic update configuration')\n")
         shutil.copyfile(SOURCE.parent / "Makefile", self.root / "Makefile")
@@ -43,7 +43,7 @@ if name == "source_archive":
         self.trace = self.root / "trace.jsonl"
         self.tools = self.root / "tools"
         self.tools.mkdir()
-        recorder = '''import json, os, pathlib, sys
+        recorder = '''import json, os, pathlib, shutil, sys
 name, args = pathlib.Path(sys.argv[0]).name, sys.argv[1:]
 with open(os.environ["WORKFLOW_TRACE"], "a") as log:
     log.write(json.dumps([name, *args]) + "\\n")
@@ -52,7 +52,12 @@ if os.environ.get("WORKFLOW_FAIL") == name:
     sys.exit(int(os.environ.get("WORKFLOW_EXIT", "17")))
 if name == "xcodebuild" and "-exportPath" in args:
     pathlib.Path(args[args.index("-exportPath") + 1], "HonkPass.app").mkdir(parents=True)
-if name == "codesign" and "--display" in args:
+if name == "ditto" and len(args) == 2 and pathlib.Path(args[0]).is_dir():
+    shutil.copytree(args[0], args[1], dirs_exist_ok=True)
+if name == "codesign" and ("--display" in args or "-dv" in args):
+    for arg in args:
+        if arg.startswith("--extract-certificates="):
+            pathlib.Path(arg.split("=", 1)[1] + "0").write_bytes(b"synthetic public certificate")
     print("Authority=" + os.environ.get("SIGNING_IDENTITY", "Developer ID Application: Synthetic"))
 elif name == "xcrun" and args[:2] == ["notarytool", "submit"]:
     print(json.dumps({"id": "synthetic-id", "status": os.environ.get("NOTARY_STATUS", "Accepted")}))
@@ -61,7 +66,7 @@ elif name == "xcrun" and args[:2] == ["notarytool", "log"]:
 else:
     print(name + " synthetic output")
 '''
-        for name in ("xcodegen", "xcodebuild", "codesign", "spctl", "xcrun", "ditto"):
+        for name in ("xcodegen", "xcodebuild", "codesign", "spctl", "xcrun", "ditto", "hdiutil"):
             tool = self.tools / name
             tool.write_text(f"#!{sys.executable}\n" + recorder)
             tool.chmod(0o700)
@@ -169,6 +174,28 @@ else:
         result = self.run_workflow("archive", WORKFLOW_FAIL="source_archive")
         self.assertNotEqual(result.returncode, 0)
         self.assertEqual([c[0] for c in self.calls()], ["source_archive"])
+
+    def test_disk_image_keeps_source_as_a_separate_download(self):
+        notarized = self.root / "notarized"
+        app = notarized / "HonkPass.app"
+        (app / "Contents").mkdir(parents=True)
+        (app / "Contents/synthetic.txt").write_text("Synthetic application")
+        (notarized / "notarized-app.txt").write_text(str(app) + "\n")
+        (notarized / "HonkPass-source.tar.gz").write_text("Synthetic corresponding source")
+        distribution = self.root / ".build/distribution"
+        distribution.mkdir(parents=True)
+        (distribution / "latest-notarized.txt").write_text(str(notarized) + "\n")
+        # Stop at the image builder, after the real staging commands complete.
+        result = self.run_workflow("update-package", WORKFLOW_FAIL="hdiutil", WORKFLOW_EXIT="23")
+        self.assertEqual(result.returncode, 23, result.stdout + result.stderr)
+        output, = distribution.glob("update-*")
+        image = output / "image"
+        self.assertEqual({path.name for path in image.iterdir()}, {"HonkPass.app", "Applications"})
+        self.assertEqual((image / "HonkPass.app/Contents/synthetic.txt").read_text(), "Synthetic application")
+        self.assertEqual((image / "Applications").readlink(), Path("/Applications"))
+        self.assertEqual((output / "HonkPass-source.tar.gz").read_text(), "Synthetic corresponding source")
+        source_check, = [call for call in self.calls() if call[0] == "release_source"]
+        self.assertEqual(source_check[1:], [str(output / "HonkPass.app"), str(output / "HonkPass-source.tar.gz")])
 
 
 if __name__ == "__main__":

@@ -422,7 +422,8 @@ struct SceneDriver {
             case "provider-list", "provider-search", "provider-keyboard", "provider-pin", "provider-locked",
                  "provider-touch-id", "provider-touch-id-pin",
                  "provider-logged-out", "provider-unavailable", "provider-setup", "provider-passkeys", "provider-passkey-save",
-                 "provider-passkey-overwrite", "provider-passkey-exists", "provider-no-passkeys":
+                 "provider-passkey-overwrite", "provider-passkey-exists", "provider-no-passkeys",
+                 "provider-passkey-single", "provider-passkey-new":
                 // The windows of the AutoFill extension, which the system shows over a form. Here
                 // the app draws them over its own engine, in a window of the size the extension
                 // asks for. No reference pictures: the reference draws its windows in the desktop app.
@@ -470,6 +471,11 @@ struct SceneDriver {
                         _ = await made(passkey("example.com", user: "first@example.com"))
                         _ = await made(passkey("example.com", user: "second@example.com"))
                         request = .choosePasskey(.init(rpID: "example.com", clientDataHash: hash, userVerification: .preferred))
+                    case "provider-passkey-single":
+                        _ = await made(passkey("example.com", user: "first@example.com"))
+                        request = .choosePasskey(.init(rpID: "example.com", clientDataHash: hash, userVerification: .preferred))
+                    case "provider-passkey-new":
+                        request = .newPasskey(passkey("new-passkey.example", user: "demo@example.com"))
                     case "provider-passkey-save":
                         request = .newPasskey(passkey(host, user: "user@example.com"))
                     case "provider-passkey-overwrite":
@@ -510,6 +516,12 @@ struct SceneDriver {
                     // The question before a passkey is replaced.
                     try? await Task.sleep(for: .milliseconds(600))
                     if let login = provider.targets.first(where: \.hasPasskey) { provider.save(into: login) }
+                }
+                if scene == "provider-passkey-exists" {
+                    for _ in 0..<100 where provider.screen != .passkeyTargets || provider.isBusy {
+                        try? await Task.sleep(for: .milliseconds(10))
+                    }
+                    provider.chooseSelected()
                 }
             case "dialog-ssh-approval", "dialog-ssh-approval-forwarded", "ssh-approval", "ssh-approval-locked", "ssh-approval-queue":
                 // An SSH client asks for the key of the vault. No reference picture yet.

@@ -67,7 +67,7 @@ private actor FakeApp: AutoFillAsking {
     }
 
     /// An app whose vault is locked and can be opened with Touch ID.
-    private func lockedAppWithTouchID(asksAtOnce: Bool = false) async throws -> (app: FakeApp, biometrics: FakeBiometricKeys) {
+    private func lockedAppWithTouchID(asksAtOnce: Bool = false, withPasskey: Bool = false) async throws -> (app: FakeApp, biometrics: FakeBiometricKeys) {
         let (ports, handles) = EnginePorts.fake(.demo)
         let engine = Engine(ports: ports)
         await engine.start()
@@ -81,8 +81,10 @@ private actor FakeApp: AutoFillAsking {
             settings.asksForBiometricsOnStart = true
             try await engine.setSettings(settings)
         }
+        let app = FakeApp(engine: engine)
+        if withPasskey { _ = try await makePasskey(in: app) }
         await engine.lock()
-        return (FakeApp(engine: engine), handles.biometrics)
+        return (app, handles.biometrics)
     }
 
     private func eventually(_ condition: @MainActor () -> Bool) async -> Bool {
@@ -370,11 +372,71 @@ private actor FakeApp: AutoFillAsking {
         return registration
     }
 
+    @Test func aPreferredPasskeySelectedInSafariNeedsNoSecondVerification() async throws {
+        let app = try await unlockedApp()
+        let registration = try await makePasskey(in: app)
+        let login = try #require(await app.engine.state.vault.items.first { !$0.passkeys.isEmpty })
+        let recorder = Recorder()
+        let model = model(.passkey(itemID: login.id, question()), app, recorder)
+        model.start()
+
+        #expect(await eventually { !recorder.outcomes.isEmpty })
+        #expect(recorder.verifications.isEmpty)
+        guard case .assertion(let assertion) = recorder.outcomes.first else {
+            Issue.record("expected a signature")
+            return
+        }
+        #expect(assertion.credentialID == registration.credentialID)
+        #expect(assertion.authenticatorData == Data("fake-authenticator-data:present".utf8))
+    }
+
+    @Test(arguments: [PasskeyUserVerification.preferred, .discouraged])
+    func aSingleOptionalPasskeyWaitsForSelection(_ verification: PasskeyUserVerification) async throws {
+        let app = try await unlockedApp()
+        _ = try await makePasskey(in: app)
+        let recorder = Recorder()
+        let model = model(.choosePasskey(question("passkey.example", verification)), app, recorder)
+        model.start()
+
+        try #require(await eventually { model.screen == .passkeys })
+        #expect(recorder.outcomes.isEmpty && recorder.verifications.isEmpty)
+        #expect(model.passkeys.count == 1)
+        model.chooseSelected()
+        #expect(await eventually { !recorder.outcomes.isEmpty })
+        #expect(recorder.verifications.isEmpty)
+        guard case .assertion(let assertion) = recorder.outcomes.first else {
+            Issue.record("expected a signature after selection")
+            return
+        }
+        #expect(assertion.authenticatorData == Data("fake-authenticator-data:present".utf8))
+    }
+
+    @Test(arguments: [PasskeyUserVerification.preferred, .discouraged])
+    func optionalRegistrationWaitsForConsent(_ verification: PasskeyUserVerification) async throws {
+        let app = try await unlockedApp()
+        let recorder = Recorder()
+        let model = model(.newPasskey(newPasskey(verification: verification)), app, recorder)
+        model.start()
+
+        try #require(await eventually { model.screen == .passkeyTargets })
+        #expect(model.targets.isEmpty)
+        #expect(recorder.outcomes.isEmpty && recorder.verifications.isEmpty)
+        #expect(await app.engine.state.vault.items.flatMap(\.passkeys).isEmpty)
+        model.chooseSelected()
+        #expect(await eventually { !recorder.outcomes.isEmpty })
+        #expect(recorder.verifications.isEmpty)
+        guard case .registration(let registration) = recorder.outcomes.first else {
+            Issue.record("expected a passkey after consent")
+            return
+        }
+        #expect(await app.engine.state.vault.items.flatMap(\.passkeys).map(\.credentialID) == [registration.credentialID])
+    }
+
     @Test func theOnlyPasskeyOfAWebsiteSignsWithoutAListOnceTheSystemHasVerifiedTheUser() async throws {
         let app = try await unlockedApp()
         let registration = try await makePasskey(in: app)
         let recorder = Recorder()
-        let model = model(.choosePasskey(question()), app, recorder)
+        let model = model(.choosePasskey(question("passkey.example", .required)), app, recorder)
         model.start()
 
         #expect(await eventually { !recorder.outcomes.isEmpty })
@@ -391,8 +453,9 @@ private actor FakeApp: AutoFillAsking {
     @Test func aWebsiteThatDoesNotCareGetsItsSignatureWithoutAQuestion() async throws {
         let app = try await unlockedApp()
         _ = try await makePasskey(in: app)
+        let login = try #require(await app.engine.state.vault.items.first { !$0.passkeys.isEmpty })
         let recorder = Recorder()
-        let model = model(.choosePasskey(question("passkey.example", .discouraged)), app, recorder)
+        let model = model(.passkey(itemID: login.id, question("passkey.example", .discouraged)), app, recorder)
         model.start()
 
         #expect(await eventually { !recorder.outcomes.isEmpty })
@@ -429,6 +492,7 @@ private actor FakeApp: AutoFillAsking {
         let third = model(.passkey(itemID: login.id, question("passkey.example", .preferred)), app, preferred)
         third.start()
         #expect(await eventually { !preferred.outcomes.isEmpty })
+        #expect(preferred.verifications.isEmpty)
         guard case .assertion(let assertion) = preferred.outcomes.first else {
             Issue.record("expected a signature")
             return
@@ -460,6 +524,75 @@ private actor FakeApp: AutoFillAsking {
         #expect(assertion.authenticatorData == Data("fake-authenticator-data:verified".utf8))
     }
 
+    @Test func touchIDUnlockWithinTheRequestDoesNotAskForVerificationAgain() async throws {
+        let (app, biometrics) = try await lockedAppWithTouchID(withPasskey: true)
+        await biometrics.setAnswer(.accept)
+        let recorder = Recorder()
+        let model = model(.choosePasskey(question("passkey.example", .required)), app, recorder)
+        model.start()
+
+        try #require(await eventually { model.screen == .locked(account: "demo@passvault.test", withPin: false, withTouchID: true) })
+        model.unlockWithTouchID()
+        #expect(await eventually { !recorder.outcomes.isEmpty })
+        #expect(recorder.verifications.isEmpty)
+        guard case .assertion(let assertion) = recorder.outcomes.first else {
+            Issue.record("expected a signature after unlocking")
+            return
+        }
+        #expect(assertion.authenticatorData == Data("fake-authenticator-data:verified".utf8))
+    }
+
+    @Test func relockingDuringSelectionInvalidatesTheEarlierPinVerification() async throws {
+        let app = try await unlockedApp()
+        _ = try await makePasskey(in: app, user: "user-1")
+        _ = try await makePasskey(in: app, user: "user-2")
+        try await app.engine.setPin("4812", asksForMasterPasswordAfterRestart: false)
+        await app.engine.lock()
+        let recorder = Recorder()
+        let model = model(.choosePasskey(question("passkey.example", .required)), app, recorder)
+        model.start()
+        try #require(await eventually { model.screen == .locked(account: "demo@passvault.test", withPin: true) })
+        model.pin = "4812"
+        model.submitPin()
+        try #require(await eventually { model.screen == .passkeys && !model.isBusy })
+
+        await app.engine.lock()
+        model.chooseSelected()
+        try #require(await eventually { model.screen == .locked(account: "demo@passvault.test", withPin: true) })
+        #expect(recorder.outcomes.isEmpty)
+        try await app.engine.unlock(pin: "4812")
+        try #require(await eventually { model.screen == .passkeys && !model.isBusy })
+        model.chooseSelected()
+        #expect(await eventually { !recorder.outcomes.isEmpty })
+        #expect(recorder.verifications.count == 1)
+    }
+
+    @Test func requiredRegistrationFailsWithoutVerification() async throws {
+        let app = try await unlockedApp()
+        let recorder = Recorder()
+        recorder.verdict = false
+        let model = model(.newPasskey(newPasskey(verification: .required)), app, recorder)
+        model.start()
+        #expect(await eventually { recorder.outcomes == [.failed] })
+        #expect(recorder.verifications.count == 1)
+        #expect(await app.engine.state.vault.items.flatMap(\.passkeys).isEmpty)
+    }
+
+    @Test(arguments: [false, true])
+    func cancellingOptionalConsentCreatesNoCredentialOrSignature(_ registration: Bool) async throws {
+        let app = try await unlockedApp()
+        if !registration { _ = try await makePasskey(in: app) }
+        let recorder = Recorder()
+        let request: ProviderModel.Request = registration ? .newPasskey(newPasskey()) : .choosePasskey(question())
+        let model = model(request, app, recorder)
+        model.start()
+        try #require(await eventually { model.screen == (registration ? .passkeyTargets : .passkeys) })
+        model.cancel()
+        model.chooseSelected()
+        #expect(recorder.outcomes == [.cancelled] && recorder.verifications.isEmpty)
+        #expect(await app.engine.state.vault.items.flatMap(\.passkeys).count == (registration ? 0 : 1))
+    }
+
     @Test func severalPasskeysOfAWebsiteAreListedAndTheChosenOneSigns() async throws {
         let app = try await unlockedApp()
         let first = try await makePasskey(in: app, user: "user-1")
@@ -482,6 +615,8 @@ private actor FakeApp: AutoFillAsking {
             return
         }
         #expect(assertion.credentialID == model.passkeys[1].credentialID)
+        #expect(recorder.verifications.isEmpty)
+        #expect(assertion.authenticatorData == Data("fake-authenticator-data:present".utf8))
     }
 
     @Test func aWebsiteWithoutAPasskeyInTheVaultGetsANotice() async throws {
@@ -495,10 +630,10 @@ private actor FakeApp: AutoFillAsking {
         #expect(recorder.outcomes == [.notFound])
     }
 
-    @Test func aNewPasskeyOfAWebsiteWithoutALoginGetsANewLoginAtOnce() async throws {
+    @Test func aRequiredRegistrationCreatesALoginAfterVerification() async throws {
         let app = try await unlockedApp()
         let recorder = Recorder()
-        let model = model(.newPasskey(newPasskey()), app, recorder)
+        let model = model(.newPasskey(newPasskey(verification: .required)), app, recorder)
         model.start()
 
         #expect(await eventually { !recorder.outcomes.isEmpty })
@@ -547,7 +682,7 @@ private actor FakeApp: AutoFillAsking {
         second.save(into: login)
         second.answerOverwrite(true)
         #expect(await eventually { !again.outcomes.isEmpty })
-        #expect(again.verifications == [.overwrite(rpID: "item-2.example", username: "demo-passkey")])
+        #expect(again.verifications.isEmpty)
         guard case .registration(let replaced) = again.outcomes.first else {
             Issue.record("expected a new passkey")
             return
@@ -563,6 +698,8 @@ private actor FakeApp: AutoFillAsking {
         let model = model(.newPasskey(newPasskey(user: "user-2", excluded: [existing.credentialID])), app, recorder)
         model.start()
 
+        try #require(await eventually { model.screen == .passkeyTargets })
+        model.chooseSelected()
         #expect(await eventually { model.screen == .passkeyExists })
         #expect(recorder.outcomes.isEmpty)
         model.closeNotice()

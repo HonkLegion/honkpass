@@ -833,7 +833,8 @@ struct LocalServerTests {
     /// The authenticator of the SDK, with the real server behind it: a passkey is made in a
     /// temporary login, the server keeps it, and what the SDK signs with it is a signature that
     /// a website would accept. The check of the signature is the test's own; the app has none.
-    @Test func theAuthenticatorOfTheSDKMakesAPasskeyThatTheServerKeepsAndSignsWithIt() async throws {
+    @Test(arguments: [PasskeyUserVerification.required, .preferred, .discouraged])
+    func theAuthenticatorOfTheSDKMakesAPasskeyThatTheServerKeepsAndSignsWithIt(_ verification: PasskeyUserVerification) async throws {
         let (engine, _) = await makeEngine()
         try await logIn(engine)
         var draft = ItemDraft(new: .login)
@@ -842,7 +843,7 @@ struct LocalServerTests {
                                                websites: [.init(address: "https://passkey.example.test/login")]))
         let id = try await engine.save(draft)
         do {
-            try await usePasskey(of: id, with: engine)
+            try await usePasskey(of: id, with: engine, verification: verification)
         } catch {
             await remove(id, with: engine)
             throw error
@@ -851,8 +852,9 @@ struct LocalServerTests {
         #expect(await engine.state.vault.items.count == DevelopmentSeed.itemNames.count)
     }
 
-    private func usePasskey(of id: String, with engine: Engine) async throws {
+    private func usePasskey(of id: String, with engine: Engine, verification: PasskeyUserVerification) async throws {
         let rpID = "passkey.example.test"
+        let isVerified = verification == .required
         let handle = Data("example-temporary-user".utf8)
         let hash = Data(SHA256.hash(data: Data("example client data".utf8)))
 
@@ -860,7 +862,7 @@ struct LocalServerTests {
         #expect(await engine.autoFill(.passkeyTargets(rpID: rpID, userHandle: handle))
             == .logins([AutoFillLogin(itemID: id, name: "Example Temporary Passkey Login", username: "passkey-user")]))
         let request = PasskeyRegistrationRequest(rpID: rpID, userName: "passkey-user", userHandle: handle, clientDataHash: hash,
-                                                 algorithms: [-7], userVerification: .required, isUserVerified: true, itemID: id)
+                                                 algorithms: [-7], userVerification: verification, isUserVerified: isVerified, itemID: id)
         guard case .passkeyRegistration(let registration) = await engine.autoFill(.registerPasskey(request)) else {
             Issue.record("the SDK made no passkey")
             return
@@ -888,9 +890,9 @@ struct LocalServerTests {
         ]))
 
         // The signature. The data of the authenticator begin with the hash of the relying
-        // party and say that the user was present (bit 0) and verified (bit 2).
+        // party and distinguish presence (bit 0) from actual verification (bit 2).
         let question = PasskeyAssertionRequest(rpID: rpID, clientDataHash: hash, allowedCredentialIDs: [registration.credentialID],
-                                               itemID: id, userVerification: .required, isUserVerified: true)
+                                               itemID: id, userVerification: verification, isUserVerified: isVerified)
         guard case .passkeyAssertion(let assertion) = await engine.autoFill(.passkeyAssertion(question)) else {
             Issue.record("the SDK did not sign")
             return
@@ -899,7 +901,8 @@ struct LocalServerTests {
         let data = assertion.authenticatorData
         let rpHash = Data(SHA256.hash(data: Data(rpID.utf8)))
         #expect(data.count >= 37 && data.prefix(32) == rpHash)
-        if data.count >= 37 { #expect(data[data.startIndex + 32] & 0x05 == 0x05) }
+        let expectedFlags: UInt8 = isVerified ? 0x05 : 0x01
+        if data.count >= 37 { #expect(data[data.startIndex + 32] & 0x05 == expectedFlags) }
 
         // The public key of the passkey is in what the website got at its making: after the
         // data of the authenticator, as the coordinates x (key -2) and y (key -3) of 32 bytes.
@@ -917,9 +920,13 @@ struct LocalServerTests {
             return
         }
         #expect(key.isValidSignature(signature, for: data + hash))
+        let registrationHash = try #require(attestation.firstRange(of: rpHash))
+        try #require(registrationHash.upperBound < attestation.endIndex)
+        #expect(attestation[registrationHash.upperBound] & 0x05 == expectedFlags)
 
         // A user who was not verified gets nothing where the website asks for a verified one.
         var unverified = question
+        unverified.userVerification = .required
         unverified.isUserVerified = false
         #expect(await engine.autoFill(.passkeyAssertion(unverified)) == .failure(.userNotVerified))
 

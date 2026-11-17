@@ -15,6 +15,26 @@ PRIVATE_PARTS = {".git", ".forgejo", ".gitea", ".codex", ".claude", ".aws", ".ss
 PRIVATE_NAMES = {"plan.md", "agents.md", ".env", ".envrc", "local.xcconfig"}
 PRIVATE_SUFFIXES = {".pem", ".key", ".p8", ".p12", ".pfx", ".mobileprovision", ".provisionprofile",
                     ".keychain", ".keychain-db", ".kdbx", ".sqlite", ".sqlite3", ".db", ".log"}
+VERSION = r"(?:0|[1-9][0-9]{0,8})\.(?:0|[1-9][0-9]{0,8})\.(?:0|[1-9][0-9]{0,8})"
+BUILD = r"[1-9][0-9]{0,8}"
+
+
+def release_tag(tag):
+    match = re.fullmatch(r"v(" + VERSION + r")(?:\+(" + BUILD + r"))?", tag)
+    if not match:
+        raise ValueError("Use a release tag such as v1.2.3 or v1.2.3+4.")
+    return match[1], match[2]
+
+
+def project_identity(data):
+    text = data.decode("utf-8")
+    values = []
+    for key, pattern in (("MARKETING_VERSION", VERSION), ("CURRENT_PROJECT_VERSION", BUILD)):
+        matches = re.findall(r"^    " + key + r": (\S+)$", text, re.M)
+        if len(matches) != 1 or not re.fullmatch(pattern, matches[0]):
+            raise ValueError("project.yml must contain one valid version and one integer build number.")
+        values.append(matches[0])
+    return tuple(values)
 
 
 def git(root, *args, input=None):
@@ -91,16 +111,28 @@ def file_inventory(files):
             for name, data, executable in files}
 
 
-def export(root, revision, destination, tag):
-    if not re.fullmatch(r"v[0-9]+\.[0-9]+\.[0-9]+(?:[-+][A-Za-z0-9.-]+)?", tag):
-        raise ValueError("Use a release tag such as v1.2.3.")
+def export(root, revision, destination, tag, *, release_build=None):
+    version, explicit_build = release_tag(tag)
     revision = git(root, "rev-parse", "--verify", revision + "^{commit}").decode().strip()
     files = list(snapshot(root, revision))
-    spec = next(data for name, data, _ in files if name == "project.yml").decode()
-    version = re.search(r"^    MARKETING_VERSION: (\S+)$", spec, re.M)
-    build = re.search(r"^    CURRENT_PROJECT_VERSION: (\S+)$", spec, re.M)
-    if not version or not build or tag not in {"v" + version[1], "v" + version[1] + "+" + build[1]}:
-        raise ValueError("The release tag does not match project.yml.")
+    spec = next(data for name, data, _ in files if name == "project.yml")
+    source_version, source_build = project_identity(spec)
+    metadata = {"schema": 1, "tag": tag, "version": version, "source_revision": revision}
+    if release_build is None:
+        build = source_build
+        if version != source_version or explicit_build not in (None, build):
+            raise ValueError("The release tag does not match project.yml.")
+    else:
+        build = release_build
+        if not isinstance(build, str) or not re.fullmatch(BUILD, build) or explicit_build not in (None, build):
+            raise ValueError("The release build is invalid or differs from the tag.")
+        text = spec.decode("utf-8")
+        for key, value in (("MARKETING_VERSION", version), ("CURRENT_PROJECT_VERSION", build)):
+            text = re.sub(r"(^    " + key + r": )\S+$", lambda match: match[1] + value, text, flags=re.M)
+        files = [(name, text.encode() if name == "project.yml" else data, executable)
+                 for name, data, executable in files]
+        metadata.update(schema=2, source_project={"version": source_version, "build": source_build,
+                                                  "sha256": hashlib.sha256(spec).hexdigest()})
     destination = Path(destination)
     destination.mkdir(parents=True, exist_ok=False)
     for name, data, executable in files:
@@ -108,8 +140,7 @@ def export(root, revision, destination, tag):
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_bytes(data)
         path.chmod(0o755 if executable else 0o644)
-    metadata = {"schema": 1, "tag": tag, "version": version[1], "build": build[1],
-                "source_revision": revision, "files": file_inventory(files)}
+    metadata.update(build=build, files=file_inventory(files))
     (destination / METADATA).write_text(json.dumps(metadata, indent=2, sort_keys=True) + "\n")
     return metadata
 
@@ -125,8 +156,21 @@ def verify_public_history(root, revision):
             raise ValueError("Existing history is not a filtered public history. Migrate it separately.")
         metadata = json.loads(git(root, "cat-file", "blob", entries[METADATA][2]))
         files = list(snapshot(root, commit))
-        if (set(metadata) != {"schema", "tag", "version", "build", "source_revision", "files"}
-                or metadata.get("schema") != 1 or metadata.get("files") != file_inventory(files)
+        keys = {"schema", "tag", "version", "build", "source_revision", "files"}
+        if metadata.get("schema") == 2:
+            keys.add("source_project")
+            original = metadata.get("source_project")
+            if (not isinstance(original, dict) or set(original) != {"version", "build", "sha256"}
+                    or not re.fullmatch(VERSION, str(original.get("version")))
+                    or not re.fullmatch(BUILD, str(original.get("build")))
+                    or not re.fullmatch(r"[0-9a-f]{64}", str(original.get("sha256")))):
+                raise ValueError("Public history contains invalid source provenance.")
+        version, explicit_build = release_tag(str(metadata.get("tag")))
+        spec = next(data for name, data, _ in files if name == "project.yml")
+        if (set(metadata) != keys or type(metadata.get("schema")) is not int or metadata["schema"] not in (1, 2)
+                or metadata.get("files") != file_inventory(files)
+                or project_identity(spec) != (metadata.get("version"), metadata.get("build"))
+                or version != metadata.get("version") or explicit_build not in (None, metadata.get("build"))
                 or not re.fullmatch(r"[0-9a-f]{40}", metadata.get("source_revision", ""))
                 or set(entries) != {name for name, _, _ in files} | {METADATA}):
             raise ValueError("Public history contains unlisted or changed files.")

@@ -7,7 +7,7 @@ import tempfile
 import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "support"))
-from public_source import POLICY, export, git, selected_paths, snapshot
+from public_source import POLICY, export, git, project_identity, selected_paths, snapshot
 
 
 class PublicSourceFixture(unittest.TestCase):
@@ -124,6 +124,32 @@ class PublicSourceTests(PublicSourceFixture):
         export(self.source, "HEAD", destination, "v1.2.3+4")
         with self.assertRaises(FileExistsError):
             export(self.source, "HEAD", destination, "v1.2.3")
+
+    def test_release_metadata_changes_only_the_exported_project_version(self):
+        before = dict((name, data) for name, data, _ in snapshot(self.source, "HEAD"))
+        destination = self.base / "release"
+        metadata = export(self.source, "HEAD", destination, "v1.2.4", release_build="5")
+        self.assertEqual(metadata["schema"], 2)
+        self.assertEqual((metadata["version"], metadata["build"]), ("1.2.4", "5"))
+        self.assertEqual(metadata["source_project"]["version"], "1.2.3")
+        self.assertEqual(metadata["source_project"]["build"], "4")
+        self.assertEqual(project_identity((destination / "project.yml").read_bytes()), ("1.2.4", "5"))
+        for name, content in before.items():
+            if name != "project.yml":
+                self.assertEqual((destination / name).read_bytes(), content)
+        self.assertEqual((self.source / "project.yml").read_bytes(), before["project.yml"])
+        self.assertEqual(git(self.source, "status", "--porcelain"), b"")
+        self.assertEqual(set(metadata["files"]), set(self.paths))
+
+    def test_generated_release_rejects_bad_or_ambiguous_versions(self):
+        for tag, build in (("v1.2.4", "0"), ("v1.2.4", "5\ninjected"), ("v1.2.4", "1000000000"),
+                           ("v1.2.4+6", "5"), ("v01.2.4", "5"), ("v1.2.4-beta", "5")):
+            with self.subTest(tag=tag, build=build), self.assertRaises(ValueError):
+                export(self.source, "HEAD", self.base / "bad", tag, release_build=build)
+        self.write("project.yml", (self.source / "project.yml").read_text() + "    MARKETING_VERSION: 1.2.3\n")
+        self.commit()
+        with self.assertRaisesRegex(ValueError, "one valid version"):
+            export(self.source, "HEAD", self.base / "bad", "v1.2.4", release_build="5")
 
 
 if __name__ == "__main__":
