@@ -1,0 +1,2441 @@
+{
+  "build": "10",
+  "files": {
+    ".gitignore": {
+      "executable": false,
+      "sha256": "5dc448a893abf87d550bb4c61a13e1dfe82658e026ab8cf09fa122446ccc45d5"
+    },
+    ".gitleaks.toml": {
+      "executable": false,
+      "sha256": "754a112db8902699ee65569ad79e002d2e3a8c2331b39e0954461732f91236e4"
+    },
+    "App/ExportOptions-DeveloperID.plist": {
+      "executable": false,
+      "sha256": "e998487cdb4ad36f2b3a48f6c91509237543e29491c860b1c1ef2983eff68b84"
+    },
+    "App/PassVault/AppDelegate.swift": {
+      "executable": false,
+      "sha256": "aa937d748348e170de68c857d0dea9aee802e674c049e91f68041e8c6d0f4583"
+    },
+    "App/PassVault/AppIcon.icon/Assets/GooseKey.png": {
+      "executable": false,
+      "sha256": "63c5847b6cc0c16ee0bcacd33487a3780466ee8575799ad64bccea5d77190d1e"
+    },
+    "App/PassVault/AppIcon.icon/icon.json": {
+      "executable": false,
+      "sha256": "3daff21c43a42d935ca9e3807dc57a935452f0dabbf8d0fd7c1b3500142ec007"
+    },
+    "App/PassVault/AppModel.swift": {
+      "executable": false,
+      "sha256": "d0704f91c5a1c5a2d77267e432581d9ddd79e1c982fe12aefbf29a5a1ad8ff60"
+    },
+    "App/PassVault/AppPreferences.swift": {
+      "executable": false,
+      "sha256": "ad0cad5b19f72a2001e3a208dc70966d48aeb20510530440efa75e0e6202bbaa"
+    },
+    "App/PassVault/AutoFillController.swift": {
+      "executable": false,
+      "sha256": "45859b80977ac91779c0522c6099e216068fdc6762dabb5bc8d3424931f7d0ce"
+    },
+    "App/PassVault/FileWorkSmokeChecks.swift": {
+      "executable": false,
+      "sha256": "1aed749e442b7c2968802d3b5c97be6187df655d0853ad6b572278ca95c0f44d"
+    },
+    "App/PassVault/FillCheck.swift": {
+      "executable": false,
+      "sha256": "8b52419a2763d071000a196909f9061371646b70eb01c425127d51a43553df6a"
+    },
+    "App/PassVault/GlobalHotKey.swift": {
+      "executable": false,
+      "sha256": "ec5b1b41751d407c23587a9400c0be9f1839a4d515b326d6d4c01c6b94e8c085"
+    },
+    "App/PassVault/Info.plist": {
+      "executable": false,
+      "sha256": "54ee7cf9daa2190328c18d3fc92eb03417a11f7785aa29c008dadc7f6c635272"
+    },
+    "App/PassVault/ItemActions.swift": {
+      "executable": false,
+      "sha256": "e369c22f07cf81864d20cfd710536d33558386a33c5f0d08339e4caa04d037b1"
+    },
+    "App/PassVault/ItemForm.swift": {
+      "executable": false,
+      "sha256": "6d9927b0edbf30a3df503c71e28133540ff7cdc9d52cde5d3006235f0971255e"
+    },
+    "App/PassVault/LaunchOptions.swift": {
+      "executable": false,
+      "sha256": "b6c184213d7edd83680e9024aef8f23f220f7852dcd51accf4aa3685bfd39074"
+    },
+    "App/PassVault/Legal/GPL-3.0.txt": {
+      "executable": false,
+      "sha256": "b98fbb37db5b23bc5cfdcd16793206a5a7120a7b01f75374e5e0888376e4691c"
+    },
+    "App/PassVault/Legal/index-cs.html": {
+      "executable": false,
+      "sha256": "7880c83d4b1a6db2e602b549f7f7b0678e993aca2f5a44b7db8f2076cd532b88"
+    },
+    "App/PassVault/Legal/index-en.html": {
+      "executable": false,
+      "sha256": "14a68b19ad6c6b1440e6330b8cb78eae65c4cc3ab8e0eca33d8512de9b5564a4"
+    },
+    "App/PassVault/Legal/inventory.json": {
+      "executable": false,
+      "sha256": "3f00a5ddcd221acab44231fba1553b98b628033f658ee826b289be8de6117f3b"
+    },
+    "App/PassVault/Legal/texts/003736bc98408b53511b9cc8ff5d1af3bf0a8f17d53841cc39d8ab1b96a195b0.txt": {
+      "executable": false,
+      "sha256": "003736bc98408b53511b9cc8ff5d1af3bf0a8f17d53841cc39d8ab1b96a195b0"
+    },
+    "App/PassVault/Legal/texts/005fc765ddc5115da796cca915baa9557abae13ff35e0a47c47affc56f6c414d.txt": {
+      "executable": false,
+      "sha256": "005fc765ddc5115da796cca915baa9557abae13ff35e0a47c47affc56f6c414d"
+    },
+    "App/PassVault/Legal/texts/016d20f335060a70e79d9fcf8dfaa6201114d65d592211f4bdfb8ae9ca2bc1dc.txt": {
+      "executable": false,
+      "sha256": "016d20f335060a70e79d9fcf8dfaa6201114d65d592211f4bdfb8ae9ca2bc1dc"
+    },
+    "App/PassVault/Legal/texts/0173035e025d60b1d19197840a93a887f6da8b075c01dd10601fcb6414a0043b.txt": {
+      "executable": false,
+      "sha256": "0173035e025d60b1d19197840a93a887f6da8b075c01dd10601fcb6414a0043b"
+    },
+    "App/PassVault/Legal/texts/019195ba155e96b90ad6b1b60aaced09bf43bca9f041f7cbbee7fd6f4be8a9ac.txt": {
+      "executable": false,
+      "sha256": "019195ba155e96b90ad6b1b60aaced09bf43bca9f041f7cbbee7fd6f4be8a9ac"
+    },
+    "App/PassVault/Legal/texts/01c266bced4a434da0051174d6bee16a4c82cf634e2679b6155d40d75012390f.txt": {
+      "executable": false,
+      "sha256": "01c266bced4a434da0051174d6bee16a4c82cf634e2679b6155d40d75012390f"
+    },
+    "App/PassVault/Legal/texts/01fe7fd5a624e6a81557ff4b76c4a7b9a3d89c6a1b58083b74aff7bce843bb41.txt": {
+      "executable": false,
+      "sha256": "01fe7fd5a624e6a81557ff4b76c4a7b9a3d89c6a1b58083b74aff7bce843bb41"
+    },
+    "App/PassVault/Legal/texts/02168781a5b59970e3da1784d2eb69f432598a3757f283dbffdafd9d483a9113.txt": {
+      "executable": false,
+      "sha256": "02168781a5b59970e3da1784d2eb69f432598a3757f283dbffdafd9d483a9113"
+    },
+    "App/PassVault/Legal/texts/0218327e7a480793ffdd4eb792379a9709e5c135c7ba267f709d6f6d4d70af0a.txt": {
+      "executable": false,
+      "sha256": "0218327e7a480793ffdd4eb792379a9709e5c135c7ba267f709d6f6d4d70af0a"
+    },
+    "App/PassVault/Legal/texts/025436edff4cfcdde17a5811fdea78892d8482efd1abdec5a17872d07a4f2112.txt": {
+      "executable": false,
+      "sha256": "025436edff4cfcdde17a5811fdea78892d8482efd1abdec5a17872d07a4f2112"
+    },
+    "App/PassVault/Legal/texts/054aa61c4259f18e0e1355d88d0bb331d4cb7017251920ad3b126ce7dab65e26.txt": {
+      "executable": false,
+      "sha256": "054aa61c4259f18e0e1355d88d0bb331d4cb7017251920ad3b126ce7dab65e26"
+    },
+    "App/PassVault/Legal/texts/0621878e61f0d0fda054bcbe02df75192c28bde1ecc8289cbd86aeba2dd72720.txt": {
+      "executable": false,
+      "sha256": "0621878e61f0d0fda054bcbe02df75192c28bde1ecc8289cbd86aeba2dd72720"
+    },
+    "App/PassVault/Legal/texts/070dbc7dda03a29296f2d58bdb9b7331af90f2abc9f31df22875d1eabaf29852.txt": {
+      "executable": false,
+      "sha256": "070dbc7dda03a29296f2d58bdb9b7331af90f2abc9f31df22875d1eabaf29852"
+    },
+    "App/PassVault/Legal/texts/07919255c7e04793d8ea760d6c2ce32d19f9ff02bdbdde3ce90b1e1880929a9b.txt": {
+      "executable": false,
+      "sha256": "07919255c7e04793d8ea760d6c2ce32d19f9ff02bdbdde3ce90b1e1880929a9b"
+    },
+    "App/PassVault/Legal/texts/0816e154b159ba255c563f7c8c7df5bbb8cc5fc96f5ab8cf9f4743b4f41fe7eb.txt": {
+      "executable": false,
+      "sha256": "0816e154b159ba255c563f7c8c7df5bbb8cc5fc96f5ab8cf9f4743b4f41fe7eb"
+    },
+    "App/PassVault/Legal/texts/083cb05a34eb9c78faf69aa49674ec30d1eadbdc2042473644992786e6c8249b.txt": {
+      "executable": false,
+      "sha256": "083cb05a34eb9c78faf69aa49674ec30d1eadbdc2042473644992786e6c8249b"
+    },
+    "App/PassVault/Legal/texts/0a54e647fe54104658b5e563c04c6f9edf251710e47bce692e0bd990a4ddaa39.txt": {
+      "executable": false,
+      "sha256": "0a54e647fe54104658b5e563c04c6f9edf251710e47bce692e0bd990a4ddaa39"
+    },
+    "App/PassVault/Legal/texts/0aa8963e105e8b6e02f634484145d4e5b0f42d0a6dd05c16f8148f033383adef.txt": {
+      "executable": false,
+      "sha256": "0aa8963e105e8b6e02f634484145d4e5b0f42d0a6dd05c16f8148f033383adef"
+    },
+    "App/PassVault/Legal/texts/0b28172679e0009b655da42797c03fd163a3379d5cfa67ba1f1655e974a2a1a9.txt": {
+      "executable": false,
+      "sha256": "0b28172679e0009b655da42797c03fd163a3379d5cfa67ba1f1655e974a2a1a9"
+    },
+    "App/PassVault/Legal/texts/0b83dc40cba89b9922bb84b0a9c7d2768ce37c1d7e138b7424fd4549915778c9.txt": {
+      "executable": false,
+      "sha256": "0b83dc40cba89b9922bb84b0a9c7d2768ce37c1d7e138b7424fd4549915778c9"
+    },
+    "App/PassVault/Legal/texts/0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594.txt": {
+      "executable": false,
+      "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594"
+    },
+    "App/PassVault/Legal/texts/0dd882e53de11566d50f8e8e2d5a651bcf3fabee4987d70f306233cf39094ba7.txt": {
+      "executable": false,
+      "sha256": "0dd882e53de11566d50f8e8e2d5a651bcf3fabee4987d70f306233cf39094ba7"
+    },
+    "App/PassVault/Legal/texts/0f96a83840e146e43c0ec96a22ec1f392e0680e6c1226e6f3ba87e0740af850f.txt": {
+      "executable": false,
+      "sha256": "0f96a83840e146e43c0ec96a22ec1f392e0680e6c1226e6f3ba87e0740af850f"
+    },
+    "App/PassVault/Legal/texts/123a331b5dbf04c30097fa43b8f858bc85df671fe776de498d01f3d6b7c1f69e.txt": {
+      "executable": false,
+      "sha256": "123a331b5dbf04c30097fa43b8f858bc85df671fe776de498d01f3d6b7c1f69e"
+    },
+    "App/PassVault/Legal/texts/1264c45618bccf48df48b9e9beefdc704dc094ddedccf5ddef0243a031b9e114.txt": {
+      "executable": false,
+      "sha256": "1264c45618bccf48df48b9e9beefdc704dc094ddedccf5ddef0243a031b9e114"
+    },
+    "App/PassVault/Legal/texts/155420c6403d4e0fca34105e3c03fdd6939b64c393c7ec6f95f5b72c5474eab0.txt": {
+      "executable": false,
+      "sha256": "155420c6403d4e0fca34105e3c03fdd6939b64c393c7ec6f95f5b72c5474eab0"
+    },
+    "App/PassVault/Legal/texts/1954992a2b32e8a2af24a4c11b726902e344c1934b947a77f04d404908f8db30.txt": {
+      "executable": false,
+      "sha256": "1954992a2b32e8a2af24a4c11b726902e344c1934b947a77f04d404908f8db30"
+    },
+    "App/PassVault/Legal/texts/1a2f5c12ddc934d58956aa5dbdd3255fe55fd957633ab7d0d39e4f0daa73f7df.txt": {
+      "executable": false,
+      "sha256": "1a2f5c12ddc934d58956aa5dbdd3255fe55fd957633ab7d0d39e4f0daa73f7df"
+    },
+    "App/PassVault/Legal/texts/1bc7e6f475b3ec99b7e2643411950ae2368c250dd4c5c325f80f9811362a94a1.txt": {
+      "executable": false,
+      "sha256": "1bc7e6f475b3ec99b7e2643411950ae2368c250dd4c5c325f80f9811362a94a1"
+    },
+    "App/PassVault/Legal/texts/1bc9688d785fa50345f803824ddde000bdabedda9d1803dc41a1fedd81f784fc.txt": {
+      "executable": false,
+      "sha256": "1bc9688d785fa50345f803824ddde000bdabedda9d1803dc41a1fedd81f784fc"
+    },
+    "App/PassVault/Legal/texts/1c7cf76689c837a68ed8d704994e52a0f2940c087958f860d17f3186afbdcc0c.txt": {
+      "executable": false,
+      "sha256": "1c7cf76689c837a68ed8d704994e52a0f2940c087958f860d17f3186afbdcc0c"
+    },
+    "App/PassVault/Legal/texts/1e697ce8d21401fbf1bddd9b5c3fd4c4c79ae1e3bdf51f81761c85e11d5a89cd.txt": {
+      "executable": false,
+      "sha256": "1e697ce8d21401fbf1bddd9b5c3fd4c4c79ae1e3bdf51f81761c85e11d5a89cd"
+    },
+    "App/PassVault/Legal/texts/1e860b66ad4646c4f188d5ee6f0be5192089c1c066cb42a6d25285c250543444.txt": {
+      "executable": false,
+      "sha256": "1e860b66ad4646c4f188d5ee6f0be5192089c1c066cb42a6d25285c250543444"
+    },
+    "App/PassVault/Legal/texts/1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5.txt": {
+      "executable": false,
+      "sha256": "1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5"
+    },
+    "App/PassVault/Legal/texts/209fbbe0ad52d9235e37badf9cadfe4dbdc87203179c0899e738b39ade42177b.txt": {
+      "executable": false,
+      "sha256": "209fbbe0ad52d9235e37badf9cadfe4dbdc87203179c0899e738b39ade42177b"
+    },
+    "App/PassVault/Legal/texts/20c7855c364d57ea4c97889a5e8d98470a9952dade37bd9248b9a54431670e5e.txt": {
+      "executable": false,
+      "sha256": "20c7855c364d57ea4c97889a5e8d98470a9952dade37bd9248b9a54431670e5e"
+    },
+    "App/PassVault/Legal/texts/219920e865eee70b7dcfc948a86b099e7f4fe2de01bcca2ca9a20c0a033f2b59.txt": {
+      "executable": false,
+      "sha256": "219920e865eee70b7dcfc948a86b099e7f4fe2de01bcca2ca9a20c0a033f2b59"
+    },
+    "App/PassVault/Legal/texts/231c837c45eb53f108fb48929e488965bc4fcc14e9ea21d35f50e6b99d98685b.txt": {
+      "executable": false,
+      "sha256": "231c837c45eb53f108fb48929e488965bc4fcc14e9ea21d35f50e6b99d98685b"
+    },
+    "App/PassVault/Legal/texts/233b95ccbf90dc67e32f3e8995c489f6312d9191ebd141a931c3b684f1e3be6d.txt": {
+      "executable": false,
+      "sha256": "233b95ccbf90dc67e32f3e8995c489f6312d9191ebd141a931c3b684f1e3be6d"
+    },
+    "App/PassVault/Legal/texts/23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3.txt": {
+      "executable": false,
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+    },
+    "App/PassVault/Legal/texts/248378d0a3383c173fb925f17141b88e71580b3ba17ddc6ac3d2a344683232ab.txt": {
+      "executable": false,
+      "sha256": "248378d0a3383c173fb925f17141b88e71580b3ba17ddc6ac3d2a344683232ab"
+    },
+    "App/PassVault/Legal/texts/2537228d9a1b44a5dc595241349cae7090b326c8de165aaf89bfddef4a00d0fc.txt": {
+      "executable": false,
+      "sha256": "2537228d9a1b44a5dc595241349cae7090b326c8de165aaf89bfddef4a00d0fc"
+    },
+    "App/PassVault/Legal/texts/253cd04c6714889df2d32f3f64d669179a1c95c76ac43c40882c52eb06bc3552.txt": {
+      "executable": false,
+      "sha256": "253cd04c6714889df2d32f3f64d669179a1c95c76ac43c40882c52eb06bc3552"
+    },
+    "App/PassVault/Legal/texts/25f77efa393854f7c15eaf6a2589a2071db2d7337642742763adb12bdecf0445.txt": {
+      "executable": false,
+      "sha256": "25f77efa393854f7c15eaf6a2589a2071db2d7337642742763adb12bdecf0445"
+    },
+    "App/PassVault/Legal/texts/262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a.txt": {
+      "executable": false,
+      "sha256": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a"
+    },
+    "App/PassVault/Legal/texts/268872b9816f90fd8e85db5a28d33f8150ebb8dd016653fb39ef1f94f2686bc5.txt": {
+      "executable": false,
+      "sha256": "268872b9816f90fd8e85db5a28d33f8150ebb8dd016653fb39ef1f94f2686bc5"
+    },
+    "App/PassVault/Legal/texts/26b997d1a1496df49cb1ad2cbe024714cd9126543c18e1bc6c7bbca1b3dc42b6.txt": {
+      "executable": false,
+      "sha256": "26b997d1a1496df49cb1ad2cbe024714cd9126543c18e1bc6c7bbca1b3dc42b6"
+    },
+    "App/PassVault/Legal/texts/275c491d6d1160553c32fd6127061d7f9606c3ea25abfad6ca3f6ed088785427.txt": {
+      "executable": false,
+      "sha256": "275c491d6d1160553c32fd6127061d7f9606c3ea25abfad6ca3f6ed088785427"
+    },
+    "App/PassVault/Legal/texts/27995d58ad5c1145c1a8cd86244ce844886958a35eb2b78c6b772748669999ac.txt": {
+      "executable": false,
+      "sha256": "27995d58ad5c1145c1a8cd86244ce844886958a35eb2b78c6b772748669999ac"
+    },
+    "App/PassVault/Legal/texts/27e0387973d6b8507cb15f825f6f26e0278d4d5857082c1f56b49a7b39a90183.txt": {
+      "executable": false,
+      "sha256": "27e0387973d6b8507cb15f825f6f26e0278d4d5857082c1f56b49a7b39a90183"
+    },
+    "App/PassVault/Legal/texts/284465860407420254e39be4e1bdcaaf2e7f2d18e06f9bab75bc75341a5d8501.txt": {
+      "executable": false,
+      "sha256": "284465860407420254e39be4e1bdcaaf2e7f2d18e06f9bab75bc75341a5d8501"
+    },
+    "App/PassVault/Legal/texts/2d01890414494742ba4a509fcec8efa40f6d8be22cbd72be7cff08d6fda4ec89.txt": {
+      "executable": false,
+      "sha256": "2d01890414494742ba4a509fcec8efa40f6d8be22cbd72be7cff08d6fda4ec89"
+    },
+    "App/PassVault/Legal/texts/2d1c57bff28344b9e698f51063bc8509799cc4c99a4e0cf2aa3f7e7c3e1f9a9d.txt": {
+      "executable": false,
+      "sha256": "2d1c57bff28344b9e698f51063bc8509799cc4c99a4e0cf2aa3f7e7c3e1f9a9d"
+    },
+    "App/PassVault/Legal/texts/2d36597f7117c38b006835ae7f537487207d8ec407aa9d9980794b2030cbc067.txt": {
+      "executable": false,
+      "sha256": "2d36597f7117c38b006835ae7f537487207d8ec407aa9d9980794b2030cbc067"
+    },
+    "App/PassVault/Legal/texts/30fefc3a7d6a0041541858293bcbea2dde4caa4c0a5802f996a7f7e8c0085652.txt": {
+      "executable": false,
+      "sha256": "30fefc3a7d6a0041541858293bcbea2dde4caa4c0a5802f996a7f7e8c0085652"
+    },
+    "App/PassVault/Legal/texts/33b32a251d445c5c03a634e64c53314c55540fc367fabdd45d9b6c8f260c028c.txt": {
+      "executable": false,
+      "sha256": "33b32a251d445c5c03a634e64c53314c55540fc367fabdd45d9b6c8f260c028c"
+    },
+    "App/PassVault/Legal/texts/33f702959c0ea91c08b21b65cf1f08b6c122ec9e6db0b5db784a7b367d942330.txt": {
+      "executable": false,
+      "sha256": "33f702959c0ea91c08b21b65cf1f08b6c122ec9e6db0b5db784a7b367d942330"
+    },
+    "App/PassVault/Legal/texts/3521672491a3479422d5fe1aca6645dd2984090f85da6e5205abfb18fb7a6897.txt": {
+      "executable": false,
+      "sha256": "3521672491a3479422d5fe1aca6645dd2984090f85da6e5205abfb18fb7a6897"
+    },
+    "App/PassVault/Legal/texts/35242e7a83f69875e6edeff02291e688c97caafe2f8902e4e19b49d3e78b4cab.txt": {
+      "executable": false,
+      "sha256": "35242e7a83f69875e6edeff02291e688c97caafe2f8902e4e19b49d3e78b4cab"
+    },
+    "App/PassVault/Legal/texts/36516aefdc84c5d5a1e7485425913a22dbda69eb1930c5e84d6ae4972b5194b9.txt": {
+      "executable": false,
+      "sha256": "36516aefdc84c5d5a1e7485425913a22dbda69eb1930c5e84d6ae4972b5194b9"
+    },
+    "App/PassVault/Legal/texts/36ce5478ce77743cf9be5b0967b2508b593880d9987fd29f6bd814672f95795b.txt": {
+      "executable": false,
+      "sha256": "36ce5478ce77743cf9be5b0967b2508b593880d9987fd29f6bd814672f95795b"
+    },
+    "App/PassVault/Legal/texts/3708458dee7f359ac6c9c5558023ed481be87e5372c43ebd7f2ca7ad23c12026.txt": {
+      "executable": false,
+      "sha256": "3708458dee7f359ac6c9c5558023ed481be87e5372c43ebd7f2ca7ad23c12026"
+    },
+    "App/PassVault/Legal/texts/3721e5764ca384059a3521d84c0fb40373894a099d8246fe76bf0d7418041846.txt": {
+      "executable": false,
+      "sha256": "3721e5764ca384059a3521d84c0fb40373894a099d8246fe76bf0d7418041846"
+    },
+    "App/PassVault/Legal/texts/377c2e7c53250cc5905c0b0532d35973392af16ffb9596a41d99d202cf3617c9.txt": {
+      "executable": false,
+      "sha256": "377c2e7c53250cc5905c0b0532d35973392af16ffb9596a41d99d202cf3617c9"
+    },
+    "App/PassVault/Legal/texts/378f5840b258e2779c39418f3f2d7b2ba96f1c7917dd6be0713f88305dbda397.txt": {
+      "executable": false,
+      "sha256": "378f5840b258e2779c39418f3f2d7b2ba96f1c7917dd6be0713f88305dbda397"
+    },
+    "App/PassVault/Legal/texts/389a4e4e9a32f059775b13a06e25a591445ba229d2838d26dd3e7c0c45127cfe.txt": {
+      "executable": false,
+      "sha256": "389a4e4e9a32f059775b13a06e25a591445ba229d2838d26dd3e7c0c45127cfe"
+    },
+    "App/PassVault/Legal/texts/38e9e1a0452419fb8d2d8d023a79ff31f3106850f90d5ff381d45e65a0f992d9.txt": {
+      "executable": false,
+      "sha256": "38e9e1a0452419fb8d2d8d023a79ff31f3106850f90d5ff381d45e65a0f992d9"
+    },
+    "App/PassVault/Legal/texts/391a5396cec6230bfabd4ef4eb2350eb895bc5efce377a2218f5702ed020d3e3.txt": {
+      "executable": false,
+      "sha256": "391a5396cec6230bfabd4ef4eb2350eb895bc5efce377a2218f5702ed020d3e3"
+    },
+    "App/PassVault/Legal/texts/391a7404ef6f0ad2b21e5270dd0b95c69ed09dc03be45252442542c010c9a9f6.txt": {
+      "executable": false,
+      "sha256": "391a7404ef6f0ad2b21e5270dd0b95c69ed09dc03be45252442542c010c9a9f6"
+    },
+    "App/PassVault/Legal/texts/3bc70e239e91272782006c638fc0452a714d384224f11f0923036b7be07cf9b5.txt": {
+      "executable": false,
+      "sha256": "3bc70e239e91272782006c638fc0452a714d384224f11f0923036b7be07cf9b5"
+    },
+    "App/PassVault/Legal/texts/3d5d9f721f0672536c42123e2213fc5697ce45a83814f0a6b6d21a27fdf7c3af.txt": {
+      "executable": false,
+      "sha256": "3d5d9f721f0672536c42123e2213fc5697ce45a83814f0a6b6d21a27fdf7c3af"
+    },
+    "App/PassVault/Legal/texts/3fa4ca83dcc9237839b1bdeb2e6d16bdfb5ec0c5ce42b24694d8bbf0dcbef72c.txt": {
+      "executable": false,
+      "sha256": "3fa4ca83dcc9237839b1bdeb2e6d16bdfb5ec0c5ce42b24694d8bbf0dcbef72c"
+    },
+    "App/PassVault/Legal/texts/403c53069750101aeb9df7e15f127056ceaf7e4e92d0b919a1f4c084afd5f1d4.txt": {
+      "executable": false,
+      "sha256": "403c53069750101aeb9df7e15f127056ceaf7e4e92d0b919a1f4c084afd5f1d4"
+    },
+    "App/PassVault/Legal/texts/4108245a1f2df9d4e94df8abed5b4ba0759bb2f9b40a6b939f1be141077ae50b.txt": {
+      "executable": false,
+      "sha256": "4108245a1f2df9d4e94df8abed5b4ba0759bb2f9b40a6b939f1be141077ae50b"
+    },
+    "App/PassVault/Legal/texts/4148e7b027fba018131f297b4fe27995386ba317018d6855e182fd0e86cd754f.txt": {
+      "executable": false,
+      "sha256": "4148e7b027fba018131f297b4fe27995386ba317018d6855e182fd0e86cd754f"
+    },
+    "App/PassVault/Legal/texts/4249c8e6c5ebb85f97c77e6457c6fafc1066406eb8f1ef61e796fbdc5ff18482.txt": {
+      "executable": false,
+      "sha256": "4249c8e6c5ebb85f97c77e6457c6fafc1066406eb8f1ef61e796fbdc5ff18482"
+    },
+    "App/PassVault/Legal/texts/42a35170233e83e18856792e748de4c1ce4a63b2afce9a370c89ef3fe23f9f2d.txt": {
+      "executable": false,
+      "sha256": "42a35170233e83e18856792e748de4c1ce4a63b2afce9a370c89ef3fe23f9f2d"
+    },
+    "App/PassVault/Legal/texts/42fa16951ce7f24b5a467a40e5b449a1d41e662f97ca779864f053f39e097737.txt": {
+      "executable": false,
+      "sha256": "42fa16951ce7f24b5a467a40e5b449a1d41e662f97ca779864f053f39e097737"
+    },
+    "App/PassVault/Legal/texts/436bc5a105d8e57dcd8778730f3754f7bf39c14d2f530e4cde4bd2d17a83ec3d.txt": {
+      "executable": false,
+      "sha256": "436bc5a105d8e57dcd8778730f3754f7bf39c14d2f530e4cde4bd2d17a83ec3d"
+    },
+    "App/PassVault/Legal/texts/4455bf75a91154108304cb283e0fea9948c14f13e20d60887cf2552449dea3b1.txt": {
+      "executable": false,
+      "sha256": "4455bf75a91154108304cb283e0fea9948c14f13e20d60887cf2552449dea3b1"
+    },
+    "App/PassVault/Legal/texts/45f522cacecb1023856e46df79ca625dfc550c94910078bd8aec6e02880b3d42.txt": {
+      "executable": false,
+      "sha256": "45f522cacecb1023856e46df79ca625dfc550c94910078bd8aec6e02880b3d42"
+    },
+    "App/PassVault/Legal/texts/45fd05c4865e7c350b98ad7ac50e1b15462d49af4a91e9b0c9dd933dc9a69742.txt": {
+      "executable": false,
+      "sha256": "45fd05c4865e7c350b98ad7ac50e1b15462d49af4a91e9b0c9dd933dc9a69742"
+    },
+    "App/PassVault/Legal/texts/4621bda86773a67b5645bbd25cf1bf8b6820d4fcec3885b23b9ceec612007f63.txt": {
+      "executable": false,
+      "sha256": "4621bda86773a67b5645bbd25cf1bf8b6820d4fcec3885b23b9ceec612007f63"
+    },
+    "App/PassVault/Legal/texts/467e2e44913e850ca4fb6760fa3b78ffefda2a21688a6b1e26a8b706963669eb.txt": {
+      "executable": false,
+      "sha256": "467e2e44913e850ca4fb6760fa3b78ffefda2a21688a6b1e26a8b706963669eb"
+    },
+    "App/PassVault/Legal/texts/47dc9ff29128ddfb4d6a0435383c9f89120bc374dbcc1dd00b933a0b28aa7865.txt": {
+      "executable": false,
+      "sha256": "47dc9ff29128ddfb4d6a0435383c9f89120bc374dbcc1dd00b933a0b28aa7865"
+    },
+    "App/PassVault/Legal/texts/4a883ecc3bb1010faed542bf63d53e530fea5e5e12cf676aed588784298ba929.txt": {
+      "executable": false,
+      "sha256": "4a883ecc3bb1010faed542bf63d53e530fea5e5e12cf676aed588784298ba929"
+    },
+    "App/PassVault/Legal/texts/4c1db422db5330e34880d573f18435f8893ec1e35b5172051919b7f693fb96b5.txt": {
+      "executable": false,
+      "sha256": "4c1db422db5330e34880d573f18435f8893ec1e35b5172051919b7f693fb96b5"
+    },
+    "App/PassVault/Legal/texts/4cada0bd02ea3692eee6f16400d86c6508bbd3bafb2b65fed0419f36d4f83e8f.txt": {
+      "executable": false,
+      "sha256": "4cada0bd02ea3692eee6f16400d86c6508bbd3bafb2b65fed0419f36d4f83e8f"
+    },
+    "App/PassVault/Legal/texts/4da95ec4ecb65b738d470b7d762894ad9c97da93e6cbfb18b570fc2c96f4b871.txt": {
+      "executable": false,
+      "sha256": "4da95ec4ecb65b738d470b7d762894ad9c97da93e6cbfb18b570fc2c96f4b871"
+    },
+    "App/PassVault/Legal/texts/4dbda04344456f09a7a588140455413a9ac59b6b26a1ef7cdf9c800c012d87f0.txt": {
+      "executable": false,
+      "sha256": "4dbda04344456f09a7a588140455413a9ac59b6b26a1ef7cdf9c800c012d87f0"
+    },
+    "App/PassVault/Legal/texts/4f6bd11a0f17fe5b085ace1daaedb7b002a08316850dd9577c246c6a68a68e8c.txt": {
+      "executable": false,
+      "sha256": "4f6bd11a0f17fe5b085ace1daaedb7b002a08316850dd9577c246c6a68a68e8c"
+    },
+    "App/PassVault/Legal/texts/4ff7fc936cdf875209dace77be5f98df16df51d82df7a2069f4d264d1d61c259.txt": {
+      "executable": false,
+      "sha256": "4ff7fc936cdf875209dace77be5f98df16df51d82df7a2069f4d264d1d61c259"
+    },
+    "App/PassVault/Legal/texts/5049cf464977eff4b4fcfa7988d84e74116956a3eb9d5f1d451b3f828f945233.txt": {
+      "executable": false,
+      "sha256": "5049cf464977eff4b4fcfa7988d84e74116956a3eb9d5f1d451b3f828f945233"
+    },
+    "App/PassVault/Legal/texts/508a77d2e7b51d98adeed32648ad124b7b30241a8e70b2e72c99f92d8e5874d1.txt": {
+      "executable": false,
+      "sha256": "508a77d2e7b51d98adeed32648ad124b7b30241a8e70b2e72c99f92d8e5874d1"
+    },
+    "App/PassVault/Legal/texts/516b24e051bf5630880ebbd55c40a25ce9552ebaf8970a53e8976eb70e522406.txt": {
+      "executable": false,
+      "sha256": "516b24e051bf5630880ebbd55c40a25ce9552ebaf8970a53e8976eb70e522406"
+    },
+    "App/PassVault/Legal/texts/523a42c25d245dde9c015f882cec7f4555aad883382a6cf19b4b7d9b2cd5419b.txt": {
+      "executable": false,
+      "sha256": "523a42c25d245dde9c015f882cec7f4555aad883382a6cf19b4b7d9b2cd5419b"
+    },
+    "App/PassVault/Legal/texts/54fb6dfe99a6906f862aa40282f0e8e9d9d0f22d57d99ab8acbaf4c8ceaa70e0.txt": {
+      "executable": false,
+      "sha256": "54fb6dfe99a6906f862aa40282f0e8e9d9d0f22d57d99ab8acbaf4c8ceaa70e0"
+    },
+    "App/PassVault/Legal/texts/553fffcd9b1cb158bc3e9edc35da85ca5c3b3d7d2e61c883ebcfa8a65814b583.txt": {
+      "executable": false,
+      "sha256": "553fffcd9b1cb158bc3e9edc35da85ca5c3b3d7d2e61c883ebcfa8a65814b583"
+    },
+    "App/PassVault/Legal/texts/5734ed989dfca1f625b40281ee9f4530f91b2411ec01cb748223e7eb87e201ab.txt": {
+      "executable": false,
+      "sha256": "5734ed989dfca1f625b40281ee9f4530f91b2411ec01cb748223e7eb87e201ab"
+    },
+    "App/PassVault/Legal/texts/57a4d75c1d095bb94754a478f3cd15e60ac66a5c5627d844be01a918eea5fe88.txt": {
+      "executable": false,
+      "sha256": "57a4d75c1d095bb94754a478f3cd15e60ac66a5c5627d844be01a918eea5fe88"
+    },
+    "App/PassVault/Legal/texts/58545fed1565e42d687aecec6897d35c6d37ccb71479a137c0deb2203e125c79.txt": {
+      "executable": false,
+      "sha256": "58545fed1565e42d687aecec6897d35c6d37ccb71479a137c0deb2203e125c79"
+    },
+    "App/PassVault/Legal/texts/59013a5c8d3a19c26a457579105915a5d51bb0c09d579f8cdedf12e4203c3018.txt": {
+      "executable": false,
+      "sha256": "59013a5c8d3a19c26a457579105915a5d51bb0c09d579f8cdedf12e4203c3018"
+    },
+    "App/PassVault/Legal/texts/5b2c207dcf571267ebe0bbdd5bf321f561ddc22ff597e7b363e96f4539507a29.txt": {
+      "executable": false,
+      "sha256": "5b2c207dcf571267ebe0bbdd5bf321f561ddc22ff597e7b363e96f4539507a29"
+    },
+    "App/PassVault/Legal/texts/5b698ca13897be3afdb7174256fa1574f8c6892b8bea1a66dd6469d3fe27885a.txt": {
+      "executable": false,
+      "sha256": "5b698ca13897be3afdb7174256fa1574f8c6892b8bea1a66dd6469d3fe27885a"
+    },
+    "App/PassVault/Legal/texts/5e05b024f653a5ce199e77cbbbd42fb5553562ec714b819421ed0c3e552a75d7.txt": {
+      "executable": false,
+      "sha256": "5e05b024f653a5ce199e77cbbbd42fb5553562ec714b819421ed0c3e552a75d7"
+    },
+    "App/PassVault/Legal/texts/60c93a31f490375aadf64098b75f10715010379541021e00261045d7800611d3.txt": {
+      "executable": false,
+      "sha256": "60c93a31f490375aadf64098b75f10715010379541021e00261045d7800611d3"
+    },
+    "App/PassVault/Legal/texts/61d383b05b87d78f94d2937e2580cce47226d17823c0430fbcad09596537efcf.txt": {
+      "executable": false,
+      "sha256": "61d383b05b87d78f94d2937e2580cce47226d17823c0430fbcad09596537efcf"
+    },
+    "App/PassVault/Legal/texts/6205904d553962d42fd62764787a5b635a1416d4b3794f4fc465ec36bfbf7ceb.txt": {
+      "executable": false,
+      "sha256": "6205904d553962d42fd62764787a5b635a1416d4b3794f4fc465ec36bfbf7ceb"
+    },
+    "App/PassVault/Legal/texts/62065228e42caebca7e7d7db1204cbb867033de5982ca4009928915e4095f3a3.txt": {
+      "executable": false,
+      "sha256": "62065228e42caebca7e7d7db1204cbb867033de5982ca4009928915e4095f3a3"
+    },
+    "App/PassVault/Legal/texts/6226d0632e2e1a80c23597e964da9812ae193c535fe058154afb034e94167aa5.txt": {
+      "executable": false,
+      "sha256": "6226d0632e2e1a80c23597e964da9812ae193c535fe058154afb034e94167aa5"
+    },
+    "App/PassVault/Legal/texts/62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a.txt": {
+      "executable": false,
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+    },
+    "App/PassVault/Legal/texts/63af4bea227c94d021e99427f6ca3a4b8efddadcca93ab6130f708cf6138cf68.txt": {
+      "executable": false,
+      "sha256": "63af4bea227c94d021e99427f6ca3a4b8efddadcca93ab6130f708cf6138cf68"
+    },
+    "App/PassVault/Legal/texts/6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb.txt": {
+      "executable": false,
+      "sha256": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb"
+    },
+    "App/PassVault/Legal/texts/655e3ee7a4c27430774962e62a6d37d7348e5f2f292010ad674ce1bebefd24bc.txt": {
+      "executable": false,
+      "sha256": "655e3ee7a4c27430774962e62a6d37d7348e5f2f292010ad674ce1bebefd24bc"
+    },
+    "App/PassVault/Legal/texts/65fdb6c76cd61612070c066eec9ecdb30ee74fb27859d0d9af58b9f499fd0c3e.txt": {
+      "executable": false,
+      "sha256": "65fdb6c76cd61612070c066eec9ecdb30ee74fb27859d0d9af58b9f499fd0c3e"
+    },
+    "App/PassVault/Legal/texts/6652c868f35dfe5e8ef636810a4e576b9d663f3a17fb0f5613ad73583e1b88fd.txt": {
+      "executable": false,
+      "sha256": "6652c868f35dfe5e8ef636810a4e576b9d663f3a17fb0f5613ad73583e1b88fd"
+    },
+    "App/PassVault/Legal/texts/68129500b616d5838629e68f55ff3aed5e096dacf60ce9eb41bbe599a563afa6.html": {
+      "executable": false,
+      "sha256": "68129500b616d5838629e68f55ff3aed5e096dacf60ce9eb41bbe599a563afa6"
+    },
+    "App/PassVault/Legal/texts/696759d65dfe558ff7d9f031c76db19ec5c0767470fb67c4e8d990820d1e99c9.txt": {
+      "executable": false,
+      "sha256": "696759d65dfe558ff7d9f031c76db19ec5c0767470fb67c4e8d990820d1e99c9"
+    },
+    "App/PassVault/Legal/texts/6bfc9e0412997fc00de5379aa3b2e919449d2adee1aee3b0cb9ee0a5fd367956.txt": {
+      "executable": false,
+      "sha256": "6bfc9e0412997fc00de5379aa3b2e919449d2adee1aee3b0cb9ee0a5fd367956"
+    },
+    "App/PassVault/Legal/texts/6d6da4c40195ecbd22595195acd91e1b50bf61bfe0275fa57f8c4d0290f72674.txt": {
+      "executable": false,
+      "sha256": "6d6da4c40195ecbd22595195acd91e1b50bf61bfe0275fa57f8c4d0290f72674"
+    },
+    "App/PassVault/Legal/texts/6df43f6f4b5d4587f3d8d71e45532c688fd168afa5fe89d571cb32fa09c4ef51.txt": {
+      "executable": false,
+      "sha256": "6df43f6f4b5d4587f3d8d71e45532c688fd168afa5fe89d571cb32fa09c4ef51"
+    },
+    "App/PassVault/Legal/texts/6e24b7455f0b9afefdf4f3efd59a56ce76a3020c2dc4371937e281fc5e587fd7.txt": {
+      "executable": false,
+      "sha256": "6e24b7455f0b9afefdf4f3efd59a56ce76a3020c2dc4371937e281fc5e587fd7"
+    },
+    "App/PassVault/Legal/texts/6ee2ed6c77710de911761acd5fc1ad1da00f476beb1a7ef27e78c2d1858deafc.txt": {
+      "executable": false,
+      "sha256": "6ee2ed6c77710de911761acd5fc1ad1da00f476beb1a7ef27e78c2d1858deafc"
+    },
+    "App/PassVault/Legal/texts/6efb0476a1cc085077ed49357026d8c173bf33017278ef440f222fb9cbcb66e6.txt": {
+      "executable": false,
+      "sha256": "6efb0476a1cc085077ed49357026d8c173bf33017278ef440f222fb9cbcb66e6"
+    },
+    "App/PassVault/Legal/texts/709e3175b4212f7b13aa93971c9f62ff8c69ec45ad8c6532a7e0c41d7a7d6f8c.txt": {
+      "executable": false,
+      "sha256": "709e3175b4212f7b13aa93971c9f62ff8c69ec45ad8c6532a7e0c41d7a7d6f8c"
+    },
+    "App/PassVault/Legal/texts/70c9d40f1f9545c3f133b8a67206e89da850f6468eed072281bb3701514114a9.txt": {
+      "executable": false,
+      "sha256": "70c9d40f1f9545c3f133b8a67206e89da850f6468eed072281bb3701514114a9"
+    },
+    "App/PassVault/Legal/texts/73640cd487337718201bbec4ae0b9bcdac152192ddf263d927e27a98a30da6b1.txt": {
+      "executable": false,
+      "sha256": "73640cd487337718201bbec4ae0b9bcdac152192ddf263d927e27a98a30da6b1"
+    },
+    "App/PassVault/Legal/texts/7365cc8878a1d7ce155a58c4ca09c3d7a6be413efa5334a80ea842912b669349.txt": {
+      "executable": false,
+      "sha256": "7365cc8878a1d7ce155a58c4ca09c3d7a6be413efa5334a80ea842912b669349"
+    },
+    "App/PassVault/Legal/texts/73b9dc2e79c7308998dd30296e073aefaefb944a68fb89aa412c23c0edcabcaa.txt": {
+      "executable": false,
+      "sha256": "73b9dc2e79c7308998dd30296e073aefaefb944a68fb89aa412c23c0edcabcaa"
+    },
+    "App/PassVault/Legal/texts/7429802d3e67e3308471b91fbea341e484c4e0a23d0fb230a8636c38184cec79.txt": {
+      "executable": false,
+      "sha256": "7429802d3e67e3308471b91fbea341e484c4e0a23d0fb230a8636c38184cec79"
+    },
+    "App/PassVault/Legal/texts/74db5baf44a41b1000312c673544b3374e4198af5605c7f9080a402cec42cfa3.txt": {
+      "executable": false,
+      "sha256": "74db5baf44a41b1000312c673544b3374e4198af5605c7f9080a402cec42cfa3"
+    },
+    "App/PassVault/Legal/texts/751963a8b88c0e3a9f27e98933079fbcf09b9998b2c13ac49c2e4d58444520d6.txt": {
+      "executable": false,
+      "sha256": "751963a8b88c0e3a9f27e98933079fbcf09b9998b2c13ac49c2e4d58444520d6"
+    },
+    "App/PassVault/Legal/texts/7576269ea71f767b99297934c0b2367532690f8c4badc695edf8e04ab6a1e545.txt": {
+      "executable": false,
+      "sha256": "7576269ea71f767b99297934c0b2367532690f8c4badc695edf8e04ab6a1e545"
+    },
+    "App/PassVault/Legal/texts/769f80b5bcb42ed0af4e4d2fd74e1ac9bf843cb80c5a29219d1ef3544428a6bb.txt": {
+      "executable": false,
+      "sha256": "769f80b5bcb42ed0af4e4d2fd74e1ac9bf843cb80c5a29219d1ef3544428a6bb"
+    },
+    "App/PassVault/Legal/texts/78779d420019e6b4630376af8e86b6b335ee8a2f89ede6e0411e0469a326aaa4.txt": {
+      "executable": false,
+      "sha256": "78779d420019e6b4630376af8e86b6b335ee8a2f89ede6e0411e0469a326aaa4"
+    },
+    "App/PassVault/Legal/texts/799e9ca9d179295ef372f25d3769cdda7d25bb2668add6a6a1e22d1e4c678b8d.txt": {
+      "executable": false,
+      "sha256": "799e9ca9d179295ef372f25d3769cdda7d25bb2668add6a6a1e22d1e4c678b8d"
+    },
+    "App/PassVault/Legal/texts/7a313964a6e050794d2ad57f4863c11f6bbe055c0ae6ce2cf3b9fc45150bada3.txt": {
+      "executable": false,
+      "sha256": "7a313964a6e050794d2ad57f4863c11f6bbe055c0ae6ce2cf3b9fc45150bada3"
+    },
+    "App/PassVault/Legal/texts/7abd9b6960dcf7d4d0a48606a5b71bfe37d472db68d70637f3a58a56785f1621.txt": {
+      "executable": false,
+      "sha256": "7abd9b6960dcf7d4d0a48606a5b71bfe37d472db68d70637f3a58a56785f1621"
+    },
+    "App/PassVault/Legal/texts/7b63ecd5f1902af1b63729947373683c32745c16a10e8e6292e2e2dcd7e90ae0.txt": {
+      "executable": false,
+      "sha256": "7b63ecd5f1902af1b63729947373683c32745c16a10e8e6292e2e2dcd7e90ae0"
+    },
+    "App/PassVault/Legal/texts/7cfafc877eccc46c0e346ccbaa5c51bb6b894d2b818e617d970211e232785ad4.txt": {
+      "executable": false,
+      "sha256": "7cfafc877eccc46c0e346ccbaa5c51bb6b894d2b818e617d970211e232785ad4"
+    },
+    "App/PassVault/Legal/texts/7cfd738c53d61c79f07e348f622bf7707c9084237054d37fbe07788a75f5881c.txt": {
+      "executable": false,
+      "sha256": "7cfd738c53d61c79f07e348f622bf7707c9084237054d37fbe07788a75f5881c"
+    },
+    "App/PassVault/Legal/texts/816000f9c28f7005d931c77636eb79fa7020071eb0f6e6a995515dfccd3559cb.txt": {
+      "executable": false,
+      "sha256": "816000f9c28f7005d931c77636eb79fa7020071eb0f6e6a995515dfccd3559cb"
+    },
+    "App/PassVault/Legal/texts/8173d5c29b4f956d532781d2b86e4e30f83e6b7878dce18c919451d6ba707c90.txt": {
+      "executable": false,
+      "sha256": "8173d5c29b4f956d532781d2b86e4e30f83e6b7878dce18c919451d6ba707c90"
+    },
+    "App/PassVault/Legal/texts/831e0f43ad0bf014c1c4fec5767aae470434c1d66d6e671be2d823e729063e25.txt": {
+      "executable": false,
+      "sha256": "831e0f43ad0bf014c1c4fec5767aae470434c1d66d6e671be2d823e729063e25"
+    },
+    "App/PassVault/Legal/texts/83c1763356e822adde0a2cae748d938a73fdc263849ccff6b27776dff213bd32.txt": {
+      "executable": false,
+      "sha256": "83c1763356e822adde0a2cae748d938a73fdc263849ccff6b27776dff213bd32"
+    },
+    "App/PassVault/Legal/texts/8510ba89044a4985037330b8a1a4a2fe291b2cb781e6b9f7fd391399e88be09b.txt": {
+      "executable": false,
+      "sha256": "8510ba89044a4985037330b8a1a4a2fe291b2cb781e6b9f7fd391399e88be09b"
+    },
+    "App/PassVault/Legal/texts/85b978a00c3eb35c852a2076f070e592b3c347163ae40f88d904a1227e7f89df.txt": {
+      "executable": false,
+      "sha256": "85b978a00c3eb35c852a2076f070e592b3c347163ae40f88d904a1227e7f89df"
+    },
+    "App/PassVault/Legal/texts/861399f8c21c042b110517e76dc6b63a2b334276c8cf17412fc3c8908ca8dc17.txt": {
+      "executable": false,
+      "sha256": "861399f8c21c042b110517e76dc6b63a2b334276c8cf17412fc3c8908ca8dc17"
+    },
+    "App/PassVault/Legal/texts/8764a597675778ddfd4e25f81b08a05dbcf089ac05662df7613fe67f150e3aa2.txt": {
+      "executable": false,
+      "sha256": "8764a597675778ddfd4e25f81b08a05dbcf089ac05662df7613fe67f150e3aa2"
+    },
+    "App/PassVault/Legal/texts/87cb0d734c723c083e51c825930ff42bce28596b52dee15567f6b28f19c195e3.txt": {
+      "executable": false,
+      "sha256": "87cb0d734c723c083e51c825930ff42bce28596b52dee15567f6b28f19c195e3"
+    },
+    "App/PassVault/Legal/texts/87d9feb9238c6bd8e0024fc4733b06cff036f89f36d93b7df1c8a0549bbb7a5b.txt": {
+      "executable": false,
+      "sha256": "87d9feb9238c6bd8e0024fc4733b06cff036f89f36d93b7df1c8a0549bbb7a5b"
+    },
+    "App/PassVault/Legal/texts/898b1ae9821e98daf8964c8d6c7f61641f5f5aa78ad500020771c0939ee0dea1.txt": {
+      "executable": false,
+      "sha256": "898b1ae9821e98daf8964c8d6c7f61641f5f5aa78ad500020771c0939ee0dea1"
+    },
+    "App/PassVault/Legal/texts/8ada45cd9f843acf64e4722ae262c622a2b3b3007c7310ef36ac1061a30f6adb.txt": {
+      "executable": false,
+      "sha256": "8ada45cd9f843acf64e4722ae262c622a2b3b3007c7310ef36ac1061a30f6adb"
+    },
+    "App/PassVault/Legal/texts/8b427f5bc501764575e52ba4f9d95673cf8f6d80a86d0d06599852e1a9a20a36.txt": {
+      "executable": false,
+      "sha256": "8b427f5bc501764575e52ba4f9d95673cf8f6d80a86d0d06599852e1a9a20a36"
+    },
+    "App/PassVault/Legal/texts/8b43ce8accd61e9d370b5ca9e9c4f953279b5c239926c62315b40e24df51b726.txt": {
+      "executable": false,
+      "sha256": "8b43ce8accd61e9d370b5ca9e9c4f953279b5c239926c62315b40e24df51b726"
+    },
+    "App/PassVault/Legal/texts/8b6e9feec03e7c9a5facb26855cecd31662bf989b636bcfe79521bdf8ac863f0.txt": {
+      "executable": false,
+      "sha256": "8b6e9feec03e7c9a5facb26855cecd31662bf989b636bcfe79521bdf8ac863f0"
+    },
+    "App/PassVault/Legal/texts/8bb1b50b0e5c9399ae33bd35fab2769010fa6c14e8860c729a52295d84896b7a.txt": {
+      "executable": false,
+      "sha256": "8bb1b50b0e5c9399ae33bd35fab2769010fa6c14e8860c729a52295d84896b7a"
+    },
+    "App/PassVault/Legal/texts/8bce3b45e49ecd1461f223b46de133d8f62cd39f745cfdaf81bee554b908bd42.txt": {
+      "executable": false,
+      "sha256": "8bce3b45e49ecd1461f223b46de133d8f62cd39f745cfdaf81bee554b908bd42"
+    },
+    "App/PassVault/Legal/texts/8c7516d4b27b1e495be5e38b612298b63de48d05f49cdac94f70f3cd70f8864b.txt": {
+      "executable": false,
+      "sha256": "8c7516d4b27b1e495be5e38b612298b63de48d05f49cdac94f70f3cd70f8864b"
+    },
+    "App/PassVault/Legal/texts/8c9612877aacfa1b42f5e80b679e6c3c93a7ba2bb99dfaf6e87e200dca4b4e6c.txt": {
+      "executable": false,
+      "sha256": "8c9612877aacfa1b42f5e80b679e6c3c93a7ba2bb99dfaf6e87e200dca4b4e6c"
+    },
+    "App/PassVault/Legal/texts/8ce0830173fdac609dfb4ea603fdc002c2f4af0dc9b1a005653f5da9cf534b18.txt": {
+      "executable": false,
+      "sha256": "8ce0830173fdac609dfb4ea603fdc002c2f4af0dc9b1a005653f5da9cf534b18"
+    },
+    "App/PassVault/Legal/texts/8d0c1d1d4b2bebf5b9211f0e883d5a482b7808f3ed31320da14ddee95811f4ef.txt": {
+      "executable": false,
+      "sha256": "8d0c1d1d4b2bebf5b9211f0e883d5a482b7808f3ed31320da14ddee95811f4ef"
+    },
+    "App/PassVault/Legal/texts/8dcec5569a9be5b0e086c80faed6f1aefa670af0ec29cecc2f714303096887e0.txt": {
+      "executable": false,
+      "sha256": "8dcec5569a9be5b0e086c80faed6f1aefa670af0ec29cecc2f714303096887e0"
+    },
+    "App/PassVault/Legal/texts/8ea5cea8ddecc46a64a004406414d25529fca7eb71cfd8c0cfe49c343bff79c5.txt": {
+      "executable": false,
+      "sha256": "8ea5cea8ddecc46a64a004406414d25529fca7eb71cfd8c0cfe49c343bff79c5"
+    },
+    "App/PassVault/Legal/texts/8ea93490d74a5a1b1af3ff71d786271b3f1e5f0bea79ac16e02ec533cef040d6.txt": {
+      "executable": false,
+      "sha256": "8ea93490d74a5a1b1af3ff71d786271b3f1e5f0bea79ac16e02ec533cef040d6"
+    },
+    "App/PassVault/Legal/texts/90c503b61dee04e1449c323ec34c229dfb68d7adcb96c7e140ee55f70fce2d8e.txt": {
+      "executable": false,
+      "sha256": "90c503b61dee04e1449c323ec34c229dfb68d7adcb96c7e140ee55f70fce2d8e"
+    },
+    "App/PassVault/Legal/texts/90eb64f0279b0d9432accfa6023ff803bc4965212383697eee27a0f426d5f8d5.txt": {
+      "executable": false,
+      "sha256": "90eb64f0279b0d9432accfa6023ff803bc4965212383697eee27a0f426d5f8d5"
+    },
+    "App/PassVault/Legal/texts/9117d922e667125508dde62b02c1f57ed22f5ad21eb536aa2e2d99e1c796e639.txt": {
+      "executable": false,
+      "sha256": "9117d922e667125508dde62b02c1f57ed22f5ad21eb536aa2e2d99e1c796e639"
+    },
+    "App/PassVault/Legal/texts/91585c36e4fb9ab4ca0d3dfac5d66d3c0c62cc51f640a0e1196542daf2267eae.txt": {
+      "executable": false,
+      "sha256": "91585c36e4fb9ab4ca0d3dfac5d66d3c0c62cc51f640a0e1196542daf2267eae"
+    },
+    "App/PassVault/Legal/texts/91c134b29883adac1ecf292a09a3cb20789b304e72d199754696fd4ff10cce8e.txt": {
+      "executable": false,
+      "sha256": "91c134b29883adac1ecf292a09a3cb20789b304e72d199754696fd4ff10cce8e"
+    },
+    "App/PassVault/Legal/texts/91e934255ba3b2f21103d68c5581c23ef34aa95c4628e4405b8c901935e11c69.txt": {
+      "executable": false,
+      "sha256": "91e934255ba3b2f21103d68c5581c23ef34aa95c4628e4405b8c901935e11c69"
+    },
+    "App/PassVault/Legal/texts/92b81db30f7ab6d693e0af5661a40d273ca1947e891123ed823924192c10cbc7.txt": {
+      "executable": false,
+      "sha256": "92b81db30f7ab6d693e0af5661a40d273ca1947e891123ed823924192c10cbc7"
+    },
+    "App/PassVault/Legal/texts/946c9835d8034d24404f8cfec5f4654cee5dad17e944afc3d06d742cf2882831.txt": {
+      "executable": false,
+      "sha256": "946c9835d8034d24404f8cfec5f4654cee5dad17e944afc3d06d742cf2882831"
+    },
+    "App/PassVault/Legal/texts/950d712c518a02fcb7cff96950aee304a1cc5283361712c980ea21e8d6d669a5.txt": {
+      "executable": false,
+      "sha256": "950d712c518a02fcb7cff96950aee304a1cc5283361712c980ea21e8d6d669a5"
+    },
+    "App/PassVault/Legal/texts/95bd3988beee069fa2848f648dab43cc6e0b2add2ad6bcb17360caf749802bcc.txt": {
+      "executable": false,
+      "sha256": "95bd3988beee069fa2848f648dab43cc6e0b2add2ad6bcb17360caf749802bcc"
+    },
+    "App/PassVault/Legal/texts/98181e7249d0c01737645ec982499ce99a0f07eb8f7d625b8840d799d10dbc01.txt": {
+      "executable": false,
+      "sha256": "98181e7249d0c01737645ec982499ce99a0f07eb8f7d625b8840d799d10dbc01"
+    },
+    "App/PassVault/Legal/texts/9a3aeb3f63659c4c6302d315e1d98784d1e8559858a47ff9562e091bb922d28d.txt": {
+      "executable": false,
+      "sha256": "9a3aeb3f63659c4c6302d315e1d98784d1e8559858a47ff9562e091bb922d28d"
+    },
+    "App/PassVault/Legal/texts/9aa4f92bfcde293ebeca9e2379fa18d1d61f000977da144c7b74c2986c9b6466.txt": {
+      "executable": false,
+      "sha256": "9aa4f92bfcde293ebeca9e2379fa18d1d61f000977da144c7b74c2986c9b6466"
+    },
+    "App/PassVault/Legal/texts/9d185ac6703c4b0453974c0d85e9eee43e6941009296bb1f5eb0b54e2329e9f3.txt": {
+      "executable": false,
+      "sha256": "9d185ac6703c4b0453974c0d85e9eee43e6941009296bb1f5eb0b54e2329e9f3"
+    },
+    "App/PassVault/Legal/texts/9e0a97848ea543aef745c98e84fde696a9a3e0735538f6daefdd3cb1942effc1.txt": {
+      "executable": false,
+      "sha256": "9e0a97848ea543aef745c98e84fde696a9a3e0735538f6daefdd3cb1942effc1"
+    },
+    "App/PassVault/Legal/texts/9e0dfd2dd4173a530e238cb6adb37aa78c34c6bc7444e0e10c1ab5d8881f63ba.txt": {
+      "executable": false,
+      "sha256": "9e0dfd2dd4173a530e238cb6adb37aa78c34c6bc7444e0e10c1ab5d8881f63ba"
+    },
+    "App/PassVault/Legal/texts/9eacbcb81be660840c714a560a9d65ba07913db98dd4baf969f78dd499fdd60f.txt": {
+      "executable": false,
+      "sha256": "9eacbcb81be660840c714a560a9d65ba07913db98dd4baf969f78dd499fdd60f"
+    },
+    "App/PassVault/Legal/texts/a07fcacc3c60de4dc0fab10ac9d6aaba7379974e28451c99da7f7df09c25b28c.txt": {
+      "executable": false,
+      "sha256": "a07fcacc3c60de4dc0fab10ac9d6aaba7379974e28451c99da7f7df09c25b28c"
+    },
+    "App/PassVault/Legal/texts/a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499.txt": {
+      "executable": false,
+      "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+    },
+    "App/PassVault/Legal/texts/a47129d738752a6ae52247fea645b42cb320d19e9327f1eb2d1a7f99d9455ad3.txt": {
+      "executable": false,
+      "sha256": "a47129d738752a6ae52247fea645b42cb320d19e9327f1eb2d1a7f99d9455ad3"
+    },
+    "App/PassVault/Legal/texts/a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2.txt": {
+      "executable": false,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "App/PassVault/Legal/texts/a65f5d0a945d267751344c95665945b90c030ea107faf5c85d518929886187da.txt": {
+      "executable": false,
+      "sha256": "a65f5d0a945d267751344c95665945b90c030ea107faf5c85d518929886187da"
+    },
+    "App/PassVault/Legal/texts/a6ba0ec436e84b1517c6371beb6db11eab6a8e4a39d895be8584fb2c65303b5a.txt": {
+      "executable": false,
+      "sha256": "a6ba0ec436e84b1517c6371beb6db11eab6a8e4a39d895be8584fb2c65303b5a"
+    },
+    "App/PassVault/Legal/texts/a6cba85bc92e0cff7a450b1d873c0eaa2e9fc96bf472df0247a26bec77bf3ff9.txt": {
+      "executable": false,
+      "sha256": "a6cba85bc92e0cff7a450b1d873c0eaa2e9fc96bf472df0247a26bec77bf3ff9"
+    },
+    "App/PassVault/Legal/texts/a825bd853ab71619a4923d7b4311221427848070ff44d990da39b0b274c1683f.txt": {
+      "executable": false,
+      "sha256": "a825bd853ab71619a4923d7b4311221427848070ff44d990da39b0b274c1683f"
+    },
+    "App/PassVault/Legal/texts/a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5.txt": {
+      "executable": false,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "App/PassVault/Legal/texts/aaff376532ea30a0cd5330b9502ad4a4c8bf769c539c87ffe78819d188a18ebf.txt": {
+      "executable": false,
+      "sha256": "aaff376532ea30a0cd5330b9502ad4a4c8bf769c539c87ffe78819d188a18ebf"
+    },
+    "App/PassVault/Legal/texts/ad64fcb9589f162720f3cc5010ad76ca6ad3764e11861f9192c489df176bb71d.txt": {
+      "executable": false,
+      "sha256": "ad64fcb9589f162720f3cc5010ad76ca6ad3764e11861f9192c489df176bb71d"
+    },
+    "App/PassVault/Legal/texts/ae9baa7beea910273c2f384c2a6b721fb7bd02bda3436074a1072e4ee689f985.txt": {
+      "executable": false,
+      "sha256": "ae9baa7beea910273c2f384c2a6b721fb7bd02bda3436074a1072e4ee689f985"
+    },
+    "App/PassVault/Legal/texts/af59cea35d7f5e2777a713b8d155d65efa2c339eb43f3c14e868c6ac8506edad.txt": {
+      "executable": false,
+      "sha256": "af59cea35d7f5e2777a713b8d155d65efa2c339eb43f3c14e868c6ac8506edad"
+    },
+    "App/PassVault/Legal/texts/afb11426e09da40a1ae4f8fa17ddcc6b6a52d14df04c29bc5bcd06eb8730624d.txt": {
+      "executable": false,
+      "sha256": "afb11426e09da40a1ae4f8fa17ddcc6b6a52d14df04c29bc5bcd06eb8730624d"
+    },
+    "App/PassVault/Legal/texts/b05785f9f18e6716bab63424b11454513b9943a222595b70411009202fc592b5.txt": {
+      "executable": false,
+      "sha256": "b05785f9f18e6716bab63424b11454513b9943a222595b70411009202fc592b5"
+    },
+    "App/PassVault/Legal/texts/b1181a40b2a7b25cf66fd01481713bc1005df082c53ef73e851e55071b102744.txt": {
+      "executable": false,
+      "sha256": "b1181a40b2a7b25cf66fd01481713bc1005df082c53ef73e851e55071b102744"
+    },
+    "App/PassVault/Legal/texts/b1cf9a3333ca78152b859012cd4a804156e5243e9ca20ad1df7327ba5ea7405c.txt": {
+      "executable": false,
+      "sha256": "b1cf9a3333ca78152b859012cd4a804156e5243e9ca20ad1df7327ba5ea7405c"
+    },
+    "App/PassVault/Legal/texts/b21623012e6c453d944b0342c515b631cfcbf30704c2621b291526b69c10724d.txt": {
+      "executable": false,
+      "sha256": "b21623012e6c453d944b0342c515b631cfcbf30704c2621b291526b69c10724d"
+    },
+    "App/PassVault/Legal/texts/b3470648aff02beb36d7a53240fc9260ed80ed93bd43bace6b67d7ef7336ee33.txt": {
+      "executable": false,
+      "sha256": "b3470648aff02beb36d7a53240fc9260ed80ed93bd43bace6b67d7ef7336ee33"
+    },
+    "App/PassVault/Legal/texts/b38f11f6096706e6de553dabe2a7ed142d59b6fa8c97e290c67496154745cdd5.txt": {
+      "executable": false,
+      "sha256": "b38f11f6096706e6de553dabe2a7ed142d59b6fa8c97e290c67496154745cdd5"
+    },
+    "App/PassVault/Legal/texts/b3d734001a94efff3579978d953391aa7115f877657d25eb54037a43875d078a.txt": {
+      "executable": false,
+      "sha256": "b3d734001a94efff3579978d953391aa7115f877657d25eb54037a43875d078a"
+    },
+    "App/PassVault/Legal/texts/b4eb00df6e2a4d22518fcaa6a2b4646f249b3a3c9814509b22bd2091f1392ff1.txt": {
+      "executable": false,
+      "sha256": "b4eb00df6e2a4d22518fcaa6a2b4646f249b3a3c9814509b22bd2091f1392ff1"
+    },
+    "App/PassVault/Legal/texts/b67acfaaf787b346e1d3bf7654b4fabfd20360fdeb4351cc5e9d624147824527.txt": {
+      "executable": false,
+      "sha256": "b67acfaaf787b346e1d3bf7654b4fabfd20360fdeb4351cc5e9d624147824527"
+    },
+    "App/PassVault/Legal/texts/b68ad1a3367b825447089e1f8d6829b97f47a89eb78d2f4ebaef4672f5606186.txt": {
+      "executable": false,
+      "sha256": "b68ad1a3367b825447089e1f8d6829b97f47a89eb78d2f4ebaef4672f5606186"
+    },
+    "App/PassVault/Legal/texts/b7e650f3fce5c53249d1cdc608b54df156a97edd636cf9d23498d0cfe7aec63e.txt": {
+      "executable": false,
+      "sha256": "b7e650f3fce5c53249d1cdc608b54df156a97edd636cf9d23498d0cfe7aec63e"
+    },
+    "App/PassVault/Legal/texts/b82446c166daa6932dc33418961ed7a7f06c5a9fee17e9d214e16079e3442757.txt": {
+      "executable": false,
+      "sha256": "b82446c166daa6932dc33418961ed7a7f06c5a9fee17e9d214e16079e3442757"
+    },
+    "App/PassVault/Legal/texts/b8c6939380a400f53e11923d50fcc4dd2fa1ba8339fd9d04cda38a0251b6c9b0.txt": {
+      "executable": false,
+      "sha256": "b8c6939380a400f53e11923d50fcc4dd2fa1ba8339fd9d04cda38a0251b6c9b0"
+    },
+    "App/PassVault/Legal/texts/b98fbb37db5b23bc5cfdcd16793206a5a7120a7b01f75374e5e0888376e4691c.txt": {
+      "executable": false,
+      "sha256": "b98fbb37db5b23bc5cfdcd16793206a5a7120a7b01f75374e5e0888376e4691c"
+    },
+    "App/PassVault/Legal/texts/b9eb266294324f672cbe945fe8f2e32f85024f0d61a1a7d14382cdde0ac44769.txt": {
+      "executable": false,
+      "sha256": "b9eb266294324f672cbe945fe8f2e32f85024f0d61a1a7d14382cdde0ac44769"
+    },
+    "App/PassVault/Legal/texts/bada9e7ed8dc00d63502053c455d7c8d7575dfb7e8277a2a832531844d900682.txt": {
+      "executable": false,
+      "sha256": "bada9e7ed8dc00d63502053c455d7c8d7575dfb7e8277a2a832531844d900682"
+    },
+    "App/PassVault/Legal/texts/bc12b75fd81829814d843a03fa52aad0e53355b1f13665e309ff7fa33c66e5b5.txt": {
+      "executable": false,
+      "sha256": "bc12b75fd81829814d843a03fa52aad0e53355b1f13665e309ff7fa33c66e5b5"
+    },
+    "App/PassVault/Legal/texts/bdebaf9156a298f8fdab56dd26cb5144673de522d80f4c0d88e0039145f147f9.txt": {
+      "executable": false,
+      "sha256": "bdebaf9156a298f8fdab56dd26cb5144673de522d80f4c0d88e0039145f147f9"
+    },
+    "App/PassVault/Legal/texts/c09aae9d3c77b531f56351a9947bc7446511d6b025b3255312d3e3442a9a7583.txt": {
+      "executable": false,
+      "sha256": "c09aae9d3c77b531f56351a9947bc7446511d6b025b3255312d3e3442a9a7583"
+    },
+    "App/PassVault/Legal/texts/c10c1f27337546471e5f7e4e97fdd398b35b9d4e126115dcd22de8d8e65abf6f.txt": {
+      "executable": false,
+      "sha256": "c10c1f27337546471e5f7e4e97fdd398b35b9d4e126115dcd22de8d8e65abf6f"
+    },
+    "App/PassVault/Legal/texts/c144680885b29e4719e2a51f0aab5439a1e02d980692b5aaf086cae12727f28b.txt": {
+      "executable": false,
+      "sha256": "c144680885b29e4719e2a51f0aab5439a1e02d980692b5aaf086cae12727f28b"
+    },
+    "App/PassVault/Legal/texts/c1c9d5ca65122bab96e368709f8cfe9b92b443a3c21306c3260fc98eaac7e5fc.txt": {
+      "executable": false,
+      "sha256": "c1c9d5ca65122bab96e368709f8cfe9b92b443a3c21306c3260fc98eaac7e5fc"
+    },
+    "App/PassVault/Legal/texts/c30152c94a6d75e021adbc52b3a52470366a46edb917e17deae3259251af244c.txt": {
+      "executable": false,
+      "sha256": "c30152c94a6d75e021adbc52b3a52470366a46edb917e17deae3259251af244c"
+    },
+    "App/PassVault/Legal/texts/c6596eb7be8581c18be736c846fb9173b69eccf6ef94c5135893ec56bd92ba08.txt": {
+      "executable": false,
+      "sha256": "c6596eb7be8581c18be736c846fb9173b69eccf6ef94c5135893ec56bd92ba08"
+    },
+    "App/PassVault/Legal/texts/c6cf22786becd197228b7b0478e4418e33f66f861fd96ce6b49dbe6a0faa507f.txt": {
+      "executable": false,
+      "sha256": "c6cf22786becd197228b7b0478e4418e33f66f861fd96ce6b49dbe6a0faa507f"
+    },
+    "App/PassVault/Legal/texts/c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4.txt": {
+      "executable": false,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    "App/PassVault/Legal/texts/c81038315054072db233f9c9ed10c3303935be1630d0e91737defac4cb7f3d2e.txt": {
+      "executable": false,
+      "sha256": "c81038315054072db233f9c9ed10c3303935be1630d0e91737defac4cb7f3d2e"
+    },
+    "App/PassVault/Legal/texts/c816a0749cdc6bf062a5111c159723de51b2bfac66a1dac2655abd9e6b1583eb.txt": {
+      "executable": false,
+      "sha256": "c816a0749cdc6bf062a5111c159723de51b2bfac66a1dac2655abd9e6b1583eb"
+    },
+    "App/PassVault/Legal/texts/c962ee4d1d05ddc138b202b2540219ebc57893fcf97b364852094a9a94ce1365.txt": {
+      "executable": false,
+      "sha256": "c962ee4d1d05ddc138b202b2540219ebc57893fcf97b364852094a9a94ce1365"
+    },
+    "App/PassVault/Legal/texts/c995204cc6bad2ed67dd41f7d89bb9f1a9d48e0edd745732b30640d7912089a4.txt": {
+      "executable": false,
+      "sha256": "c995204cc6bad2ed67dd41f7d89bb9f1a9d48e0edd745732b30640d7912089a4"
+    },
+    "App/PassVault/Legal/texts/c9a75f18b9ab2927829a208fc6aa2cf4e63b8420887ba29cdb265d6619ae82d5.txt": {
+      "executable": false,
+      "sha256": "c9a75f18b9ab2927829a208fc6aa2cf4e63b8420887ba29cdb265d6619ae82d5"
+    },
+    "App/PassVault/Legal/texts/c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566.txt": {
+      "executable": false,
+      "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566"
+    },
+    "App/PassVault/Legal/texts/ca7387e3f6e81bc0e183326387cef72d024f0ee6f5f49c9773a825ab3002c2ea.txt": {
+      "executable": false,
+      "sha256": "ca7387e3f6e81bc0e183326387cef72d024f0ee6f5f49c9773a825ab3002c2ea"
+    },
+    "App/PassVault/Legal/texts/cb5aedb296c5246d1f22e9099f925a65146f9f0d6b4eebba97fd27a6cdbbab2d.txt": {
+      "executable": false,
+      "sha256": "cb5aedb296c5246d1f22e9099f925a65146f9f0d6b4eebba97fd27a6cdbbab2d"
+    },
+    "App/PassVault/Legal/texts/cc117d90b498b32b11a886f279b359da16a73c3b01efbb2f5cc004b20262334e.txt": {
+      "executable": false,
+      "sha256": "cc117d90b498b32b11a886f279b359da16a73c3b01efbb2f5cc004b20262334e"
+    },
+    "App/PassVault/Legal/texts/ce93600c49fbb3e14df32efe752264644f6a2f8e08a735ba981725799e5309ef.txt": {
+      "executable": false,
+      "sha256": "ce93600c49fbb3e14df32efe752264644f6a2f8e08a735ba981725799e5309ef"
+    },
+    "App/PassVault/Legal/texts/ceca995f2a9ba147d4ada210d9527769091630651e565e40e841acf435c9cea2.txt": {
+      "executable": false,
+      "sha256": "ceca995f2a9ba147d4ada210d9527769091630651e565e40e841acf435c9cea2"
+    },
+    "App/PassVault/Legal/texts/cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30.txt": {
+      "executable": false,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    "App/PassVault/Legal/texts/d0fb27c23e807f1fc6f506d161984b294a1f05c9888ae31f056d1712685948ad.txt": {
+      "executable": false,
+      "sha256": "d0fb27c23e807f1fc6f506d161984b294a1f05c9888ae31f056d1712685948ad"
+    },
+    "App/PassVault/Legal/texts/d1fc1bc0d155df60b2e7705b6b2ae02a05c96f948e1cec6e2fb86360b09f346b.txt": {
+      "executable": false,
+      "sha256": "d1fc1bc0d155df60b2e7705b6b2ae02a05c96f948e1cec6e2fb86360b09f346b"
+    },
+    "App/PassVault/Legal/texts/d27687b51f2874822c1530976b7e837eac4f308d94bf3dd42047011b7d437b47.txt": {
+      "executable": false,
+      "sha256": "d27687b51f2874822c1530976b7e837eac4f308d94bf3dd42047011b7d437b47"
+    },
+    "App/PassVault/Legal/texts/d288f9c9b4590446ec18c22ead8f8b5a12a3d4025b68f62dc9015063eb9cca69.txt": {
+      "executable": false,
+      "sha256": "d288f9c9b4590446ec18c22ead8f8b5a12a3d4025b68f62dc9015063eb9cca69"
+    },
+    "App/PassVault/Legal/texts/d2e7ec5355c96eeade56b09187ceb48a6a30299da3ce7531a66d3d11405ab963.txt": {
+      "executable": false,
+      "sha256": "d2e7ec5355c96eeade56b09187ceb48a6a30299da3ce7531a66d3d11405ab963"
+    },
+    "App/PassVault/Legal/texts/d5c22aa3118d240e877ad41c5d9fa232f9c77d757d4aac0c2f943afc0a95e0ef.txt": {
+      "executable": false,
+      "sha256": "d5c22aa3118d240e877ad41c5d9fa232f9c77d757d4aac0c2f943afc0a95e0ef"
+    },
+    "App/PassVault/Legal/texts/d5fca2653c88ad02d197faead77e22b80c70636b5bec6e02f2805f389a21b86d.txt": {
+      "executable": false,
+      "sha256": "d5fca2653c88ad02d197faead77e22b80c70636b5bec6e02f2805f389a21b86d"
+    },
+    "App/PassVault/Legal/texts/d8c4ab431f20da8452c9a217084163822e5fd9d134e1343903c929f2859fc8fd.txt": {
+      "executable": false,
+      "sha256": "d8c4ab431f20da8452c9a217084163822e5fd9d134e1343903c929f2859fc8fd"
+    },
+    "App/PassVault/Legal/texts/da28ccc6b158fc2d8cccc74e99794b1cff1d29bd7bbeb019442fcf0c04c6cad9.txt": {
+      "executable": false,
+      "sha256": "da28ccc6b158fc2d8cccc74e99794b1cff1d29bd7bbeb019442fcf0c04c6cad9"
+    },
+    "App/PassVault/Legal/texts/db11fec9946737df39ca3898d9cd8c10ec6f6c3a884a6802b0ad0b81b4e8f23a.txt": {
+      "executable": false,
+      "sha256": "db11fec9946737df39ca3898d9cd8c10ec6f6c3a884a6802b0ad0b81b4e8f23a"
+    },
+    "App/PassVault/Legal/texts/dbe1fff0fb1314b6af94f161511406275cf01c5a32441fbf24528a57a051d599.txt": {
+      "executable": false,
+      "sha256": "dbe1fff0fb1314b6af94f161511406275cf01c5a32441fbf24528a57a051d599"
+    },
+    "App/PassVault/Legal/texts/dc91f8200e4b2a1f9261035d4c18c33c246911a6c0f7b543d75347e61b249cff.txt": {
+      "executable": false,
+      "sha256": "dc91f8200e4b2a1f9261035d4c18c33c246911a6c0f7b543d75347e61b249cff"
+    },
+    "App/PassVault/Legal/texts/dd87e27dfbaa888cb77ea34592648a7743636b8dce07e49543bddda0fcfc73bc.txt": {
+      "executable": false,
+      "sha256": "dd87e27dfbaa888cb77ea34592648a7743636b8dce07e49543bddda0fcfc73bc"
+    },
+    "App/PassVault/Legal/texts/df20e0180764bf5bd76f74d47bc9e8c0069a666401629c390003a1d5eba99c92.txt": {
+      "executable": false,
+      "sha256": "df20e0180764bf5bd76f74d47bc9e8c0069a666401629c390003a1d5eba99c92"
+    },
+    "App/PassVault/Legal/texts/df9cfd06d8a44d9a671eadd39ffd97f166481da015a30f45dfd27886209c5922.txt": {
+      "executable": false,
+      "sha256": "df9cfd06d8a44d9a671eadd39ffd97f166481da015a30f45dfd27886209c5922"
+    },
+    "App/PassVault/Legal/texts/e20fa2b8e0a2565f24a792b94b4bf4b6c2b9d36f781d8a9516e218a036e6677a.txt": {
+      "executable": false,
+      "sha256": "e20fa2b8e0a2565f24a792b94b4bf4b6c2b9d36f781d8a9516e218a036e6677a"
+    },
+    "App/PassVault/Legal/texts/e2e245f2b566d0bfafb0f6a04c16b82d710c4e6e7d799e39bb4ef6e541b85b98.txt": {
+      "executable": false,
+      "sha256": "e2e245f2b566d0bfafb0f6a04c16b82d710c4e6e7d799e39bb4ef6e541b85b98"
+    },
+    "App/PassVault/Legal/texts/e915669a595b11a200873df8286561881b0e04932f6412a585db6297ba0bc97c.txt": {
+      "executable": false,
+      "sha256": "e915669a595b11a200873df8286561881b0e04932f6412a585db6297ba0bc97c"
+    },
+    "App/PassVault/Legal/texts/ea084a2373ebc1f0902c09266e7bf25a05ab3814c1805bb017ffa7308f90c061.txt": {
+      "executable": false,
+      "sha256": "ea084a2373ebc1f0902c09266e7bf25a05ab3814c1805bb017ffa7308f90c061"
+    },
+    "App/PassVault/Legal/texts/ea4fcb309f14a22065e1ea45362d494d320012249ed865fe9c7c0946db754131.txt": {
+      "executable": false,
+      "sha256": "ea4fcb309f14a22065e1ea45362d494d320012249ed865fe9c7c0946db754131"
+    },
+    "App/PassVault/Legal/texts/eafbfa606bc005ed7fd2f623d65af17ffe4ef7c017221ac14405bf4140771ea9.txt": {
+      "executable": false,
+      "sha256": "eafbfa606bc005ed7fd2f623d65af17ffe4ef7c017221ac14405bf4140771ea9"
+    },
+    "App/PassVault/Legal/texts/ecc269ef87fd38a1d98e30bfac9ba964a9dbd9315c3770fed98d4d7cb5882055.txt": {
+      "executable": false,
+      "sha256": "ecc269ef87fd38a1d98e30bfac9ba964a9dbd9315c3770fed98d4d7cb5882055"
+    },
+    "App/PassVault/Legal/texts/ed66b6e0ab989ef7fe44696840bbc6509e850099df76bfff6fcc6954d01bb7ad.txt": {
+      "executable": false,
+      "sha256": "ed66b6e0ab989ef7fe44696840bbc6509e850099df76bfff6fcc6954d01bb7ad"
+    },
+    "App/PassVault/Legal/texts/edd65bdd88957a205c47d53fa499eed8865a70320f0f03f6391668cb304ea376.txt": {
+      "executable": false,
+      "sha256": "edd65bdd88957a205c47d53fa499eed8865a70320f0f03f6391668cb304ea376"
+    },
+    "App/PassVault/Legal/texts/efa52eb70a774b62c50cf50f5e57e2625c29d375d09b91132f4f020e47b9944e.txt": {
+      "executable": false,
+      "sha256": "efa52eb70a774b62c50cf50f5e57e2625c29d375d09b91132f4f020e47b9944e"
+    },
+    "App/PassVault/Legal/texts/f025ccfb7dfb6bdfedc75ca0f67acc69e6fb4998143d834f7c2f38a29989680f.txt": {
+      "executable": false,
+      "sha256": "f025ccfb7dfb6bdfedc75ca0f67acc69e6fb4998143d834f7c2f38a29989680f"
+    },
+    "App/PassVault/Legal/texts/f367c1b8e1aa262435251e442901da4607b4650e0e63a026f5044473ecfb90f2.txt": {
+      "executable": false,
+      "sha256": "f367c1b8e1aa262435251e442901da4607b4650e0e63a026f5044473ecfb90f2"
+    },
+    "App/PassVault/Legal/texts/f51ac2c59a222f7476ce507ca879960e2b64ea64bb2786eefdbeb7b0b538d1b7.txt": {
+      "executable": false,
+      "sha256": "f51ac2c59a222f7476ce507ca879960e2b64ea64bb2786eefdbeb7b0b538d1b7"
+    },
+    "App/PassVault/Legal/texts/f7bdb3426d045cd50efd4953026e3eb5a83d0199f458a075602611b9344da5b9.txt": {
+      "executable": false,
+      "sha256": "f7bdb3426d045cd50efd4953026e3eb5a83d0199f458a075602611b9344da5b9"
+    },
+    "App/PassVault/Legal/texts/f7db81051789b729fea528a63ec4c938fdcb93d9d61d97dc8cc2e9df6d47f2a1.txt": {
+      "executable": false,
+      "sha256": "f7db81051789b729fea528a63ec4c938fdcb93d9d61d97dc8cc2e9df6d47f2a1"
+    },
+    "App/PassVault/Legal/texts/fab3dd6bdab226f1c08630b1dd917e11fcb4ec5e1e020e2c16f83a0a13863e85.txt": {
+      "executable": false,
+      "sha256": "fab3dd6bdab226f1c08630b1dd917e11fcb4ec5e1e020e2c16f83a0a13863e85"
+    },
+    "App/PassVault/Legal/texts/ff8f68cb076caf8cefe7a6430d4ac086ce6af2ca8ce2c4e5a2004d4552ef52a2.txt": {
+      "executable": false,
+      "sha256": "ff8f68cb076caf8cefe7a6430d4ac086ce6af2ca8ce2c4e5a2004d4552ef52a2"
+    },
+    "App/PassVault/LegalInformation.swift": {
+      "executable": false,
+      "sha256": "dfdb4f7bebf40a027c8585642fbb65c12767a917b3cdd2f13521b3122e23a53c"
+    },
+    "App/PassVault/LogInFlow.swift": {
+      "executable": false,
+      "sha256": "615944c5cc2aba765b45749e5be174c1ddaf7f15d0718d98b88c90c1fa62a0ca"
+    },
+    "App/PassVault/MainMenu.swift": {
+      "executable": false,
+      "sha256": "5f07962ff71eaa761c21041d445cf3b774e50cd423bbaa84cb20a17f9c4d199d"
+    },
+    "App/PassVault/MainWindowController.swift": {
+      "executable": false,
+      "sha256": "fd43bcdd632b127a1374d8a525f731a416cb85b606957f4b638658cf4af53c79"
+    },
+    "App/PassVault/PassVault.entitlements": {
+      "executable": false,
+      "sha256": "a7354e24cbaa8efcdc95df595ca7ab85c075417df29d57eb1020ed5d0236a673"
+    },
+    "App/PassVault/QuickAccess.swift": {
+      "executable": false,
+      "sha256": "03d0a6f32d02cb8f72b7c478a3569a8577c176b1f7f4283e0e90964cbf9f6b04"
+    },
+    "App/PassVault/RootView.swift": {
+      "executable": false,
+      "sha256": "399432b8d0d1aff84416b3e7e4e6f622ab01bb2a230109bf2e1edfb84e110dd5"
+    },
+    "App/PassVault/SSHApprovalPanel.swift": {
+      "executable": false,
+      "sha256": "b355f07d986e17e3b9bbbf25fd5122f72392a75ea2a7dc3efcedef77df6a6adf"
+    },
+    "App/PassVault/SSHApprovalWindowController.swift": {
+      "executable": false,
+      "sha256": "e99f4302f514e1a03f8ce2a45680e82f37101f26de4cc526833bce8a52011142"
+    },
+    "App/PassVault/Scenes.swift": {
+      "executable": false,
+      "sha256": "f8ef4b7e5ee2a242c04e3b8493ed9b63edd6bc2a205a7fe1e88e02a09e063bc7"
+    },
+    "App/PassVault/Screens/AssignCollectionsDialog.swift": {
+      "executable": false,
+      "sha256": "2c7005179d7cff93b63dfe147ffef3e1628afe79fb0aa63ebeec814fafd49b75"
+    },
+    "App/PassVault/Screens/AttachmentsDialog.swift": {
+      "executable": false,
+      "sha256": "78611b30ace972e95d3ea7516584b06d49829252ee8db8c7606aa109a0ced053"
+    },
+    "App/PassVault/Screens/ExportDialog.swift": {
+      "executable": false,
+      "sha256": "266b441d2946c719bc2683474b34d3a9c313053e983017fd24cb5cbbec3e87bb"
+    },
+    "App/PassVault/Screens/FolderDialog.swift": {
+      "executable": false,
+      "sha256": "bb01b04a57d338f6d3a382e8d25d43b9ec364acdfe8cd307a0b43666f612d16c"
+    },
+    "App/PassVault/Screens/GeneratorDialog.swift": {
+      "executable": false,
+      "sha256": "a3a962684c05db3cf94483d43cb406915e5e1f84883971caa543c27dae89a620"
+    },
+    "App/PassVault/Screens/ImportDialog.swift": {
+      "executable": false,
+      "sha256": "148804ec10b9699245076bf3a19bdf9b1c7a9fba33920137c8a122bdfd8b7693"
+    },
+    "App/PassVault/Screens/ItemCopyActions.swift": {
+      "executable": false,
+      "sha256": "bca67a1f95a519cf1fa3af7ed6569b2790dc937d2105258d83dda749b8dd242e"
+    },
+    "App/PassVault/Screens/ItemFormPanel.swift": {
+      "executable": false,
+      "sha256": "ff2862f20bea120ab01b4fca193145cea514c6a5120f2259d23577a09cd4e652"
+    },
+    "App/PassVault/Screens/ItemPanel.swift": {
+      "executable": false,
+      "sha256": "143acf58d75d439f3b4dc09ac4eb330e679a8649b500139d24534e77691919b5"
+    },
+    "App/PassVault/Screens/ItemRowIcon.swift": {
+      "executable": false,
+      "sha256": "4b63b5b4b26b74a268cfa91e6d9651f600dfc15c5e2933d8aec75e4f0549968e"
+    },
+    "App/PassVault/Screens/LockScreen.swift": {
+      "executable": false,
+      "sha256": "b8f7e6929a7880db75096b621fad4c36beedce33862eec18257484fba0a2afa2"
+    },
+    "App/PassVault/Screens/LogInScreen.swift": {
+      "executable": false,
+      "sha256": "52e386c64c041f002f9ef072c0676be0af1b52e979af488dc6b4b294695355b6"
+    },
+    "App/PassVault/Screens/LoginAppRow.swift": {
+      "executable": false,
+      "sha256": "fe0dec1f59e6b38069ea2cd55045e1b1a789d11f77c522eaf96375bf6c5b1f69"
+    },
+    "App/PassVault/Screens/LoginProgressScreen.swift": {
+      "executable": false,
+      "sha256": "ac8a5fc1958a8e7e9a53c2c98914a2a370796546186ce356852ee8a07069b92f"
+    },
+    "App/PassVault/Screens/MasterPasswordPrompt.swift": {
+      "executable": false,
+      "sha256": "f037f251c4687c70d3d1be87b907073a3c00db20a5e2eec853b025cdf01968b3"
+    },
+    "App/PassVault/Screens/QuickAccessView.swift": {
+      "executable": false,
+      "sha256": "0e59f72c298cb2e7d4a7250b9dbff46193bc8d2b7f1b28fa522444f393edadea"
+    },
+    "App/PassVault/Screens/RunningAppsPicker.swift": {
+      "executable": false,
+      "sha256": "0f9dd06456b25cb80d323d1e55cd6ddb37d4652572c6f58deca2938b1839a2b2"
+    },
+    "App/PassVault/Screens/SendPanel.swift": {
+      "executable": false,
+      "sha256": "41c4befbdb300d13d0e8bc475470fa87c07fc9bd5c458fb563619a2aa39ef877"
+    },
+    "App/PassVault/Screens/SendScreen.swift": {
+      "executable": false,
+      "sha256": "3d076d8dee79b419ea965a25b9383759d60d71476424371a6bf46f5d71065c67"
+    },
+    "App/PassVault/Screens/ServerDialog.swift": {
+      "executable": false,
+      "sha256": "eb11de4d417d41956167d6b5a7356dd729e4d281b60af27d93c52d7d06b7f0e0"
+    },
+    "App/PassVault/Screens/SetPinDialog.swift": {
+      "executable": false,
+      "sha256": "d7997efcba6c4424f37d38afa759e2a0c18dc26dcbd4720c806af02aa7f6e6b0"
+    },
+    "App/PassVault/Screens/SettingsDialog.swift": {
+      "executable": false,
+      "sha256": "4d8fbf21512311e85579e3c33e49a60007804138c97ce3980b0aff0708efae0f"
+    },
+    "App/PassVault/Screens/ShortcutDialog.swift": {
+      "executable": false,
+      "sha256": "43966226b2987f8a83f7f06914549cbf4d4c71cc26c45664602c203fce274699"
+    },
+    "App/PassVault/Screens/TwoStepScreen.swift": {
+      "executable": false,
+      "sha256": "979357baa8dc212f74b23ca7ac9866f456432144dc40e64afe29ba2dc91f7c4a"
+    },
+    "App/PassVault/Screens/VaultScreen.swift": {
+      "executable": false,
+      "sha256": "2ba2579da587003f06085d6108c1a023be3d2ed1ddfdf75d130e7ba79e6b54b7"
+    },
+    "App/PassVault/Screens/WebsiteIcon.swift": {
+      "executable": false,
+      "sha256": "e8974c753972a6b70566b6f0289bafbaf35a9006a38bc2bb9164dff85e1c728d"
+    },
+    "App/PassVault/Screens/WindowTopBar.swift": {
+      "executable": false,
+      "sha256": "6d7c12cd411018131e63d9f3e0ee3b6a6ff5ffb6e2f7d07eb125fe6e1f658e61"
+    },
+    "App/PassVault/SendForm.swift": {
+      "executable": false,
+      "sha256": "4c33a5c30f9ef195ef0faaff777784f6a1ce8f73930941631e94f9e457bdd549"
+    },
+    "App/PassVault/SmokeTest.swift": {
+      "executable": false,
+      "sha256": "909a0f2ba17e33d4086abc917f274efb78c8c9411d76b4449799a058a99e9da1"
+    },
+    "App/PassVault/StartGuard.swift": {
+      "executable": false,
+      "sha256": "3fe43c5539ebd2f831b47c072506add9307d12b629a43b9a6acbaee961587e4a"
+    },
+    "App/PassVault/StatusItemController.swift": {
+      "executable": false,
+      "sha256": "c89ace36143bd9253805eb412a64388e706cef836a98f4a6a312de2a7657044d"
+    },
+    "App/PassVault/Toasts.swift": {
+      "executable": false,
+      "sha256": "4310766b7a20c91564232c558409ee46786971c2518662b7e0d94bfaae828d74"
+    },
+    "App/PassVault/VaultFileContext.swift": {
+      "executable": false,
+      "sha256": "b56efcf12b1f65297986c8576b0be7c514919ef1b0faf43d1762124ded578b44"
+    },
+    "App/PassVault/VaultFileIO.swift": {
+      "executable": false,
+      "sha256": "6ef388e2c1be16e9317ded624e4bcf177c2f6020ebe6c9c53d8dd6e5d70e7fc5"
+    },
+    "App/PassVault/VaultFileSavePanel.swift": {
+      "executable": false,
+      "sha256": "c4df226d668878124faaa2cc7739f5252c08f4907c60ae35afa01d6848d2cd08"
+    },
+    "App/PassVault/VaultNavigation.swift": {
+      "executable": false,
+      "sha256": "3f40d206228f0e375a913f94c4f03a5b946453fd25657cc526767ca7fc5426ed"
+    },
+    "App/PassVault/VaultPerformanceProbe.swift": {
+      "executable": false,
+      "sha256": "f8f9cd6065d7682dd7f27953d45755707b81788616870e56c9a1e359288d032c"
+    },
+    "App/PassVault/WebAuthnSession.swift": {
+      "executable": false,
+      "sha256": "1ed3cf0fde34c1900bb970651f0f47f35943715236107d2ab94d75395a78e35b"
+    },
+    "App/PassVault/main.swift": {
+      "executable": false,
+      "sha256": "0ddfd0bab8cc5b8ccf6f3e9b942b97a46eccf71e5925c291a29fb21f6b60a603"
+    },
+    "App/Provider/CredentialProviderViewController.swift": {
+      "executable": false,
+      "sha256": "51192da76f8bfd02b9c742d834e1f69f38c7533841b2e4dde5cac904afdd35a8"
+    },
+    "App/Provider/Info.plist": {
+      "executable": false,
+      "sha256": "0256f3a1929bcd164c99fc54b26979158e9b2055e19c28b505652fff49b990eb"
+    },
+    "App/Provider/Provider.entitlements": {
+      "executable": false,
+      "sha256": "1c495bde86c59eb8daa4fdcb0f92fc08ee7b491fbbc6216bca63e4605d83b9e1"
+    },
+    "App/Rendezvous/LaunchAgent.plist": {
+      "executable": false,
+      "sha256": "19059090d21956fa1a122a56d7e0992db63703bf39348eda5e8d769cfd55dc97"
+    },
+    "App/Rendezvous/Rendezvous.entitlements": {
+      "executable": false,
+      "sha256": "1dcd4912920fe6d8b299d23b8289ed5d5a4da47de8e41bf360c040fcc1736dfb"
+    },
+    "App/Rendezvous/main.swift": {
+      "executable": false,
+      "sha256": "32cd6b2a1cba5f853af9400eb724c59577ee971a09deb98d237a994450e4e912"
+    },
+    "Config/Base.xcconfig": {
+      "executable": false,
+      "sha256": "797deb1621fc077c9e1caa245b06d31a13a03286e994c5369fcc45566c9d7c98"
+    },
+    "Config/Local.example.xcconfig": {
+      "executable": false,
+      "sha256": "133429646e47d7142d1652edd30373c6c2fc6d7911d45857e5f24ebe91852a1e"
+    },
+    "Config/Sparkle.xcconfig": {
+      "executable": false,
+      "sha256": "b0aeace0c0b5757683dad236fa714996a3e5c104aac5f363840622958c9fd4bc"
+    },
+    "LICENSE": {
+      "executable": false,
+      "sha256": "b98fbb37db5b23bc5cfdcd16793206a5a7120a7b01f75374e5e0888376e4691c"
+    },
+    "Makefile": {
+      "executable": false,
+      "sha256": "ef8b309acb1a8df92306f0ca29a74d2b2ff7f2dba674309e65f563e8f312ff36"
+    },
+    "Package.resolved": {
+      "executable": false,
+      "sha256": "835ff69fc47ce4b97a97b0b8d9bd58ccd3df8c0f21b5421c2848b9194ecfda1d"
+    },
+    "Package.swift": {
+      "executable": false,
+      "sha256": "1b6e30f51892ac3325919c6f1459ab5184c77ca077f882a005db18d099b0f081"
+    },
+    "README.md": {
+      "executable": false,
+      "sha256": "d878f8da3fc6f56c892d9ef12daf1b5365dacd18163ef9abad48149db783575d"
+    },
+    "Sources/AutoFillBridge/AutoFillClient.swift": {
+      "executable": false,
+      "sha256": "2851f2b79f0df68f9d346ffc15aa1fc5181771c0773536e90cbb671089520b68"
+    },
+    "Sources/AutoFillBridge/AutoFillHost.swift": {
+      "executable": false,
+      "sha256": "212a813a022bb6d56b4e78aa5e1085d3195423e637cc71e8845c5ff7283c2427"
+    },
+    "Sources/AutoFillBridge/AutoFillServiceLifecycle.swift": {
+      "executable": false,
+      "sha256": "74b0d9ec68e6646524327d74cb74d51556331875ad4bf1c8d6b6bed0572110f2"
+    },
+    "Sources/AutoFillBridge/Peers.swift": {
+      "executable": false,
+      "sha256": "b29b56304bc50a2c1448c8b4bf6ed5ab6a9ae8e22f3fb6c794c59057b73edc55"
+    },
+    "Sources/AutoFillBridge/Rendezvous.swift": {
+      "executable": false,
+      "sha256": "2bfa8130030519382d98d775f4668b6c9c9771a071470dea1b5032c5a531c7fc"
+    },
+    "Sources/AutoFillBridge/Wire.swift": {
+      "executable": false,
+      "sha256": "24b7b4714c595ceb806abe8cd5fff3db15772fa5df45bdc11a8df75559007f95"
+    },
+    "Sources/DesignKit/AnonLayout.swift": {
+      "executable": false,
+      "sha256": "0e0adae88b09da83df03bbfaa8afb77c2b1d283ff067ffc36bc8e562416ce34b"
+    },
+    "Sources/DesignKit/BWDate.swift": {
+      "executable": false,
+      "sha256": "e9ed63b81b9d93d0da2f06835616415f179a08c76c49bdb4e37f265184fa74f7"
+    },
+    "Sources/DesignKit/BWFont.swift": {
+      "executable": false,
+      "sha256": "b3b0b7ea86ade660b0ee4c64b94b0694c02b8a6a872596378b12b7fd07c49007"
+    },
+    "Sources/DesignKit/BWScrollView.swift": {
+      "executable": false,
+      "sha256": "edf1e83890f19abae8bf862deccb037e6eaf64bddee507ca9cfbf4d81424c8f2"
+    },
+    "Sources/DesignKit/BWText.swift": {
+      "executable": false,
+      "sha256": "1abf31476c0ba545291b9f0d1795c0822cc0f6deb60a9f5150a097115b1f25e0"
+    },
+    "Sources/DesignKit/Badge.swift": {
+      "executable": false,
+      "sha256": "30bab48589694bbbcf637648b1f0b97e03c580a6dbf79da42d56beddd3eb219d"
+    },
+    "Sources/DesignKit/BulkActionsBar.swift": {
+      "executable": false,
+      "sha256": "4a061099afd8d24f989f3adb232049a0b2b7a62536a9be1c0cff61121fd512b2"
+    },
+    "Sources/DesignKit/Callout.swift": {
+      "executable": false,
+      "sha256": "365134218f4c8f73d4ff66744ec3b8199043f78e999d33f355f076d86f6b0ab9"
+    },
+    "Sources/DesignKit/Card.swift": {
+      "executable": false,
+      "sha256": "b57f82d337d88f6f9ec29effe44c366db89469844e17b6f20c34b7202982bff8"
+    },
+    "Sources/DesignKit/Controls.swift": {
+      "executable": false,
+      "sha256": "98a752d586910b1272f0dcf875327116f089ef30087895b7458d4e11c03c9faf"
+    },
+    "Sources/DesignKit/Dialog.swift": {
+      "executable": false,
+      "sha256": "c4dbc264d2d135fa75af243fef615f639871cd5c96128214d540f99b054c0ead"
+    },
+    "Sources/DesignKit/Drawer.swift": {
+      "executable": false,
+      "sha256": "e103bfa5a131021ec7d79d742762182cced4b05dd35ade32517b08cffec96751"
+    },
+    "Sources/DesignKit/EscapeLayers.swift": {
+      "executable": false,
+      "sha256": "96aab35d8049d1388b95c797b45146b6b1361a777962468d57338b2af6a5a560"
+    },
+    "Sources/DesignKit/FormField.swift": {
+      "executable": false,
+      "sha256": "58f6c9ddd9fc44152886ede13c35356801e01f3813eeb1b3deb0a00fe62eb72a"
+    },
+    "Sources/DesignKit/Generated/Colors.generated.swift": {
+      "executable": false,
+      "sha256": "5f9b36a543c3d4f422e1e02dcbf8f144e67d51925da4eb28e4cf6cf94eec626d"
+    },
+    "Sources/DesignKit/Illustration.swift": {
+      "executable": false,
+      "sha256": "3cd175fcc058414656795e57dd3c76587d8460927f5522c09c6c83f98e518623"
+    },
+    "Sources/DesignKit/Item.swift": {
+      "executable": false,
+      "sha256": "957826460906c980c18eb6642cc08e9bf09d43ce4fc220b41794edb9de1b5d61"
+    },
+    "Sources/DesignKit/KeyShortcut.swift": {
+      "executable": false,
+      "sha256": "4ca85a26c67b1dc8ec15df9c994f15240fb83c56c457b03a0457c4c2c5a525de"
+    },
+    "Sources/DesignKit/KeyboardList.swift": {
+      "executable": false,
+      "sha256": "ea988ef01c23a0daab5ce2dfe7651f60aac26e276148f0ee1caa6aa14061b6ab"
+    },
+    "Sources/DesignKit/Layout.swift": {
+      "executable": false,
+      "sha256": "e68f62a4e71fd1994b7a852b7d5d62c352b4d278c801bfa5b76c53f5dff9e493"
+    },
+    "Sources/DesignKit/Menu.swift": {
+      "executable": false,
+      "sha256": "e8e0f3ff60ada4a7bb26c48ff6f6dc8685dffc19f14f556cd39930f0aca9edd1"
+    },
+    "Sources/DesignKit/Metrics.swift": {
+      "executable": false,
+      "sha256": "0cb714d7aa7ff6be860ab929932fedf1d3f31bebd2f18f979c514df65a67bca2"
+    },
+    "Sources/DesignKit/Popover.swift": {
+      "executable": false,
+      "sha256": "1a2ba2480d7ca6f9afc96f76842e1670a177d41c7ce1d10be0f79f37fe0373dd"
+    },
+    "Sources/DesignKit/ProgressBar.swift": {
+      "executable": false,
+      "sha256": "1f548ab424f765faa92f451f83ca0638764a132dce90d046b25ab3f63512db14"
+    },
+    "Sources/DesignKit/QuickAccessControls.swift": {
+      "executable": false,
+      "sha256": "e6410db2117ce3bede750c9614c17063b36a6d0143271473b86e8e454425cb90"
+    },
+    "Sources/DesignKit/Radio.swift": {
+      "executable": false,
+      "sha256": "ea9175fa7aa71f6201fea7bf4e1b324b9418d427b18fa563dc0009b236bb0f85"
+    },
+    "Sources/DesignKit/Resources/Cards/amex-dark.png": {
+      "executable": false,
+      "sha256": "83bf974daa26b1130c2374dd108d479e358a5d07d721d996a9711e5456c6c27c"
+    },
+    "Sources/DesignKit/Resources/Cards/amex-light.png": {
+      "executable": false,
+      "sha256": "83bf974daa26b1130c2374dd108d479e358a5d07d721d996a9711e5456c6c27c"
+    },
+    "Sources/DesignKit/Resources/Cards/diners_club-dark.png": {
+      "executable": false,
+      "sha256": "109fd65c746c3520922340cdcfe5f23b0f85d338a97e368436ce96eb89188765"
+    },
+    "Sources/DesignKit/Resources/Cards/diners_club-light.png": {
+      "executable": false,
+      "sha256": "021e2722fdb858782ebfd8e69aebb186e3f273e89dfe8f7e20902e7362c68ac0"
+    },
+    "Sources/DesignKit/Resources/Cards/discover-dark.png": {
+      "executable": false,
+      "sha256": "d9476354151de1fe16540b6272c08828ddeab569d2c4a62f50a4d1584266d3d9"
+    },
+    "Sources/DesignKit/Resources/Cards/discover-light.png": {
+      "executable": false,
+      "sha256": "a7a30020f3501beeedc1901cc8752495d6333807d763e8a16648bc3139d05678"
+    },
+    "Sources/DesignKit/Resources/Cards/jcb-dark.png": {
+      "executable": false,
+      "sha256": "eb5c72a0649643ec246484ee47794a4b99e674e1ead7e4022d4194a0dee39892"
+    },
+    "Sources/DesignKit/Resources/Cards/jcb-light.png": {
+      "executable": false,
+      "sha256": "449707877ac6132c1174f36d2e11f3469f07e9afa02829f96849da37329de016"
+    },
+    "Sources/DesignKit/Resources/Cards/maestro-dark.png": {
+      "executable": false,
+      "sha256": "3781b3113df575270d4940157fd7a46a27b0c9ca08178fbd23139158bf7e18b8"
+    },
+    "Sources/DesignKit/Resources/Cards/maestro-light.png": {
+      "executable": false,
+      "sha256": "5e46cb211a380c9fce9d315bd9584bb30b5e8c98c7adcdb6282f93e639547f44"
+    },
+    "Sources/DesignKit/Resources/Cards/mastercard-dark.png": {
+      "executable": false,
+      "sha256": "b5caf488c096de56d1bb5198fc78fa3034b00f132e141b5a2291ee1d19402fdc"
+    },
+    "Sources/DesignKit/Resources/Cards/mastercard-light.png": {
+      "executable": false,
+      "sha256": "1bd2ef53333ecc9824ed7267fed8736ad3786626a8e27962d5d98a658cf37330"
+    },
+    "Sources/DesignKit/Resources/Cards/ru_pay-dark.png": {
+      "executable": false,
+      "sha256": "5f3de381e3913e307a21e28a0d44c8719fbdf04b7fb3c8681bf6da4cf20a9943"
+    },
+    "Sources/DesignKit/Resources/Cards/ru_pay-light.png": {
+      "executable": false,
+      "sha256": "e85c3a18002a223029f60cf7247512889d6693e35d219b6ca942342764509736"
+    },
+    "Sources/DesignKit/Resources/Cards/union_pay-dark.png": {
+      "executable": false,
+      "sha256": "be61373d41545f0db3bfd4ff6e03388615e57cf5ef57d992a4685ed49180d28f"
+    },
+    "Sources/DesignKit/Resources/Cards/union_pay-light.png": {
+      "executable": false,
+      "sha256": "32de72d6aff97fff0f1a1d708ac65b7252a834c52723f5de999264b1e5742f03"
+    },
+    "Sources/DesignKit/Resources/Cards/visa-dark.png": {
+      "executable": false,
+      "sha256": "c3649e1ff893587f093b439cf239706ce52dce11fc2586ea2e0da061e6dd2971"
+    },
+    "Sources/DesignKit/Resources/Cards/visa-light.png": {
+      "executable": false,
+      "sha256": "6d35379ada7d653fd7e12e11c99b1a984e639ac31a32d440cf9885e26f93c00f"
+    },
+    "Sources/DesignKit/Resources/Fonts/Inter-LICENSE.txt": {
+      "executable": false,
+      "sha256": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a"
+    },
+    "Sources/DesignKit/Resources/Fonts/inter.woff2": {
+      "executable": false,
+      "sha256": "693b77d4f32ee9b8bfc995589b5fad5e99adf2832738661f5402f9978429a8e3"
+    },
+    "Sources/DesignKit/Resources/Illustrations/email-code-sent-dark.svg": {
+      "executable": false,
+      "sha256": "2d50c6a1a7ef6ca0ac898d9ebf24340fe145966bae54249de481ce7174ff728a"
+    },
+    "Sources/DesignKit/Resources/Illustrations/email-code-sent-light.svg": {
+      "executable": false,
+      "sha256": "2e3fa17c3764f0e35879fbae46bada88b84f97177fd241e3f780095df2f70a56"
+    },
+    "Sources/DesignKit/Resources/Illustrations/empty-trash-dark.svg": {
+      "executable": false,
+      "sha256": "e2246bf5b2651e81aacf245c510cacaebcdacc318f5401952ef1047722b50862"
+    },
+    "Sources/DesignKit/Resources/Illustrations/empty-trash-light.svg": {
+      "executable": false,
+      "sha256": "5a6b95648d5306f9ae620696652b9c1530bc0f35589441fc57fd73fcf9744995"
+    },
+    "Sources/DesignKit/Resources/Illustrations/favorites-dark.svg": {
+      "executable": false,
+      "sha256": "805eed25c938a9b25440392cf210e79fe5202abed94ec0d1d2d6271d5ceb1d3f"
+    },
+    "Sources/DesignKit/Resources/Illustrations/favorites-light.svg": {
+      "executable": false,
+      "sha256": "61e6d3c4813fa89f8e00b0b72db891bcdf85e64337c5862ab1e46cb90b604ce1"
+    },
+    "Sources/DesignKit/Resources/Illustrations/goose-key.png": {
+      "executable": false,
+      "sha256": "63c5847b6cc0c16ee0bcacd33487a3780466ee8575799ad64bccea5d77190d1e"
+    },
+    "Sources/DesignKit/Resources/Illustrations/item-types-dark.svg": {
+      "executable": false,
+      "sha256": "e96617551adc4e5692d81cc82997ab4821a1cb920f5f55e39a6bb5c5d1987c72"
+    },
+    "Sources/DesignKit/Resources/Illustrations/item-types-light.svg": {
+      "executable": false,
+      "sha256": "8357b3bd7cf7763be422d8f770de9c2e9ed727b68be03a0af6e5481d96fabf96"
+    },
+    "Sources/DesignKit/Resources/Illustrations/no-credentials-dark.svg": {
+      "executable": false,
+      "sha256": "ba8a5da5b643cbc40da20ac8109f6b635dcbc21de7a4606a4dbdc3c64ccb2c0f"
+    },
+    "Sources/DesignKit/Resources/Illustrations/no-credentials-light.svg": {
+      "executable": false,
+      "sha256": "e245d4598edda01074b80df0358916bb748b1da0c43019509306fabc4720ab4b"
+    },
+    "Sources/DesignKit/Resources/Illustrations/no-results-dark.svg": {
+      "executable": false,
+      "sha256": "acdba8a31077d4bfc5b1af5e918f3e4582782f0075f0fc130700b14e336c0ebe"
+    },
+    "Sources/DesignKit/Resources/Illustrations/no-results-light.svg": {
+      "executable": false,
+      "sha256": "cc240a79cf52822e71e283df1067bbac7ab380e077fc883b948cf656a6e5440b"
+    },
+    "Sources/DesignKit/Resources/Illustrations/no-send-dark.svg": {
+      "executable": false,
+      "sha256": "961513c96bfd4e4a27405560bdd14e70051cec2ceeeac25b8ef512154f0e4c5a"
+    },
+    "Sources/DesignKit/Resources/Illustrations/no-send-light.svg": {
+      "executable": false,
+      "sha256": "99b8db126ccfe6eb38ec0637954e5dc447a9b69fe48982c98a17e722dffeb9e2"
+    },
+    "Sources/DesignKit/Resources/Illustrations/two-factor-auth-authenticator-dark.svg": {
+      "executable": false,
+      "sha256": "52340e0f9c6628ee962a060196654cac82a9ea6fda7cf299f03b6191e84c9613"
+    },
+    "Sources/DesignKit/Resources/Illustrations/two-factor-auth-authenticator-light.svg": {
+      "executable": false,
+      "sha256": "a1fceb972f312fd1c523a5b3907d3c3c405c6af554fa1cc48d1d2b36e6c550d7"
+    },
+    "Sources/DesignKit/Resources/Illustrations/two-factor-auth-webauthn-dark.svg": {
+      "executable": false,
+      "sha256": "558f34eb90385989c186636b5ec2313e61010ef58e5466c03ea95286ce16a071"
+    },
+    "Sources/DesignKit/Resources/Illustrations/two-factor-auth-webauthn-light.svg": {
+      "executable": false,
+      "sha256": "167faa5cf74245ddcd0eb20c8767432f09da440f0b531f7efd68054312af43ab"
+    },
+    "Sources/DesignKit/Resources/Illustrations/vault-dark.svg": {
+      "executable": false,
+      "sha256": "2dbd20bef671056c96a8a5de92b0a6e8991cb1b5b52aca377382dfb5c1654db4"
+    },
+    "Sources/DesignKit/Resources/Illustrations/vault-light.svg": {
+      "executable": false,
+      "sha256": "f2dbf9000f0b4327d1d7a3768f354340422e23762c0f95f192076e5799795b06"
+    },
+    "Sources/DesignKit/Resources/Locales/cs.json": {
+      "executable": false,
+      "sha256": "a71320e45791ec550c89aae6cd033c3624bc4b961a8fa712ccc0ccdc7fef5824"
+    },
+    "Sources/DesignKit/Resources/Locales/en.json": {
+      "executable": false,
+      "sha256": "5ccd6399ede8d3aa07076cca84b0dd96e431c49a2d5caa5a645f2e46c33a3d37"
+    },
+    "Sources/DesignKit/Resources/Locales/honkpass-cs.json": {
+      "executable": false,
+      "sha256": "4046140f568392b79768c16832f035a2330fd83622110aa8fb5c78502ba64edd"
+    },
+    "Sources/DesignKit/Resources/Locales/honkpass-en.json": {
+      "executable": false,
+      "sha256": "2591f6d093340e0ed535cfc93b4c55ff215347352e9185885537fa2d7600a2ec"
+    },
+    "Sources/DesignKit/Select.swift": {
+      "executable": false,
+      "sha256": "1c93dcfe001531cad2890b652578c2a3df3a37b011e66eb145b81500c26b2dcf"
+    },
+    "Sources/DesignKit/ShortcutLabel.swift": {
+      "executable": false,
+      "sha256": "f0acb6546c370c85199f05d488ac7490a125f3c4762b6ee0b3c145b1e699feee"
+    },
+    "Sources/DesignKit/SideNavigation.swift": {
+      "executable": false,
+      "sha256": "c7fb49f41039f881d742239c020452a3ec14788477a63b36e1263979839752c0"
+    },
+    "Sources/DesignKit/SideNavigationSize.swift": {
+      "executable": false,
+      "sha256": "6f55a72a55659950b6910411df377a6db5a863755586b08c83cfe0f7bb91f176"
+    },
+    "Sources/DesignKit/SimpleDialog.swift": {
+      "executable": false,
+      "sha256": "4f9f9562a2acfc46a87ded04d8a12c1f55419b968c7fb1eacebdb7e01b936b77"
+    },
+    "Sources/DesignKit/Symbols.swift": {
+      "executable": false,
+      "sha256": "da3ec20912670d3c5079802089d8b2fbc346d7d10768877180c9f3e0bb198786"
+    },
+    "Sources/DesignKit/TableLayout.swift": {
+      "executable": false,
+      "sha256": "c297d0cc39f01bd540a87eaf301c33fe51e085b6b02b3d79fb733388ef31a634"
+    },
+    "Sources/DesignKit/Tabs.swift": {
+      "executable": false,
+      "sha256": "87e2386ae5299a82fe9101d2e204e46691a284fbf0176e11cb793c52cf51aba1"
+    },
+    "Sources/DesignKit/ThemeColor.swift": {
+      "executable": false,
+      "sha256": "398a040407c3d9aec7db96e0a3c786c237104e4b2565233a350d65ed24ee54a5"
+    },
+    "Sources/DesignKit/Toast.swift": {
+      "executable": false,
+      "sha256": "cefdb83c94d57d47c15dcf967eb082d3312e9bd496bba4d65370a9f42978097d"
+    },
+    "Sources/DesignKit/VaultControls.swift": {
+      "executable": false,
+      "sha256": "6f5067c99ef9685e539217a26fd3e657de279df217bb4b8df3ad74acdd5aa00f"
+    },
+    "Sources/DesignKit/VaultOpeningCover.swift": {
+      "executable": false,
+      "sha256": "c6af5a6420c968bdc39068af99a6afcd25d58c9e21d39b41868f08f593d4cbe3"
+    },
+    "Sources/Engine/AccessTokenClaims.swift": {
+      "executable": false,
+      "sha256": "7deed29e8618f662bfb2cd17912a5120afd1bceea88dfe48d4b2e3a7b2bcbbf0"
+    },
+    "Sources/Engine/BiometricUnlock.swift": {
+      "executable": false,
+      "sha256": "4065911b5959f2bfa145ce656f638edfa4721e40f72dd5a4749184432eb9163c"
+    },
+    "Sources/Engine/Engine.swift": {
+      "executable": false,
+      "sha256": "16372f15e1565acd88e42cc7c806f4456b1758a8b81443077090d898e99bfa85"
+    },
+    "Sources/Engine/EngineSettings.swift": {
+      "executable": false,
+      "sha256": "5610f6ce65c7fc8874abc6b575ace8f46f4c90dd8c44fb0451d92651f9920cd0"
+    },
+    "Sources/Engine/EngineState.swift": {
+      "executable": false,
+      "sha256": "abe99c9afc8efc9a873e2c77d94c9cf3994641b9132a71e057c18ff94a410b7d"
+    },
+    "Sources/Engine/LockPolicy.swift": {
+      "executable": false,
+      "sha256": "0df95f760c6d2094a8c2d1f3165cbeea1004b36ad15d910b5cce1af94ae8e7cf"
+    },
+    "Sources/Engine/LoginFormFields.swift": {
+      "executable": false,
+      "sha256": "bd5c4c0b8f42a2aa6c9a8bfe166526fde45329e0e5b95ecfec2c7ca9234d1fae"
+    },
+    "Sources/Engine/PinUnlock.swift": {
+      "executable": false,
+      "sha256": "c056422b2ae5406a593a034f0b44511da2a41a77acec0b89807ce4e927228b53"
+    },
+    "Sources/Engine/Ports.swift": {
+      "executable": false,
+      "sha256": "c6dca2898887c3b8c9ebacbda862cb7d507f2a2006ce455c978bb007d46dbba2"
+    },
+    "Sources/Engine/SSHAgent.swift": {
+      "executable": false,
+      "sha256": "a8ca97d1d7191d552091848d76f0a1a6d36b10cbd56e82798c3cc7328eb96212"
+    },
+    "Sources/Engine/TwoStepLogin.swift": {
+      "executable": false,
+      "sha256": "3d6345177cf6bbd614445de8121e0dbdb0cece58fafc6e8fe64779ec19bb8e82"
+    },
+    "Sources/Engine/VaultSessionToken.swift": {
+      "executable": false,
+      "sha256": "2828a946f936cf16ad888cf37ec9f782919ea9dafc801fe1f7e71862c52705bf"
+    },
+    "Sources/EngineFakes/FakeBackend.swift": {
+      "executable": false,
+      "sha256": "b62871f6104a434aa67e5747cb372d283e778a76159a73a20297dce59747393b"
+    },
+    "Sources/EngineFakes/FakeServerRouter.swift": {
+      "executable": false,
+      "sha256": "c0fca577db760e7ba05db01d55bcefa502e4ea13f9a5f0d502e9472214f18577"
+    },
+    "Sources/EngineFakes/ManualClock.swift": {
+      "executable": false,
+      "sha256": "d2fb2de5fa94f977a07cdde750cd496e3e40738b95f4de5a3becee709da5842c"
+    },
+    "Sources/EngineLive/AppSignature.swift": {
+      "executable": false,
+      "sha256": "833ee8fa38d431d26b22808c651f6b8005bdd66b9525fb9e598c7b655a66dfb7"
+    },
+    "Sources/EngineLive/BitwardenCrypto.swift": {
+      "executable": false,
+      "sha256": "b6993fb78db35a19d87041994c8609e5e2d35a1e3eb419f6b1b46dee548352dd"
+    },
+    "Sources/EngineLive/BrowserInputText.swift": {
+      "executable": false,
+      "sha256": "c4d457a7a1efb3f0e98187f1d23c6135e199be080bb7ed98dc22cd6d468a21c4"
+    },
+    "Sources/EngineLive/Development/DevelopmentSeed.swift": {
+      "executable": false,
+      "sha256": "f331c455efc0c9e369e8d4ae37bfb4fed62ea8d474a562a9afb9d07957f80bd1"
+    },
+    "Sources/EngineLive/Development/MailCatcher.swift": {
+      "executable": false,
+      "sha256": "f89ef5a0dd2fee61ad362231b655484bc22f73b46e159453a79c7d388c4a1cf2"
+    },
+    "Sources/EngineLive/FileAccountStore.swift": {
+      "executable": false,
+      "sha256": "59e9b3b93af808decf29442302ac76e8427da8d0ac758f419b68c62ea37385fc"
+    },
+    "Sources/EngineLive/Gravatar.swift": {
+      "executable": false,
+      "sha256": "12f85f6e1ac8f9e8a76947ac6bee9384fb9970f31306224b045ab025a81e24ac"
+    },
+    "Sources/EngineLive/HTTPClient.swift": {
+      "executable": false,
+      "sha256": "ea1e718733e21c88efe2820ebc43352bd0c76ab122e86b0651645f807866f40b"
+    },
+    "Sources/EngineLive/ItemWriting.swift": {
+      "executable": false,
+      "sha256": "52ab30cdda4841c4182466b66046ee2d37fc3f80e7be74d3552250e43a707547"
+    },
+    "Sources/EngineLive/KeychainBiometricKeys.swift": {
+      "executable": false,
+      "sha256": "bcc8ee0662eb97d4d41711e0263647b969b3813056177927cf3fcfb98308d12f"
+    },
+    "Sources/EngineLive/MacActiveField.swift": {
+      "executable": false,
+      "sha256": "982d76e3d179a2e0f7dd5b20f94ec33f546163b5f44a5328fa85b6134b94ae31"
+    },
+    "Sources/EngineLive/MacAppUpdater.swift": {
+      "executable": false,
+      "sha256": "dfff47c424eb10d7d7e48a833a2b307e492e9b6ddaa89aada9c28003b1a7a93e"
+    },
+    "Sources/EngineLive/MacClipboard.swift": {
+      "executable": false,
+      "sha256": "b7385e65a99308dde1afe836e59d64c0b9af0fab6207d89d92cf472b78206aa2"
+    },
+    "Sources/EngineLive/MacSystemEvents.swift": {
+      "executable": false,
+      "sha256": "4736842e400d58338a85cdb7c559f0f587daf74a753a9d5ed94d6f29f62161df"
+    },
+    "Sources/EngineLive/Passkeys.swift": {
+      "executable": false,
+      "sha256": "97b06ab770ae9bd68b00baf67cb15318de05062ccf057f9d958ad78e580e795a"
+    },
+    "Sources/EngineLive/PwnedPasswords.swift": {
+      "executable": false,
+      "sha256": "52fae53aee19f74f914cfbc3ec23585f6b9fb406eca42ed72d5258eba057b6d5"
+    },
+    "Sources/EngineLive/SDKState.swift": {
+      "executable": false,
+      "sha256": "478ad9a83fee35c94ad2871e624d440757b61fc33d5548f9571422cb5638e4da"
+    },
+    "Sources/EngineLive/SSHAgentWire.swift": {
+      "executable": false,
+      "sha256": "9b3d87d16bb0d89b94a81fb461c4b10ee9af41d30ddc5c42b435490a3f29574b"
+    },
+    "Sources/EngineLive/SSHKeys.swift": {
+      "executable": false,
+      "sha256": "3e2d626568606c962ed6a37be5e3d9c53a99e80bf9e7b8d4326f25e1a7854437"
+    },
+    "Sources/EngineLive/Sends.swift": {
+      "executable": false,
+      "sha256": "5b0e38b5814253a33c75671c65ff78e8e71f494e7535c200f13813414a0d0926"
+    },
+    "Sources/EngineLive/SystemCredentialIdentities.swift": {
+      "executable": false,
+      "sha256": "a0f907baceba1106316e2c8396c7a13317b1c1dd54981c6b77892f95d358d22e"
+    },
+    "Sources/EngineLive/TokenResponse.swift": {
+      "executable": false,
+      "sha256": "8a65de5bce8cb3e1d9848257f50a2865e8a4925b81f5d452e29354469fc0fc5c"
+    },
+    "Sources/EngineLive/UnixSSHAgentSocket.swift": {
+      "executable": false,
+      "sha256": "e42a132699b0fa3b3cfaaed2e938fa5b2e9373180f3a515d05b30514babe0b43"
+    },
+    "Sources/EngineLive/VaultwardenServer.swift": {
+      "executable": false,
+      "sha256": "544e0a7c65b30b65bac85da2c473ad9878d3720fa5dedc4bbcd751bca5c03f0a"
+    },
+    "Sources/EngineLive/VerificationCodeField.swift": {
+      "executable": false,
+      "sha256": "13c6131990389540b7a75ec77f3510d0dc7bace503c256e7eb9e7e41ceb34d71"
+    },
+    "Sources/ProviderUI/ProviderModel.swift": {
+      "executable": false,
+      "sha256": "ea9b6b10cfc3237228f0814ad75cbd2efea5aa07e3a25f9180ca5db9cf7a77d9"
+    },
+    "Sources/ProviderUI/ProviderView.swift": {
+      "executable": false,
+      "sha256": "5957e73cc553a28a76c0e288bcac12c7accd0b24a8ef60104c055f302ecbccb0"
+    },
+    "Sources/SeedTool/main.swift": {
+      "executable": false,
+      "sha256": "f99e75f66239569aff3d57d0106bd5618d429523bd011a2cfe90dfa393b287ac"
+    },
+    "Sources/VaultModel/Account.swift": {
+      "executable": false,
+      "sha256": "03f2bb95793b9a0caf4cfd5aee342b225f900fa53923b760cade91c35e5f7bc4"
+    },
+    "Sources/VaultModel/AppAddress.swift": {
+      "executable": false,
+      "sha256": "163c108869d534104e7a890ceaad67465109b7ee0a649e718fa845534ca5a27c"
+    },
+    "Sources/VaultModel/AutoFill.swift": {
+      "executable": false,
+      "sha256": "b97feba15e18dd1f2ab8320381f48d4581c2d112dcc0660fb046cf75a42e12a1"
+    },
+    "Sources/VaultModel/FolderTree.swift": {
+      "executable": false,
+      "sha256": "a7d70207f6de9df942ad660242b559311db8ec48385fda2d78f467b180aaca93"
+    },
+    "Sources/VaultModel/Generator.swift": {
+      "executable": false,
+      "sha256": "2a3e5bbd60122dc644f244129f3a8c6a15f9d429b5b3624e12d72a3dc1f85091"
+    },
+    "Sources/VaultModel/ItemChange.swift": {
+      "executable": false,
+      "sha256": "6b47b1741c1a0073a14e6e388fc5ecb9aad4cff53654decd73765683c0880df5"
+    },
+    "Sources/VaultModel/ItemDisplay.swift": {
+      "executable": false,
+      "sha256": "602613fba8acf8aa5a95cb1ef07e7aa095abaf98c5e4182aba40e6f35c247c02"
+    },
+    "Sources/VaultModel/ItemDraft.swift": {
+      "executable": false,
+      "sha256": "89d9bcb0ec6987969c628359c450bdbd61f5bee78bb4246b7db651a0ed12d786"
+    },
+    "Sources/VaultModel/Organizations.swift": {
+      "executable": false,
+      "sha256": "b06e72fe01e61ae546585c1b5e95456b9f8c64a33c2835d4aabdb15eb2f1d758"
+    },
+    "Sources/VaultModel/QuickAccess.swift": {
+      "executable": false,
+      "sha256": "87951e01145b64b0edf383ead1a3c5cad78f06da5365332ee3f0299cdca24971"
+    },
+    "Sources/VaultModel/Resources/public-suffixes.txt": {
+      "executable": false,
+      "sha256": "8def377e317703a6533b9cc388e86cbfca46374292b9f61fb8686205885a5e32"
+    },
+    "Sources/VaultModel/Sends.swift": {
+      "executable": false,
+      "sha256": "69f3eb0e7f486e74fcda9986bd58378b2ba5051423f220c0bb0112a654766b52"
+    },
+    "Sources/VaultModel/VaultContents.swift": {
+      "executable": false,
+      "sha256": "b3d8878a6ca69beb78b4c6f9335fb211077676d8381322c1c15fe05a39d286cf"
+    },
+    "Sources/VaultModel/VaultFilter.swift": {
+      "executable": false,
+      "sha256": "0d99baf641f2badec1e40fb408ef6c351ac88ea8a43252e5e85de51646f1d4c5"
+    },
+    "Sources/VaultModel/VaultImport.swift": {
+      "executable": false,
+      "sha256": "85e363bdd7f76de6674f3916fde76e3ba1c884295b722f475d03a50d7cb4af70"
+    },
+    "Sources/VaultModel/VaultItem.swift": {
+      "executable": false,
+      "sha256": "c83b8a28b1a3efe2d25d4e71d75eeff13385c133de2ed540f6249f6f9aaf7e55"
+    },
+    "Sources/VaultModel/WebsiteMatching.swift": {
+      "executable": false,
+      "sha256": "1f007aedbc47f0c108eb4e9eddea86481e3c0b2a570262b9c336dda459c60f90"
+    },
+    "Tests/AutoFillBridgeTests/AutoFillBridgeTests.swift": {
+      "executable": false,
+      "sha256": "bb2ea459a0971ba1f82790bf5cee945d19e05d30dd11fb4a97b4277f3e7d4ad5"
+    },
+    "Tests/AutoFillBridgeTests/AutoFillServiceLifecycleTests.swift": {
+      "executable": false,
+      "sha256": "0136943ce95003445b68691d89924206c4c11398447205ccc6b810683b21c182"
+    },
+    "Tests/DesignKitTests/DateTests.swift": {
+      "executable": false,
+      "sha256": "2cc649ceb91d2df70eb6f93e8d9d0b9a3513a343cf005fbbeb65a1ec26b0995b"
+    },
+    "Tests/DesignKitTests/DesignKitTests.swift": {
+      "executable": false,
+      "sha256": "69abd8956c0b1b28decdc8834fae80f581348be755333c49cc15460a6812d859"
+    },
+    "Tests/DesignKitTests/EscapeLayersTests.swift": {
+      "executable": false,
+      "sha256": "303e8c5be2ccf8be1551c264bfea39570db6c8a870699b742015656d51f423a8"
+    },
+    "Tests/DesignKitTests/LayoutTests.swift": {
+      "executable": false,
+      "sha256": "8bc64d880391a2542cc009f63017f082e69c70b4b43a7bc3526c58ee8a230963"
+    },
+    "Tests/DesignKitTests/LocaleCoverageTests.swift": {
+      "executable": false,
+      "sha256": "dd1a5b0c64546ba39b818e04cb3a0621838103b0f81f264b9a1ab6d4e68b1154"
+    },
+    "Tests/DesignKitTests/TableLayoutTests.swift": {
+      "executable": false,
+      "sha256": "0fa7ce98c24cb357afe8219c5084b4a71a563cb22a003cde453029312e35f830"
+    },
+    "Tests/EngineLiveTests/AppSignatureTests.swift": {
+      "executable": false,
+      "sha256": "11cfc7e3aebe9590c943ad36c0c00f3edbbb0773570c15dfa8688bd1fe4a4b5b"
+    },
+    "Tests/EngineLiveTests/AppUpdateTests.swift": {
+      "executable": false,
+      "sha256": "a3b2cd993583ec222d4640dc7bc07c1545412e443958f08a08dbb2c9f93ed6bf"
+    },
+    "Tests/EngineLiveTests/AuthenticationResponsivenessTests.swift": {
+      "executable": false,
+      "sha256": "35c59c535664e154f4098907b19db9c6d4fc589969b11f9f236ae2623096adf5"
+    },
+    "Tests/EngineLiveTests/FileAccountStoreTests.swift": {
+      "executable": false,
+      "sha256": "46ff955ba5834ddb918c56a33f94c0262328f6865be484e7ed34a5ae09c614ad"
+    },
+    "Tests/EngineLiveTests/FillInputTests.swift": {
+      "executable": false,
+      "sha256": "0b74a0c414084d3fe1e13526cff4ae252f4a84557fff7f8f6c3e145da9bf21e6"
+    },
+    "Tests/EngineLiveTests/GeneratorTests.swift": {
+      "executable": false,
+      "sha256": "40180c623a9e9c24cbef0f0d46e0766af141c037ee2b9fe80eafe8f4859b4a1f"
+    },
+    "Tests/EngineLiveTests/GravatarTests.swift": {
+      "executable": false,
+      "sha256": "38cd0269bae739fb2210fe3d33974fb88cad8e4ee41073572e422eb75d38811c"
+    },
+    "Tests/EngineLiveTests/IdleWatchTests.swift": {
+      "executable": false,
+      "sha256": "473025e6bc6605e1cf524d2f1057e15bbcd86dd5bb43763349b74a12a946067b"
+    },
+    "Tests/EngineLiveTests/LocalServerTests.swift": {
+      "executable": false,
+      "sha256": "66d56ebe29e7d3dab9adc815715b14488151c3b667f211bc6278abd49641e1be"
+    },
+    "Tests/EngineLiveTests/OrganizationServerTests.swift": {
+      "executable": false,
+      "sha256": "13198bba9ff9360c546642cae6fdfad268f74d4f50c46017eaddbbccef2a481b"
+    },
+    "Tests/EngineLiveTests/PwnedPasswordsTests.swift": {
+      "executable": false,
+      "sha256": "ace0eb5c2863e4eca3bc6b482ebe1e34275fef56196e3a4ad81ddd5c09bf4e4b"
+    },
+    "Tests/EngineLiveTests/SSHAgentTests.swift": {
+      "executable": false,
+      "sha256": "1433dde63f28ff9451c2a87c04afdf0535bf7ae829d9cb3439a56294d22f31d1"
+    },
+    "Tests/EngineLiveTests/TokenResponseTests.swift": {
+      "executable": false,
+      "sha256": "2ed4c6ae4e36ff53de1651bb400ffb06a0054cf408ff61c8d6c0280c6f33b612"
+    },
+    "Tests/EngineLiveTests/TwoStepServerTests.swift": {
+      "executable": false,
+      "sha256": "26fbb11fc4d4e464593fb895c4a093516406cc911c0314834e1dff2600cc4042"
+    },
+    "Tests/EngineTests/AccessTokenClaimsTests.swift": {
+      "executable": false,
+      "sha256": "b62872ec7fac821b38578aafcd2758ff526b068ad9f44d11f742e9e6f117e7d9"
+    },
+    "Tests/EngineTests/AuthenticationProgressTests.swift": {
+      "executable": false,
+      "sha256": "f1981c33175cc758fe5c70df0a4fa5f58a1c1b8c798cdb43652d083e177f6c0b"
+    },
+    "Tests/EngineTests/EngineAccountTests.swift": {
+      "executable": false,
+      "sha256": "9ff85ebc896e809670614cd9d038475dc5c35144ae1c8586a23a5dd2e0aebe1e"
+    },
+    "Tests/EngineTests/EngineAccountsTests.swift": {
+      "executable": false,
+      "sha256": "a84fa20d16ed91de5f50e91fd9eb55b622742c32f7a1cb1683a288abb68fcc2b"
+    },
+    "Tests/EngineTests/EngineAppTests.swift": {
+      "executable": false,
+      "sha256": "43b5e4680c32566c15813c46d19d4a2298cbc40d94e8d20e92e24dd3b65cb27c"
+    },
+    "Tests/EngineTests/EngineAppUpdateTests.swift": {
+      "executable": false,
+      "sha256": "b04248a48f6d464ba139f351434d029d88add3001d2c64b6ac8f7ca6c080abc2"
+    },
+    "Tests/EngineTests/EngineAttachmentTests.swift": {
+      "executable": false,
+      "sha256": "9acbe7b60be7f0090576c988ea053ff5335a44cf5ffba3835578ded54ef8c220"
+    },
+    "Tests/EngineTests/EngineAutoFillTests.swift": {
+      "executable": false,
+      "sha256": "45678acfa36a8788b201fe448830bcbe7245abd893dd4cc3aeadac366c3cfc81"
+    },
+    "Tests/EngineTests/EngineAvatarTests.swift": {
+      "executable": false,
+      "sha256": "6eac7c9ff5ad102a561c85cfe40a4489eb29ab7d5b765858bd2e20c02a20103a"
+    },
+    "Tests/EngineTests/EngineBiometricTests.swift": {
+      "executable": false,
+      "sha256": "b5057df2a2c9f5cf4c013b8445fbb2870524cc0bb238bf598cad5e5ab9516fe6"
+    },
+    "Tests/EngineTests/EngineExportImportTests.swift": {
+      "executable": false,
+      "sha256": "ae0c275adeb685cc242f2b6b0ba44fe426bd12812a4a8238565a69756469ce7d"
+    },
+    "Tests/EngineTests/EngineFillTests.swift": {
+      "executable": false,
+      "sha256": "e9ae60ef30dac426a37e6896e8e9d588501d7b01ba36e5ac672570d6bb91640f"
+    },
+    "Tests/EngineTests/EngineFolderTests.swift": {
+      "executable": false,
+      "sha256": "8f06e1cefa21790faf7fe76c07b841d0989ff500ed908c03e4b91795cd5e96fe"
+    },
+    "Tests/EngineTests/EngineGeneratorTests.swift": {
+      "executable": false,
+      "sha256": "ea4530283c1e574aca9c681d50dc1d6158be8549c82f035a8c65b031b8f9f092"
+    },
+    "Tests/EngineTests/EngineItemChangeTests.swift": {
+      "executable": false,
+      "sha256": "51ef22a88963e6a877c8309f8c745f65a6e747f1321a4a458dc6675c33e65e67"
+    },
+    "Tests/EngineTests/EngineItemSaveTests.swift": {
+      "executable": false,
+      "sha256": "199578c4be124cec35a47c6a334ef575cd2b697686a2ec43a5c41ee8f8579f03"
+    },
+    "Tests/EngineTests/EngineItemTests.swift": {
+      "executable": false,
+      "sha256": "2027a43fff84d73a853908eac4c306530a3829168cfe5940cf155d7339e3e684"
+    },
+    "Tests/EngineTests/EngineNoticeTests.swift": {
+      "executable": false,
+      "sha256": "dc2f9f4a2e6d30d9c9775f26b9493206afa0fcea3232967d237ffae843ee67c0"
+    },
+    "Tests/EngineTests/EngineOrganizationTests.swift": {
+      "executable": false,
+      "sha256": "3e4714eb116a72d8391fb2c0183aa77d574612415832f9c42cba0547ddc60f19"
+    },
+    "Tests/EngineTests/EnginePasskeyTests.swift": {
+      "executable": false,
+      "sha256": "1df08ee2d66abc7c7387d121dd9f3ad0dd7eaf19a1a27c2853ed77aafbf68748"
+    },
+    "Tests/EngineTests/EnginePinTests.swift": {
+      "executable": false,
+      "sha256": "c0e09a18c2b2d19ff758c71afb8ea19f10a2683ee678b5d925d43f372e9511e8"
+    },
+    "Tests/EngineTests/EngineRunningAppTests.swift": {
+      "executable": false,
+      "sha256": "de437446705e487b7ee7bd8eabd5de39b5329950f79252a2886632d56f927806"
+    },
+    "Tests/EngineTests/EngineSSHAgentTests.swift": {
+      "executable": false,
+      "sha256": "a4f7bf505ff29ea56db504970eab02f88b02be5bbf7c397836aa35e3ff3c1ca6"
+    },
+    "Tests/EngineTests/EngineSendTests.swift": {
+      "executable": false,
+      "sha256": "5cf84006d59d4a09f3fb0a7a8334c261c6a588cc43df7d35dd4a716c36b50149"
+    },
+    "Tests/EngineTests/EngineSessionTests.swift": {
+      "executable": false,
+      "sha256": "b6bc76862304bde596b11a776d0d7f491819772a3e58fb535f05d7b3b6a702d9"
+    },
+    "Tests/EngineTests/EngineSettingsTests.swift": {
+      "executable": false,
+      "sha256": "df6bc53514842a1f2997faec57bc722280cdbcae2021fedd8c213d196a1b27d0"
+    },
+    "Tests/EngineTests/EngineSyncTests.swift": {
+      "executable": false,
+      "sha256": "dd696f5fd4360824c302ab776a153e81bea9f9f7f68a5af71ce1dacb68f48cf6"
+    },
+    "Tests/EngineTests/EngineTestSupport.swift": {
+      "executable": false,
+      "sha256": "77b44f85a9be13f92bdbb17f11beb8f42fd6cebc2c538c243dac3ea51a65bd68"
+    },
+    "Tests/EngineTests/EngineTimeoutTests.swift": {
+      "executable": false,
+      "sha256": "d7837fb3d7da5c51739830f5cf09f7fcb963345c49ba99b860251e36a2babb67"
+    },
+    "Tests/EngineTests/EngineTwoStepTests.swift": {
+      "executable": false,
+      "sha256": "6883d779e90c6f2f4d9d6964e3075bf9763e8265cba25de25be666f11ca95ec9"
+    },
+    "Tests/EngineTests/EngineVaultSessionTests.swift": {
+      "executable": false,
+      "sha256": "788b84e70f95208203aee4c66c9d702048e5ee1fda167f3cfe4ab347aab04e0c"
+    },
+    "Tests/ProviderUITests/ProviderModelTests.swift": {
+      "executable": false,
+      "sha256": "20715e1a0fa6f3b1fbe34eae28ead841772d8212dd8f2cdd0f0b59d931a8209e"
+    },
+    "Tests/VaultModelTests/AppAddressTests.swift": {
+      "executable": false,
+      "sha256": "c881a9283f28632b11e4c9b4a873694b13a5164e54af62e7c4fe6371553fb7e7"
+    },
+    "Tests/VaultModelTests/FolderTreeTests.swift": {
+      "executable": false,
+      "sha256": "b92724fed474e7a1c2f4bc6452f5327ce94676ec9d9b279d6b79691f10cb332f"
+    },
+    "Tests/VaultModelTests/GeneratorOptionsTests.swift": {
+      "executable": false,
+      "sha256": "fbb6cc1dd1036a54015b94db97c75aa7a9fcafafe0cb8fb436633aad2a74d86a"
+    },
+    "Tests/VaultModelTests/ItemDisplayTests.swift": {
+      "executable": false,
+      "sha256": "97073c2e69ea47830f94beae741444ffc93a0a753a3b275d108648e6826fd1e9"
+    },
+    "Tests/VaultModelTests/VaultFilterTests.swift": {
+      "executable": false,
+      "sha256": "10c116ab693f51d456e8d13afe53e9d8dcae56a9853ee58577bb75a2739dc336"
+    },
+    "Tests/VaultModelTests/VaultImportTests.swift": {
+      "executable": false,
+      "sha256": "dd76f444eb2695084846b0ea7465543162d046cd0e75931ac58e0ad90654fa05"
+    },
+    "Tests/VaultModelTests/WebsiteMatchingTests.swift": {
+      "executable": false,
+      "sha256": "c01c48ea44b68de58b1ae56b51f95dcbd36c02a5d62ed917ed5f6d1c091cef39"
+    },
+    "docs/reference/README.md": {
+      "executable": false,
+      "sha256": "772cc1d18dc7f17fca605006b5b7f96d180865443be15bb907f9b76303170bba"
+    },
+    "docs/reference/test-plan.md": {
+      "executable": false,
+      "sha256": "600b250424462aecfb23a3427ab4df655022cfdf889de3a7e2d4174017495128"
+    },
+    "project.yml": {
+      "executable": false,
+      "sha256": "8c26b4be5c0baea5cb3adfa2f5e744745ce7b2f63117890e099f4a56c7a9c249"
+    },
+    "scripts/archive-developer-id.fish": {
+      "executable": false,
+      "sha256": "e50b20162c419410b54da250e41ddd466bf6835f37116521216b5ebb93dec530"
+    },
+    "scripts/capture-window.fish": {
+      "executable": false,
+      "sha256": "e69d5ee7533646c216b6eb191e2c8400529c9760e0fc781ebaaf8b67ca8aec1e"
+    },
+    "scripts/compare-screen.fish": {
+      "executable": false,
+      "sha256": "08210b81ac5f2b31e6365d96aa9ea69674502040565ee032a78bd7e90d92183c"
+    },
+    "scripts/generate_appcast.py": {
+      "executable": false,
+      "sha256": "67ee105b7c61fbfad40a8aff44dff2b0eba5358319d3fbb4329ae203323cc8d2"
+    },
+    "scripts/image-tool.swift": {
+      "executable": false,
+      "sha256": "355634dfae379307684dd9df0a0d49610726a12b2a2f7e3b75798e54dfbb82f2"
+    },
+    "scripts/make.fish": {
+      "executable": false,
+      "sha256": "658e6e687b7b6be8528931a804a18074a3f91b329f1719592f78a247e1fca69f"
+    },
+    "scripts/notarize-developer-id.fish": {
+      "executable": false,
+      "sha256": "9ba68eb3014752a44253298a8513d69b3d42116790f585f4bf1dcc3a12fc4a0e"
+    },
+    "scripts/package-update.fish": {
+      "executable": false,
+      "sha256": "bfc922467bfcb925ef226f8b3f97ea6e4a006cc25f9b3c2a23304df2527cf958"
+    },
+    "scripts/progress.fish": {
+      "executable": false,
+      "sha256": "fe68fecbe938973b729b7d98ee43355a2dbe41db8c5410ca4808ddf8f424ab15"
+    },
+    "scripts/record-window.fish": {
+      "executable": false,
+      "sha256": "bf22955811aa648c1ff246c60b1ac0df6109d92a7e9c75e0e0702338bd79aad1"
+    },
+    "scripts/release-check.fish": {
+      "executable": false,
+      "sha256": "8c49ede196e5dafd51f51750c57a655199103afb66cdb73430a993bdffecee67"
+    },
+    "scripts/source-python.fish": {
+      "executable": false,
+      "sha256": "5a2391c61608557c7371948c106cf7598d2118e393e0c54b553bf1170dab9615"
+    },
+    "scripts/sparkle-tools.fish": {
+      "executable": false,
+      "sha256": "cb98b76fb978de804bb6c0d568480ac64e86b7ad23ff0130ffc162b5b1ecda47"
+    },
+    "scripts/step-output.py": {
+      "executable": false,
+      "sha256": "3588b479dbaee8bf9e06ab49d82f1da38f4ad334ac79c393b6fff23f4884417f"
+    },
+    "scripts/test-fill.fish": {
+      "executable": true,
+      "sha256": "4e5d76adb495855a61af290b6e6041c8950a72af3b6855c23e6ac553bafe85b3"
+    },
+    "scripts/test-make-workflow.py": {
+      "executable": false,
+      "sha256": "27bcfc9d89041899556256b703c7fc185904ddefe69c6df4ad408ff5574eacb7"
+    },
+    "scripts/test-release-source.py": {
+      "executable": false,
+      "sha256": "e9eb16a54c44e9c14f16e6adef0a9030e2c24006c1c441cf42c1ef5ba95680bc"
+    },
+    "scripts/test-step-output.py": {
+      "executable": false,
+      "sha256": "7b8ea996ca5ff30989cef25110e574497582b8bfd4a9fe8cff64e9b6129fe485"
+    },
+    "scripts/test_public_source.py": {
+      "executable": false,
+      "sha256": "79c47bb033dc5b7a6befa6d0727535df728d72d79e461bb4bf858e06bc03a998"
+    },
+    "scripts/test_release_update.py": {
+      "executable": false,
+      "sha256": "91b0fd67fff4bef640e3d50ffdba2693991c3c0e897bf945329564846c88ec47"
+    },
+    "scripts/verify_release.py": {
+      "executable": false,
+      "sha256": "9968ba093947dcc9f1f88828822d5c173af51395b8783a10ccf7bc951d241944"
+    },
+    "scripts/window-id.swift": {
+      "executable": false,
+      "sha256": "885d5d08789d65b8f7bee58355c1762f2c111f1814068fa8cdfc074474688308"
+    },
+    "support/bitwarden-sdk-package.swift": {
+      "executable": false,
+      "sha256": "f41dce3f38a682ee1ac11e83feaff410d537b1ce0fa07b39e2c6444f0aa22512"
+    },
+    "support/fetch-reference-source.fish": {
+      "executable": false,
+      "sha256": "519ed02d919010a1116a40bb88c869a66186132ea07df47f393e931ae25f6c15"
+    },
+    "support/fill-fixture/main.swift": {
+      "executable": false,
+      "sha256": "d5de96a383c60ee07ec389290565a954e1a7716e73d189dba278838d682a5cb5"
+    },
+    "support/generate-design-kit.py": {
+      "executable": false,
+      "sha256": "4d7433610ff829d32e9a4e73c1717c80e0d5282f97c48183441fa0a9838bebab"
+    },
+    "support/generate-public-suffixes.py": {
+      "executable": false,
+      "sha256": "9f709f7340ff08251c74f5f4cf206f2a8a6a743fa41ea0194ec9008c44174925"
+    },
+    "support/legal-supplements/Apache-2.0.txt": {
+      "executable": false,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    "support/legal-supplements/MIT.txt": {
+      "executable": false,
+      "sha256": "b05785f9f18e6716bab63424b11454513b9943a222595b70411009202fc592b5"
+    },
+    "support/legal-supplements/MPL-2.0.txt": {
+      "executable": false,
+      "sha256": "1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5"
+    },
+    "support/legal-supplements/blake2b_simd-MIT.txt": {
+      "executable": false,
+      "sha256": "27e0387973d6b8507cb15f825f6f26e0278d4d5857082c1f56b49a7b39a90183"
+    },
+    "support/legal-supplements/credential-exchange-format-MIT.txt": {
+      "executable": false,
+      "sha256": "3d5d9f721f0672536c42123e2213fc5697ce45a83814f0a6b6d21a27fdf7c3af"
+    },
+    "support/legal-supplements/sources.json": {
+      "executable": false,
+      "sha256": "ae3842bb84288663d289688ff4489b48f1b3ee76857fc0ab51cd1b8ec5c5d6e9"
+    },
+    "support/legal.py": {
+      "executable": false,
+      "sha256": "8e76259b70e99b5c0ae1f055440208d3d9115ee91f05d23a58cddee499aa389a"
+    },
+    "support/patches/bitwarden-sdk-macos.patch": {
+      "executable": false,
+      "sha256": "41fcbffa51dcf7512fed17fb1f56cb2517f4e8f40f6b06265a12074a6bf4e99a"
+    },
+    "support/prepare-bitwarden-sdk.fish": {
+      "executable": false,
+      "sha256": "f35d2d11953530e386948c5257cfaa060a887387896c1944293607d8e830f3c2"
+    },
+    "support/public-source-files.txt": {
+      "executable": false,
+      "sha256": "c0c908acd3a538643aa5995e4cf7efb13431f539937aed2cec80191472ca2da8"
+    },
+    "support/public_source.py": {
+      "executable": false,
+      "sha256": "4a80a50a57614ec6a561a56cb3cdaec93650823b71c2ac84852c5d4129cfe7a9"
+    },
+    "support/release_source.py": {
+      "executable": false,
+      "sha256": "195f3b3d22c836de7f35e6989ba6782b857768aad305db9e7c5371f3e2cb1a5c"
+    },
+    "support/source_archive.py": {
+      "executable": false,
+      "sha256": "11874f6d03e5bdb0584104c1b5df17082ea5332ddbbf25454ab1119dc011a3b3"
+    },
+    "support/vaultwarden/Caddyfile": {
+      "executable": false,
+      "sha256": "bae060abedb7b643cf417c36db7b048a184f0c44466f528156d50fd45efd2067"
+    },
+    "support/vaultwarden/compose.yaml": {
+      "executable": false,
+      "sha256": "c5c89b7a306dc741b5cdc46b704cbc7cbd7aa988065115add5a0e8c1d0f040a7"
+    },
+    "support/vaultwarden/make-certificate.fish": {
+      "executable": false,
+      "sha256": "7a3fe1a4d160f0a0ca40908229b819a40f910cbda204dc26c5c46ca880e81413"
+    },
+    "support/vaultwarden/test-account-organization.json": {
+      "executable": false,
+      "sha256": "ce1d2d7285fd1299b5f8bae565c50c6b75ccf7713ebfa2f347a82ccdec2b1d29"
+    },
+    "support/vaultwarden/test-account-two-step.json": {
+      "executable": false,
+      "sha256": "6a770161c5d90a1e460cab0eb9fa275b3fce9e29696e58a473a4baec1add92bf"
+    },
+    "support/vaultwarden/test-account.json": {
+      "executable": false,
+      "sha256": "9a8674807d393d2bf914fd629bc6598be78cae64121ffdd45e49ee79946503a0"
+    }
+  },
+  "schema": 1,
+  "source_revision": "e115ca7a024d786c22019be39d38b5212b91e5be",
+  "tag": "v0.1.9",
+  "version": "0.1.9"
+}

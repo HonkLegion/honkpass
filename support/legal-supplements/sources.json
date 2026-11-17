@@ -1,0 +1,22 @@
+{
+  "blake2b_simd-MIT.txt": {
+    "url": "https://raw.githubusercontent.com/oconnor663/blake2_simd/6a94ae2e18985c7c35bada8a4d438bfe9ab0d0c0/LICENSE",
+    "sha256": "27e0387973d6b8507cb15f825f6f26e0278d4d5857082c1f56b49a7b39a90183"
+  },
+  "credential-exchange-format-MIT.txt": {
+    "url": "https://raw.githubusercontent.com/bitwarden/credential-exchange/0ee5516e4c0481ab6b0a68f8541fc39c3c3379b1/LICENSE",
+    "sha256": "3d5d9f721f0672536c42123e2213fc5697ce45a83814f0a6b6d21a27fdf7c3af"
+  },
+  "MPL-2.0.txt": {
+    "url": "https://raw.githubusercontent.com/mozilla/uniffi-rs/5c7b73906358e1a7acdc1bdc7bf5cd86fb27e44c/LICENSE",
+    "sha256": "1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5"
+  },
+  "Apache-2.0.txt": {
+    "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+  },
+  "MIT.txt": {
+    "url": "https://raw.githubusercontent.com/spdx/license-list-data/main/text/MIT.txt",
+    "sha256": "b05785f9f18e6716bab63424b11454513b9943a222595b70411009202fc592b5"
+  }
+}

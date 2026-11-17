@@ -1,0 +1,50 @@
+# Local Vaultwarden for development and tests. It holds synthetic data only.
+# It listens on http://localhost:8642 and is reachable from this Mac only.
+# The profile "https" adds https://localhost:8643 for the official Bitwarden app (make server-https).
+# Its mail goes to a mail catcher and nowhere else: http://localhost:8644 shows it.
+name: passvault-dev
+services:
+  vaultwarden:
+    image: vaultwarden/server:1.37.5
+    ports:
+      - "127.0.0.1:8642:80"
+    environment:
+      # The address the server reports about itself. The official Bitwarden app reads it, so it
+      # is the HTTPS address. PassVault's tests use http://localhost:8642 and do not depend on it.
+      DOMAIN: "https://localhost:8643"
+      SIGNUPS_ALLOWED: "true"
+      SIGNUPS_VERIFY: "false"
+      SHOW_PASSWORD_HINT: "false"
+      # Tests and picture comparisons log in many times a minute. The default limits are low;
+      # the second pair is for requests without a session, such as the one before a log-in.
+      LOGIN_RATELIMIT_SECONDS: "1"
+      LOGIN_RATELIMIT_MAX_BURST: "1000"
+      UNAUTHENTICATED_RATELIMIT_SECONDS: "1"
+      UNAUTHENTICATED_RATELIMIT_MAX_BURST: "1000"
+      # Mail delivery, which two-step login by email needs. The catcher keeps every mail.
+      SMTP_HOST: "mail"
+      SMTP_PORT: "1025"
+      SMTP_SECURITY: "off"
+      SMTP_FROM: "vaultwarden@passvault.test"
+    depends_on:
+      - mail
+    volumes:
+      - data:/data
+  mail:
+    image: axllent/mailpit:v1.33.1
+    ports:
+      # The web page and the API of the catcher. SMTP stays inside the compose network.
+      - "127.0.0.1:8644:8025"
+  https:
+    profiles: ["https"]
+    image: caddy:2.11.9
+    depends_on:
+      - vaultwarden
+    ports:
+      - "127.0.0.1:8643:8643"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      # Made by support/vaultwarden/make-certificate.fish. Never tracked.
+      - ../../.local-dependencies/dev-tls:/tls:ro
+volumes:
+  data:

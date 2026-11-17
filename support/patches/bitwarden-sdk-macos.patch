@@ -1,0 +1,74 @@
+diff --git a/Cargo.lock b/Cargo.lock
+index ed0b632..02a520f 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -1652,6 +1652,7 @@ name = "bitwarden-uniffi"
+ version = "0.1.0"
+ dependencies = [
+  "async-trait",
++ "bitwarden-api-api",
+  "bitwarden-auth",
+  "bitwarden-collections",
+  "bitwarden-core",
+@@ -1680,6 +1681,7 @@ dependencies = [
+  "jni",
+  "libloading",
+  "rustls-platform-verifier",
++ "serde_json",
+  "thiserror",
+  "tracing",
+  "tracing-android",
+diff --git a/crates/bitwarden-api-base/src/client.rs b/crates/bitwarden-api-base/src/client.rs
+index 0623887..26ca95a 100644
+--- a/crates/bitwarden-api-base/src/client.rs
++++ b/crates/bitwarden-api-base/src/client.rs
+@@ -21,6 +21,8 @@ pub fn new_http_client_builder() -> reqwest::ClientBuilder {
+         client_builder = client_builder.tls_backend_preconfigured(
+             ClientConfig::with_platform_verifier().expect("Failed to create platform verifier"),
+         );
++        // PassVault: never forward credentials on redirects.
++        client_builder = client_builder.redirect(reqwest::redirect::Policy::none());
+ 
+         // Enforce HTTPS for all requests in non-debug builds
+         #[cfg(not(debug_assertions))]
+diff --git a/crates/bitwarden-uniffi/Cargo.toml b/crates/bitwarden-uniffi/Cargo.toml
+index b6f430f..47e674c 100644
+--- a/crates/bitwarden-uniffi/Cargo.toml
++++ b/crates/bitwarden-uniffi/Cargo.toml
+@@ -30,6 +30,7 @@ dangerous-crypto-debug = ["bitwarden-core/dangerous-crypto-debug"]
+ 
+ [dependencies]
+ async-trait = { workspace = true }
++bitwarden-api-api = { workspace = true }
+ bitwarden-auth = { workspace = true, features = ["uniffi"] }
+ bitwarden-collections = { workspace = true, features = ["uniffi"] }
+ bitwarden-core = { workspace = true, features = ["uniffi"] }
+@@ -55,6 +56,7 @@ bitwarden-unlock = { workspace = true, features = ["uniffi"] }
+ bitwarden-user-crypto-management = { workspace = true, features = ["uniffi"] }
+ bitwarden-vault = { workspace = true, features = ["uniffi"] }
+ chrono = { workspace = true, features = ["std"] }
++serde_json = { workspace = true }
+ thiserror = { workspace = true }
+ tracing = { workspace = true }
+ tracing-subscriber = { workspace = true }
+diff --git a/crates/bitwarden-uniffi/src/vault/ciphers.rs b/crates/bitwarden-uniffi/src/vault/ciphers.rs
+index 0574ae7..b0b2f83 100644
+--- a/crates/bitwarden-uniffi/src/vault/ciphers.rs
++++ b/crates/bitwarden-uniffi/src/vault/ciphers.rs
+@@ -14,6 +14,16 @@ pub struct CiphersClient(pub(crate) bitwarden_vault::CiphersClient);
+ 
+ #[uniffi::export(async_runtime = "tokio")]
+ impl CiphersClient {
++    /// PassVault: one cipher of a server response, converted through the upstream API model.
++    pub fn cipher_from_server_json(&self, json: String) -> Option<Cipher> {
++        let response: bitwarden_api_api::models::CipherDetailsResponseModel = serde_json::from_str(&json).ok()?;
++        response.try_into().ok()
++    }
++    /// PassVault: the upstream request body that creates or updates an encrypted cipher.
++    pub fn cipher_request_json(&self, context: EncryptionContext) -> Option<String> {
++        let request: bitwarden_api_api::models::CipherRequestModel = context.into();
++        serde_json::to_string(&request).ok()
++    }
+     /// Encrypt cipher
+     pub async fn encrypt(&self, cipher_view: CipherView) -> Result<EncryptionContext> {
+         Ok(self.0.encrypt(cipher_view).await?)

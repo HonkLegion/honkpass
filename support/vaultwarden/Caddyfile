@@ -1,0 +1,11 @@
+# HTTPS in front of the local Vaultwarden, for the official Bitwarden app only.
+# PassVault's own tests use plain HTTP on port 8642 and need no certificate.
+{
+	admin off
+	auto_https off
+}
+
+https://localhost:8643 {
+	tls /tls/localhost.pem /tls/localhost-key.pem
+	reverse_proxy vaultwarden:80
+}

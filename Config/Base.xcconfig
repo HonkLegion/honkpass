@@ -1,0 +1,12 @@
+// Build settings shared by every target. Local values go to Config/Local.xcconfig (not tracked).
+
+// PassVault keeps the bundle identifier of its predecessor, so the existing App ID,
+// certificates and provisioning profiles keep working. See PLAN.md.
+APP_BUNDLE_ID = cz.honklegion.honkpass
+
+// Set DEVELOPMENT_TEAM in Config/Local.xcconfig. To build under another team, also set
+// APP_BUNDLE_ID there to an identifier that team owns.
+DEVELOPMENT_TEAM =
+
+#include "Sparkle.xcconfig"
+#include? "Local.xcconfig"

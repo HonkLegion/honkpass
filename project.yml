@@ -1,0 +1,145 @@
+# XcodeGen specification of the signed HonkPass app. Generate and build with: make build
+# The app target compiles App/PassVault and links the modules of Package.swift.
+# `swift build` and `swift test` work without the Xcode project.
+name: PassVault
+options:
+  deploymentTarget:
+    macOS: "26.4"
+  developmentLanguage: en
+  createIntermediateGroups: true
+  generateEmptyDirectories: false
+configFiles:
+  Debug: Config/Base.xcconfig
+  Release: Config/Base.xcconfig
+packages:
+  PassVault:
+    path: .
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    SWIFT_STRICT_CONCURRENCY: complete
+    MACOSX_DEPLOYMENT_TARGET: "26.4"
+    CODE_SIGN_STYLE: Automatic
+    CODE_SIGN_IDENTITY: "Apple Development"
+    ENABLE_HARDENED_RUNTIME: YES
+    ENABLE_APP_SANDBOX: NO
+    MARKETING_VERSION: 0.1.9
+    CURRENT_PROJECT_VERSION: 10
+    HONKPASS_SOURCE_REVISION: development
+    HONKPASS_SOURCE_SHA256: development
+    DEAD_CODE_STRIPPING: YES
+targets:
+  PassVault:
+    type: application
+    platform: macOS
+    sources:
+      - path: App/PassVault
+        excludes:
+          - Legal
+      - path: App/PassVault/Legal
+        type: folder
+        buildPhase: resources
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: $(APP_BUNDLE_ID)
+        PRODUCT_NAME: HonkPass
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        INFOPLIST_FILE: App/PassVault/Info.plist
+        GENERATE_INFOPLIST_FILE: NO
+        CODE_SIGN_ENTITLEMENTS: App/PassVault/PassVault.entitlements
+    dependencies:
+      - package: PassVault
+        product: VaultModel
+      - package: PassVault
+        product: Engine
+      - package: PassVault
+        product: EngineFakes
+      - package: PassVault
+        product: EngineLive
+      - package: PassVault
+        product: DesignKit
+      - package: PassVault
+        product: AutoFillBridge
+      - package: PassVault
+        product: ProviderUI
+      # The Credential Provider extension of AutoFill, in Contents/PlugIns.
+      - target: PassVaultProvider
+        embed: true
+      # The launch agent of AutoFill is no bundle of its own: its program goes beside the app's.
+      - target: PassVaultRendezvous
+        embed: false
+    postBuildScripts:
+      - name: Embed the launch agent of AutoFill
+        shell: /opt/homebrew/bin/fish
+        showEnvVars: false
+        basedOnDependencyAnalysis: false
+        script: |
+          set -l contents "$TARGET_BUILD_DIR/$CONTENTS_FOLDER_PATH"
+          set -l plist "$contents/Library/LaunchAgents/$APP_BUNDLE_ID.bridge.plist"
+          # No property list of an older build stays beside it.
+          rm -rf "$contents/Library/LaunchAgents"; or exit 1
+          mkdir -p "$contents/Library/LaunchAgents"; or exit 1
+          # A new file, not new bytes in the old one: the agent of the build before may be running from it.
+          rm -f "$contents/MacOS/PassVaultRendezvous"; or exit 1
+          cp "$BUILT_PRODUCTS_DIR/PassVaultRendezvous" "$contents/MacOS/PassVaultRendezvous"; or exit 1
+          # The names of the agent's services begin with the team, which comes from the signing settings.
+          sed -e "s/TEAM_PLACEHOLDER/$DEVELOPMENT_TEAM/g" -e "s/APP_PLACEHOLDER/$APP_BUNDLE_ID/g" \
+              "$SRCROOT/App/Rendezvous/LaunchAgent.plist" > "$plist"; or exit 1
+          plutil -lint "$plist"; or exit 1
+  PassVaultProvider:
+    type: app-extension
+    platform: macOS
+    sources:
+      - path: App/Provider
+        excludes:
+          - "*.plist"
+          - "*.entitlements"
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: $(APP_BUNDLE_ID).provider
+        PRODUCT_NAME: PassVaultProvider
+        PRODUCT_MODULE_NAME: PassVaultProvider
+        INFOPLIST_FILE: App/Provider/Info.plist
+        GENERATE_INFOPLIST_FILE: NO
+        CODE_SIGN_ENTITLEMENTS: App/Provider/Provider.entitlements
+        APPLICATION_EXTENSION_API_ONLY: YES
+        ENABLE_APP_SANDBOX: YES
+        SKIP_INSTALL: YES
+    dependencies:
+      - package: PassVault
+        product: VaultModel
+      - package: PassVault
+        product: AutoFillBridge
+      - package: PassVault
+        product: DesignKit
+      - package: PassVault
+        product: ProviderUI
+  PassVaultRendezvous:
+    type: tool
+    platform: macOS
+    sources:
+      - path: App/Rendezvous
+        excludes: ["*.plist", "*.entitlements"]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: $(APP_BUNDLE_ID).rendezvous
+        PRODUCT_NAME: PassVaultRendezvous
+        CODE_SIGN_ENTITLEMENTS: App/Rendezvous/Rendezvous.entitlements
+        ENABLE_APP_SANDBOX: YES
+        # A tool in a sandbox needs its bundle identifier inside its program: without it the
+        # system makes it no container and it does not start.
+        GENERATE_INFOPLIST_FILE: YES
+        CREATE_INFOPLIST_SECTION_IN_BINARY: YES
+        SKIP_INSTALL: YES
+    dependencies:
+      - package: PassVault
+        product: AutoFillBridge
+schemes:
+  PassVault:
+    build:
+      targets:
+        PassVault: all
+    run:
+      config: Debug
+    archive:
+      config: Release

@@ -1,0 +1,104 @@
+{
+  "honkpassAutoFillUnavailable": { "m": "Nelze se spojit s HonkPassem" },
+  "honkpassAutoFillUnavailableDescription": { "m": "Otevřete HonkPass a v jeho nastavení zkontrolujte zapnutí systémového AutoFill. Trezor může být stále odemčený." },
+  "honkpassChooseApp": { "m": "Vybrat aplikaci" },
+  "honkpassSearchApps": { "m": "Hledat mezi spuštěnými aplikacemi" },
+  "honkpassLoadingApps": { "m": "Načítání aplikací…" },
+  "honkpassAppListError": { "m": "Aplikace se nepodařilo načíst. Zkuste obnovit seznam." },
+  "honkpassNoRunningApps": { "m": "Žádné spuštěné aplikace pro přiřazení." },
+  "honkpassNoMatchingApps": { "m": "Žádná aplikace neodpovídá hledání." },
+  "honkpassRunningAppsHint": { "m": "Zobrazují se aplikace s ověřeným podpisem. Přihlášení v prohlížeči přiřaďte k webu." },
+  "honkpassChooseAppFromDisk": { "m": "Vybrat aplikaci z disku…" },
+  "honkpassRefreshApps": { "m": "Obnovit seznam" },
+  "honkpassAssignApp": { "m": "Přiřadit aplikaci" },
+  "honkpassAppAlreadyAssigned": { "m": "Již přiřazeno" },
+  "honkpassAppNotAccepted": { "m": "Aplikaci se nepodařilo ověřit. Vyberte ji znovu nebo použijte jinou aplikaci." },
+  "honkpassConfirmAppFill": { "m": "Potvrdit vyplnění aplikace" },
+  "honkpassConfirmAppFillDescription": { "m": "Do této aplikace se vyplní údaje položky „$ITEM$“.", "p": { "item": "$1" } },
+  "honkpassCurrentApp": { "m": "Aplikace pro vyplnění" },
+  "honkpassFillAndSaveApp": { "m": "Vyplnit a uložit aplikaci" },
+  "honkpassAppSaveFailed": { "m": "Vyplněno. Aplikaci se nepodařilo uložit k položce." },
+  "honkpassOpenMainWindow": { "m": "Otevřít HonkPass" },
+  "honkpassOpenQuickAccess": { "m": "Otevřít Rychlý přístup" },
+  "honkpassQuickAccess": { "m": "Rychlý přístup" },
+  "honkpassQuickSearch": { "m": "Hledat v HonkPassu" },
+  "honkpassQuickFillTarget": { "m": "Vyplnit do $APPLICATION$", "p": { "application": "$1" } },
+  "honkpassQuickItemCount": { "m": "Položky: $COUNT$", "p": { "count": "$1" } },
+  "honkpassQuickChoose": { "m": "↑ ↓ Vybrat" },
+  "honkpassLegalSummary": {
+    "m": "Svobodný software pod GNU GPLv3. Můžete jej upravovat a dále šířit podle této licence. Poskytuje se bez záruky v rozsahu dovoleném zákonem."
+  },
+  "honkpassLicensesAndSource": {
+    "m": "Licence, autoři a zdrojové kódy"
+  },
+  "selfHostedBaseUrlHint": {
+    "m": "Zadejte základní URL adresu svého serveru Vaultwarden. Příklad: https://vault.example.test"
+  },
+  "appLogoLabel": {
+    "m": "Logo HonkPass"
+  },
+  "passwordProtectedOptionDescription": {
+    "m": "Nastavte heslo pro zašifrování exportu. Kompatibilní klienti Bitwarden tímto heslem soubor dešifrují a importují."
+  },
+  "accountRestrictedOptionDescription": {
+    "m": "Tento exportní formát Bitwarden používá šifrovací klíč účtu. HonkPass tento formát nevytváří."
+  },
+  "honkpassUpdateFinishWork": {
+    "m": "Před instalací aktualizace dokončete probíhající operaci a zavřete úpravy položky, Send, import a export. HonkPass při instalaci zamkne trezor."
+  },
+  "honkpassSSHRequest": {
+    "m": "$APPLICATION$ žádá o použití SSH klíče.",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassSSHUnlockRequest": {
+    "m": "$APPLICATION$ čeká na odemčení trezoru.",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassSSHFingerprint": {
+    "m": "Veřejný otisk"
+  },
+  "honkpassSSHNoFingerprint": {
+    "m": "Otisk není k dispozici"
+  },
+  "honkpassSSHPending": {
+    "m": "Další čekající žádosti: $COUNT$",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "honkpassSSHCopyFingerprint": {
+    "m": "Kopírovat veřejný otisk"
+  },
+  "honkpassSSHRequestedPurpose": {
+    "m": "Požadovaný účel: $PURPOSE$",
+    "p": {
+      "purpose": "$1"
+    }
+  },
+  "honkpassSSHGitSign": {
+    "m": "podepsání dat pro Git"
+  },
+  "honkpassSSHUnknownPurpose": {
+    "m": "podepsání dat, přesný účel nelze ověřit"
+  },
+  "honkpassSSHVault": {
+    "m": "Trezor: $ACCOUNT$ ($SERVER$)",
+    "p": {
+      "account": "$1",
+      "server": "$2"
+    }
+  },
+  "honkpassSSHVerifiedHost": {
+    "m": "Otisk serveru ověřené relace: $FINGERPRINT$",
+    "p": {
+      "fingerprint": "$1"
+    }
+  },
+  "honkpassSSHUnknownDestination": {
+    "m": "Cílový server nelze z tohoto požadavku spolehlivě určit."
+  }
+}

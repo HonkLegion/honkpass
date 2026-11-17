@@ -1,0 +1,6 @@
+{
+  "server": "http://localhost:8642",
+  "email": "test.user@passvault.test",
+  "name": "Test User",
+  "masterPassword": "synthetic-master-password"
+}

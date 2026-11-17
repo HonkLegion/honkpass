@@ -1,0 +1,62 @@
+# Build output and generated project
+.build/
+.swiftpm/
+.local-dependencies/
+*.xcodeproj/
+DerivedData/
+xcuserdata/
+__pycache__/
+*.pyc
+
+# Local signing configuration
+Config/Local.xcconfig
+
+# Plans belong to the private development repository. Public exports use an explicit file list.
+
+# Local reference captures
+/docs/reference/*.png
+
+# Local agent state and workstation credentials
+/.claude/
+/.codex/
+/.aws/
+/.ssh/
+/.gnupg/
+
+# macOS
+.DS_Store
+
+# Secrets and real credential material never belong here
+.env
+.env.*
+.envrc
+*.pem
+*.key
+*.p8
+*.p12
+*.pfx
+*.mobileprovision
+*.provisionprofile
+*.keychain
+*.keychain-db
+*.kdbx
+*.sqlite
+*.sqlite3
+*.sqlite-wal
+*.sqlite-shm
+*.db
+*.db-wal
+*.db-shm
+/exports/
+/backups/
+bitwarden_export*
+honkpass_export*
+passvault_export*
+
+# Signing and notarisation output
+*.dmg
+*.pkg
+*.xcarchive
+*.zip
+*.tar.gz
+*.log

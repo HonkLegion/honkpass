@@ -1,0 +1,7 @@
+// Copy this file to Config/Local.xcconfig and fill in your values. Local.xcconfig is not tracked.
+
+// Your Apple Developer team identifier (10 characters).
+DEVELOPMENT_TEAM = XXXXXXXXXX
+
+// Only when your team does not own the default identifier:
+// APP_BUNDLE_ID = com.example.passvault

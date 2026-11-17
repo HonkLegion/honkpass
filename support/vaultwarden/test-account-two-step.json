@@ -1,0 +1,7 @@
+{
+  "server": "http://localhost:8642",
+  "email": "test.two-step@passvault.test",
+  "name": "Test Two Step",
+  "masterPassword": "synthetic-two-step-master-password",
+  "mailCatcher": "http://localhost:8644"
+}

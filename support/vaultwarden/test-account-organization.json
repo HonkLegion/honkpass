@@ -1,0 +1,6 @@
+{
+  "server": "http://localhost:8642",
+  "email": "test.organization@passvault.test",
+  "name": "Test Organization User",
+  "masterPassword": "synthetic-bynAAXitCjM9rWVeVPD3LZj2"
+}
