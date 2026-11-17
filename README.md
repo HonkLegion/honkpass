@@ -174,6 +174,14 @@ Public release commits also include `public-source.json`, which records the orig
 For releases prepared from a tag, `project.yml` contains the release version and build number.
 The metadata also records the original project version, build number and file hash.
 
+The GitHub release workflow can build a public release tag on an Apple Silicon runner with Xcode 27.1.
+It requires the existing signing certificate, provisioning profiles, notarization credentials and Sparkle key in GitHub Secrets.
+When enabled, it creates a draft release with signed, notarized binaries and their corresponding source archive.
+It does not replace existing release assets.
+
+The hosted workflow tests packaging and engine behavior without a Vaultwarden server.
+Local server tests, GUI smoke tests and manual integration checks remain separate.
+
 ## License
 
 HonkPass uses [GPL-3.0-only](LICENSE) and comes without warranty to the extent permitted by law.

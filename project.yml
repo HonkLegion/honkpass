@@ -23,8 +23,8 @@ settings:
     CODE_SIGN_IDENTITY: "Apple Development"
     ENABLE_HARDENED_RUNTIME: YES
     ENABLE_APP_SANDBOX: NO
-    MARKETING_VERSION: 0.1.10
-    CURRENT_PROJECT_VERSION: 11
+    MARKETING_VERSION: 0.1.11
+    CURRENT_PROJECT_VERSION: 12
     HONKPASS_SOURCE_REVISION: development
     HONKPASS_SOURCE_SHA256: development
     DEAD_CODE_STRIPPING: YES
@@ -47,6 +47,7 @@ targets:
         INFOPLIST_FILE: App/PassVault/Info.plist
         GENERATE_INFOPLIST_FILE: NO
         CODE_SIGN_ENTITLEMENTS: App/PassVault/PassVault.entitlements
+        PROVISIONING_PROFILE_SPECIFIER: $(HONKPASS_APP_PROFILE)
     dependencies:
       - package: PassVault
         product: VaultModel
@@ -102,6 +103,7 @@ targets:
         INFOPLIST_FILE: App/Provider/Info.plist
         GENERATE_INFOPLIST_FILE: NO
         CODE_SIGN_ENTITLEMENTS: App/Provider/Provider.entitlements
+        PROVISIONING_PROFILE_SPECIFIER: $(HONKPASS_PROVIDER_PROFILE)
         APPLICATION_EXTENSION_API_ONLY: YES
         ENABLE_APP_SANDBOX: YES
         SKIP_INSTALL: YES

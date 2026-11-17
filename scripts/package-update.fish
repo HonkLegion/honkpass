@@ -57,8 +57,13 @@ test "$public_key" = "$bundled_key"; or begin
     echo 'The Keychain signing account does not match the public key in HonkPass.' >&2
     exit 1
 end
-set -l signature ("$sparkle/bin/sign_update" --account "$account" -p "$dmg"); or exit 1
-"$sparkle/bin/sign_update" --account "$account" --verify "$dmg" "$signature"; or exit 1
+set -l signing_options --account "$account"
+if set -q HONKPASS_SPARKLE_KEY_FILE
+    test -s "$HONKPASS_SPARKLE_KEY_FILE"; or exit 2
+    set signing_options --ed-key-file "$HONKPASS_SPARKLE_KEY_FILE"
+end
+set -l signature ("$sparkle/bin/sign_update" $signing_options -p "$dmg"); or exit 1
+"$sparkle/bin/sign_update" $signing_options --verify "$dmg" "$signature"; or exit 1
 fish --no-config scripts/source-python.fish scripts/generate_appcast.py "$app/Contents/Info.plist" "$dmg" "$signature" "$output/appcast.xml"; or exit 1
 fish --no-config scripts/source-python.fish scripts/generate_appcast.py --verify "$app/Contents/Info.plist" "$dmg" "$output/appcast.xml" >/dev/null; or exit 1
 python3 -c 'import hashlib,json,pathlib,sys; p=pathlib.Path(sys.argv[1]); (p/"update-manifest.json").write_text(json.dumps({n:hashlib.sha256((p/n).read_bytes()).hexdigest() for n in ("HonkPass.dmg","HonkPass-source.tar.gz")},indent=2)+"\n")' "$output"; or exit 1

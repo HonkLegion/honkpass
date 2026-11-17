@@ -1,4 +1,6 @@
 # Exact public build inputs. Review additions before publication. No glob patterns.
+.github/actionlint.yaml
+.github/workflows/release.yml
 .gitignore
 .gitleaks.toml
 App/ExportOptions-DeveloperID.plist
@@ -563,6 +565,8 @@ docs/reference/test-plan.md
 project.yml
 scripts/archive-developer-id.fish
 scripts/capture-window.fish
+scripts/ci_release.py
+scripts/ci_signing.py
 scripts/compare-screen.fish
 scripts/generate_appcast.py
 scripts/image-tool.swift
@@ -579,8 +583,11 @@ scripts/test-fill.fish
 scripts/test-make-workflow.py
 scripts/test-release-source.py
 scripts/test-step-output.py
+scripts/test_ci_release.py
 scripts/test_public_source.py
 scripts/test_release_update.py
+scripts/test_updater.py
+scripts/upload_release.py
 scripts/verify_release.py
 scripts/window-id.swift
 support/bitwarden-sdk-package.swift

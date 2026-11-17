@@ -141,6 +141,7 @@ switch "$action"
         step 'Testing Make workflows' $logs/workflow-tests.log python3 scripts/test-make-workflow.py; or exit $status
         step 'Testing source pairing' $logs/source-tests.log fish --no-config scripts/source-python.fish scripts/test-release-source.py; or exit $status
         step 'Testing public source selection' $logs/public-source-tests.log fish --no-config scripts/source-python.fish scripts/test_public_source.py; or exit $status
+        step 'Testing release automation' $logs/ci-release-tests.log fish --no-config scripts/source-python.fish scripts/test_ci_release.py; or exit $status
     case archive
         require_sdk; or exit $status
         test -e Config/Local.xcconfig; or begin

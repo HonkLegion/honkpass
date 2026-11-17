@@ -1,6 +1,14 @@
 {
-  "build": "11",
+  "build": "12",
   "files": {
+    ".github/actionlint.yaml": {
+      "executable": false,
+      "sha256": "2628088cdb15d72d5cc612aa3e7ec12b6aa0d0652c145ec3fb721f578bf73152"
+    },
+    ".github/workflows/release.yml": {
+      "executable": false,
+      "sha256": "7ae605378960eb8bf96962335cbfb5113cfc3d855f1e365aac45504682956885"
+    },
     ".gitignore": {
       "executable": false,
       "sha256": "5dc448a893abf87d550bb4c61a13e1dfe82658e026ab8cf09fa122446ccc45d5"
@@ -1395,7 +1403,7 @@
     },
     "README.md": {
       "executable": false,
-      "sha256": "466548b138b26c759ed3e0c221c0578917df248c5af1fb0dd7651198bc4f116c"
+      "sha256": "e557be21eded15a72defdaca7efb5fad80e93b61ebac2888f89df3b50f0655c7"
     },
     "Sources/AutoFillBridge/AutoFillClient.swift": {
       "executable": false,
@@ -2247,15 +2255,23 @@
     },
     "project.yml": {
       "executable": false,
-      "sha256": "f53e563a630f148e0abface4297cbe286acf9ec9ba8aed390e8c0d6f2d9e3fed"
+      "sha256": "c32bd9567ecac4742514a81433ae86f1ae0e68a60fb49822f7929f84a70acfdc"
     },
     "scripts/archive-developer-id.fish": {
       "executable": false,
-      "sha256": "e50b20162c419410b54da250e41ddd466bf6835f37116521216b5ebb93dec530"
+      "sha256": "216ca6eae3d31b7d68b6149de2c25a6e847fbdaf10ab6689aed0ad87db21c1fa"
     },
     "scripts/capture-window.fish": {
       "executable": false,
       "sha256": "e69d5ee7533646c216b6eb191e2c8400529c9760e0fc781ebaaf8b67ca8aec1e"
+    },
+    "scripts/ci_release.py": {
+      "executable": false,
+      "sha256": "e56ab9ddb51919426110cc161f4a813a3baa85ee8d463b6e708bcd13afc39123"
+    },
+    "scripts/ci_signing.py": {
+      "executable": false,
+      "sha256": "2d84dc3f5a2b16f23e40a4932c4ba6cef187f729a4d6fa3297e96193a94ea192"
     },
     "scripts/compare-screen.fish": {
       "executable": false,
@@ -2271,7 +2287,7 @@
     },
     "scripts/make.fish": {
       "executable": false,
-      "sha256": "658e6e687b7b6be8528931a804a18074a3f91b329f1719592f78a247e1fca69f"
+      "sha256": "1a8e1de05e2ece45b2fa1881c65fe7a51011b9ce3b548e4b9ef29656836e20b2"
     },
     "scripts/notarize-developer-id.fish": {
       "executable": false,
@@ -2279,7 +2295,7 @@
     },
     "scripts/package-update.fish": {
       "executable": false,
-      "sha256": "1f07ff49c53fe9ac9cff8572fded22946bfc993f49a9b1e2731c023b3af1b0e7"
+      "sha256": "1b59f6d17e513442b4db1e910f9c272a306e1ff1d5610f6bfdedfc6461445bba"
     },
     "scripts/progress.fish": {
       "executable": false,
@@ -2311,7 +2327,7 @@
     },
     "scripts/test-make-workflow.py": {
       "executable": false,
-      "sha256": "7ebdb4f188d6e89762946283d4c19e33a3b4838fc122955cbeb0846f660d3d18"
+      "sha256": "b9ade98399da42ad5d0476c8eaef87a793a4caffd6262f18adfa7dd605d690ef"
     },
     "scripts/test-release-source.py": {
       "executable": false,
@@ -2321,6 +2337,10 @@
       "executable": false,
       "sha256": "7b8ea996ca5ff30989cef25110e574497582b8bfd4a9fe8cff64e9b6129fe485"
     },
+    "scripts/test_ci_release.py": {
+      "executable": false,
+      "sha256": "bad9a479b9988bf3fb433a0861686bfa71f993617d1b0298990275a6327a6999"
+    },
     "scripts/test_public_source.py": {
       "executable": false,
       "sha256": "e57839c590a6e25bfd25220110257ef13076261c99f24f76048f810e05d98e5d"
@@ -2328,6 +2348,14 @@
     "scripts/test_release_update.py": {
       "executable": false,
       "sha256": "91b0fd67fff4bef640e3d50ffdba2693991c3c0e897bf945329564846c88ec47"
+    },
+    "scripts/test_updater.py": {
+      "executable": false,
+      "sha256": "9259848e8950f1bd44116530d373575596435cd92e11a78cf8480b6d7bd322e8"
+    },
+    "scripts/upload_release.py": {
+      "executable": false,
+      "sha256": "c307a0052ea9ff4ecd8ed15635b0bc0f24c19bd298179f48f31d0becc6ccd038"
     },
     "scripts/verify_release.py": {
       "executable": false,
@@ -2395,7 +2423,7 @@
     },
     "support/public-source-files.txt": {
       "executable": false,
-      "sha256": "c0c908acd3a538643aa5995e4cf7efb13431f539937aed2cec80191472ca2da8"
+      "sha256": "ea3b4cb633293338ca1a16576649fd868120b3312baae052a5c5769d4de5a0d4"
     },
     "support/public_source.py": {
       "executable": false,
@@ -2437,10 +2465,10 @@
   "schema": 2,
   "source_project": {
     "build": "10",
-    "sha256": "8c26b4be5c0baea5cb3adfa2f5e744745ce7b2f63117890e099f4a56c7a9c249",
+    "sha256": "965f7081df13756c47091029135a661ad6075bf7ca9ece65884aa33c6fdebd0c",
     "version": "0.1.9"
   },
-  "source_revision": "a1c7ec8f1431540c5c9f0907fcfb1a916a36ebef",
-  "tag": "v0.1.10+11",
-  "version": "0.1.10"
+  "source_revision": "8632cd5d116a0d387b075031434f0a9f5a7b8e77",
+  "tag": "v0.1.11",
+  "version": "0.1.11"
 }

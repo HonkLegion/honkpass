@@ -23,6 +23,18 @@ set -l output (mktemp -d "$distribution/archive-"(date -u +%Y%m%dT%H%M%SZ)'-XXXX
 set -l archive "$output/HonkPass.xcarchive"
 set -l export_path "$output/export"
 set -l source_archive "$output/HonkPass-source.tar.gz"
+set -l provisioning_options -allowProvisioningUpdates
+set -l signing_options
+set -l export_options App/ExportOptions-DeveloperID.plist
+if set -q HONKPASS_CI_SIGNING_IDENTITY
+    string match -rq '^[0-9A-Fa-f]{40}$' -- "$HONKPASS_CI_SIGNING_IDENTITY"; and test -s "$HONKPASS_CI_EXPORT_OPTIONS"; or begin
+        echo 'CI signing requires a certificate fingerprint and an export configuration.' >&2
+        exit 2
+    end
+    set provisioning_options
+    set signing_options CODE_SIGN_STYLE=Manual CODE_SIGN_IDENTITY="$HONKPASS_CI_SIGNING_IDENTITY"
+    set export_options "$HONKPASS_CI_EXPORT_OPTIONS"
+end
 run_step 'Packaging corresponding source' "$logs/source.log" fish --no-config scripts/source-python.fish support/source_archive.py --output "$source_archive"; or exit $status
 set -l source_revision (git rev-parse HEAD); or exit $status
 set -l source_hash (shasum -a 256 "$source_archive" | string split ' ')[1]; or exit $status
@@ -31,11 +43,11 @@ run_step 'Archiving app' "$logs/archive.log" xcodebuild \
     -project PassVault.xcodeproj -scheme PassVault -configuration Release \
     -derivedDataPath "$output/DerivedData" -destination platform=macOS \
     -archivePath "$archive" ARCHS=arm64 ONLY_ACTIVE_ARCH=YES \
-    HONKPASS_SOURCE_REVISION="$source_revision" HONKPASS_SOURCE_SHA256="$source_hash" -allowProvisioningUpdates archive
+    HONKPASS_SOURCE_REVISION="$source_revision" HONKPASS_SOURCE_SHA256="$source_hash" $signing_options $provisioning_options archive
 or exit $status
 run_step 'Exporting Developer ID app' "$logs/export.log" xcodebuild -exportArchive \
-    -archivePath "$archive" -exportOptionsPlist App/ExportOptions-DeveloperID.plist \
-    -exportPath "$export_path" -allowProvisioningUpdates
+    -archivePath "$archive" -exportOptionsPlist "$export_options" \
+    -exportPath "$export_path" $provisioning_options
 or exit $status
 set -l app "$export_path/HonkPass.app"
 test -d "$app"; or begin

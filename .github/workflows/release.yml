@@ -1,0 +1,146 @@
+name: Build HonkPass release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing public release tag
+        type: string
+        required: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: honkpass-release-${{ github.event_name == 'workflow_dispatch' && inputs.tag || github.ref_name }}
+  cancel-in-progress: false
+
+env:
+  RELEASE_TAG: ${{ github.event_name == 'workflow_dispatch' && inputs.tag || github.ref_name }}
+
+jobs:
+  build:
+    if: github.repository == 'HonkLegion/honkpass' && vars.HONKPASS_RELEASES_ENABLED == 'true'
+    runs-on: xcode-27
+    environment: release-signing
+    timeout-minutes: 180
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_27.1.app/Contents/Developer
+      DISTRIBUTION_DIR: .build/distribution
+      NOTARY_PROFILE: honkpass-ci
+      MAKE_PROGRESS: plain
+    defaults:
+      run:
+        shell: fish --no-config {0}
+    steps:
+      - name: Check out the public release tag
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          ref: ${{ env.RELEASE_TAG }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Install build tools
+        shell: python3 {0}
+        run: |
+          import subprocess
+          subprocess.run(["brew", "install", "fish", "xcodegen", "jq"], check=True)
+      - name: Check the release identity
+        run: |
+          python3 scripts/ci_release.py preflight --tag "$RELEASE_TAG"; or exit $status
+          test (uname -m) = arm64; or exit 1
+          xcodebuild -version; or exit $status
+          swift --version
+      - name: Prepare pinned dependencies
+        run: |
+          make prepare-sdk; or exit $status
+          make reference-source; or exit $status
+          swift package resolve; or exit $status
+          make check-licenses
+      - name: Test packaging and engine behavior without a server
+        run: |
+          make test-progress; or exit $status
+          make test-updates; or exit $status
+          make test OFFLINE=1
+      - name: Record validation limits
+        shell: python3 {0}
+        run: |
+          import os
+          from pathlib import Path
+          with Path(os.environ["GITHUB_STEP_SUMMARY"]).open("a") as summary:
+              summary.write("This release runs packaging tests and engine tests without a server. "
+                            "Local Vaultwarden tests, GUI smoke tests and manual integration checks remain separate.\n")
+      - name: Install ephemeral signing credentials
+        env:
+          APPLE_TEAM_ID: ${{ vars.APPLE_TEAM_ID }}
+          APPLE_CERTIFICATE_BASE64: ${{ secrets.APPLE_CERTIFICATE_BASE64 }}
+          APPLE_CERTIFICATE_PASSWORD: ${{ secrets.APPLE_CERTIFICATE_PASSWORD }}
+          APPLE_APP_PROFILE_BASE64: ${{ secrets.APPLE_APP_PROFILE_BASE64 }}
+          APPLE_PROVIDER_PROFILE_BASE64: ${{ secrets.APPLE_PROVIDER_PROFILE_BASE64 }}
+          APPLE_NOTARY_KEY_BASE64: ${{ secrets.APPLE_NOTARY_KEY_BASE64 }}
+          APPLE_NOTARY_KEY_ID: ${{ secrets.APPLE_NOTARY_KEY_ID }}
+          APPLE_NOTARY_ISSUER_ID: ${{ secrets.APPLE_NOTARY_ISSUER_ID }}
+          SPARKLE_PRIVATE_KEY: ${{ secrets.SPARKLE_PRIVATE_KEY }}
+        run: python3 scripts/ci_signing.py setup
+      - name: Build and notarize the application and DMG
+        run: |
+          make archive; or exit $status
+          make notarize; or exit $status
+          make update-package; or exit $status
+          python3 scripts/ci_release.py collect --tag "$RELEASE_TAG"
+      - name: Store verified release assets
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: honkpass-release
+          path: .build/github-release/
+          if-no-files-found: error
+          retention-days: 14
+      - name: Upload an update draft
+        id: updater
+        if: vars.HONKPASS_UPDATE_DRAFTS_ENABLED == 'true'
+        continue-on-error: true
+        env:
+          UPDATER_TOKEN: ${{ secrets.UPDATER_TOKEN }}
+        run: make upload-update
+      - name: Report an incomplete update upload
+        if: steps.updater.outcome == 'failure'
+        shell: python3 {0}
+        run: |
+          import os
+          from pathlib import Path
+          print("::warning::The update draft upload failed. The verified GitHub assets remain available.")
+          with Path(os.environ["GITHUB_STEP_SUMMARY"]).open("a") as summary:
+              summary.write("Update draft upload FAILED. Review that step before any publication.\n")
+      - name: Remove ephemeral signing credentials
+        if: always()
+        run: python3 scripts/ci_signing.py cleanup
+
+  draft:
+    needs: build
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    defaults:
+      run:
+        shell: python3 {0}
+    steps:
+      - name: Check out the public release tag
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          ref: ${{ env.RELEASE_TAG }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Download verified release assets
+        uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0 # v5
+        with:
+          name: honkpass-release
+          path: .build/github-release/
+      - name: Create or complete the GitHub draft
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          import os
+          import subprocess
+          subprocess.run(["python3", "scripts/ci_release.py", "draft", "--tag", os.environ["RELEASE_TAG"]], check=True)

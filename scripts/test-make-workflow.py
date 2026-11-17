@@ -128,6 +128,26 @@ else:
         self.assertEqual(marker.read_text(), previous)
         self.assertEqual([c[0] for c in self.calls()], ["source_archive", "xcodegen", "xcodebuild"])
 
+    def test_ci_archive_uses_manual_signing_without_provisioning_requests(self):
+        options = self.root / "ci-export.plist"
+        options.write_text("synthetic export configuration")
+        result = self.run_workflow("archive", HONKPASS_CI_SIGNING_IDENTITY="A" * 40,
+                                   HONKPASS_CI_EXPORT_OPTIONS=str(options))
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        calls = [call for call in self.calls() if call[0] == "xcodebuild"]
+        archive = next(call for call in calls if "archive" in call)
+        exported = next(call for call in calls if "-exportArchive" in call)
+        self.assertIn("CODE_SIGN_STYLE=Manual", archive)
+        self.assertIn("CODE_SIGN_IDENTITY=" + "A" * 40, archive)
+        self.assertEqual(exported[exported.index("-exportOptionsPlist") + 1], str(options))
+        self.assertTrue(all("-allowProvisioningUpdates" not in call for call in calls))
+
+    def test_invalid_ci_identity_stops_before_source_packaging(self):
+        result = self.run_workflow("archive", HONKPASS_CI_SIGNING_IDENTITY="invalid",
+                                   HONKPASS_CI_EXPORT_OPTIONS="missing")
+        self.assertNotEqual(result.returncode, 0)
+        self.assertEqual(self.calls(), [])
+
     def prepare_export(self):
         app = self.root / "export/HonkPass.app"
         app.mkdir(parents=True)
