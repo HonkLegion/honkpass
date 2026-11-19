@@ -91,7 +91,8 @@ class ReleaseAssetTests(unittest.TestCase):
             nonlocal remote
             calls.append(args)
             if args[0] == "api":
-                return json.dumps(remote).encode() if remote is not None else None
+                self.assertTrue(args[-1].endswith("/releases?per_page=100"))
+                return json.dumps([[{"tag_name": "v0.0.1"}], [remote] if remote else []]).encode()
             if args[:2] == ("release", "create"):
                 self.assertIn("--draft", args)
                 self.assertIn("--verify-tag", args)

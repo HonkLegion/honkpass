@@ -18,6 +18,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation, 
     private let navigation = VaultNavigation()
     private var appUpdater: MacAppUpdater?
     private var mainWindow: MainWindowController?
+    private var pendingCodeSetup: ItemDraft?
+    private var codeSetupExpiry: Task<Void, Never>?
     private var statusItem: StatusItemController?
     private var quickAccess: QuickAccessPanelController?
     private var sshApprovalWindow: SSHApprovalWindowController?
@@ -144,6 +146,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation, 
             if let productName = launch.productName { settings.productName = productName }
         }
         super.init()
+        model.onVaultOpened = { [weak self] in self?.presentCodeSetup() }
         if let server = launch.server { flow.serverURL = server }
         model.onVaultClosed = { [navigation] in navigation.closeItemViews() }
         navigation.sideNavigation = SideNavigationSize(saved: preferences.sideNavigationWidth.map { CGFloat($0) })
@@ -205,6 +208,11 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation, 
             preferences.canTakeShortcut = { [weak self] shortcut in self?.canTake(shortcut) ?? false }
             takeQuickAccessShortcut()
             preferences.onFillShortcutChanged = { [weak self] in self?.takeFillShortcut() }
+            preferences.onFillShortcutEnabled = { [model] in
+                Task {
+                    if !(await model.isFillAllowed()) { await model.askForFillPermission() }
+                }
+            }
             takeFillShortcut()
         }
         // The windows can be kept out of screenshots and remote sessions.
@@ -223,17 +231,18 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation, 
         }
         if let autoFill {
             // The switch of the settings: the system's AutoFill takes its logins from PassVault.
-            preferences.isAutoFillOn = autoFill.isOn
+            refreshAutoFillStatus()
             preferences.setAutoFillOn = { [weak self] isOn in
                 Task {
                     await autoFill.setOn(isOn)
-                    self?.preferences.isAutoFillOn = autoFill.isOn
+                    self?.refreshAutoFillStatus()
                 }
             }
             preferences.openAutoFillSettings = { autoFill.openSystemSettings() }
             Task { await autoFill.start() }
         }
         self.mainWindow = mainWindow
+        presentCodeSetup()
         applyScreenshotSetting()
         self.statusItem = statusItem
         // "Keep running in the background": the menu bar item is there only with it, and
@@ -355,8 +364,13 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation, 
     func applicationDidBecomeActive(_ notification: Notification) {
         // The user may come back from the settings of the system, where the agent is allowed.
         autoFill?.startIfNeeded()
-        if let autoFill { preferences.isAutoFillOn = autoFill.isOn }
+        refreshAutoFillStatus()
         if preferences.setOpenAtLogin != nil { preferences.isOpenAtLoginOn = SMAppService.mainApp.status == .enabled }
+    }
+
+    private func refreshAutoFillStatus() {
+        guard let autoFill else { return }
+        Task { preferences.isAutoFillOn = await autoFill.isOn }
     }
 
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows: Bool) -> Bool {
@@ -365,6 +379,51 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation, 
     }
 
     // MARK: Menu actions
+
+    func application(_ application: NSApplication, open urls: [URL]) {
+        guard urls.count == 1, let url = urls.first, url.absoluteString.utf8.count <= 4096,
+              let parts = URLComponents(url: url, resolvingAgainstBaseURL: false),
+              parts.scheme?.lowercased() == "otpauth", parts.host?.lowercased() == "totp",
+              parts.user == nil, parts.password == nil, parts.port == nil, parts.fragment == nil,
+              let query = parts.queryItems else { return }
+        let secrets = query.filter { $0.name == "secret" }
+        guard secrets.count == 1, let secret = secrets[0].value,
+              secret.range(of: #"^[A-Za-z2-7]+=*\z"#, options: .regularExpression) != nil else { return }
+        let label = parts.path.dropFirst().split(separator: ":", maxSplits: 1).map(String.init)
+        guard let first = label.first else { return }
+        let issuer = query.first { $0.name == "issuer" }?.value
+        var draft = ItemDraft(new: .login)
+        draft.name = issuer.flatMap { $0.isEmpty ? nil : $0 } ?? first
+        draft.content = .login(.init(username: label.last ?? "", verificationKey: url.absoluteString))
+        pendingCodeSetup = draft
+        codeSetupExpiry?.cancel()
+        codeSetupExpiry = Task { [weak self] in
+            do { try await Task.sleep(for: .seconds(300)) } catch { return }
+            self?.pendingCodeSetup = nil
+        }
+        mainWindow?.show()
+        presentCodeSetup()
+    }
+
+    private func presentCodeSetup() {
+        guard mainWindow != nil, model.state.session.isUnlocked, let draft = pendingCodeSetup else { return }
+        pendingCodeSetup = nil
+        codeSetupExpiry?.cancel()
+        codeSetupExpiry = nil
+        navigation.leaveForm { [navigation] in
+            navigation.closeItemViews()
+            navigation.page = .vault
+            navigation.filter = .allItems
+            let form = ItemForm(mode: .new, draft: ItemDraft(new: .login))
+            form.draft.name = draft.name
+            if case .login(let incoming) = draft.content, case .login(var login) = form.draft.content {
+                login.username = incoming.username
+                login.verificationKey = incoming.verificationKey
+                form.draft.content = .login(login)
+            }
+            navigation.itemForm = form
+        }
+    }
 
     @objc func showMainWindow(_ sender: Any?) {
         mainWindow?.show()

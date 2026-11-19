@@ -10,7 +10,6 @@ import shutil
 import subprocess
 import sys
 import tempfile
-from urllib.parse import quote
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "support"))
@@ -125,10 +124,13 @@ def draft(root, tag, directory):
     if any(manifest.get(key) != value for key, value in expected.items()):
         raise ValueError("Downloaded assets belong to another release.")
     files = validate_assets(directory, manifest)
-    route = f"repos/{REPOSITORY}/releases/tags/{quote(tag, safe='')}"
+    route = f"repos/{REPOSITORY}/releases?per_page=100"
     def current():
-        value = gh("api", "--hostname", "github.com", route, missing_ok=True)
-        return json.loads(value) if value is not None else None
+        pages = json.loads(gh("api", "--hostname", "github.com", "--paginate", "--slurp", route))
+        matches = [release for page in pages for release in page if release["tag_name"] == tag]
+        if len(matches) > 1:
+            raise ValueError("Multiple GitHub releases use this tag.")
+        return matches[0] if matches else None
     remote = current()
     if remote is None:
         notes = ("Native macOS client for Vaultwarden.\n\n"
@@ -138,6 +140,8 @@ def draft(root, tag, directory):
         gh("release", "create", tag, "--repo", REPOSITORY, "--verify-tag", "--draft",
            "--title", f"HonkPass {expected['version']} ({expected['build']})", "--notes", notes)
         remote = current()
+        if remote is None:
+            raise ValueError("GitHub created the draft but did not return it in the release list.")
     missing = missing_assets(remote, files, tag)
     if missing:
         gh("release", "upload", tag, "--repo", REPOSITORY, *[str(directory / name) for name in missing])

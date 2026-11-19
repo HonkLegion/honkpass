@@ -13,6 +13,7 @@ final class AppModel {
     let prefill: FakeAccount?
     /// Called when the vault stops being unlocked, with or without a window.
     @ObservationIgnored var onVaultClosed: (@MainActor () -> Void)?
+    @ObservationIgnored var onVaultOpened: (@MainActor () -> Void)?
     /// The independent SSH window follows the engine, including cancellation and lock.
     @ObservationIgnored var onSSHStateChanged: (@MainActor () -> Void)?
 
@@ -32,6 +33,7 @@ final class AppModel {
                 guard let self else { return }
                 let wasUnlocked = self.state.session.isUnlocked
                 self.state = state
+                if !wasUnlocked, state.session.isUnlocked { self.onVaultOpened?() }
                 if wasUnlocked, !state.session.isUnlocked { self.onVaultClosed?() }
                 self.onSSHStateChanged?()
             }

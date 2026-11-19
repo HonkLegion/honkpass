@@ -57,6 +57,12 @@ struct SmokeTest {
             check(LegalInformation.indexURL.map { FileManager.default.fileExists(atPath: $0.path) } == true,
                   "offline licenses are available from the app bundle")
             check(Self.holdsItsLaunchAgent, "the app holds the launch agent of AutoFill it would register, signed as it asks")
+            let setupURL = URL(string: "otpauth://totp/Example:demo?secret=JBSWY3DPEHPK3PXP&issuer=Example")!
+            let schemes = Bundle.main.infoDictionary?["CFBundleURLTypes"] as? [[String: Any]]
+            check(schemes?.contains { ($0["CFBundleURLSchemes"] as? [String])?.contains("otpauth") == true } == true,
+                  "the installed bundle declares verification code setup")
+            (NSApp.delegate as? AppDelegate)?.application(NSApp, open: [setupURL])
+            check(navigation.itemForm == nil, "code setup waits for unlock")
 
             try? await model.logIn(server: account.server, email: account.email, masterPassword: account.masterPassword)
             if let twoStep = model.prefill?.twoStep {
@@ -73,6 +79,12 @@ struct SmokeTest {
             await wait { model.state.session.isUnlocked }
             await settle()
             check(model.state.session.isUnlocked, "log-in unlocks the vault")
+            if case .login(let login) = navigation.itemForm?.draft.content {
+                check(navigation.itemForm?.draft.name == "Example" && login.username == "demo"
+                      && login.verificationKey == setupURL.absoluteString, "code setup opens a reviewable login draft")
+            } else { check(false, "code setup opens the editor after unlock") }
+            navigation.itemForm = nil
+            await settle()
             check(showsItemList, "the window shows the item list")
             mainWindow.window.miniaturize(nil)
             await wait { mainWindow.window.isMiniaturized }
@@ -725,6 +737,12 @@ struct SmokeTest {
             if let defaults = UserDefaults(suiteName: shortcutSuite) {
                 defer { defaults.removePersistentDomain(forName: shortcutSuite) }
                 let saved = AppPreferences(defaults: defaults)
+                var permissionChecks = 0
+                saved.onFillShortcutEnabled = { permissionChecks += 1 }
+                saved.isFillShortcutOn = true
+                saved.isFillShortcutOn = true
+                saved.isFillShortcutOn = false
+                check(permissionChecks == 1, "enabling shortcut filling immediately checks its permission once")
                 check(saved.isQuickAccessShortcutOn, "quick access stays enabled when no switch preference exists")
                 var changes = 0
                 saved.onQuickAccessShortcutChanged = { changes += 1 }

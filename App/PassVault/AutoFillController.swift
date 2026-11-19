@@ -82,7 +82,10 @@ final class AutoFillController {
 
     /// The launch agent is registered and the user allows it among the background items.
     var isOn: Bool {
-        agentStatus == .enabled
+        get async {
+            let provider = await ASCredentialIdentityStore.shared.state()
+            return agentStatus == .enabled && provider.isEnabled
+        }
     }
 
     /// Turns the system's AutoFill on or off, on the word of the user in the settings. On:
@@ -98,6 +101,11 @@ final class AutoFillController {
         do {
             try await lifecycle.setEnabled(isOn)
             if isOn {
+                if agentStatus == .requiresApproval {
+                    SMAppService.openSystemSettingsLoginItems()
+                    return
+                }
+                guard !(await ASCredentialIdentityStore.shared.state().isEnabled) else { return }
                 let accepted = await ASSettingsHelper.requestToTurnOnCredentialProviderExtension()
                 log.info("The system asked the user to turn the extension on; turned on: \(accepted, privacy: .public)")
             }

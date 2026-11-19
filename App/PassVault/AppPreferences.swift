@@ -83,6 +83,7 @@ final class AppPreferences {
             guard isFillShortcutOn != oldValue else { return }
             defaults?.set(isFillShortcutOn, forKey: Key.isFillShortcutOn)
             onFillShortcutChanged?()
+            if isFillShortcutOn { onFillShortcutEnabled?() }
         }
     }
     var fillShortcut: BWKeyShortcut {
@@ -95,6 +96,7 @@ final class AppPreferences {
     /// false when the shortcut is on and the system did not give it: another app has it.
     var isFillShortcutAvailable = true
     @ObservationIgnored var onFillShortcutChanged: (() -> Void)?
+    @ObservationIgnored var onFillShortcutEnabled: (() -> Void)?
 
     func shortcut(_ which: Shortcut) -> BWKeyShortcut {
         which == .quickAccess ? quickAccessShortcut : fillShortcut

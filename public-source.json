@@ -1,5 +1,5 @@
 {
-  "build": "12",
+  "build": "13",
   "files": {
     ".github/actionlint.yaml": {
       "executable": false,
@@ -23,7 +23,7 @@
     },
     "App/PassVault/AppDelegate.swift": {
       "executable": false,
-      "sha256": "aa937d748348e170de68c857d0dea9aee802e674c049e91f68041e8c6d0f4583"
+      "sha256": "b7a54ab03f1c34aed19a32cf7c476b1fa2463b6c79484d62c4f91ba15e048059"
     },
     "App/PassVault/AppIcon.icon/Assets/GooseKey.png": {
       "executable": false,
@@ -35,15 +35,15 @@
     },
     "App/PassVault/AppModel.swift": {
       "executable": false,
-      "sha256": "d0704f91c5a1c5a2d77267e432581d9ddd79e1c982fe12aefbf29a5a1ad8ff60"
+      "sha256": "8eddb5732193d683a94cfb593ac81a8663bc4bc34486fb8bedccc1e78842006d"
     },
     "App/PassVault/AppPreferences.swift": {
       "executable": false,
-      "sha256": "ad0cad5b19f72a2001e3a208dc70966d48aeb20510530440efa75e0e6202bbaa"
+      "sha256": "519584a7a29bccfb2364dc2f82c961c924cad78be6d4b9feaed77d9533dfa74a"
     },
     "App/PassVault/AutoFillController.swift": {
       "executable": false,
-      "sha256": "45859b80977ac91779c0522c6099e216068fdc6762dabb5bc8d3424931f7d0ce"
+      "sha256": "563863d5b983c549c89b12b6152a34d6787f511f8c52ccf5edcbf6b898bb4497"
     },
     "App/PassVault/FileWorkSmokeChecks.swift": {
       "executable": false,
@@ -59,7 +59,7 @@
     },
     "App/PassVault/Info.plist": {
       "executable": false,
-      "sha256": "54ee7cf9daa2190328c18d3fc92eb03417a11f7785aa29c008dadc7f6c635272"
+      "sha256": "57d78abfaa6c268e16139f80ad57313c36bca9f59fdaf7d23eb08b413b3ff421"
     },
     "App/PassVault/ItemActions.swift": {
       "executable": false,
@@ -1307,7 +1307,7 @@
     },
     "App/PassVault/SmokeTest.swift": {
       "executable": false,
-      "sha256": "909a0f2ba17e33d4086abc917f274efb78c8c9411d76b4449799a058a99e9da1"
+      "sha256": "6a1a924575080fb3f6cf6924eef4ab252ba810913294563235fa5d9b7dfde534"
     },
     "App/PassVault/StartGuard.swift": {
       "executable": false,
@@ -2255,7 +2255,7 @@
     },
     "project.yml": {
       "executable": false,
-      "sha256": "c32bd9567ecac4742514a81433ae86f1ae0e68a60fb49822f7929f84a70acfdc"
+      "sha256": "57a88dcb72ad46f876fc90b44a3eeaed6983712aeeeb81819f33932b22ab0697"
     },
     "scripts/archive-developer-id.fish": {
       "executable": false,
@@ -2267,7 +2267,7 @@
     },
     "scripts/ci_release.py": {
       "executable": false,
-      "sha256": "e56ab9ddb51919426110cc161f4a813a3baa85ee8d463b6e708bcd13afc39123"
+      "sha256": "1382bfc6af658d630c43ed379040991edf281d74595b6e61ba2e1f8af96095a5"
     },
     "scripts/ci_signing.py": {
       "executable": false,
@@ -2339,7 +2339,7 @@
     },
     "scripts/test_ci_release.py": {
       "executable": false,
-      "sha256": "bad9a479b9988bf3fb433a0861686bfa71f993617d1b0298990275a6327a6999"
+      "sha256": "b1b396949bbf0a5243970674ed79da69686a9eb3c7e77d1d05d0dd2d50187dd4"
     },
     "scripts/test_public_source.py": {
       "executable": false,
@@ -2468,7 +2468,7 @@
     "sha256": "965f7081df13756c47091029135a661ad6075bf7ca9ece65884aa33c6fdebd0c",
     "version": "0.1.9"
   },
-  "source_revision": "8632cd5d116a0d387b075031434f0a9f5a7b8e77",
-  "tag": "v0.1.11",
-  "version": "0.1.11"
+  "source_revision": "8ab8febaa7ebc70224e5b889a525166eabf29053",
+  "tag": "v0.1.12",
+  "version": "0.1.12"
 }
