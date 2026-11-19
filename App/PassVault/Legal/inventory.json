@@ -70,8 +70,8 @@
     "Sources/DesignKit/Resources/Illustrations/vault-light.svg": "f2dbf9000f0b4327d1d7a3768f354340422e23762c0f95f192076e5799795b06",
     "Sources/DesignKit/Resources/Locales/cs.json": "a71320e45791ec550c89aae6cd033c3624bc4b961a8fa712ccc0ccdc7fef5824",
     "Sources/DesignKit/Resources/Locales/en.json": "5ccd6399ede8d3aa07076cca84b0dd96e431c49a2d5caa5a645f2e46c33a3d37",
-    "Sources/DesignKit/Resources/Locales/honkpass-cs.json": "4046140f568392b79768c16832f035a2330fd83622110aa8fb5c78502ba64edd",
-    "Sources/DesignKit/Resources/Locales/honkpass-en.json": "2591f6d093340e0ed535cfc93b4c55ff215347352e9185885537fa2d7600a2ec",
+    "Sources/DesignKit/Resources/Locales/honkpass-cs.json": "19882e91230ef9cfe056cb4409354acecd34823fbba2fe2e738e31799f50f580",
+    "Sources/DesignKit/Resources/Locales/honkpass-en.json": "7d607c36e654234d6da97928e267d90e568e24604f3f3a60c19674dc566ffbb1",
     "Sources/VaultModel/Resources/public-suffixes.txt": "8def377e317703a6533b9cc388e86cbfca46374292b9f61fb8686205885a5e32",
     "App/PassVault/AppIcon.icon/Assets/GooseKey.png": "63c5847b6cc0c16ee0bcacd33487a3780466ee8575799ad64bccea5d77190d1e",
     "App/PassVault/AppIcon.icon/icon.json": "3daff21c43a42d935ca9e3807dc57a935452f0dabbf8d0fd7c1b3500142ec007"

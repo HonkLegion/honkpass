@@ -1,4 +1,9 @@
 {
+  "honkpassQuickName": { "m": "Username" },
+  "honkpassQuickCode": { "m": "2FA code" },
+  "honkpassQuickNewWindow": { "m": "Open item in a new window" },
+  "honkpassQuickOpenMain": { "m": "Show in HonkPass" },
+  "honkpassQuickOpenBrowser": { "m": "Open in browser" },
   "honkpassAutoFillUnavailable": { "m": "Unable to connect to HonkPass" },
   "honkpassAutoFillUnavailableDescription": { "m": "Open HonkPass and turn on system AutoFill in its settings. This connection problem does not mean that the vault is locked." },
   "honkpassChooseApp": { "m": "Choose an application" },

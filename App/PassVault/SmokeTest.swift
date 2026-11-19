@@ -887,13 +887,19 @@ struct SmokeTest {
                 quickAccess.window.press(.command("u"))
                 await wait { said("username") }
                 check(said("username") && quickAccess.isShown, "Command-U in quick access copies the user name of the row the keyboard is on")
-                quickAccess.navigation.openCopyMenuItemID = row
+                let compactFrame = quickAccess.window.frame
+                if let match = model.state.vault.quickAccessRows(search: login.name).first(where: { $0.id == row }) {
+                    quickAccess.state.showActions(for: match)
+                }
                 await settle()
+                check(quickAccess.window.frame.height > compactFrame.height &&
+                      abs(quickAccess.window.frame.maxY - compactFrame.maxY) < 1,
+                      "item actions expand the window downward")
                 quickAccess.window.press(.down)
                 quickAccess.window.press(.return)
                 await wait { said("password") }
-                check(said("password") && quickAccess.isShown && quickAccess.navigation.openCopyMenuItemID == nil,
-                      "the copy menu of a row copies the password, and the panel stays open")
+                check(said("password") && quickAccess.isShown && quickAccess.state.detailRowID == row,
+                      "the item action copies the selected password and keeps the panel open")
                 let listed = { @MainActor in model.state.vault.items.first { $0.id == login.id } }
                 for _ in 0..<2 {
                     // The first item of the menu sets the favourite mark, and takes it away again.
@@ -904,6 +910,26 @@ struct SmokeTest {
                     await wait { listed()?.isFavorite == !wasFavorite }
                     check(listed()?.isFavorite == !wasFavorite && quickAccess.isShown, "the menu of a row changes the favourite mark from the panel")
                 }
+                quickAccess.window.press(.escape)
+                await settle()
+                check(quickAccess.state.detailRowID == nil && quickAccess.state.search == login.name &&
+                      quickAccess.state.selectedRowID == row && quickAccess.window.frame == compactFrame,
+                      "Escape restores the filtered list, selection and compact frame")
+                quickAccess.window.press(.command("o"))
+                await wait { NSApp.windows.contains { $0 is QuickItemWindow && $0.isVisible } }
+                let detached = NSApp.windows.compactMap { $0 as? QuickItemWindow }.first { $0.isVisible }
+                check(detached?.itemNavigation.openItemID == login.id && !quickAccess.isShown,
+                      "the shortcut opens the selected item in its own window")
+                detached?.close()
+                quickAccess.show()
+                await settle()
+                quickAccess.window.press(.right)
+                await wait { quickAccess.state.detailRowID != nil }
+                quickAccess.window.press(.left)
+                check(quickAccess.isShown && quickAccess.state.detailRowID == nil,
+                      "Right opens item actions and Left returns to results")
+                quickAccess.state.search = login.name
+                await settle()
                 // Fill: the fake backend has a field of its own in place of one of another app.
                 if let fakeActiveField {
                     let password = await (try? model.item(id: login.id))?.value(of: .password)
@@ -1018,7 +1044,9 @@ struct SmokeTest {
                     check(quickAccess.isShown && quickAccess.navigation.toasts.toasts.contains { $0.message == failed } && afterFailure == 1,
                           "a field that is gone is not filled: the panel comes back and says so")
                     await settle()
-                    check(quickAccess.state.search.isEmpty && quickAccess.window.frame.height == Metric.quickAccessHeight,
+                    let restoredRows = model.state.vault.quickAccessRows(search: "").count
+                    check(quickAccess.state.search.isEmpty && quickAccess.window.frame.height
+                          == QuickAccessStyle.panelHeight(rowCount: restoredRows, isUnlocked: true),
                           "a failed fill restores the full result list at its expanded height")
 
                     // Without the permission of the system there is no field, and "fill" asks the system for it.
@@ -1197,6 +1225,10 @@ struct SmokeTest {
                     quickAccess.state.search = login.name
                     await settle()
                 }
+                if let match = model.state.vault.quickAccessRows(search: login.name).first(where: { $0.id == row }) {
+                    quickAccess.state.showActions(for: match)
+                }
+                await settle()
                 quickAccess.navigation.openMenuItemID = row
                 await settle()
                 quickAccess.window.press(.down)

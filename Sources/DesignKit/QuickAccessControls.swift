@@ -19,6 +19,21 @@ public enum QuickAccessStyle {
     }
 }
 
+/// Shared hover treatment for the keyboard and pointer actions in the glass picker.
+public struct QuickAccessButtonStyle: ButtonStyle {
+    @State private var hovered = false
+
+    public init() {}
+    public func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .foregroundStyle(Color.primary.opacity(hovered || configuration.isPressed ? 1 : 0.82))
+            .background(RoundedRectangle(cornerRadius: 7)
+                .fill(Color.primary.opacity(configuration.isPressed ? 0.18 : hovered ? 0.13 : 0)))
+            .contentShape(Rectangle())
+            .onHover { hovered = $0 }
+    }
+}
+
 /// Borderless search on the panel's system glass. It retains the existing focus requests
 /// and the first-Escape-clears behavior without drawing an opaque field over the material.
 public struct QuickAccessSearchField: View {

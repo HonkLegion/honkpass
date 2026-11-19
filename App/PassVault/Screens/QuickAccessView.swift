@@ -7,24 +7,19 @@ import VaultModel
 /// existing model; the controller retains the fill and authorization flow.
 struct QuickAccessView: View {
     struct Actions {
-        let close: @MainActor () -> Void
         let showMainWindow: @MainActor () -> Void
-        let openItem: @MainActor (String) -> Void
+        let perform: @MainActor (QuickItemAction, QuickAccessSection.Row) -> Void
         /// Runs an action of an item in the main window, which has the form and the questions.
         let inMainWindow: @MainActor (@escaping @MainActor (ItemActions) -> Void) -> Void
-        /// Fills the field of the app in front with a field of an item. The panel closes for it.
-        let fill: @MainActor (ItemField, VaultItemSummary) -> Void
         /// A key of the panel: an arrow, Return or Escape. false while a menu or a question has the keyboard.
         let key: @MainActor (QuickAccessPanelController.Key) -> Bool
-        /// "Fill" of a row: its one field, or the menu of its fields.
-        let chooseFill: @MainActor (QuickAccessSection.Row) -> Void
         /// A field to fill was chosen.
         let requestFill: @MainActor (ItemField, VaultItemSummary) -> Void
         /// The answer to the question before a fill.
         let answerFill: @MainActor (QuickAccessState.FillAnswer) -> Void
         /// Opens the locked vault with Touch ID, here in the panel.
         let unlockWithTouchID: @MainActor () -> Void
-        let resize: @MainActor (CGFloat) -> Void
+        let resize: @MainActor (CGFloat, Bool) -> Void
     }
 
     let model: AppModel
@@ -51,16 +46,20 @@ struct QuickAccessView: View {
         }
     }
 
-    private func desiredHeight(rowCount: Int) -> CGFloat {
-        QuickAccessStyle.panelHeight(rowCount: rowCount, isUnlocked: model.state.session.isUnlocked,
-                                    showsQuestion: state.pendingFill != nil || navigation.protectedAction != nil)
-    }
-
     private func presentedContent(rows: [QuickAccessSection.Row]) -> some View {
+        let detail = state.detailRowID.flatMap { id in rows.first { $0.id == id } }
+        let question = state.pendingFill != nil || navigation.protectedAction != nil
+        let showsDetail = model.state.session.isUnlocked && detail != nil && !question
+        let height = if showsDetail, let detail {
+            Metric.quickAccessChromeHeight + Metric.quickAccessDetailRowHeight + 12
+                + CGFloat(QuickItemAction.offered(for: detail.item).count) * Metric.quickAccessActionHeight
+        } else {
+            QuickAccessStyle.panelHeight(rowCount: rows.count, isUnlocked: model.state.session.isUnlocked, showsQuestion: question)
+        }
         return Group {
             switch model.state.session {
             case .unlocked:
-                vault(rows: rows)
+                vault(rows: rows, detail: detail)
             case .locked(let account):
                 // Touch ID opens the vault here: it needs nothing typed. The master password and
                 // the PIN are on the lock screen of the main window.
@@ -114,7 +113,12 @@ struct QuickAccessView: View {
         .onChange(of: isBusy) { _, isBusy in
             if !isBusy { state.focusRequest += 1 }
         }
-        .onChange(of: desiredHeight(rowCount: rows.count), initial: true) { _, height in actions.resize(height) }
+        .onChange(of: PanelSize(height: height, detail: showsDetail), initial: true) { old, new in
+            actions.resize(new.height, old.detail != new.detail && !question && model.state.session.isUnlocked)
+        }
+        .onChange(of: detail?.id) {
+            if detail == nil { state.detailRowID = nil }
+        }
         // The keys of the panel are the controller's, which also gets them when no view has the keyboard.
         .onKeyPress(.downArrow) { actions.key(.down) ? .handled : .ignored }
         .onKeyPress(.upArrow) { actions.key(.up) ? .handled : .ignored }
@@ -122,11 +126,11 @@ struct QuickAccessView: View {
         .onKeyPress(.escape) { actions.key(.escape) ? .handled : .ignored }
     }
 
-    private func vault(rows: [QuickAccessSection.Row]) -> some View {
+    private struct PanelSize: Equatable { let height: CGFloat; let detail: Bool }
+
+    private func vault(rows: [QuickAccessSection.Row], detail: QuickAccessSection.Row?) -> some View {
         // Compute the list and selection once, not again for every row and its buttons.
         let selected = rows.first { $0.id == state.selectedRowID } ?? rows.first
-        // A scene or an already-open menu can address another row. Keep its anchor alive.
-        let actionRow = rows.first { $0.id == navigation.openMenuItemID || $0.id == navigation.openCopyMenuItemID } ?? selected
         return VStack(spacing: 0) {
             QuickAccessSearchField(text: $state.search, focusRequest: state.focusRequest)
             targetContext
@@ -137,6 +141,8 @@ struct QuickAccessView: View {
                              title: BWText[isSearch ? "noItemsMatchSearch" : "yourVaultIsEmpty"],
                              description: BWText[isSearch ? "clearFiltersOrTryAnother" : "emptyVaultDescription"]) { EmptyView() }
                     .frame(maxHeight: .infinity)
+            } else if let detail {
+                detailActions(detail)
             } else {
                 BWScrollView(scrollTarget: selected.map { BWScrollTarget(id: $0.id) }) {
                     LazyVStack(spacing: 0) {
@@ -151,7 +157,7 @@ struct QuickAccessView: View {
                 }
                 .clipped()
             }
-            footer(actionRow, count: rows.count)
+            footer(detail ?? selected, count: rows.count, isDetail: detail != nil)
         }
     }
 
@@ -188,7 +194,7 @@ struct QuickAccessView: View {
         return item.subtitle.isEmpty ? "(\(owner))" : "\(item.subtitle) (\(owner))"
     }
 
-    private func resultRow(_ row: QuickAccessSection.Row, isSelected: Bool) -> some View {
+    private func resultRow(_ row: QuickAccessSection.Row, isSelected: Bool, isDetail: Bool = false) -> some View {
         let item = row.item
         let fields = QuickAccessState.fillFields(of: item)
         let active = isSelected || hoveredRowID == row.id || state.fillMenuRowID == row.id
@@ -197,13 +203,16 @@ struct QuickAccessView: View {
         return HStack(spacing: 16) {
             Button {
                 state.selectedRowID = row.id
+                if isDetail { _ = actions.key(.left) }
             } label: {
                 HStack(spacing: 12) {
                     ItemRowIcon(model: model, item: item)
                         .frame(width: 32, height: 32)
-                    VStack(alignment: .leading, spacing: 2) {
+                    let layout = isDetail ? AnyLayout(VStackLayout(alignment: .leading, spacing: 2))
+                        : AnyLayout(HStackLayout(alignment: .firstTextBaseline, spacing: 8))
+                    layout {
                         Text(item.name).font(QuickAccessStyle.title).foregroundStyle(.primary)
-                            .lineLimit(1).help(item.name)
+                            .lineLimit(1).help(item.name).layoutPriority(1)
                         let subtitle = subtitle(item)
                         if !subtitle.isEmpty {
                             Text(subtitle).font(QuickAccessStyle.subtitle).foregroundStyle(.secondary)
@@ -216,52 +225,114 @@ struct QuickAccessView: View {
             }
             .buttonStyle(.plain)
             .accessibilityAddTraits(isSelected ? .isSelected : [])
+            if !isDetail {
+                Button {
+                    state.selectedRowID = row.id
+                    actions.perform(canFill ? .fill : .openMain, row)
+                } label: {
+                    HStack(spacing: 8) {
+                        Text(BWText[canFill ? "fill" : "view"])
+                        if isSelected, canFill == returnFills { Image(systemName: "return").accessibilityHidden(true) }
+                    }
+                    .font(QuickAccessStyle.subtitle)
+                    .padding(.horizontal, 7).frame(height: 30)
+                }
+                .buttonStyle(QuickAccessButtonStyle())
+                .opacity(active ? 1 : 0)
+                .allowsHitTesting(active)
+                .accessibilityHidden(!active)
+                .bwMenu(isOpen: Binding(get: { state.fillMenuRowID == row.id },
+                                        set: { if !$0 { state.fillMenuRowID = nil } })) {
+                    fields.map { field in
+                        BWMenuItem(BWText[ItemCopier.toastKey(for: field)]) { actions.requestFill(field, item) }
+                    }
+                }
+            }
             Button {
-                state.selectedRowID = row.id
-                if canFill { actions.chooseFill(row) } else { actions.openItem(item.id) }
+                if isDetail { _ = actions.key(.left) } else { state.showActions(for: row) }
             } label: {
-                HStack(spacing: 8) {
-                    Text(BWText[canFill ? "fill" : "view"])
-                    if isSelected, canFill == returnFills { Image(systemName: "return").accessibilityHidden(true) }
-                }
+                Image(systemName: isDetail ? "xmark" : "chevron.right")
+                    .font(QuickAccessStyle.subtitle).frame(width: 32, height: 30)
             }
-            .buttonStyle(.glassProminent)
-            .buttonBorderShape(.capsule)
-            .controlSize(.regular)
-            .opacity(active ? 1 : 0)
-            .allowsHitTesting(active)
-            .accessibilityHidden(!active)
-            .bwMenu(isOpen: Binding(get: { state.fillMenuRowID == row.id },
-                                    set: { if !$0 { state.fillMenuRowID = nil } })) {
-                fields.map { field in
-                    BWMenuItem(BWText[ItemCopier.toastKey(for: field)]) { actions.requestFill(field, item) }
-                }
-            }
+            .buttonStyle(QuickAccessButtonStyle())
+            .accessibilityLabel(isDetail ? BWText["back"] : BWText["moreOptions"] + " · " + item.name)
         }
         .padding(.horizontal, 12)
-        .frame(height: Metric.quickAccessRowHeight)
+        .frame(height: isDetail ? Metric.quickAccessDetailRowHeight : Metric.quickAccessRowHeight)
         .background(RoundedRectangle(cornerRadius: Metric.quickAccessRowRadius)
             .fill(isSelected ? QuickAccessStyle.selection : (hoveredRowID == row.id ? QuickAccessStyle.hover : .clear)))
     }
 
-    private func footer(_ row: QuickAccessSection.Row?, count: Int) -> some View {
-        HStack(spacing: 16) {
+    private func detailActions(_ row: QuickAccessSection.Row) -> some View {
+        VStack(spacing: 0) {
+            resultRow(row, isSelected: true, isDetail: true)
+                .padding(.horizontal, 12).padding(.vertical, 6)
+            Divider().padding(.horizontal, 16)
+            ScrollViewReader { proxy in
+                ScrollView {
+                    VStack(spacing: 0) {
+                        ForEach(QuickItemAction.offered(for: row.item), id: \.self) { action in
+                            if action == .openWindow { Divider().padding(.vertical, 4) }
+                            Button {
+                                state.markedAction = action
+                                actions.perform(action, row)
+                            } label: {
+                                HStack {
+                                    Text(action.title(target: state.target))
+                                    Spacer()
+                                    if let shortcut = action.shortcut { Text(shortcut).foregroundStyle(.secondary) }
+                                }
+                                .padding(.horizontal, 10)
+                                .frame(height: Metric.quickAccessActionHeight)
+                            }
+                            .buttonStyle(QuickAccessButtonStyle())
+                            .background(RoundedRectangle(cornerRadius: 7)
+                                .fill(state.markedAction == action ? QuickAccessStyle.selection : .clear))
+                            .id(action)
+                            .bwMenu(isOpen: Binding(get: { action == .fill && state.fillMenuRowID == row.id },
+                                                    set: { if !$0 && action == .fill { state.fillMenuRowID = nil } })) {
+                                QuickAccessState.fillFields(of: row.item).map { field in
+                                    BWMenuItem(BWText[ItemCopier.toastKey(for: field)]) { actions.requestFill(field, row.item) }
+                                }
+                            }
+                        }
+                    }.padding(.horizontal, 12).padding(.vertical, 4)
+                }
+                .onChange(of: state.markedAction) { _, action in if let action { proxy.scrollTo(action) } }
+            }
+        }.font(QuickAccessStyle.menu)
+    }
+
+    private func footer(_ row: QuickAccessSection.Row?, count: Int, isDetail: Bool) -> some View {
+        HStack(spacing: 5) {
             Text(BWText["honkpassQuickItemCount", "\(count)"])
             Spacer(minLength: 8)
-            Text(BWText["honkpassQuickChoose"])
-            if let row {
-                if row.item.type == .login, row.item.fields.contains(.website) {
-                    BWIconButton(.externalLink, label: BWText["launchWebsite"], size: .small) {
-                        ItemCopier(model: model, navigation: navigation).launch(row.item)
-                    }
+            if isDetail, let row {
+                if !model.state.vault.organizations.isEmpty {
+                    Label(model.state.vault.organizationName(of: row.item) ?? BWText["myVault"], systemImage: "archivebox")
                 }
-                ItemCopyActions(model: model, navigation: navigation, item: row.item, showsQuickCopy: false, menuID: row.id)
                 BWIconButton(.ellipsisV, label: BWText["moreOptions"], size: .small) { navigation.openMenuItemID = row.id }
                     .bwMenu(isOpen: Binding(get: { navigation.openMenuItemID == row.id },
                                             set: { if !$0 { navigation.openMenuItemID = nil } })) { moreOptions(row.item) }
+            } else if row?.item.type == .login || row == nil {
+                ForEach(QuickItemAction.loginFields, id: \.self) { field in
+                    let action = QuickItemAction.copy(field)
+                    Button {
+                        if let row { actions.perform(action, row) }
+                    } label: {
+                        HStack(spacing: 5) {
+                            Text(BWText[field == .username ? "honkpassQuickName" : field == .verificationCode ? "honkpassQuickCode" : "password"])
+                            Text(action.shortcut ?? "").font(QuickAccessStyle.caption)
+                        }.padding(.horizontal, 6).frame(height: 28)
+                    }
+                    .buttonStyle(QuickAccessButtonStyle())
+                    .disabled(row?.item.fields.contains(field) != true)
+                    .help(action.title(target: state.target))
+                    .accessibilityLabel(action.title(target: state.target))
+                }
+            } else if let row {
+                ItemCopyActions(model: model, navigation: navigation, item: row.item, showsQuickCopy: false, menuID: row.id)
             }
-            Button(action: actions.close) { Text("esc  " + BWText["close"]) }
-                .buttonStyle(.plain)
         }
         .font(QuickAccessStyle.caption)
         .foregroundStyle(.secondary)

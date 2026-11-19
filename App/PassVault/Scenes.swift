@@ -25,7 +25,7 @@ struct SSHApprovalPreviewClock: Clock {
 
 /// A key of the keyboard that the scenes and the smoke test press in a window.
 enum TestKey: Equatable {
-    case down, up, `return`, escape, tab
+    case down, up, left, right, `return`, escape, tab
     /// A key that types this text.
     case text(String)
     /// A letter with the Command key: a shortcut, which goes to the window as a key equivalent.
@@ -35,6 +35,8 @@ enum TestKey: Equatable {
         switch self {
         case .down: 125
         case .up: 126
+        case .left: 123
+        case .right: 124
         case .return: 36
         case .escape: 53
         case .tab: 48
@@ -46,6 +48,8 @@ enum TestKey: Equatable {
         switch self {
         case .down: String(UnicodeScalar(NSDownArrowFunctionKey)!)
         case .up: String(UnicodeScalar(NSUpArrowFunctionKey)!)
+        case .left: String(UnicodeScalar(NSLeftArrowFunctionKey)!)
+        case .right: String(UnicodeScalar(NSRightArrowFunctionKey)!)
         case .return: "\r"
         case .escape: "\u{1B}"
         case .tab: "\t"
@@ -55,7 +59,7 @@ enum TestKey: Equatable {
 
     fileprivate var modifiers: NSEvent.ModifierFlags {
         switch self {
-        case .down, .up: [.numericPad, .function]
+        case .down, .up, .left, .right: [.numericPad, .function]
         case .command: .command
         default: []
         }
@@ -669,6 +673,9 @@ struct SceneDriver {
             NSApp.activate(ignoringOtherApps: true)
             if !scene.hasPrefix("ssh-approval") { mainWindow.window.makeKeyAndOrderFront(nil) }
             if showsQuickAccess {
+                // Preparing the scene can briefly move focus as the Dock policy changes.
+                // Restore normal dismissal once the synthetic panel owns the keyboard.
+                quickAccess.closesWithoutKeyboard = false
                 if scene == "quick-access-compact" || scene == "quick-access-single-vault" {
                     mainWindow.close()
                     await fakeActiveField?.setField(FillTarget(appName: "Safari", website: "https://shop.example.test", takesLogin: true))
@@ -687,8 +694,11 @@ struct SceneDriver {
                     if quickAccess.state.target == nil {
                         quickAccess.state.target = FillTarget(appName: "Safari", website: "https://shop.example.test", takesLogin: true)
                     }
-                case "quick-access-copy-menu": quickAccess.navigation.openCopyMenuItemID = row
-                case "quick-access-more-menu": quickAccess.navigation.openMenuItemID = row
+                case "quick-access-copy-menu", "quick-access-more-menu":
+                    if let detail = model.state.vault.quickAccessRows(search: quickAccess.state.search).first(where: { $0.id == row }) {
+                        quickAccess.state.showActions(for: detail)
+                        if scene == "quick-access-more-menu" { quickAccess.navigation.openMenuItemID = detail.id }
+                    }
                 // The toast alone: a picture run puts nothing on the clipboard of the Mac.
                 case "quick-access-copied":
                     quickAccess.navigation.toasts.show(.success, message: BWText["valueCopied", BWText["password"]])
@@ -732,6 +742,7 @@ struct SceneDriver {
             }
             if showsQuickAccess { print("SCENE WINDOW \(quickAccess.window.windowNumber)") }
             if showsQuickAccess, let glass = quickAccess.window.contentView as? NSGlassEffectView {
+                quickAccess.closesWithoutKeyboard = true
                 print("SCENE LAYOUT window=\(quickAccess.window.frame) glass=\(glass.frame) content=\(glass.contentView?.frame ?? .zero) hosted=\(glass.contentView?.subviews.first?.frame ?? .zero)")
             }
             if let pictured { print("SCENE WINDOW \(pictured.windowNumber)") }

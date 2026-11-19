@@ -22,6 +22,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation, 
     private var codeSetupExpiry: Task<Void, Never>?
     private var statusItem: StatusItemController?
     private var quickAccess: QuickAccessPanelController?
+    private var itemWindows: [QuickItemWindow] = []
     private var sshApprovalWindow: SSHApprovalWindowController?
     /// The app's side of the system's AutoFill. A test or picture run has none: it must not
     /// take the place of the app the user runs.
@@ -69,12 +70,12 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation, 
             let multiple = launch.scene == "quick-access-compact"
             fakeAccount.contents = VaultContents(items: [
                 VaultItemSummary(id: "quick-personal", type: .login, name: "Example Shop", subtitle: "alex@example.test",
-                                 fields: [.username, .password, .website], websites: [.init(address: "https://shop.example.test")]),
+                                 fields: [.username, .password, .verificationCode, .website], websites: [.init(address: "https://shop.example.test")]),
                 VaultItemSummary(id: "quick-work", type: .login, name: "Example Shop · práce", subtitle: "alex.work@example.test",
                                  fields: [.username, .password, .website], websites: [.init(address: "https://shop.example.test")],
                                  organizationID: multiple ? "quick-work-vault" : nil),
                 VaultItemSummary(id: "quick-admin", type: .login, name: "Example Shop · admin", subtitle: "admin@example.test",
-                                 fields: [.username, .password, .website], websites: [.init(address: "https://shop.example.test")]),
+                                 fields: [.username, .password, .verificationCode, .website], websites: [.init(address: "https://shop.example.test")]),
             ], folders: [], organizations: multiple ? [VaultOrganization(id: "quick-work-vault", name: "Práce")] : [])
         }
         #endif
@@ -176,15 +177,25 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation, 
                 navigation.openItemID = id
             }
             self?.showMainWindow(nil)
+        }, openItemWindow: { [weak self] id in
+            guard let self, model.state.session.isUnlocked else { return }
+            let window = QuickItemWindow(model: model, itemID: id)
+            window.sharingType = preferences.allowsScreenshots ? .readOnly : .none
+            window.didClose = { [weak self] closed in self?.itemWindows.removeAll { $0 === closed } }
+            itemWindows.append(window)
+            NSApp.activate(ignoringOtherApps: true)
+            window.makeKeyAndOrderFront(nil)
         }, inMainWindow: { [weak self, model, navigation] action in
             action(ItemActions(model: model, navigation: navigation))
             self?.showMainWindow(nil)
         })
         self.quickAccess = quickAccess
         // A lock or a logout also ends what the panel had open.
-        model.onVaultClosed = { [navigation, weak quickAccess] in
+        model.onVaultClosed = { [weak self, navigation, weak quickAccess] in
             navigation.closeItemViews()
             quickAccess?.navigation.closeItemViews()
+            quickAccess?.state.reset()
+            for window in self?.itemWindows ?? [] { window.close() }
         }
         let sshApprovalWindow = SSHApprovalWindowController(model: model, preferences: preferences)
         self.sshApprovalWindow = sshApprovalWindow
@@ -331,6 +342,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation, 
         let sharing: NSWindow.SharingType = preferences.allowsScreenshots ? .readOnly : .none
         mainWindow?.window.sharingType = sharing
         quickAccess?.window.sharingType = sharing
+        for window in itemWindows { window.sharingType = sharing }
         sshApprovalWindow?.window?.sharingType = sharing
     }
 
@@ -476,6 +488,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation, 
     /// without an open item or without that field. The password and the verification code of an
     /// item that asks for the master password wait for it; the toast is of the kind "info".
     private func copyFromOpenItem(_ field: ItemField, labelKey: String) {
+        let navigation = (NSApp.keyWindow as? QuickItemWindow)?.itemNavigation ?? self.navigation
         guard let id = navigation.openItemID, let item = model.state.vault.items.first(where: { $0.id == id }),
               item.fields.contains(field) else { return }
         let copy = { @MainActor [model, navigation] in

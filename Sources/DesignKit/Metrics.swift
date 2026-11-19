@@ -27,7 +27,9 @@ public enum Metric {
     public static let quickAccessRowRadius: CGFloat = 14
     public static let quickAccessInset: CGFloat = 24
     public static let quickAccessSearchHeight: CGFloat = 76
-    public static let quickAccessRowHeight: CGFloat = 60
+    public static let quickAccessRowHeight: CGFloat = 40
+    public static let quickAccessDetailRowHeight: CGFloat = 60
+    public static let quickAccessActionHeight: CGFloat = 32
     public static let quickAccessChromeHeight: CGFloat = 168
     public static let quickAccessLockedHeight: CGFloat = 360
     public static let quickAccessQuestionHeight: CGFloat = 600

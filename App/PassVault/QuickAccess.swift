@@ -2,8 +2,71 @@ import AppKit
 import DesignKit
 import Engine
 import Observation
+import QuartzCore
 import SwiftUI
 import VaultModel
+
+enum QuickItemAction: Hashable {
+    case copy(ItemField), openWindow, browser, fill, openMain
+
+    static let loginFields: [ItemField] = [.username, .password, .verificationCode]
+
+    static func offered(for item: VaultItemSummary) -> [Self] {
+        let fields: [ItemField]
+        switch item.type {
+        case .login: fields = loginFields
+        case .card: fields = [.cardNumber, .cardSecurityCode]
+        case .identity: fields = [.identityUsername, .identityEmail, .identityPhone, .identityAddress]
+        case .secureNote: fields = [.notes]
+        case .sshKey: fields = item.fields.contains(.sshKey) ? [.sshKey, .sshPublicKey, .sshFingerprint] : []
+        }
+        var options = fields.filter { item.fields.contains($0) || item.type == .sshKey }.map(Self.copy)
+        options.append(.openWindow)
+        if item.type == .login, item.fields.contains(.website) { options.append(.browser) }
+        if !QuickAccessState.fillFields(of: item).isEmpty { options.append(.fill) }
+        options.append(.openMain)
+        return options
+    }
+
+    var shortcut: String? {
+        switch self {
+        case .copy(.username): "⌘U"
+        case .copy(.password): "⌘P"
+        case .copy(.verificationCode): "⌘T"
+        case .copy: nil
+        case .openWindow: "⌘O"
+        case .browser: "⌥↩"
+        case .fill: "⇧↩"
+        case .openMain: "⇧⌘O"
+        }
+    }
+
+    func title(target: FillTarget?) -> String {
+        switch self {
+        case .copy(let field):
+            let key = switch field {
+            case .username, .identityUsername: "copyUsername"
+            case .password: "copyPassword"
+            case .verificationCode: "copyVerificationCode"
+            case .cardNumber: "copyNumber"
+            case .cardSecurityCode: "copySecurityCode"
+            case .identityEmail: "copyEmail"
+            case .identityPhone: "copyPhone"
+            case .identityAddress: "copyAddress"
+            case .sshKey: "copyPrivateKey"
+            case .sshPublicKey: "copyPublicKey"
+            case .sshFingerprint: "copyFingerprint"
+            case .notes: "copyNote"
+            case .website: "copyWebsite"
+            }
+            return BWText[key]
+        case .openWindow: return BWText["honkpassQuickNewWindow"]
+        case .openMain: return BWText["honkpassQuickOpenMain"]
+        case .browser: return BWText["honkpassQuickOpenBrowser"]
+        case .fill: return target.map { BWText["honkpassQuickFillTarget", $0.appName] } ?? BWText["fill"]
+        }
+    }
+}
 
 /// What the quick access window shows: the search text and the row the keyboard is on.
 @MainActor @Observable
@@ -12,10 +75,18 @@ final class QuickAccessState {
     var isPresented = false
     var hasKeyboard = false
     var search = "" {
-        didSet { if search != oldValue { selectedRowID = nil } }
+        didSet { if search != oldValue { selectedRowID = nil; detailRowID = nil } }
     }
     /// The row the arrow keys are on (`QuickAccessSection.Row.id`). nil is the first row.
     var selectedRowID: String?
+    var detailRowID: String?
+    var markedAction: QuickItemAction?
+
+    func showActions(for row: QuickAccessSection.Row) {
+        selectedRowID = row.id
+        detailRowID = row.id
+        markedAction = QuickItemAction.offered(for: row.item).first
+    }
     /// A new number puts the cursor into the search field.
     var focusRequest = 0
     /// The field that had the cursor in the app in front when the panel opened: where "fill"
@@ -68,7 +139,7 @@ final class QuickAccessState {
     }
 
     /// The fields of an item that "fill" offers: the ones a form asks for.
-    static func fillFields(of item: VaultItemSummary) -> [ItemField] {
+    nonisolated static func fillFields(of item: VaultItemSummary) -> [ItemField] {
         let all: [ItemField] = switch item.type {
         case .login: [.username, .password, .verificationCode]
         case .card: [.cardNumber, .cardSecurityCode]
@@ -81,6 +152,8 @@ final class QuickAccessState {
     func reset() {
         search = ""
         selectedRowID = nil
+        detailRowID = nil
+        markedAction = nil
         fillMenuRowID = nil
         pendingFill = nil
         focusRequest += 1
@@ -105,6 +178,8 @@ final class QuickAccessPanelController: NSObject, NSWindowDelegate {
     private let model: AppModel
     private let showMainWindow: @MainActor () -> Void
     private let openItem: @MainActor (String) -> Void
+    private let openItemWindow: @MainActor (String) -> Void
+    private var resizeTask: Task<Void, Never>?
     /// When a click elsewhere closed the panel. A click on the menu bar item may close the panel
     /// this way a moment before it asks to toggle it; it must not open it again then.
     private var closedByClickElsewhere: Date?
@@ -120,12 +195,14 @@ final class QuickAccessPanelController: NSObject, NSWindowDelegate {
     ///   - inMainWindow: runs an action of an item in the main window and shows it: a form or
     ///     a question, which the panel has no room for.
     init(model: AppModel, showMainWindow: @escaping @MainActor () -> Void, openItem: @escaping @MainActor (String) -> Void,
+         openItemWindow: @escaping @MainActor (String) -> Void,
          inMainWindow: @escaping @MainActor (@MainActor (ItemActions) -> Void) -> Void) {
         panel = QuickAccessPanel(contentRect: NSRect(origin: .zero, size: Self.size),
                                  styleMask: [.borderless, .nonactivatingPanel], backing: .buffered, defer: false)
         self.model = model
         self.showMainWindow = showMainWindow
         self.openItem = openItem
+        self.openItemWindow = openItemWindow
         super.init()
         panel.isFloatingPanel = true
         panel.level = .statusBar
@@ -140,30 +217,24 @@ final class QuickAccessPanelController: NSObject, NSWindowDelegate {
         panel.hasShadow = true
         panel.delegate = self
         let actions = QuickAccessView.Actions(
-            close: { [weak self] in self?.close() },
             showMainWindow: { [weak self] in
                 self?.close()
                 showMainWindow()
             },
-            openItem: { [weak self] id in
-                self?.close()
-                openItem(id)
-            },
+            perform: { [weak self] action, row in self?.perform(action, on: row) },
             inMainWindow: { [weak self] action in
                 self?.close()
                 inMainWindow(action)
             },
-            fill: { [weak self] field, item in self?.fill(field, of: item) },
             key: { [weak self] key in self?.press(key) ?? false },
-            chooseFill: { [weak self] row in self?.chooseFill(row) },
             requestFill: { [weak self] field, item in self?.requestFill(field, of: item) },
             answerFill: { [weak self] answer in self?.answerFill(answer) },
             unlockWithTouchID: { [weak self] in self?.unlockWithTouchID() },
-            resize: { [weak self] height in
+            resize: { [weak self] height, animated in
                 Task { @MainActor [weak self] in
                     await Task.yield()
                     guard let self, self.state.isPresented else { return }
-                    self.resize(to: height)
+                    self.resize(to: height, animated: animated)
                 }
             })
         let content = NSHostingView(rootView: QuickAccessView(model: model, state: state, navigation: navigation,
@@ -186,16 +257,36 @@ final class QuickAccessPanelController: NSObject, NSWindowDelegate {
     var window: NSWindow { panel }
 
     /// Keep the top edge stable as results shrink or an authorization question opens.
-    private func resize(to height: CGFloat) {
+    private func resize(to height: CGFloat, animated: Bool) {
+        resizeTask?.cancel()
         let visible = panel.screen?.visibleFrame ?? NSScreen.main?.visibleFrame
         let height = min(height, max(0, (visible?.height ?? height) - 12))
-        guard abs(panel.frame.height - height) > 0.5 else { return }
-        var frame = panel.frame
+        let start = panel.frame
+        guard abs(start.height - height) > 0.5 else { return }
+        var frame = start
         frame.origin.y = frame.maxY - height
         frame.size.height = height
         if let visible { frame.origin.y = max(frame.minY, visible.minY + 6) }
-        panel.setFrame(frame, display: true)
-        fitContentToPanel()
+        if !animated || NSWorkspace.shared.accessibilityDisplayShouldReduceMotion {
+            panel.setFrame(frame, display: true)
+            fitContentToPanel()
+            return
+        }
+        let target = frame
+        resizeTask = Task { @MainActor [weak self] in
+            let began = CACurrentMediaTime()
+            while let self, !Task.isCancelled, self.panel.isVisible {
+                let t = min(1, (CACurrentMediaTime() - began) / 0.22)
+                let progress = 1 - pow(1 - t, 3)
+                var next = start
+                next.size.height += (target.height - start.height) * progress
+                next.origin.y += (target.minY - start.minY) * progress
+                self.panel.setFrame(next, display: true)
+                self.fitContentToPanel()
+                if t == 1 { return }
+                try? await Task.sleep(for: .milliseconds(12))
+            }
+        }
     }
 
     private func fitContentToPanel() {
@@ -311,6 +402,7 @@ final class QuickAccessPanelController: NSObject, NSWindowDelegate {
     }
 
     func close() {
+        resizeTask?.cancel()
         isOpening = false
         state.isPresented = false
         state.hasKeyboard = false
@@ -384,8 +476,6 @@ final class QuickAccessPanelController: NSObject, NSWindowDelegate {
         return rows.first { $0.id == state.selectedRowID } ?? rows.first
     }
 
-    private var selectedItem: VaultItemSummary? { selectedRow?.item }
-
     /// A menu of a row is open, or a question: they have the keyboard, and the keys of the
     /// panel wait.
     var isBusy: Bool {
@@ -394,7 +484,7 @@ final class QuickAccessPanelController: NSObject, NSWindowDelegate {
     }
 
     enum Key {
-        case up, down, enter, escape
+        case up, down, left, right, enter, escape
     }
 
     /// What a key does in the panel, whichever of its views has the keyboard: the arrows go
@@ -409,6 +499,7 @@ final class QuickAccessPanelController: NSObject, NSWindowDelegate {
             switch key {
             case .enter: answerFill(state.markedFillAnswer)
             case .escape: answerFill(.cancel)
+            case .left, .right: return false
             case .up, .down:
                 // The arrows move over the answers of the question.
                 let current = answers.firstIndex(of: state.markedFillAnswer) ?? 0
@@ -417,7 +508,24 @@ final class QuickAccessPanelController: NSObject, NSWindowDelegate {
             return true
         }
         guard !isBusy else { return false }
+        if let detailID = state.detailRowID, let row = selectedRow, row.id == detailID {
+            let options = QuickItemAction.offered(for: row.item)
+            let index = state.markedAction.flatMap { options.firstIndex(of: $0) } ?? 0
+            switch key {
+            case .escape, .left:
+                state.detailRowID = nil
+                state.focusRequest += 1
+            case .up, .down: state.markedAction = options[min(max(index + (key == .down ? 1 : -1), 0), options.count - 1)]
+            case .enter: perform(options[index], on: row)
+            case .right: return false
+            }
+            return true
+        }
         switch key {
+        case .right:
+            guard model.state.session.isUnlocked, state.search.isEmpty, let row = selectedRow else { return false }
+            state.showActions(for: row)
+        case .left: return false
         case .escape:
             // The search has the keys of the panel, whichever view has the keyboard: as in the
             // field itself (handleInputKeydown of bit-search), the first Escape is its own.
@@ -445,8 +553,7 @@ final class QuickAccessPanelController: NSObject, NSWindowDelegate {
                 || (state.target?.takesValue == true && !QuickAccessState.fillFields(of: row.item).isEmpty) {
                 chooseFill(row)
             } else {
-                close()
-                openItem(row.item.id)
+                perform(.openMain, on: row)
             }
         case .up, .down:
             let rows = rows
@@ -463,6 +570,33 @@ final class QuickAccessPanelController: NSObject, NSWindowDelegate {
         guard model.state.session.isUnlocked, !isBusy else { return }
         state.search += text
         state.focusRequest += 1
+    }
+
+    private func perform(_ action: QuickItemAction, on row: QuickAccessSection.Row) {
+        guard state.isPresented, model.state.session.isUnlocked, !isBusy,
+              let current = model.state.vault.items.first(where: { $0.id == row.item.id }),
+              !current.isInTrash, !current.isArchived, !current.isUndecryptable,
+              QuickItemAction.offered(for: current).contains(action) else { return }
+        switch action {
+        case .copy(let field): ItemCopier(model: model, navigation: navigation).copy(field, of: current)
+        case .browser: ItemCopier(model: model, navigation: navigation).launch(current)
+        case .fill: chooseFill(row)
+        case .openWindow, .openMain:
+            navigation.perform(on: current) { [weak self] in
+                guard let self, state.isPresented, model.state.session.isUnlocked else { return }
+                close()
+                if action == .openWindow { openItemWindow(current.id) } else { openItem(current.id) }
+            }
+        }
+    }
+
+    fileprivate func actionShortcut(_ action: QuickItemAction) -> Bool {
+        // The main window can have a different item selected behind this panel.
+        // Always consume panel shortcuts, even when its own action is unavailable.
+        if !isBusy, model.state.session.isUnlocked, let row = selectedRow {
+            perform(action, on: row)
+        }
+        return true
     }
 
     /// The shortcut that fills without the panel, as the autotype shortcut of the reference.
@@ -569,10 +703,7 @@ final class QuickAccessPanelController: NSObject, NSWindowDelegate {
         default: nil
         }
         guard let field else { return false }
-        if model.state.session.isUnlocked, navigation.protectedAction == nil, let item = selectedItem, item.fields.contains(field) {
-            ItemCopier(model: model, navigation: navigation).copy(field, of: item)
-        }
-        return true
+        return actionShortcut(.copy(field))
     }
 
     /// A click elsewhere takes the keyboard from the panel: it closes.
@@ -598,12 +729,37 @@ final class QuickAccessPanel: NSPanel {
 
     /// Escape, when no view of the content took it.
     override func cancelOperation(_ sender: Any?) {
-        (delegate as? QuickAccessPanelController)?.close()
+        _ = (delegate as? QuickAccessPanelController)?.press(.escape)
+    }
+
+    override func sendEvent(_ event: NSEvent) {
+        if event.type == .keyDown, let controller = delegate as? QuickAccessPanelController,
+           event.modifierFlags.intersection([.command, .option, .shift, .control]).isEmpty {
+            let key: QuickAccessPanelController.Key? = switch event.keyCode {
+            case 124: .right
+            case 123 where controller.state.detailRowID != nil: .left
+            case 53 where controller.state.detailRowID != nil: .escape
+            default: nil
+            }
+            if let key, controller.press(key) { return }
+        }
+        super.sendEvent(event)
     }
 
     /// The copy shortcuts come before the application menu, whose items of the same keys copy
     /// from the item that is open in the main window.
     override func performKeyEquivalent(with event: NSEvent) -> Bool {
+        if event.type == .keyDown, let controller = delegate as? QuickAccessPanelController {
+            let mods = event.modifierFlags.intersection([.command, .option, .shift, .control])
+            if event.charactersIgnoringModifiers?.lowercased() == "o" {
+                if mods == .command, controller.actionShortcut(.openWindow) { return true }
+                if mods == [.command, .shift], controller.actionShortcut(.openMain) { return true }
+            }
+            if event.keyCode == 36 || event.keyCode == 76 {
+                if mods == .option, controller.actionShortcut(.browser) { return true }
+                if mods == .shift, controller.actionShortcut(.fill) { return true }
+            }
+        }
         if event.type == .keyDown, event.modifierFlags.intersection(.deviceIndependentFlagsMask) == .command,
            let key = event.charactersIgnoringModifiers?.lowercased(),
            (delegate as? QuickAccessPanelController)?.copyShortcut(key) == true {
@@ -622,10 +778,12 @@ final class QuickAccessPanel: NSPanel {
         case 53: .escape
         case 125: .down
         case 126: .up
+        case 123: .left
+        case 124: .right
         default: nil
         }
         if let key {
-            _ = controller.press(key)
+            if !controller.press(key) { super.keyDown(with: event) }
         } else if let text = event.characters, !text.isEmpty, event.modifierFlags.intersection([.command, .control]).isEmpty,
                   text.unicodeScalars.allSatisfy({ !CharacterSet.controlCharacters.contains($0) && !(0xF700...0xF8FF).contains($0.value) }) {
             controller.type(text)

@@ -1,4 +1,9 @@
 {
+  "honkpassQuickName": { "m": "Jméno" },
+  "honkpassQuickCode": { "m": "Kód 2FA" },
+  "honkpassQuickNewWindow": { "m": "Otevřít položku v novém okně" },
+  "honkpassQuickOpenMain": { "m": "Zobrazit v HonkPassu" },
+  "honkpassQuickOpenBrowser": { "m": "Otevřít v prohlížeči" },
   "honkpassAutoFillUnavailable": { "m": "Nelze se spojit s HonkPassem" },
   "honkpassAutoFillUnavailableDescription": { "m": "Otevřete HonkPass a v jeho nastavení zkontrolujte zapnutí systémového AutoFill. Trezor může být stále odemčený." },
   "honkpassChooseApp": { "m": "Vybrat aplikaci" },

@@ -25,9 +25,10 @@ final class StatusItemController: NSObject, NSMenuItemValidation {
         self.isUnlocked = isUnlocked
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         super.init()
-        let symbol = NSImage(systemSymbolName: "lock.shield", accessibilityDescription: BWText.settings.productName)
+        // The menu bar measures the image itself when it chooses the symbol's drawing size.
+        let symbol = NSImage(systemSymbolName: "lock.shield", accessibilityDescription: BWText.settings.productName)?
+            .withSymbolConfiguration(.init(pointSize: Metric.statusItemSymbolSize, weight: .medium))
         symbol?.isTemplate = true
-        statusItem.button?.symbolConfiguration = .init(pointSize: Metric.statusItemSymbolSize, weight: .medium)
         statusItem.button?.imageScaling = .scaleNone
         statusItem.button?.imagePosition = .imageOnly
         statusItem.button?.image = symbol

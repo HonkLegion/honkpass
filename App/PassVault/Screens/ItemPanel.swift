@@ -14,6 +14,7 @@ struct ItemPanel: View {
     let model: AppModel
     let navigation: VaultNavigation
     let itemID: String
+    var isStandalone = false
 
     @State private var item: VaultItem?
 
@@ -32,7 +33,7 @@ struct ItemPanel: View {
                 sections(item)
             }
         } footer: {
-            footer
+            if !isStandalone { footer }
         }
         // The reference moves the focus from the search field to the opened panel.
         .onAppear { NSApp.keyWindow?.makeFirstResponder(nil) }
@@ -616,6 +617,69 @@ struct ItemPanel: View {
         }
         .floatingActionCapsule()
         .disabled(summary == nil)
+    }
+}
+
+/// A read-only item window has its own reveal state and no independent vault session.
+@MainActor
+final class QuickItemWindow: NSWindow, NSWindowDelegate {
+    let itemNavigation = VaultNavigation()
+    var didClose: ((QuickItemWindow) -> Void)?
+
+    init(model: AppModel, itemID: String) {
+        super.init(contentRect: NSRect(x: 0, y: 0, width: 520, height: 620),
+                   styleMask: [.titled, .closable, .resizable, .miniaturizable], backing: .buffered, defer: false)
+        isReleasedWhenClosed = false
+        delegate = self
+        title = BWText.settings.productName
+        contentMinSize = NSSize(width: 380, height: 360)
+        itemNavigation.openItemID = itemID
+        let view = QuickItemWindowContent(model: model, navigation: itemNavigation, itemID: itemID,
+                                          session: model.state.session) { [weak self] in self?.close() }
+        let host = NSHostingController(rootView: view)
+        host.sizingOptions = []
+        contentViewController = host
+        setContentSize(NSSize(width: 520, height: 620))
+        center()
+    }
+
+    func windowWillClose(_ notification: Notification) {
+        contentViewController = nil
+        itemNavigation.closeItemViews()
+        didClose?(self)
+    }
+}
+
+private struct QuickItemWindowContent: View {
+    let model: AppModel
+    let navigation: VaultNavigation
+    let itemID: String
+    let session: SessionState
+    let close: () -> Void
+
+    private var canShowItem: Bool {
+        guard model.state.session == session, session.isUnlocked, navigation.openItemID == itemID,
+              let summary = model.state.vault.items.first(where: { $0.id == itemID }) else { return false }
+        return !summary.isInTrash && !summary.isArchived && !summary.isUndecryptable
+    }
+
+    var body: some View {
+        Group {
+            if canShowItem {
+                ItemPanel(model: model, navigation: navigation, itemID: itemID, isStandalone: true)
+                    .overlay {
+                        if navigation.protectedAction != nil {
+                            MasterPasswordPrompt(model: model, navigation: navigation)
+                        } else if let history = navigation.passwordHistoryItemID {
+                            PasswordHistoryDialog(model: model, navigation: navigation, itemID: history)
+                        }
+                    }
+                    .overlay(alignment: .top) { ToastStack(center: navigation.toasts) }
+            }
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(.theme(.bgTertiary))
+        .onChange(of: canShowItem) { if !canShowItem { close() } }
     }
 }
 

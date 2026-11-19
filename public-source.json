@@ -1,5 +1,5 @@
 {
-  "build": "14",
+  "build": "15",
   "files": {
     ".github/actionlint.yaml": {
       "executable": false,
@@ -23,7 +23,7 @@
     },
     "App/PassVault/AppDelegate.swift": {
       "executable": false,
-      "sha256": "b7a54ab03f1c34aed19a32cf7c476b1fa2463b6c79484d62c4f91ba15e048059"
+      "sha256": "51e378e36a27c50df4123c769fe4d74e0140289eb8621a86441eb9b9916416c1"
     },
     "App/PassVault/AppIcon.icon/Assets/GooseKey.png": {
       "executable": false,
@@ -87,7 +87,7 @@
     },
     "App/PassVault/Legal/inventory.json": {
       "executable": false,
-      "sha256": "3f00a5ddcd221acab44231fba1553b98b628033f658ee826b289be8de6117f3b"
+      "sha256": "3e8fd6fd85defb64054746713c3fc21a91a2d9cb8fd6ae413de5615288531795"
     },
     "App/PassVault/Legal/texts/003736bc98408b53511b9cc8ff5d1af3bf0a8f17d53841cc39d8ab1b96a195b0.txt": {
       "executable": false,
@@ -1175,7 +1175,7 @@
     },
     "App/PassVault/QuickAccess.swift": {
       "executable": false,
-      "sha256": "03d0a6f32d02cb8f72b7c478a3569a8577c176b1f7f4283e0e90964cbf9f6b04"
+      "sha256": "1e4f4a120ca5f3cf7aa58835d7eb0530304b9fcd39ed028a2d0cbf9b22277ba7"
     },
     "App/PassVault/RootView.swift": {
       "executable": false,
@@ -1191,7 +1191,7 @@
     },
     "App/PassVault/Scenes.swift": {
       "executable": false,
-      "sha256": "066179a2d0fd322a3f2332c79a54247469377569da9879bd626b333a844410b5"
+      "sha256": "91e8b3df312840a801a10a19e1372335fe109d368bc5d894d5b752295f79541f"
     },
     "App/PassVault/Screens/AssignCollectionsDialog.swift": {
       "executable": false,
@@ -1227,7 +1227,7 @@
     },
     "App/PassVault/Screens/ItemPanel.swift": {
       "executable": false,
-      "sha256": "143acf58d75d439f3b4dc09ac4eb330e679a8649b500139d24534e77691919b5"
+      "sha256": "cf79f5349ac867588061eb1bd36f2d374ffdc0d62a852e7160890daac30cc7b5"
     },
     "App/PassVault/Screens/ItemRowIcon.swift": {
       "executable": false,
@@ -1255,7 +1255,7 @@
     },
     "App/PassVault/Screens/QuickAccessView.swift": {
       "executable": false,
-      "sha256": "0e59f72c298cb2e7d4a7250b9dbff46193bc8d2b7f1b28fa522444f393edadea"
+      "sha256": "78c93d8f8ca5c748895e8787f6b4ae13f62e44428ba7ecef1da8290f1fb137c4"
     },
     "App/PassVault/Screens/RunningAppsPicker.swift": {
       "executable": false,
@@ -1307,7 +1307,7 @@
     },
     "App/PassVault/SmokeTest.swift": {
       "executable": false,
-      "sha256": "6a1a924575080fb3f6cf6924eef4ab252ba810913294563235fa5d9b7dfde534"
+      "sha256": "b82fe29a5c3d8fdecd45ea86495bf3d2445943c9487db15ef3c85c6e52e78dab"
     },
     "App/PassVault/StartGuard.swift": {
       "executable": false,
@@ -1315,7 +1315,7 @@
     },
     "App/PassVault/StatusItemController.swift": {
       "executable": false,
-      "sha256": "aee8e611934fd093bfc03cdc28e0eef730fdae1ca0a6166e81fa75d85b8f7574"
+      "sha256": "b46da2a39562e90f1eef6953838db3978c3290aed668e6ed114fc2018723fbb2"
     },
     "App/PassVault/Toasts.swift": {
       "executable": false,
@@ -1515,7 +1515,7 @@
     },
     "Sources/DesignKit/Metrics.swift": {
       "executable": false,
-      "sha256": "0cb714d7aa7ff6be860ab929932fedf1d3f31bebd2f18f979c514df65a67bca2"
+      "sha256": "b50d6cd4a62c82e917b0ef7ebcb9270b182350ebcee2a0eb398b26edd28287a3"
     },
     "Sources/DesignKit/Popover.swift": {
       "executable": false,
@@ -1527,7 +1527,7 @@
     },
     "Sources/DesignKit/QuickAccessControls.swift": {
       "executable": false,
-      "sha256": "e6410db2117ce3bede750c9614c17063b36a6d0143271473b86e8e454425cb90"
+      "sha256": "c71fc417f77382b1815791c7ae2cf740093b32818291f90f0530d8ad60af02c3"
     },
     "Sources/DesignKit/Radio.swift": {
       "executable": false,
@@ -1707,11 +1707,11 @@
     },
     "Sources/DesignKit/Resources/Locales/honkpass-cs.json": {
       "executable": false,
-      "sha256": "4046140f568392b79768c16832f035a2330fd83622110aa8fb5c78502ba64edd"
+      "sha256": "19882e91230ef9cfe056cb4409354acecd34823fbba2fe2e738e31799f50f580"
     },
     "Sources/DesignKit/Resources/Locales/honkpass-en.json": {
       "executable": false,
-      "sha256": "2591f6d093340e0ed535cfc93b4c55ff215347352e9185885537fa2d7600a2ec"
+      "sha256": "7d607c36e654234d6da97928e267d90e568e24604f3f3a60c19674dc566ffbb1"
     },
     "Sources/DesignKit/Select.swift": {
       "executable": false,
@@ -2255,7 +2255,7 @@
     },
     "project.yml": {
       "executable": false,
-      "sha256": "c854303390dc357e8b9c74ce0f1eb1b495c0a6ee4e0b539a0fbd5403fd8b3217"
+      "sha256": "c931c88a46fc750f30f5981a5d300a50af2ca90c61212072146e77ecf1dbf002"
     },
     "scripts/archive-developer-id.fish": {
       "executable": false,
@@ -2468,7 +2468,7 @@
     "sha256": "965f7081df13756c47091029135a661ad6075bf7ca9ece65884aa33c6fdebd0c",
     "version": "0.1.9"
   },
-  "source_revision": "5134a4f3a8775fa1369b375cb28df6aa8a8f4b5d",
-  "tag": "v0.1.13",
-  "version": "0.1.13"
+  "source_revision": "e55169d4d41ea684323c6dbaaae9da3e39b57a1c",
+  "tag": "v0.1.14",
+  "version": "0.1.14"
 }
