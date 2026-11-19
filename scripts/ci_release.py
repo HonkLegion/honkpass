@@ -87,16 +87,10 @@ def validate_assets(directory, expected):
     return {name: {"sha256": digest(directory / name), "size": (directory / name).stat().st_size} for name in names}
 
 
-def gh(*args, missing_ok=False):
+def gh(*args):
     result = subprocess.run(["gh", *args], env=dict(os.environ, GH_HOST="github.com"),
                             stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=300)
     if result.returncode:
-        if missing_ok:
-            try:
-                if str(json.loads(result.stdout).get("status")) == "404":
-                    return None
-            except (ValueError, AttributeError):
-                pass
         raise ValueError("GitHub rejected the release operation. No existing asset was replaced.")
     return result.stdout
 
@@ -124,28 +118,30 @@ def draft(root, tag, directory):
     if any(manifest.get(key) != value for key, value in expected.items()):
         raise ValueError("Downloaded assets belong to another release.")
     files = validate_assets(directory, manifest)
-    route = f"repos/{REPOSITORY}/releases?per_page=100"
-    def current():
-        pages = json.loads(gh("api", "--hostname", "github.com", "--paginate", "--slurp", route))
-        matches = [release for page in pages for release in page if release["tag_name"] == tag]
-        if len(matches) > 1:
-            raise ValueError("Multiple GitHub releases use this tag.")
-        return matches[0] if matches else None
-    remote = current()
-    if remote is None:
+    route = f"repos/{REPOSITORY}/releases"
+    pages = json.loads(gh("api", "--paginate", "--slurp", route + "?per_page=100"))
+    matches = [release for page in pages for release in page if release["tag_name"] == tag]
+    if len(matches) > 1:
+        raise ValueError("Multiple GitHub releases use this tag.")
+    if matches:
+        remote = matches[0]
+    else:
         notes = ("Native macOS client for Vaultwarden.\n\n"
                  "Download the DMG or ZIP to install HonkPass. "
                  "HonkPass-source.tar.gz contains the corresponding source and dependency notices. "
                  "The manifests record the source revision and artifact hashes.")
-        gh("release", "create", tag, "--repo", REPOSITORY, "--verify-tag", "--draft",
-           "--title", f"HonkPass {expected['version']} ({expected['build']})", "--notes", notes)
-        remote = current()
-        if remote is None:
-            raise ValueError("GitHub created the draft but did not return it in the release list.")
+        gh("api", f"repos/{REPOSITORY}/git/ref/tags/{tag}")
+        remote = json.loads(gh("api", "--method", "POST", route, "-f", f"tag_name={tag}",
+                               "-F", "draft=true", "-f", f"name=HonkPass {expected['version']} ({expected['build']})",
+                               "-f", f"body={notes}"))
+    release_id = remote.get("id")
+    if type(release_id) is not int or release_id <= 0:
+        raise ValueError("GitHub did not return a valid release ID.")
     missing = missing_assets(remote, files, tag)
-    if missing:
-        gh("release", "upload", tag, "--repo", REPOSITORY, *[str(directory / name) for name in missing])
-    remote = current()
+    for name in missing:
+        gh("api", "--method", "POST", f"https://uploads.github.com/{route}/{release_id}/assets?name={name}",
+           "--header", "Content-Type: application/octet-stream", "--input", str(directory / name))
+    remote = json.loads(gh("api", f"{route}/{release_id}"))
     if missing_assets(remote, files, tag):
         raise ValueError("GitHub did not retain every release asset.")
     print("OK: verified GitHub release assets. Publication remains manual.")

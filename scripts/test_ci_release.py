@@ -85,25 +85,26 @@ class ReleaseAssetTests(unittest.TestCase):
             ci_release.missing_assets(remote, self.files, self.identity["tag"])
 
     def test_new_github_release_is_a_draft_and_upload_never_clobbers(self):
-        remote = None
-        calls = []
-        def gh(*args, **kwargs):
-            nonlocal remote
-            calls.append(args)
-            if args[0] == "api":
-                self.assertTrue(args[-1].endswith("/releases?per_page=100"))
-                return json.dumps([[{"tag_name": "v0.0.1"}], [remote] if remote else []]).encode()
-            if args[:2] == ("release", "create"):
-                self.assertIn("--draft", args)
-                self.assertIn("--verify-tag", args)
-                remote = {"tag_name": self.identity["tag"], "draft": True, "assets": []}
-            elif args[:2] == ("release", "upload"):
-                self.assertNotIn("--clobber", args)
-                remote = self.remote()
-            return b""
+        remote = {"id": 42, "tag_name": self.identity["tag"], "draft": True, "assets": []}
+        route = f"repos/{ci_release.REPOSITORY}/releases"
+        def gh(*args):
+            if "--paginate" in args:
+                return b'[[]]'  # The new draft never appears in the list.
+            if "/git/ref/tags/" in args[-1]:
+                return b"{}"
+            if route in args:
+                self.assertIn("draft=true", args)
+            elif "--input" in args:
+                name = Path(args[-1]).name
+                self.assertIn(f"https://uploads.github.com/{route}/42/assets?name={name}", args)
+                self.assertFalse(any(asset["name"] == name for asset in remote["assets"]))
+                remote["assets"].append(next(asset for asset in self.remote()["assets"] if asset["name"] == name))
+            else:
+                self.assertEqual(args, ("api", route + "/42"))
+            return json.dumps(remote).encode()
         with patch("ci_release.identity", return_value=self.identity), patch("ci_release.gh", side_effect=gh):
             ci_release.draft(self.directory, self.identity["tag"], self.directory)
-        self.assertEqual(len([call for call in calls if call[:2] == ("release", "upload")]), 1)
+        self.assertEqual({asset["name"] for asset in remote["assets"]}, set(self.files))
 
     def test_collect_uses_only_paired_assets_and_rejects_another_source_revision(self):
         root = self.directory / "checkout"

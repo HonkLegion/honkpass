@@ -1,5 +1,5 @@
 {
-  "build": "13",
+  "build": "14",
   "files": {
     ".github/actionlint.yaml": {
       "executable": false,
@@ -1315,7 +1315,7 @@
     },
     "App/PassVault/StatusItemController.swift": {
       "executable": false,
-      "sha256": "c89ace36143bd9253805eb412a64388e706cef836a98f4a6a312de2a7657044d"
+      "sha256": "aee8e611934fd093bfc03cdc28e0eef730fdae1ca0a6166e81fa75d85b8f7574"
     },
     "App/PassVault/Toasts.swift": {
       "executable": false,
@@ -2255,7 +2255,7 @@
     },
     "project.yml": {
       "executable": false,
-      "sha256": "57a88dcb72ad46f876fc90b44a3eeaed6983712aeeeb81819f33932b22ab0697"
+      "sha256": "c854303390dc357e8b9c74ce0f1eb1b495c0a6ee4e0b539a0fbd5403fd8b3217"
     },
     "scripts/archive-developer-id.fish": {
       "executable": false,
@@ -2267,7 +2267,7 @@
     },
     "scripts/ci_release.py": {
       "executable": false,
-      "sha256": "1382bfc6af658d630c43ed379040991edf281d74595b6e61ba2e1f8af96095a5"
+      "sha256": "d4ff5fa5b499b21608ad3fda9bfd2db0300e8e7749d629021add5ede16a59eed"
     },
     "scripts/ci_signing.py": {
       "executable": false,
@@ -2339,7 +2339,7 @@
     },
     "scripts/test_ci_release.py": {
       "executable": false,
-      "sha256": "b1b396949bbf0a5243970674ed79da69686a9eb3c7e77d1d05d0dd2d50187dd4"
+      "sha256": "8c14f0824632d918dc339643abaf44d80f3f78835666856d276a6b2e1cfb555e"
     },
     "scripts/test_public_source.py": {
       "executable": false,
@@ -2468,7 +2468,7 @@
     "sha256": "965f7081df13756c47091029135a661ad6075bf7ca9ece65884aa33c6fdebd0c",
     "version": "0.1.9"
   },
-  "source_revision": "8ab8febaa7ebc70224e5b889a525166eabf29053",
-  "tag": "v0.1.12",
-  "version": "0.1.12"
+  "source_revision": "5134a4f3a8775fa1369b375cb28df6aa8a8f4b5d",
+  "tag": "v0.1.13",
+  "version": "0.1.13"
 }

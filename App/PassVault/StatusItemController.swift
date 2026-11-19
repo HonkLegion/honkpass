@@ -23,11 +23,13 @@ final class StatusItemController: NSObject, NSMenuItemValidation {
         self.lockVault = lockVault
         self.openSettings = openSettings
         self.isUnlocked = isUnlocked
-        statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
+        statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         super.init()
-        let symbol = NSImage(systemSymbolName: "lock.shield", accessibilityDescription: BWText.settings.productName)?
-            .withSymbolConfiguration(.init(pointSize: Metric.statusItemSymbolSize, weight: .medium))
+        let symbol = NSImage(systemSymbolName: "lock.shield", accessibilityDescription: BWText.settings.productName)
         symbol?.isTemplate = true
+        statusItem.button?.symbolConfiguration = .init(pointSize: Metric.statusItemSymbolSize, weight: .medium)
+        statusItem.button?.imageScaling = .scaleNone
+        statusItem.button?.imagePosition = .imageOnly
         statusItem.button?.image = symbol
         statusItem.button?.toolTip = BWText.settings.productName
         add(.show, "honkpassOpenMainWindow", #selector(show))
