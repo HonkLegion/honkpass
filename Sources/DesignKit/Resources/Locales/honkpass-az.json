@@ -1,0 +1,189 @@
+{
+  "accountRestrictedOptionDescription": {
+    "m": "Bu Bitwarden ixrac formatı hesabın şifrələmə açarından istifadə edir. HonkPass bu formatda fayl yaratmır."
+  },
+  "appLogoLabel": {
+    "m": "HonkPass loqosu"
+  },
+  "autofillConfigurationMessage": {
+    "m": "HonkPass ilə avtomatik doldurma aktivləşdirilir…"
+  },
+  "coachmarkFiltersDescription": {
+    "m": "Nəticələri daraltmaq üçün eyni anda bir neçə filtr seçin. Başqa görünüşə keçəndə də filtrlər aktiv qalır."
+  },
+  "coachmarkFiltersTitle": {
+    "m": "Filtrləri birləşdirin"
+  },
+  "honkpassAppAlreadyAssigned": {
+    "m": "Artıq əlaqələndirilib"
+  },
+  "honkpassAppListError": {
+    "m": "Tətbiqləri yükləmək mümkün olmadı. Siyahını yeniləyib yenidən cəhd edin."
+  },
+  "honkpassAppNotAccepted": {
+    "m": "Tətbiqi yoxlamaq mümkün olmadı. Onu yenidən seçin və ya başqa tətbiq seçin."
+  },
+  "honkpassAppSaveFailed": {
+    "m": "Məlumatlar dolduruldu. Tətbiqi bu elementdə saxlamaq mümkün olmadı."
+  },
+  "honkpassAssignApp": {
+    "m": "Tətbiqi əlaqələndir"
+  },
+  "honkpassAutoFillUnavailable": {
+    "m": "HonkPass-a qoşulmaq mümkün olmadı"
+  },
+  "honkpassAutoFillUnavailableDescription": {
+    "m": "HonkPass tətbiqini açın və tətbiqin ayarlarında sistemin avtomatik doldurma funksiyasını aktivləşdirin. Saxlancın kilidi hələ də açıq ola bilər."
+  },
+  "honkpassChooseApp": {
+    "m": "Tətbiq seç"
+  },
+  "honkpassChooseAppFromDisk": {
+    "m": "Diskdən tətbiq seç…"
+  },
+  "honkpassConfirmAppFill": {
+    "m": "Tətbiqdə avtomatik doldurmanı təsdiqlə"
+  },
+  "honkpassConfirmAppFillDescription": {
+    "m": "Bu tətbiq “$ITEM$” elementindəki giriş məlumatlarını alacaq.",
+    "p": {
+      "item": "$1"
+    }
+  },
+  "honkpassCurrentApp": {
+    "m": "Doldurulacaq tətbiq"
+  },
+  "honkpassFillAndSaveApp": {
+    "m": "Doldur və tətbiqi saxla"
+  },
+  "honkpassLegalSummary": {
+    "m": "GNU GPLv3 lisenziyası ilə yayılan azad proqram təminatı. Bu lisenziyanın şərtlərinə uyğun olaraq onu dəyişdirə və yenidən yaya bilərsiniz. Qanunun icazə verdiyi həddə zəmanətsiz təqdim olunur."
+  },
+  "honkpassLicensesAndSource": {
+    "m": "Lisenziyalar, müəlliflər və mənbə kodu"
+  },
+  "honkpassLoadingApps": {
+    "m": "Tətbiqlər yüklənir…"
+  },
+  "honkpassNoMatchingApps": {
+    "m": "Axtarışa uyğun tətbiq yoxdur."
+  },
+  "honkpassNoRunningApps": {
+    "m": "Əlaqələndirmək üçün işlək tətbiq yoxdur."
+  },
+  "honkpassOpenMainWindow": {
+    "m": "HonkPass-ı aç"
+  },
+  "honkpassOpenQuickAccess": {
+    "m": "Sürətli girişi aç"
+  },
+  "honkpassQuickAccess": {
+    "m": "Sürətli giriş"
+  },
+  "honkpassQuickChoose": {
+    "m": "↑ ↓ Seç"
+  },
+  "honkpassQuickCode": {
+    "m": "2FA kodu"
+  },
+  "honkpassQuickFillTarget": {
+    "m": "$APPLICATION$ tətbiqində doldur",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassQuickItemCount": {
+    "m": "Elementlərin sayı: $COUNT$",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "honkpassQuickName": {
+    "m": "İstifadəçi adı"
+  },
+  "honkpassQuickNewWindow": {
+    "m": "Elementi yeni pəncərədə aç"
+  },
+  "honkpassQuickOpenBrowser": {
+    "m": "Brauzerdə aç"
+  },
+  "honkpassQuickOpenMain": {
+    "m": "HonkPass-da göstər"
+  },
+  "honkpassQuickSearch": {
+    "m": "HonkPass-da axtar"
+  },
+  "honkpassRefreshApps": {
+    "m": "Siyahını yenilə"
+  },
+  "honkpassRunningAppsHint": {
+    "m": "Burada yalnız imzası yoxlanılmış tətbiqlər göstərilir. Brauzerdə istifadə etdiyiniz giriş məlumatlarını müvafiq saytla əlaqələndirin."
+  },
+  "honkpassSSHCopyFingerprint": {
+    "m": "Açıq açarın barmaq izini kopyala"
+  },
+  "honkpassSSHFingerprint": {
+    "m": "Açıq açarın barmaq izi"
+  },
+  "honkpassSSHGitSign": {
+    "m": "Git üçün məlumatları imzalamaq"
+  },
+  "honkpassSSHNoFingerprint": {
+    "m": "Açarın barmaq izi əlçatan deyil"
+  },
+  "honkpassSSHPending": {
+    "m": "Növbədəki digər sorğular: $COUNT$",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "honkpassSSHRequest": {
+    "m": "$APPLICATION$ SSH açarından istifadə etmək üçün icazə istəyir.",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassSSHRequestedPurpose": {
+    "m": "Sorğunun məqsədi: $PURPOSE$",
+    "p": {
+      "purpose": "$1"
+    }
+  },
+  "honkpassSSHUnknownDestination": {
+    "m": "Bu sorğu əsasında təyinat serverini etibarlı şəkildə müəyyən etmək olmur."
+  },
+  "honkpassSSHUnknownPurpose": {
+    "m": "verilənləri imzalamaq, dəqiq məqsədi təsdiqləmək mümkün deyil"
+  },
+  "honkpassSSHUnlockRequest": {
+    "m": "$APPLICATION$ seyfin kilidinin açılmasını gözləyir.",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassSSHVault": {
+    "m": "Seyf: $ACCOUNT$ ($SERVER$)",
+    "p": {
+      "account": "$1",
+      "server": "$2"
+    }
+  },
+  "honkpassSSHVerifiedHost": {
+    "m": "Sessiya üçün təsdiqlənmiş server açarı: $FINGERPRINT$",
+    "p": {
+      "fingerprint": "$1"
+    }
+  },
+  "honkpassSearchApps": {
+    "m": "İşləyən tətbiqlərdə axtar"
+  },
+  "honkpassUpdateFinishWork": {
+    "m": "Yeniləməni quraşdırmazdan əvvəl cari əməliyyatı tamamlayın və element, Send, idxal və ixrac pəncərələrini bağlayın. Quraşdırma zamanı HonkPass seyfi kilidləyir."
+  },
+  "passwordProtectedOptionDescription": {
+    "m": "İxrac faylını şifrələmək üçün parol təyin edin. Uyğun Bitwarden tətbiqləri faylın şifrəsini açmaq və onu idxal etmək üçün bu paroldan istifadə edir."
+  },
+  "selfHostedBaseUrlHint": {
+    "m": "Vaultwarden serverinizin əsas URL ünvanını daxil edin. Məsələn: https://vault.example.test"
+  }
+}

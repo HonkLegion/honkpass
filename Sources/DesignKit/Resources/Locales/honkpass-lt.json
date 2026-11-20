@@ -1,0 +1,216 @@
+{
+  "accountRestrictedOptionDescription": {
+    "m": "Šis „Bitwarden“ eksporto formatas naudoja paskyros šifravimo raktą. „HonkPass“ šio formato failų nekuria."
+  },
+  "appLogoLabel": {
+    "m": "„HonkPass“ logotipas"
+  },
+  "autofillConfigurationMessage": {
+    "m": "Įjungiamas automatinis pildymas naudojant „HonkPass“…"
+  },
+  "clearSearchTooltip": {
+    "m": "Spustelėkite čia arba paspauskite Esc, kad išvalytumėte paiešką."
+  },
+  "coachmarkFiltersDescription": {
+    "m": "Rezultatus galite susiaurinti vienu metu pasirinkdami kelis filtrus. Jie liks galioti ir perėjus į kitą rodinį."
+  },
+  "coachmarkFiltersTitle": {
+    "m": "Derinkite filtrus"
+  },
+  "confirmPasskeyAssertionMfaMacOS": {
+    "m": "prisijungti kaip $USERNAME$ naudojant $RPID$ prieigos raktą. $RPID$ prašo šios patikros kelių veiksnių tapatybės nustatymui.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "confirmPasskeyOverwriteMfaMacOS": {
+    "m": "perrašyti naudotojo $USERNAME$ prieigos raktą, skirtą $RPID$. $RPID$ prašo šios patikros kelių veiksnių tapatybės nustatymui.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "confirmPasskeyRegistrationMfaMacOS": {
+    "m": "sukurti naudotojui $USERNAME$ naują prieigos raktą, skirtą $RPID$. $RPID$ prašo šios patikros kelių veiksnių tapatybės nustatymui.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "enableAutotypeGaShortcut": {
+    "m": "Įjungti automatinės įvesties spartųjį klavišą"
+  },
+  "honkpassAppAlreadyAssigned": {
+    "m": "Jau susieta"
+  },
+  "honkpassAppListError": {
+    "m": "Nepavyko įkelti programų. Atnaujinkite sąrašą ir bandykite dar kartą."
+  },
+  "honkpassAppNotAccepted": {
+    "m": "Nepavyko patikrinti programos. Pasirinkite ją dar kartą arba pasirinkite kitą programą."
+  },
+  "honkpassAppSaveFailed": {
+    "m": "Duomenys užpildyti. Programos nepavyko įrašyti į šį įrašą."
+  },
+  "honkpassAssignApp": {
+    "m": "Susieti programą"
+  },
+  "honkpassAutoFillUnavailable": {
+    "m": "Nepavyko prisijungti prie „HonkPass“"
+  },
+  "honkpassAutoFillUnavailableDescription": {
+    "m": "Atverkite „HonkPass“ ir programos nuostatose įjunkite sistemos automatinį pildymą. Saugykla vis dar gali būti atrakinta."
+  },
+  "honkpassChooseApp": {
+    "m": "Pasirinkti programą"
+  },
+  "honkpassChooseAppFromDisk": {
+    "m": "Pasirinkti programą iš disko…"
+  },
+  "honkpassConfirmAppFill": {
+    "m": "Patvirtinti automatinį pildymą programoje"
+  },
+  "honkpassConfirmAppFillDescription": {
+    "m": "Ši programa gaus įrašo „$ITEM$“ prisijungimo duomenis.",
+    "p": {
+      "item": "$1"
+    }
+  },
+  "honkpassCurrentApp": {
+    "m": "Pildoma programa"
+  },
+  "honkpassFillAndSaveApp": {
+    "m": "Užpildyti ir įrašyti programą"
+  },
+  "honkpassLegalSummary": {
+    "m": "Laisvoji programinė įranga pagal GNU GPLv3 licenciją. Galite ją keisti ir platinti laikydamiesi licencijos sąlygų. Ji pateikiama be garantijos, kiek tai leidžia įstatymai."
+  },
+  "honkpassLicensesAndSource": {
+    "m": "Licencijos, padėkos ir pirminis kodas"
+  },
+  "honkpassLoadingApps": {
+    "m": "Įkeliamos programos…"
+  },
+  "honkpassNoMatchingApps": {
+    "m": "Nė viena programa neatitinka paieškos."
+  },
+  "honkpassNoRunningApps": {
+    "m": "Nėra veikiančių programų, kurias būtų galima susieti."
+  },
+  "honkpassOpenMainWindow": {
+    "m": "Atverti „HonkPass“"
+  },
+  "honkpassOpenQuickAccess": {
+    "m": "Atverti sparčiąją prieigą"
+  },
+  "honkpassQuickAccess": {
+    "m": "Sparčioji prieiga"
+  },
+  "honkpassQuickChoose": {
+    "m": "↑ ↓ Pasirinkti"
+  },
+  "honkpassQuickCode": {
+    "m": "2FA kodas"
+  },
+  "honkpassQuickFillTarget": {
+    "m": "Užpildyti programoje „$APPLICATION$“",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassQuickItemCount": {
+    "m": "Įrašai: $COUNT$",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "honkpassQuickName": {
+    "m": "Vartotojo vardas"
+  },
+  "honkpassQuickNewWindow": {
+    "m": "Atverti įrašą naujame lange"
+  },
+  "honkpassQuickOpenBrowser": {
+    "m": "Atverti naršyklėje"
+  },
+  "honkpassQuickOpenMain": {
+    "m": "Rodyti „HonkPass“"
+  },
+  "honkpassQuickSearch": {
+    "m": "Ieškoti „HonkPass“"
+  },
+  "honkpassRefreshApps": {
+    "m": "Atnaujinti sąrašą"
+  },
+  "honkpassRunningAppsHint": {
+    "m": "Čia rodomos tik programos, kurių parašas patikrintas. Naršyklėje naudojamus prisijungimo duomenis susiekite su atitinkama svetaine."
+  },
+  "honkpassSSHCopyFingerprint": {
+    "m": "Kopijuoti viešąjį rakto kontrolinį kodą"
+  },
+  "honkpassSSHFingerprint": {
+    "m": "Viešasis rakto kontrolinis kodas"
+  },
+  "honkpassSSHGitSign": {
+    "m": "pasirašyti „Git“ duomenis"
+  },
+  "honkpassSSHNoFingerprint": {
+    "m": "Rakto kontrolinio kodo nėra"
+  },
+  "honkpassSSHPending": {
+    "m": "Kitos laukiančios užklausos: $COUNT$",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "honkpassSSHRequest": {
+    "m": "„$APPLICATION$“ prašo leidimo naudoti SSH raktą.",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassSSHRequestedPurpose": {
+    "m": "Prašoma paskirtis: $PURPOSE$",
+    "p": {
+      "purpose": "$1"
+    }
+  },
+  "honkpassSSHUnknownDestination": {
+    "m": "Iš šios užklausos negalima patikimai nustatyti paskirties serverio."
+  },
+  "honkpassSSHUnknownPurpose": {
+    "m": "pasirašyti duomenis, tikslios paskirties patikrinti nepavyksta"
+  },
+  "honkpassSSHUnlockRequest": {
+    "m": "„$APPLICATION$“ laukia, kol bus atrakinta saugykla.",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassSSHVault": {
+    "m": "Saugykla: $ACCOUNT$ ($SERVER$)",
+    "p": {
+      "account": "$1",
+      "server": "$2"
+    }
+  },
+  "honkpassSSHVerifiedHost": {
+    "m": "Patikrintas seanso serverio raktas: $FINGERPRINT$",
+    "p": {
+      "fingerprint": "$1"
+    }
+  },
+  "honkpassSearchApps": {
+    "m": "Ieškoti veikiančių programų"
+  },
+  "honkpassUpdateFinishWork": {
+    "m": "Prieš diegdami naujinį užbaikite pradėtą veiksmą ir užverkite įrašų, „Send“, importo bei eksporto langus. Diegimo metu „HonkPass“ užrakina saugyklą."
+  },
+  "passwordProtectedOptionDescription": {
+    "m": "Nustatykite slaptažodį eksporto failui užšifruoti. Suderinamos „Bitwarden“ programos šį slaptažodį naudoja failui iššifruoti ir importuoti."
+  },
+  "selfHostedBaseUrlHint": {
+    "m": "Įveskite savo „Vaultwarden“ serverio bazinį URL. Pavyzdys: https://vault.example.test"
+  }
+}

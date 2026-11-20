@@ -1,0 +1,222 @@
+{
+  "accountRestrictedOptionDescription": {
+    "m": "Acest format de export Bitwarden folosește cheia de criptare a contului. HonkPass nu creează fișiere în acest format."
+  },
+  "appLogoLabel": {
+    "m": "Sigla HonkPass"
+  },
+  "autofillConfigurationMessage": {
+    "m": "Se activează completarea automată cu HonkPass…"
+  },
+  "clearSearchTooltip": {
+    "m": "Dă clic aici sau apasă Esc pentru a șterge căutarea."
+  },
+  "coachmarkFiltersDescription": {
+    "m": "Selectează mai multe filtre simultan pentru a restrânge rezultatele. Filtrele rămân active și când treci la alt ecran."
+  },
+  "coachmarkFiltersTitle": {
+    "m": "Combină filtrele"
+  },
+  "confirmPasskeyAssertionMfaMacOS": {
+    "m": "să te autentifici ca $USERNAME$ cu cheia de acces pentru $RPID$. $RPID$ solicită această verificare pentru autentificarea multifactor.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "confirmPasskeyOverwriteMfaMacOS": {
+    "m": "să suprascrii o cheie de acces pentru $RPID$ a utilizatorului $USERNAME$. $RPID$ solicită această verificare pentru autentificarea multifactor.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "confirmPasskeyRegistrationMfaMacOS": {
+    "m": "să creezi o cheie de acces nouă pentru $RPID$ pentru utilizatorul $USERNAME$. $RPID$ solicită această verificare pentru autentificarea multifactor.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "enableAutotypeGaShortcut": {
+    "m": "Activează scurtătura pentru tastare automată"
+  },
+  "honkpassAppAlreadyAssigned": {
+    "m": "Deja asociată"
+  },
+  "honkpassAppListError": {
+    "m": "Aplicațiile nu au putut fi încărcate. Actualizează lista și încearcă din nou."
+  },
+  "honkpassAppNotAccepted": {
+    "m": "Aplicația nu a putut fi verificată. Selecteaz-o din nou sau alege altă aplicație."
+  },
+  "honkpassAppSaveFailed": {
+    "m": "Completarea a reușit. Aplicația nu a putut fi salvată în acest element."
+  },
+  "honkpassAssignApp": {
+    "m": "Asociază aplicația"
+  },
+  "honkpassAutoFillUnavailable": {
+    "m": "Conexiunea la HonkPass a eșuat"
+  },
+  "honkpassAutoFillUnavailableDescription": {
+    "m": "Deschideți HonkPass și activați completarea automată a sistemului în configurările aplicației. Seiful poate fi în continuare deblocat."
+  },
+  "honkpassChooseApp": {
+    "m": "Alege o aplicație"
+  },
+  "honkpassChooseAppFromDisk": {
+    "m": "Alege o aplicație de pe disc…"
+  },
+  "honkpassConfirmAppFill": {
+    "m": "Confirmă completarea automată în aplicație"
+  },
+  "honkpassConfirmAppFillDescription": {
+    "m": "Această aplicație va primi datele de autentificare din elementul „$ITEM$”.",
+    "p": {
+      "item": "$1"
+    }
+  },
+  "honkpassCurrentApp": {
+    "m": "Aplicație de completat"
+  },
+  "honkpassFillAndSaveApp": {
+    "m": "Completează și salvează aplicația"
+  },
+  "honkpassLegalSummary": {
+    "m": "Software liber sub licența GNU GPLv3. Îl puteți modifica și redistribui conform acestei licențe. Este furnizat fără garanție, în măsura permisă de lege."
+  },
+  "honkpassLicensesAndSource": {
+    "m": "Licențe, contribuții și cod sursă"
+  },
+  "honkpassLoadingApps": {
+    "m": "Se încarcă aplicațiile…"
+  },
+  "honkpassNoMatchingApps": {
+    "m": "Nicio aplicație nu corespunde căutării."
+  },
+  "honkpassNoRunningApps": {
+    "m": "Nu există aplicații în execuție disponibile pentru asociere."
+  },
+  "honkpassOpenMainWindow": {
+    "m": "Deschide HonkPass"
+  },
+  "honkpassOpenQuickAccess": {
+    "m": "Deschide accesul rapid"
+  },
+  "honkpassQuickAccess": {
+    "m": "Acces rapid"
+  },
+  "honkpassQuickChoose": {
+    "m": "↑ ↓ Selectează"
+  },
+  "honkpassQuickCode": {
+    "m": "Cod 2FA"
+  },
+  "honkpassQuickFillTarget": {
+    "m": "Completează în $APPLICATION$",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassQuickItemCount": {
+    "m": "Elemente: $COUNT$",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "honkpassQuickName": {
+    "m": "Nume utilizator"
+  },
+  "honkpassQuickNewWindow": {
+    "m": "Deschide elementul într-o fereastră nouă"
+  },
+  "honkpassQuickOpenBrowser": {
+    "m": "Deschide în browser"
+  },
+  "honkpassQuickOpenMain": {
+    "m": "Afișează în HonkPass"
+  },
+  "honkpassQuickSearch": {
+    "m": "Caută în HonkPass"
+  },
+  "honkpassRefreshApps": {
+    "m": "Actualizează lista"
+  },
+  "honkpassRunningAppsHint": {
+    "m": "Aici apar numai aplicațiile cu semnătură verificată. Asociază datele de autentificare folosite în browser cu site-ul corespunzător."
+  },
+  "honkpassSSHCopyFingerprint": {
+    "m": "Copiază amprenta publică"
+  },
+  "honkpassSSHFingerprint": {
+    "m": "Amprentă publică"
+  },
+  "honkpassSSHGitSign": {
+    "m": "semnarea datelor pentru Git"
+  },
+  "honkpassSSHNoFingerprint": {
+    "m": "Amprentă indisponibilă"
+  },
+  "honkpassSSHPending": {
+    "m": "Alte cereri în așteptare: $COUNT$",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "honkpassSSHRequest": {
+    "m": "$APPLICATION$ solicită folosirea unei chei SSH.",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassSSHRequestedPurpose": {
+    "m": "Scop solicitat: $PURPOSE$",
+    "p": {
+      "purpose": "$1"
+    }
+  },
+  "honkpassSSHUnknownDestination": {
+    "m": "Serverul de destinație nu poate fi identificat cu certitudine din această cerere."
+  },
+  "honkpassSSHUnknownPurpose": {
+    "m": "semnarea datelor, scopul exact nu poate fi verificat"
+  },
+  "honkpassSSHUnlockRequest": {
+    "m": "$APPLICATION$ așteaptă deblocarea seifului.",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassSSHVault": {
+    "m": "Seif: $ACCOUNT$ ($SERVER$)",
+    "p": {
+      "account": "$1",
+      "server": "$2"
+    }
+  },
+  "honkpassSSHVerifiedHost": {
+    "m": "Cheia verificată a serverului pentru sesiune: $FINGERPRINT$",
+    "p": {
+      "fingerprint": "$1"
+    }
+  },
+  "honkpassSearchApps": {
+    "m": "Caută aplicații în execuție"
+  },
+  "honkpassUpdateFinishWork": {
+    "m": "Înainte de a instala actualizarea, termină operațiunea curentă și închide ferestrele pentru elemente, Send, import și export. HonkPass blochează seiful în timpul instalării."
+  },
+  "passwordProtectedOptionDescription": {
+    "m": "Stabilește o parolă pentru a cripta fișierul exportat. Aplicațiile Bitwarden compatibile folosesc această parolă pentru a decripta și a importa fișierul."
+  },
+  "premiumPrice": {
+    "m": "Toate pentru doar $PRICE$ /an!",
+    "p": {
+      "price": "$1"
+    }
+  },
+  "selfHostedBaseUrlHint": {
+    "m": "Introdu adresa URL de bază a serverului Vaultwarden. Exemplu: https://vault.example.test"
+  }
+}

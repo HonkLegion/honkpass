@@ -1,0 +1,219 @@
+{
+  "accountRestrictedOptionDescription": {
+    "m": "Ovaj Bitwardenov format izvoza koristi ključ za šifriranje računa. HonkPass ne stvara datoteke u tom formatu."
+  },
+  "appLogoLabel": {
+    "m": "Logotip aplikacije HonkPass"
+  },
+  "autofillConfigurationMessage": {
+    "m": "Uključivanje automatskog ispunjavanja uz HonkPass…"
+  },
+  "clearSearchTooltip": {
+    "m": "Kliknite ovdje ili pritisnite Esc za brisanje pretrage."
+  },
+  "coachmarkFiltersDescription": {
+    "m": "Odaberite više filtara odjednom kako biste suzili rezultate. Filtri ostaju aktivni i kad promijenite prikaz."
+  },
+  "coachmarkFiltersTitle": {
+    "m": "Kombinirajte filtre"
+  },
+  "confirmPasskeyAssertionMfaMacOS": {
+    "m": "prijaviti se kao $USERNAME$ pristupnim ključem za $RPID$. $RPID$ traži ovu provjeru radi višefaktorske autentifikacije.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "confirmPasskeyOverwriteMfaMacOS": {
+    "m": "prebrisati pristupni ključ za $RPID$ za korisnika $USERNAME$. $RPID$ traži ovu provjeru radi višefaktorske autentifikacije.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "confirmPasskeyRegistrationMfaMacOS": {
+    "m": "izraditi novi pristupni ključ za $RPID$ za korisnika $USERNAME$. $RPID$ traži ovu provjeru radi višefaktorske autentifikacije.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "honkpassAppAlreadyAssigned": {
+    "m": "Već povezano"
+  },
+  "honkpassAppListError": {
+    "m": "Nije moguće učitati aplikacije. Osvježite popis i pokušajte ponovno."
+  },
+  "honkpassAppNotAccepted": {
+    "m": "Aplikaciju nije moguće provjeriti. Ponovno je odaberite ili odaberite drugu aplikaciju."
+  },
+  "honkpassAppSaveFailed": {
+    "m": "Podaci su ispunjeni. Aplikaciju nije bilo moguće spremiti u ovu stavku."
+  },
+  "honkpassAssignApp": {
+    "m": "Poveži aplikaciju"
+  },
+  "honkpassAutoFillUnavailable": {
+    "m": "Nije moguće povezati se s aplikacijom HonkPass"
+  },
+  "honkpassAutoFillUnavailableDescription": {
+    "m": "Otvorite HonkPass i u postavkama aplikacije uključite automatsko ispunjavanje sustava. Trezor je možda i dalje otključan."
+  },
+  "honkpassChooseApp": {
+    "m": "Odaberi aplikaciju"
+  },
+  "honkpassChooseAppFromDisk": {
+    "m": "Odaberi aplikaciju s diska…"
+  },
+  "honkpassConfirmAppFill": {
+    "m": "Potvrdi automatsko ispunjavanje u aplikaciji"
+  },
+  "honkpassConfirmAppFillDescription": {
+    "m": "Ova će aplikacija primiti podatke za prijavu iz stavke „$ITEM$”.",
+    "p": {
+      "item": "$1"
+    }
+  },
+  "honkpassCurrentApp": {
+    "m": "Aplikacija za ispunjavanje"
+  },
+  "honkpassFillAndSaveApp": {
+    "m": "Ispuni i spremi aplikaciju"
+  },
+  "honkpassLegalSummary": {
+    "m": "Slobodan softver pod licencom GNU GPLv3. Možete ga mijenjati i dalje distribuirati prema uvjetima te licence. Isporučuje se bez jamstva u mjeri u kojoj to zakon dopušta."
+  },
+  "honkpassLicensesAndSource": {
+    "m": "Licence, zahvale i izvorni kod"
+  },
+  "honkpassLoadingApps": {
+    "m": "Učitavanje aplikacija…"
+  },
+  "honkpassNoMatchingApps": {
+    "m": "Nijedna aplikacija ne odgovara pretraživanju."
+  },
+  "honkpassNoRunningApps": {
+    "m": "Nema pokrenutih aplikacija dostupnih za povezivanje."
+  },
+  "honkpassOpenMainWindow": {
+    "m": "Otvori HonkPass"
+  },
+  "honkpassOpenQuickAccess": {
+    "m": "Otvori brzi pristup"
+  },
+  "honkpassQuickAccess": {
+    "m": "Brzi pristup"
+  },
+  "honkpassQuickChoose": {
+    "m": "↑ ↓ Odaberi"
+  },
+  "honkpassQuickCode": {
+    "m": "2FA kod"
+  },
+  "honkpassQuickFillTarget": {
+    "m": "Ispuni u aplikaciji $APPLICATION$",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassQuickItemCount": {
+    "m": "Stavke: $COUNT$",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "honkpassQuickName": {
+    "m": "Korisničko ime"
+  },
+  "honkpassQuickNewWindow": {
+    "m": "Otvori stavku u novom prozoru"
+  },
+  "honkpassQuickOpenBrowser": {
+    "m": "Otvori u pregledniku"
+  },
+  "honkpassQuickOpenMain": {
+    "m": "Prikaži u aplikaciji HonkPass"
+  },
+  "honkpassQuickSearch": {
+    "m": "Pretraži HonkPass"
+  },
+  "honkpassRefreshApps": {
+    "m": "Osvježi popis"
+  },
+  "honkpassRunningAppsHint": {
+    "m": "Ovdje se prikazuju samo aplikacije s provjerenim potpisom. Podatke za prijavu u pregledniku povežite s odgovarajućim web-mjestom."
+  },
+  "honkpassSSHCopyFingerprint": {
+    "m": "Kopiraj javni otisak ključa"
+  },
+  "honkpassSSHFingerprint": {
+    "m": "Javni otisak ključa"
+  },
+  "honkpassSSHGitSign": {
+    "m": "potpisivanje podataka za Git"
+  },
+  "honkpassSSHNoFingerprint": {
+    "m": "Otisak ključa nije dostupan"
+  },
+  "honkpassSSHPending": {
+    "m": "Ostali zahtjevi na čekanju: $COUNT$",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "honkpassSSHRequest": {
+    "m": "Aplikacija $APPLICATION$ želi upotrijebiti SSH ključ.",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassSSHRequestedPurpose": {
+    "m": "Zatražena svrha: $PURPOSE$",
+    "p": {
+      "purpose": "$1"
+    }
+  },
+  "honkpassSSHUnknownDestination": {
+    "m": "Iz ovog se zahtjeva ne može pouzdano utvrditi odredišni poslužitelj."
+  },
+  "honkpassSSHUnknownPurpose": {
+    "m": "potpisivanje podataka, točnu svrhu nije moguće provjeriti"
+  },
+  "honkpassSSHUnlockRequest": {
+    "m": "Aplikacija $APPLICATION$ čeka otključavanje trezora.",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassSSHVault": {
+    "m": "Trezor: $ACCOUNT$ ($SERVER$)",
+    "p": {
+      "account": "$1",
+      "server": "$2"
+    }
+  },
+  "honkpassSSHVerifiedHost": {
+    "m": "Provjereni ključ poslužitelja sesije: $FINGERPRINT$",
+    "p": {
+      "fingerprint": "$1"
+    }
+  },
+  "honkpassSearchApps": {
+    "m": "Pretraži pokrenute aplikacije"
+  },
+  "honkpassUpdateFinishWork": {
+    "m": "Prije instalacije ažuriranja dovršite trenutnu radnju i zatvorite prozore za stavke, Send, uvoz i izvoz. HonkPass tijekom instalacije zaključava trezor."
+  },
+  "passwordProtectedOptionDescription": {
+    "m": "Postavite lozinku za šifriranje izvozne datoteke. Kompatibilni Bitwardenovi klijenti koriste tu lozinku za dešifriranje i uvoz datoteke."
+  },
+  "selfHostedBaseUrlHint": {
+    "m": "Unesite osnovni URL svojeg poslužitelja Vaultwarden. Primjer: https://vault.example.test"
+  },
+  "valueCopied": {
+    "m": "$VALUE$ kopirano",
+    "p": {
+      "value": "$1"
+    }
+  }
+}

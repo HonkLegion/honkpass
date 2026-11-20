@@ -1,0 +1,213 @@
+{
+  "accountRestrictedOptionDescription": {
+    "m": "Questo formato di esportazione Bitwarden usa la chiave di cifratura dell’account. HonkPass non crea file in questo formato."
+  },
+  "appLogoLabel": {
+    "m": "Logo di HonkPass"
+  },
+  "autofillConfigurationMessage": {
+    "m": "Attivazione della compilazione automatica con HonkPass…"
+  },
+  "clearSearchTooltip": {
+    "m": "Cancella cliccando qui o premendo Esc."
+  },
+  "coachmarkFiltersDescription": {
+    "m": "Seleziona più filtri per restringere i risultati. I filtri rimarranno attivi anche se cambi vista."
+  },
+  "coachmarkFiltersTitle": {
+    "m": "Combina i filtri"
+  },
+  "confirmPasskeyAssertionMfaMacOS": {
+    "m": "accedere come $USERNAME$ con la passkey per $RPID$. $RPID$ richiede questa verifica per l’autenticazione a più fattori.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "confirmPasskeyOverwriteMfaMacOS": {
+    "m": "sovrascrivere la passkey per $RPID$ dell’utente $USERNAME$. $RPID$ richiede questa verifica per l’autenticazione a più fattori.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "confirmPasskeyRegistrationMfaMacOS": {
+    "m": "creare una nuova passkey per $RPID$ per l’utente $USERNAME$. $RPID$ richiede questa verifica per l’autenticazione a più fattori.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "honkpassAppAlreadyAssigned": {
+    "m": "Già associata"
+  },
+  "honkpassAppListError": {
+    "m": "Impossibile caricare le app. Aggiorna l’elenco per riprovare."
+  },
+  "honkpassAppNotAccepted": {
+    "m": "Impossibile verificare l’app. Selezionala di nuovo oppure scegline un’altra."
+  },
+  "honkpassAppSaveFailed": {
+    "m": "Campi compilati. Impossibile salvare l’app in questo elemento."
+  },
+  "honkpassAssignApp": {
+    "m": "Associa app"
+  },
+  "honkpassAutoFillUnavailable": {
+    "m": "Impossibile connettersi a HonkPass"
+  },
+  "honkpassAutoFillUnavailableDescription": {
+    "m": "Apri HonkPass e attiva la compilazione automatica di sistema nelle impostazioni dell’app. La cassaforte potrebbe essere ancora sbloccata."
+  },
+  "honkpassChooseApp": {
+    "m": "Scegli un’app"
+  },
+  "honkpassChooseAppFromDisk": {
+    "m": "Scegli un’app dal disco…"
+  },
+  "honkpassConfirmAppFill": {
+    "m": "Conferma la compilazione automatica nell’app"
+  },
+  "honkpassConfirmAppFillDescription": {
+    "m": "Questa app riceverà le credenziali dell’elemento «$ITEM$».",
+    "p": {
+      "item": "$1"
+    }
+  },
+  "honkpassCurrentApp": {
+    "m": "App di destinazione"
+  },
+  "honkpassFillAndSaveApp": {
+    "m": "Compila e salva l’app"
+  },
+  "honkpassLegalSummary": {
+    "m": "Software libero distribuito con licenza GNU GPLv3. Puoi modificarlo e ridistribuirlo secondo i termini della licenza. È fornito senza garanzie nei limiti consentiti dalla legge."
+  },
+  "honkpassLicensesAndSource": {
+    "m": "Licenze, riconoscimenti e codice sorgente"
+  },
+  "honkpassLoadingApps": {
+    "m": "Caricamento delle app…"
+  },
+  "honkpassNoMatchingApps": {
+    "m": "Nessuna app corrisponde alla ricerca."
+  },
+  "honkpassNoRunningApps": {
+    "m": "Nessuna app aperta da associare."
+  },
+  "honkpassOpenMainWindow": {
+    "m": "Apri HonkPass"
+  },
+  "honkpassOpenQuickAccess": {
+    "m": "Apri l’accesso rapido"
+  },
+  "honkpassQuickAccess": {
+    "m": "Accesso rapido"
+  },
+  "honkpassQuickChoose": {
+    "m": "↑ ↓ Seleziona"
+  },
+  "honkpassQuickCode": {
+    "m": "Codice 2FA"
+  },
+  "honkpassQuickFillTarget": {
+    "m": "Compila in $APPLICATION$",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassQuickItemCount": {
+    "m": "Elementi: $COUNT$",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "honkpassQuickName": {
+    "m": "Nome utente"
+  },
+  "honkpassQuickNewWindow": {
+    "m": "Apri l’elemento in una nuova finestra"
+  },
+  "honkpassQuickOpenBrowser": {
+    "m": "Apri nel browser"
+  },
+  "honkpassQuickOpenMain": {
+    "m": "Mostra in HonkPass"
+  },
+  "honkpassQuickSearch": {
+    "m": "Cerca in HonkPass"
+  },
+  "honkpassRefreshApps": {
+    "m": "Aggiorna elenco"
+  },
+  "honkpassRunningAppsHint": {
+    "m": "Qui compaiono solo le app con firma verificata. Associa le credenziali usate nel browser al relativo sito web."
+  },
+  "honkpassSSHCopyFingerprint": {
+    "m": "Copia l’impronta della chiave pubblica"
+  },
+  "honkpassSSHFingerprint": {
+    "m": "Impronta della chiave pubblica"
+  },
+  "honkpassSSHGitSign": {
+    "m": "firmare dati per Git"
+  },
+  "honkpassSSHNoFingerprint": {
+    "m": "Impronta non disponibile"
+  },
+  "honkpassSSHPending": {
+    "m": "Altre richieste in attesa: $COUNT$",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "honkpassSSHRequest": {
+    "m": "$APPLICATION$ chiede di usare una chiave SSH.",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassSSHRequestedPurpose": {
+    "m": "Uso richiesto: $PURPOSE$",
+    "p": {
+      "purpose": "$1"
+    }
+  },
+  "honkpassSSHUnknownDestination": {
+    "m": "Questa richiesta non permette di identificare con certezza il server di destinazione."
+  },
+  "honkpassSSHUnknownPurpose": {
+    "m": "firmare dati, impossibile verificare lo scopo esatto"
+  },
+  "honkpassSSHUnlockRequest": {
+    "m": "$APPLICATION$ è in attesa dello sblocco della cassaforte.",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassSSHVault": {
+    "m": "Cassaforte: $ACCOUNT$ ($SERVER$)",
+    "p": {
+      "account": "$1",
+      "server": "$2"
+    }
+  },
+  "honkpassSSHVerifiedHost": {
+    "m": "Chiave verificata del server della sessione: $FINGERPRINT$",
+    "p": {
+      "fingerprint": "$1"
+    }
+  },
+  "honkpassSearchApps": {
+    "m": "Cerca tra le app aperte"
+  },
+  "honkpassUpdateFinishWork": {
+    "m": "Prima di installare l’aggiornamento, termina l’operazione in corso e chiudi le finestre di modifica degli elementi e di Send e quelle di importazione ed esportazione. HonkPass blocca la cassaforte durante l’installazione."
+  },
+  "passwordProtectedOptionDescription": {
+    "m": "Imposta una password per cifrare il file esportato. I client Bitwarden compatibili useranno la password per decifrare e importare il file."
+  },
+  "selfHostedBaseUrlHint": {
+    "m": "Inserisci l’URL di base del tuo server Vaultwarden. Esempio: https://vault.example.test"
+  }
+}

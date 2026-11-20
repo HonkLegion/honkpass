@@ -1,0 +1,222 @@
+{
+  "accountRestrictedOptionDescription": {
+    "m": "Dette eksportformatet fra Bitwarden bruker kontoens krypteringsnøkkel. HonkPass oppretter ikke filer i dette formatet."
+  },
+  "appLogoLabel": {
+    "m": "HonkPass-logo"
+  },
+  "autofillConfigurationMessage": {
+    "m": "Slår på autoutfylling med HonkPass…"
+  },
+  "clearSearchTooltip": {
+    "m": "Klikk her eller trykk på Esc for å tømme søket."
+  },
+  "coachmarkFiltersDescription": {
+    "m": "Velg flere filtre samtidig for å begrense resultatene. Filtrene forblir aktive når du går til en annen visning."
+  },
+  "coachmarkFiltersTitle": {
+    "m": "Kombiner filtre"
+  },
+  "confirmPasskeyAssertionMfaMacOS": {
+    "m": "logge inn som $USERNAME$ med passnøkkelen din for $RPID$. $RPID$ ber om denne kontrollen for flerfaktorautentisering.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "confirmPasskeyOverwriteMfaMacOS": {
+    "m": "overskrive en passnøkkel for $RPID$ for brukeren $USERNAME$. $RPID$ ber om denne kontrollen for flerfaktorautentisering.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "confirmPasskeyRegistrationMfaMacOS": {
+    "m": "opprette en ny passnøkkel for $RPID$ for brukeren $USERNAME$. $RPID$ ber om denne kontrollen for flerfaktorautentisering.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "enableAutotypeGaShortcut": {
+    "m": "Aktiver snarveien for automatisk inntasting"
+  },
+  "honkpassAppAlreadyAssigned": {
+    "m": "Allerede tilknyttet"
+  },
+  "honkpassAppListError": {
+    "m": "Kunne ikke laste inn appene. Oppdater listen og prøv igjen."
+  },
+  "honkpassAppNotAccepted": {
+    "m": "Appen kunne ikke bekreftes. Velg den på nytt eller velg en annen app."
+  },
+  "honkpassAppSaveFailed": {
+    "m": "Opplysningene ble fylt ut. Appen kunne ikke lagres i dette elementet."
+  },
+  "honkpassAssignApp": {
+    "m": "Knytt til app"
+  },
+  "honkpassAutoFillUnavailable": {
+    "m": "Kunne ikke koble til HonkPass"
+  },
+  "honkpassAutoFillUnavailableDescription": {
+    "m": "Åpne HonkPass og slå på systemets autoutfylling i appinnstillingene. Hvelvet kan fortsatt være ulåst."
+  },
+  "honkpassChooseApp": {
+    "m": "Velg en app"
+  },
+  "honkpassChooseAppFromDisk": {
+    "m": "Velg en app fra disken…"
+  },
+  "honkpassConfirmAppFill": {
+    "m": "Bekreft automatisk utfylling i appen"
+  },
+  "honkpassConfirmAppFillDescription": {
+    "m": "Denne appen får innloggingsopplysningene fra elementet «$ITEM$».",
+    "p": {
+      "item": "$1"
+    }
+  },
+  "honkpassCurrentApp": {
+    "m": "App å fylle ut i"
+  },
+  "honkpassFillAndSaveApp": {
+    "m": "Fyll ut og lagre appen"
+  },
+  "honkpassLegalSummary": {
+    "m": "Fri programvare under GNU GPLv3. Du kan endre og videredistribuere programvaren på vilkårene i lisensen. Den leveres uten garanti i den grad loven tillater det."
+  },
+  "honkpassLicensesAndSource": {
+    "m": "Lisenser, bidragsytere og kildekode"
+  },
+  "honkpassLoadingApps": {
+    "m": "Laster inn apper…"
+  },
+  "honkpassNoMatchingApps": {
+    "m": "Ingen apper samsvarer med søket."
+  },
+  "honkpassNoRunningApps": {
+    "m": "Ingen åpne apper er tilgjengelige for tilknytning."
+  },
+  "honkpassOpenMainWindow": {
+    "m": "Åpne HonkPass"
+  },
+  "honkpassOpenQuickAccess": {
+    "m": "Åpne hurtigtilgang"
+  },
+  "honkpassQuickAccess": {
+    "m": "Hurtigtilgang"
+  },
+  "honkpassQuickChoose": {
+    "m": "↑ ↓ Velg"
+  },
+  "honkpassQuickCode": {
+    "m": "2FA-kode"
+  },
+  "honkpassQuickFillTarget": {
+    "m": "Fyll ut i $APPLICATION$",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassQuickItemCount": {
+    "m": "Elementer: $COUNT$",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "honkpassQuickName": {
+    "m": "Brukernavn"
+  },
+  "honkpassQuickNewWindow": {
+    "m": "Åpne elementet i et nytt vindu"
+  },
+  "honkpassQuickOpenBrowser": {
+    "m": "Åpne i nettleseren"
+  },
+  "honkpassQuickOpenMain": {
+    "m": "Vis i HonkPass"
+  },
+  "honkpassQuickSearch": {
+    "m": "Søk i HonkPass"
+  },
+  "honkpassRefreshApps": {
+    "m": "Oppdater listen"
+  },
+  "honkpassRunningAppsHint": {
+    "m": "Her vises bare apper med bekreftet signatur. Knytt nettleserinnlogginger til det tilhørende nettstedet."
+  },
+  "honkpassSSHCopyFingerprint": {
+    "m": "Kopier offentlig fingeravtrykk"
+  },
+  "honkpassSSHFingerprint": {
+    "m": "Offentlig fingeravtrykk"
+  },
+  "honkpassSSHGitSign": {
+    "m": "signere data for Git"
+  },
+  "honkpassSSHNoFingerprint": {
+    "m": "Fingeravtrykk utilgjengelig"
+  },
+  "honkpassSSHPending": {
+    "m": "Flere forespørsler i kø: $COUNT$",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "honkpassSSHRequest": {
+    "m": "$APPLICATION$ ber om å få bruke en SSH-nøkkel.",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassSSHRequestedPurpose": {
+    "m": "Oppgitt formål: $PURPOSE$",
+    "p": {
+      "purpose": "$1"
+    }
+  },
+  "honkpassSSHUnknownDestination": {
+    "m": "Forespørselen identifiserer ikke målserveren med sikkerhet."
+  },
+  "honkpassSSHUnknownPurpose": {
+    "m": "signere data, det nøyaktige formålet kan ikke bekreftes"
+  },
+  "honkpassSSHUnlockRequest": {
+    "m": "$APPLICATION$ venter på at hvelvet skal låses opp.",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassSSHVault": {
+    "m": "Hvelv: $ACCOUNT$ ($SERVER$)",
+    "p": {
+      "account": "$1",
+      "server": "$2"
+    }
+  },
+  "honkpassSSHVerifiedHost": {
+    "m": "Bekreftet servernøkkel for økten: $FINGERPRINT$",
+    "p": {
+      "fingerprint": "$1"
+    }
+  },
+  "honkpassSearchApps": {
+    "m": "Søk blant åpne apper"
+  },
+  "honkpassUpdateFinishWork": {
+    "m": "Fullfør den pågående handlingen, og lukk vinduene for elementer, Send, import og eksport før du installerer oppdateringen. HonkPass låser hvelvet under installasjonen."
+  },
+  "passwordProtectedOptionDescription": {
+    "m": "Angi et passord for å kryptere eksportfilen. Kompatible Bitwarden-klienter bruker passordet til å dekryptere og importere filen."
+  },
+  "premiumPrice": {
+    "m": "Alt for bare $PRICE$ per år!",
+    "p": {
+      "price": "$1"
+    }
+  },
+  "selfHostedBaseUrlHint": {
+    "m": "Skriv inn basisadressen til Vaultwarden-serveren din. Eksempel: https://vault.example.test"
+  }
+}

@@ -1,0 +1,216 @@
+{
+  "accountRestrictedOptionDescription": {
+    "m": "Bitwarden-en esportazio-formatu honek kontuaren zifratze-gakoa erabiltzen du. HonkPass-ek ez du formatu horretako fitxategirik sortzen."
+  },
+  "appLogoLabel": {
+    "m": "HonkPass-en logotipoa"
+  },
+  "autofillConfigurationMessage": {
+    "m": "HonkPass bidezko betetze automatikoa aktibatzen…"
+  },
+  "clearSearchTooltip": {
+    "m": "Egin klik hemen edo sakatu Esc bilaketa garbitzeko."
+  },
+  "coachmarkFiltersDescription": {
+    "m": "Hautatu hainbat iragazki aldi berean emaitzak mugatzeko. Beste ikuspegi batera joanda ere, iragazkiek aktibo jarraituko dute."
+  },
+  "coachmarkFiltersTitle": {
+    "m": "Konbinatu iragazkiak"
+  },
+  "confirmPasskeyAssertionMfaMacOS": {
+    "m": "$USERNAME$ erabiltzaile gisa saioa hasteko $RPID$ zerbitzuko sarbide-gakoarekin. $RPID$ zerbitzuak egiaztapen hau eskatzen du faktore anitzeko autentifikaziorako.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "confirmPasskeyOverwriteMfaMacOS": {
+    "m": "$USERNAME$ erabiltzailearen $RPID$ zerbitzuko sarbide-gakoa gainidazteko. $RPID$ zerbitzuak egiaztapen hau eskatzen du faktore anitzeko autentifikaziorako.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "confirmPasskeyRegistrationMfaMacOS": {
+    "m": "$USERNAME$ erabiltzailearentzat $RPID$ zerbitzuko sarbide-gako berri bat sortzeko. $RPID$ zerbitzuak egiaztapen hau eskatzen du faktore anitzeko autentifikaziorako.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "enableAutotypeGaShortcut": {
+    "m": "Gaitu idazketa automatikoaren lasterbidea"
+  },
+  "honkpassAppAlreadyAssigned": {
+    "m": "Dagoeneko lotuta"
+  },
+  "honkpassAppListError": {
+    "m": "Ezin izan dira aplikazioak kargatu. Freskatu zerrenda eta saiatu berriro."
+  },
+  "honkpassAppNotAccepted": {
+    "m": "Ezin izan da aplikazioa egiaztatu. Hautatu berriro edo aukeratu beste aplikazio bat."
+  },
+  "honkpassAppSaveFailed": {
+    "m": "Datuak bete dira. Ezin izan da aplikazioa elementu honetan gorde."
+  },
+  "honkpassAssignApp": {
+    "m": "Lotu aplikazioa"
+  },
+  "honkpassAutoFillUnavailable": {
+    "m": "Ezin izan da HonkPass-ekin konektatu"
+  },
+  "honkpassAutoFillUnavailableDescription": {
+    "m": "Ireki HonkPass eta aktibatu sistemaren betetze automatikoa aplikazioaren ezarpenetan. Kutxa gotorrak desblokeatuta jarrai dezake."
+  },
+  "honkpassChooseApp": {
+    "m": "Aukeratu aplikazio bat"
+  },
+  "honkpassChooseAppFromDisk": {
+    "m": "Aukeratu aplikazio bat diskotik…"
+  },
+  "honkpassConfirmAppFill": {
+    "m": "Berretsi aplikazioko betetze automatikoa"
+  },
+  "honkpassConfirmAppFillDescription": {
+    "m": "Aplikazio honek «$ITEM$» elementuko saioa hasteko datuak jasoko ditu.",
+    "p": {
+      "item": "$1"
+    }
+  },
+  "honkpassCurrentApp": {
+    "m": "Bete beharreko aplikazioa"
+  },
+  "honkpassFillAndSaveApp": {
+    "m": "Bete eta gorde aplikazioa"
+  },
+  "honkpassLegalSummary": {
+    "m": "GNU GPLv3 lizentziapeko software librea. Lizentzia horren baldintzen arabera aldatu eta birbana dezakezu. Bermerik gabe eskaintzen da, legeak baimentzen duen neurrian."
+  },
+  "honkpassLicensesAndSource": {
+    "m": "Lizentziak, esker onak eta iturburu-kodea"
+  },
+  "honkpassLoadingApps": {
+    "m": "Aplikazioak kargatzen…"
+  },
+  "honkpassNoMatchingApps": {
+    "m": "Ez dago bilaketarekin bat datorren aplikaziorik."
+  },
+  "honkpassNoRunningApps": {
+    "m": "Ez dago lotzeko moduko aplikaziorik martxan."
+  },
+  "honkpassOpenMainWindow": {
+    "m": "Ireki HonkPass"
+  },
+  "honkpassOpenQuickAccess": {
+    "m": "Ireki sarbide azkarra"
+  },
+  "honkpassQuickAccess": {
+    "m": "Sarbide azkarra"
+  },
+  "honkpassQuickChoose": {
+    "m": "↑ ↓ Hautatu"
+  },
+  "honkpassQuickCode": {
+    "m": "2FA kodea"
+  },
+  "honkpassQuickFillTarget": {
+    "m": "Bete $APPLICATION$ aplikazioan",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassQuickItemCount": {
+    "m": "Elementuak: $COUNT$",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "honkpassQuickName": {
+    "m": "Erabiltzaile izena"
+  },
+  "honkpassQuickNewWindow": {
+    "m": "Ireki elementua leiho berri batean"
+  },
+  "honkpassQuickOpenBrowser": {
+    "m": "Ireki nabigatzailean"
+  },
+  "honkpassQuickOpenMain": {
+    "m": "Erakutsi HonkPass-en"
+  },
+  "honkpassQuickSearch": {
+    "m": "Bilatu HonkPass-en"
+  },
+  "honkpassRefreshApps": {
+    "m": "Freskatu zerrenda"
+  },
+  "honkpassRunningAppsHint": {
+    "m": "Sinadura egiaztatua duten aplikazioak bakarrik agertzen dira hemen. Lotu nabigatzaileko saio-hasierako datuak dagokien webguneari."
+  },
+  "honkpassSSHCopyFingerprint": {
+    "m": "Kopiatu hatz-marka publikoa"
+  },
+  "honkpassSSHFingerprint": {
+    "m": "Hatz-marka publikoa"
+  },
+  "honkpassSSHGitSign": {
+    "m": "Git-erako datuak sinatzea"
+  },
+  "honkpassSSHNoFingerprint": {
+    "m": "Hatz-marka ez dago erabilgarri"
+  },
+  "honkpassSSHPending": {
+    "m": "Zain dauden beste eskaerak: $COUNT$",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "honkpassSSHRequest": {
+    "m": "$APPLICATION$ aplikazioak SSH gako bat erabiltzeko baimena eskatu du.",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassSSHRequestedPurpose": {
+    "m": "Eskatutako helburua: $PURPOSE$",
+    "p": {
+      "purpose": "$1"
+    }
+  },
+  "honkpassSSHUnknownDestination": {
+    "m": "Ezin da eskaera honetatik helmugako zerbitzaria modu fidagarrian identifikatu."
+  },
+  "honkpassSSHUnknownPurpose": {
+    "m": "datuak sinatzea, ezin da helburu zehatza egiaztatu"
+  },
+  "honkpassSSHUnlockRequest": {
+    "m": "$APPLICATION$ aplikazioa kutxa desblokeatu zain dago.",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassSSHVault": {
+    "m": "Kutxa: $ACCOUNT$ ($SERVER$)",
+    "p": {
+      "account": "$1",
+      "server": "$2"
+    }
+  },
+  "honkpassSSHVerifiedHost": {
+    "m": "Saioaren zerbitzari-gako egiaztatua: $FINGERPRINT$",
+    "p": {
+      "fingerprint": "$1"
+    }
+  },
+  "honkpassSearchApps": {
+    "m": "Bilatu martxan dauden aplikazioak"
+  },
+  "honkpassUpdateFinishWork": {
+    "m": "Eguneratzea instalatu aurretik, amaitu uneko eragiketa eta itxi elementuen, Send-en, inportazioaren eta esportazioaren editoreak. HonkPass-ek kutxa blokeatzen du instalazioan."
+  },
+  "passwordProtectedOptionDescription": {
+    "m": "Ezarri pasahitz bat esportatutako fitxategia zifratzeko. Bitwarden-en bezero bateragarriek pasahitz hori erabiltzen dute fitxategia deszifratu eta inportatzeko."
+  },
+  "selfHostedBaseUrlHint": {
+    "m": "Sartu zure Vaultwarden zerbitzariaren oinarrizko URLa. Adibidez: https://vault.example.test"
+  }
+}

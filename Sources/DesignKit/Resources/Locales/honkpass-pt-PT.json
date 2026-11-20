@@ -1,0 +1,189 @@
+{
+  "accountRestrictedOptionDescription": {
+    "m": "Este formato de exportação do Bitwarden usa a chave de encriptação da conta. O HonkPass não cria ficheiros neste formato."
+  },
+  "appLogoLabel": {
+    "m": "Logótipo do HonkPass"
+  },
+  "autofillConfigurationMessage": {
+    "m": "A ativar o preenchimento automático com o HonkPass…"
+  },
+  "coachmarkFiltersDescription": {
+    "m": "Selecione vários filtros para limitar os resultados. Os filtros continuam ativos quando navega para outra área."
+  },
+  "coachmarkFiltersTitle": {
+    "m": "Combine filtros"
+  },
+  "honkpassAppAlreadyAssigned": {
+    "m": "Já associada"
+  },
+  "honkpassAppListError": {
+    "m": "Não foi possível carregar as aplicações. Atualize a lista e tente novamente."
+  },
+  "honkpassAppNotAccepted": {
+    "m": "Não foi possível verificar esta aplicação. Volte a selecioná-la ou escolha outra."
+  },
+  "honkpassAppSaveFailed": {
+    "m": "Os dados foram preenchidos, mas não foi possível guardar a aplicação neste item."
+  },
+  "honkpassAssignApp": {
+    "m": "Associar aplicação"
+  },
+  "honkpassAutoFillUnavailable": {
+    "m": "Não foi possível ligar ao HonkPass"
+  },
+  "honkpassAutoFillUnavailableDescription": {
+    "m": "Abra o HonkPass e ative o preenchimento automático do sistema nas definições da aplicação. O cofre pode continuar desbloqueado."
+  },
+  "honkpassChooseApp": {
+    "m": "Escolher aplicação"
+  },
+  "honkpassChooseAppFromDisk": {
+    "m": "Escolher uma aplicação no disco…"
+  },
+  "honkpassConfirmAppFill": {
+    "m": "Confirmar preenchimento automático na aplicação"
+  },
+  "honkpassConfirmAppFillDescription": {
+    "m": "Esta aplicação vai receber as credenciais do item «$ITEM$».",
+    "p": {
+      "item": "$1"
+    }
+  },
+  "honkpassCurrentApp": {
+    "m": "Aplicação a preencher"
+  },
+  "honkpassFillAndSaveApp": {
+    "m": "Preencher e guardar aplicação"
+  },
+  "honkpassLegalSummary": {
+    "m": "Software livre ao abrigo da GNU GPLv3. Pode modificá-lo e redistribuí-lo nos termos desta licença. É fornecido sem garantia, na medida permitida por lei."
+  },
+  "honkpassLicensesAndSource": {
+    "m": "Licenças, créditos e código-fonte"
+  },
+  "honkpassLoadingApps": {
+    "m": "A carregar aplicações…"
+  },
+  "honkpassNoMatchingApps": {
+    "m": "Nenhuma aplicação corresponde à pesquisa."
+  },
+  "honkpassNoRunningApps": {
+    "m": "Não há aplicações em execução disponíveis para associar."
+  },
+  "honkpassOpenMainWindow": {
+    "m": "Abrir o HonkPass"
+  },
+  "honkpassOpenQuickAccess": {
+    "m": "Abrir o acesso rápido"
+  },
+  "honkpassQuickAccess": {
+    "m": "Acesso rápido"
+  },
+  "honkpassQuickChoose": {
+    "m": "↑ ↓ Selecionar"
+  },
+  "honkpassQuickCode": {
+    "m": "Código 2FA"
+  },
+  "honkpassQuickFillTarget": {
+    "m": "Preencher em $APPLICATION$",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassQuickItemCount": {
+    "m": "Itens: $COUNT$",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "honkpassQuickName": {
+    "m": "Nome de utilizador"
+  },
+  "honkpassQuickNewWindow": {
+    "m": "Abrir item numa nova janela"
+  },
+  "honkpassQuickOpenBrowser": {
+    "m": "Abrir no navegador"
+  },
+  "honkpassQuickOpenMain": {
+    "m": "Mostrar no HonkPass"
+  },
+  "honkpassQuickSearch": {
+    "m": "Pesquisar no HonkPass"
+  },
+  "honkpassRefreshApps": {
+    "m": "Atualizar lista"
+  },
+  "honkpassRunningAppsHint": {
+    "m": "Só aparecem aplicações com assinatura verificada. Associe os dados de início de sessão do navegador ao respetivo site."
+  },
+  "honkpassSSHCopyFingerprint": {
+    "m": "Copiar impressão digital pública"
+  },
+  "honkpassSSHFingerprint": {
+    "m": "Impressão digital pública"
+  },
+  "honkpassSSHGitSign": {
+    "m": "assinar dados para o Git"
+  },
+  "honkpassSSHNoFingerprint": {
+    "m": "Impressão digital indisponível"
+  },
+  "honkpassSSHPending": {
+    "m": "Outros pedidos em espera: $COUNT$",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "honkpassSSHRequest": {
+    "m": "$APPLICATION$ pede para usar uma chave SSH.",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassSSHRequestedPurpose": {
+    "m": "Finalidade pedida: $PURPOSE$",
+    "p": {
+      "purpose": "$1"
+    }
+  },
+  "honkpassSSHUnknownDestination": {
+    "m": "Este pedido não permite identificar com segurança o servidor de destino."
+  },
+  "honkpassSSHUnknownPurpose": {
+    "m": "assinar dados (não é possível verificar a finalidade exata)"
+  },
+  "honkpassSSHUnlockRequest": {
+    "m": "$APPLICATION$ está à espera que o cofre seja desbloqueado.",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassSSHVault": {
+    "m": "Cofre: $ACCOUNT$ ($SERVER$)",
+    "p": {
+      "account": "$1",
+      "server": "$2"
+    }
+  },
+  "honkpassSSHVerifiedHost": {
+    "m": "Chave verificada do servidor da sessão: $FINGERPRINT$",
+    "p": {
+      "fingerprint": "$1"
+    }
+  },
+  "honkpassSearchApps": {
+    "m": "Pesquisar aplicações em execução"
+  },
+  "honkpassUpdateFinishWork": {
+    "m": "Antes de instalar a atualização, conclua a operação em curso e feche os editores de itens, de Send, de importação e de exportação. O HonkPass bloqueia o cofre durante a instalação."
+  },
+  "passwordProtectedOptionDescription": {
+    "m": "Defina uma palavra-passe para encriptar o ficheiro exportado. Os clientes Bitwarden compatíveis usam essa palavra-passe para o desencriptar e importar."
+  },
+  "selfHostedBaseUrlHint": {
+    "m": "Introduza o URL base do seu servidor Vaultwarden. Exemplo: https://vault.example.test"
+  }
+}

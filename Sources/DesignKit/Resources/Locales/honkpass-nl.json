@@ -1,0 +1,219 @@
+{
+  "accountRestrictedOptionDescription": {
+    "m": "Dit exportformaat van Bitwarden gebruikt de versleutelingssleutel van het account. HonkPass maakt geen bestanden in dit formaat."
+  },
+  "appLogoLabel": {
+    "m": "HonkPass-logo"
+  },
+  "autofillConfigurationMessage": {
+    "m": "Automatisch invullen met HonkPass wordt ingeschakeld…"
+  },
+  "coachmarkFiltersDescription": {
+    "m": "Selecteer meerdere filters tegelijk om de resultaten te verfijnen. Ze blijven actief als je ergens anders naartoe gaat."
+  },
+  "coachmarkFiltersTitle": {
+    "m": "Filters combineren"
+  },
+  "confirmPasskeyAssertionMfaMacOS": {
+    "m": "inloggen als $USERNAME$ met je passkey voor $RPID$. $RPID$ vraagt om deze controle voor meervoudige verificatie.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "confirmPasskeyOverwriteMfaMacOS": {
+    "m": "de passkey voor $RPID$ van $USERNAME$ overschrijven. $RPID$ vraagt om deze controle voor meervoudige verificatie.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "confirmPasskeyRegistrationMfaMacOS": {
+    "m": "een nieuwe passkey voor $RPID$ maken voor $USERNAME$. $RPID$ vraagt om deze controle voor meervoudige verificatie.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "honkpassAppAlreadyAssigned": {
+    "m": "Al gekoppeld"
+  },
+  "honkpassAppListError": {
+    "m": "De apps konden niet worden geladen. Vernieuw de lijst en probeer het opnieuw."
+  },
+  "honkpassAppNotAccepted": {
+    "m": "Deze app kan niet worden geverifieerd. Selecteer de app opnieuw of kies een andere."
+  },
+  "honkpassAppSaveFailed": {
+    "m": "De gegevens zijn ingevuld. De app kon niet bij dit item worden opgeslagen."
+  },
+  "honkpassAssignApp": {
+    "m": "App koppelen"
+  },
+  "honkpassAutoFillUnavailable": {
+    "m": "Kan geen verbinding maken met HonkPass"
+  },
+  "honkpassAutoFillUnavailableDescription": {
+    "m": "Open HonkPass en schakel in de instellingen van de app automatisch invullen via macOS in. De kluis kan nog steeds ontgrendeld zijn."
+  },
+  "honkpassChooseApp": {
+    "m": "Kies een app"
+  },
+  "honkpassChooseAppFromDisk": {
+    "m": "Kies een app op de schijf…"
+  },
+  "honkpassConfirmAppFill": {
+    "m": "Automatisch invullen in app bevestigen"
+  },
+  "honkpassConfirmAppFillDescription": {
+    "m": "Deze app krijgt de inloggegevens uit het item ‘$ITEM$’.",
+    "p": {
+      "item": "$1"
+    }
+  },
+  "honkpassCurrentApp": {
+    "m": "App om in te vullen"
+  },
+  "honkpassFillAndSaveApp": {
+    "m": "Invullen en app opslaan"
+  },
+  "honkpassLegalSummary": {
+    "m": "Vrije software onder de GNU GPLv3. Je mag de software volgens deze licentie aanpassen en opnieuw verspreiden. De software wordt zonder garantie geleverd voor zover de wet dat toestaat."
+  },
+  "honkpassLicensesAndSource": {
+    "m": "Licenties, dankwoord en broncode"
+  },
+  "honkpassLoadingApps": {
+    "m": "Apps laden…"
+  },
+  "honkpassNoMatchingApps": {
+    "m": "Geen apps gevonden voor deze zoekopdracht."
+  },
+  "honkpassNoRunningApps": {
+    "m": "Er zijn geen actieve apps beschikbaar om te koppelen."
+  },
+  "honkpassOpenMainWindow": {
+    "m": "HonkPass openen"
+  },
+  "honkpassOpenQuickAccess": {
+    "m": "Snelle toegang openen"
+  },
+  "honkpassQuickAccess": {
+    "m": "Snelle toegang"
+  },
+  "honkpassQuickChoose": {
+    "m": "↑ ↓ Selecteren"
+  },
+  "honkpassQuickCode": {
+    "m": "2FA-code"
+  },
+  "honkpassQuickFillTarget": {
+    "m": "Invullen in $APPLICATION$",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassQuickItemCount": {
+    "m": "Items: $COUNT$",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "honkpassQuickName": {
+    "m": "Gebruikersnaam"
+  },
+  "honkpassQuickNewWindow": {
+    "m": "Item in een nieuw venster openen"
+  },
+  "honkpassQuickOpenBrowser": {
+    "m": "Openen in browser"
+  },
+  "honkpassQuickOpenMain": {
+    "m": "Tonen in HonkPass"
+  },
+  "honkpassQuickSearch": {
+    "m": "Zoeken in HonkPass"
+  },
+  "honkpassRefreshApps": {
+    "m": "Lijst vernieuwen"
+  },
+  "honkpassRunningAppsHint": {
+    "m": "Hier staan alleen apps met een geverifieerde handtekening. Koppel inloggegevens voor de browser aan de bijbehorende website."
+  },
+  "honkpassSSHCopyFingerprint": {
+    "m": "Openbare vingerafdruk kopiëren"
+  },
+  "honkpassSSHFingerprint": {
+    "m": "Openbare vingerafdruk"
+  },
+  "honkpassSSHGitSign": {
+    "m": "gegevens ondertekenen voor Git"
+  },
+  "honkpassSSHNoFingerprint": {
+    "m": "Vingerafdruk niet beschikbaar"
+  },
+  "honkpassSSHPending": {
+    "m": "Overige wachtende verzoeken: $COUNT$",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "honkpassSSHRequest": {
+    "m": "$APPLICATION$ wil een SSH-sleutel gebruiken.",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassSSHRequestedPurpose": {
+    "m": "Gevraagd doel: $PURPOSE$",
+    "p": {
+      "purpose": "$1"
+    }
+  },
+  "honkpassSSHUnknownDestination": {
+    "m": "De doelserver kan met dit verzoek niet betrouwbaar worden vastgesteld."
+  },
+  "honkpassSSHUnknownPurpose": {
+    "m": "gegevens ondertekenen, het precieze doel kan niet worden geverifieerd"
+  },
+  "honkpassSSHUnlockRequest": {
+    "m": "$APPLICATION$ wacht tot de kluis is ontgrendeld.",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassSSHVault": {
+    "m": "Kluis: $ACCOUNT$ ($SERVER$)",
+    "p": {
+      "account": "$1",
+      "server": "$2"
+    }
+  },
+  "honkpassSSHVerifiedHost": {
+    "m": "Geverifieerde serversleutel voor deze sessie: $FINGERPRINT$",
+    "p": {
+      "fingerprint": "$1"
+    }
+  },
+  "honkpassSearchApps": {
+    "m": "Zoek actieve apps"
+  },
+  "honkpassUpdateFinishWork": {
+    "m": "Rond de huidige bewerking af en sluit de vensters voor items, Send, import en export voordat je de update installeert. HonkPass vergrendelt de kluis tijdens de installatie."
+  },
+  "passwordProtectedOptionDescription": {
+    "m": "Stel een wachtwoord in om het exportbestand te versleutelen. Compatibele Bitwarden-clients gebruiken dit wachtwoord om het bestand te ontsleutelen en te importeren."
+  },
+  "selfHostedBaseUrlHint": {
+    "m": "Vul de basis-URL van je Vaultwarden-server in. Voorbeeld: https://vault.example.test"
+  },
+  "websiteUriCount": {
+    "m": "Website ($COUNT$)",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "nationalIdentificationNumber": {
+    "m": "Nationaal identificatienummer"
+  }
+}

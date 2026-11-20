@@ -1,0 +1,225 @@
+{
+  "accountRestrictedOptionDescription": {
+    "m": "Dieses Bitwarden-Exportformat verwendet den Verschlüsselungsschlüssel des Kontos. HonkPass erstellt keine Dateien in diesem Format."
+  },
+  "appLogoLabel": {
+    "m": "HonkPass-Logo"
+  },
+  "autofillConfigurationMessage": {
+    "m": "Automatisches Ausfüllen mit HonkPass wird aktiviert …"
+  },
+  "clearSearchTooltip": {
+    "m": "Durch Klicken hier oder Drücken von Esc löschen."
+  },
+  "coachmarkFiltersDescription": {
+    "m": "Wählen Sie mehrere Filter aus, um die Ergebnisse einzugrenzen. Die Filter bleiben auch dann aktiv, wenn Sie diese Ansicht verlassen."
+  },
+  "coachmarkFiltersTitle": {
+    "m": "Filter kombinieren"
+  },
+  "confirmPasskeyAssertionMfaMacOS": {
+    "m": "sich als $USERNAME$ mit dem Passkey für $RPID$ anmelden. $RPID$ verlangt diese Prüfung für die Mehrfaktor-Authentifizierung.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "confirmPasskeyOverwriteMfaMacOS": {
+    "m": "den Passkey für $RPID$ für das Konto $USERNAME$ überschreiben. $RPID$ verlangt diese Prüfung für die Mehrfaktor-Authentifizierung.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "confirmPasskeyRegistrationMfaMacOS": {
+    "m": "einen neuen Passkey für $RPID$ für das Konto $USERNAME$ erstellen. $RPID$ verlangt diese Prüfung für die Mehrfaktor-Authentifizierung.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "honkpassAppAlreadyAssigned": {
+    "m": "Bereits zugeordnet"
+  },
+  "honkpassAppListError": {
+    "m": "Die Apps konnten nicht geladen werden. Aktualisieren Sie die Liste und versuchen Sie es erneut."
+  },
+  "honkpassAppNotAccepted": {
+    "m": "Die App konnte nicht überprüft werden. Wählen Sie sie erneut oder wählen Sie eine andere App."
+  },
+  "honkpassAppSaveFailed": {
+    "m": "Die Daten wurden ausgefüllt. Die App konnte nicht in diesem Eintrag gespeichert werden."
+  },
+  "honkpassAssignApp": {
+    "m": "App zuordnen"
+  },
+  "honkpassAutoFillUnavailable": {
+    "m": "Verbindung zu HonkPass fehlgeschlagen"
+  },
+  "honkpassAutoFillUnavailableDescription": {
+    "m": "Öffnen Sie HonkPass und aktivieren Sie in den Einstellungen das automatische Ausfüllen über macOS. Der Tresor kann weiterhin entsperrt sein."
+  },
+  "honkpassChooseApp": {
+    "m": "App auswählen"
+  },
+  "honkpassChooseAppFromDisk": {
+    "m": "App vom Laufwerk auswählen …"
+  },
+  "honkpassConfirmAppFill": {
+    "m": "Automatisches Ausfüllen in der App bestätigen"
+  },
+  "honkpassConfirmAppFillDescription": {
+    "m": "Diese App erhält die Zugangsdaten aus dem Eintrag „$ITEM$“.",
+    "p": {
+      "item": "$1"
+    }
+  },
+  "honkpassCurrentApp": {
+    "m": "Ziel-App"
+  },
+  "honkpassFillAndSaveApp": {
+    "m": "Ausfüllen und App speichern"
+  },
+  "honkpassLegalSummary": {
+    "m": "Freie Software unter der GNU GPLv3. Sie dürfen sie gemäß dieser Lizenz ändern und weitergeben. Soweit gesetzlich zulässig, wird sie ohne Gewährleistung bereitgestellt."
+  },
+  "honkpassLicensesAndSource": {
+    "m": "Lizenzen, Mitwirkende und Quellcode"
+  },
+  "honkpassLoadingApps": {
+    "m": "Apps werden geladen …"
+  },
+  "honkpassNoMatchingApps": {
+    "m": "Keine App entspricht Ihrer Suche."
+  },
+  "honkpassNoRunningApps": {
+    "m": "Es sind keine laufenden Apps zum Zuordnen verfügbar."
+  },
+  "honkpassOpenMainWindow": {
+    "m": "HonkPass öffnen"
+  },
+  "honkpassOpenQuickAccess": {
+    "m": "Schnellzugriff öffnen"
+  },
+  "honkpassQuickAccess": {
+    "m": "Schnellzugriff"
+  },
+  "honkpassQuickChoose": {
+    "m": "↑ ↓ Auswählen"
+  },
+  "honkpassQuickCode": {
+    "m": "2FA-Code"
+  },
+  "honkpassQuickFillTarget": {
+    "m": "In $APPLICATION$ ausfüllen",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassQuickItemCount": {
+    "m": "Einträge: $COUNT$",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "honkpassQuickName": {
+    "m": "Benutzername"
+  },
+  "honkpassQuickNewWindow": {
+    "m": "Eintrag in neuem Fenster öffnen"
+  },
+  "honkpassQuickOpenBrowser": {
+    "m": "Im Browser öffnen"
+  },
+  "honkpassQuickOpenMain": {
+    "m": "In HonkPass anzeigen"
+  },
+  "honkpassQuickSearch": {
+    "m": "HonkPass durchsuchen"
+  },
+  "honkpassRefreshApps": {
+    "m": "Liste aktualisieren"
+  },
+  "honkpassRunningAppsHint": {
+    "m": "Hier erscheinen nur Apps mit geprüfter Signatur. Ordnen Sie Anmeldedaten für den Browser der jeweiligen Website zu."
+  },
+  "honkpassSSHCopyFingerprint": {
+    "m": "Fingerabdruck des öffentlichen Schlüssels kopieren"
+  },
+  "honkpassSSHFingerprint": {
+    "m": "Fingerabdruck des öffentlichen Schlüssels"
+  },
+  "honkpassSSHGitSign": {
+    "m": "Daten für Git signieren"
+  },
+  "honkpassSSHNoFingerprint": {
+    "m": "Fingerabdruck nicht verfügbar"
+  },
+  "honkpassSSHPending": {
+    "m": "Weitere ausstehende Anfragen: $COUNT$",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "honkpassSSHRequest": {
+    "m": "$APPLICATION$ möchte einen SSH-Schlüssel verwenden.",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassSSHRequestedPurpose": {
+    "m": "Angegebener Zweck: $PURPOSE$",
+    "p": {
+      "purpose": "$1"
+    }
+  },
+  "honkpassSSHUnknownDestination": {
+    "m": "Der Zielserver lässt sich anhand dieser Anfrage nicht zuverlässig bestimmen."
+  },
+  "honkpassSSHUnknownPurpose": {
+    "m": "Daten signieren, genauer Zweck nicht überprüfbar"
+  },
+  "honkpassSSHUnlockRequest": {
+    "m": "$APPLICATION$ wartet darauf, dass der Tresor entsperrt wird.",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassSSHVault": {
+    "m": "Tresor: $ACCOUNT$ ($SERVER$)",
+    "p": {
+      "account": "$1",
+      "server": "$2"
+    }
+  },
+  "honkpassSSHVerifiedHost": {
+    "m": "Geprüfter Serverschlüssel dieser Sitzung: $FINGERPRINT$",
+    "p": {
+      "fingerprint": "$1"
+    }
+  },
+  "honkpassSearchApps": {
+    "m": "Laufende Apps durchsuchen"
+  },
+  "honkpassUpdateFinishWork": {
+    "m": "Schließen Sie vor der Installation die laufende Aktion ab und schließen Sie die Fenster zum Bearbeiten von Einträgen und Sends sowie zum Importieren und Exportieren. HonkPass sperrt den Tresor während der Installation."
+  },
+  "passwordProtectedOptionDescription": {
+    "m": "Legen Sie ein Dateipasswort fest, um den Export zu verschlüsseln. Kompatible Bitwarden-Clients verwenden dieses Passwort, um die Datei zu entschlüsseln und zu importieren."
+  },
+  "premiumPrice": {
+    "m": "Alles für nur $PRICE$ pro Jahr!",
+    "p": {
+      "price": "$1"
+    }
+  },
+  "selfHostedBaseUrlHint": {
+    "m": "Geben Sie die Basis-URL Ihres Vaultwarden-Servers ein. Beispiel: https://vault.example.test"
+  },
+  "websiteUriCount": {
+    "m": "Website (URI) $COUNT$",
+    "p": {
+      "count": "$1"
+    }
+  }
+}

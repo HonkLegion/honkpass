@@ -1,0 +1,216 @@
+{
+  "accountRestrictedOptionDescription": {
+    "m": "Αυτή η μορφή εξαγωγής του Bitwarden χρησιμοποιεί το κλειδί κρυπτογράφησης του λογαριασμού. Το HonkPass δεν δημιουργεί αρχεία σε αυτή τη μορφή."
+  },
+  "appLogoLabel": {
+    "m": "Λογότυπο HonkPass"
+  },
+  "autofillConfigurationMessage": {
+    "m": "Ενεργοποίηση της αυτόματης συμπλήρωσης με το HonkPass…"
+  },
+  "clearSearchTooltip": {
+    "m": "Κάντε κλικ εδώ ή πατήστε Esc για να διαγράψετε την αναζήτηση."
+  },
+  "coachmarkFiltersDescription": {
+    "m": "Επιλέξτε πολλά φίλτρα ταυτόχρονα για να περιορίσετε τα αποτελέσματα. Τα φίλτρα παραμένουν ενεργά όταν μεταβείτε σε άλλη προβολή."
+  },
+  "coachmarkFiltersTitle": {
+    "m": "Συνδυασμός φίλτρων"
+  },
+  "confirmPasskeyAssertionMfaMacOS": {
+    "m": "να συνδεθείτε ως $USERNAME$ με το κλειδί πρόσβασης για $RPID$. Το $RPID$ ζητά αυτόν τον έλεγχο για έλεγχο ταυτότητας πολλών παραγόντων.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "confirmPasskeyOverwriteMfaMacOS": {
+    "m": "να αντικαταστήσετε το κλειδί πρόσβασης για $RPID$ του χρήστη $USERNAME$. Το $RPID$ ζητά αυτόν τον έλεγχο για έλεγχο ταυτότητας πολλών παραγόντων.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "confirmPasskeyRegistrationMfaMacOS": {
+    "m": "να δημιουργήσετε νέο κλειδί πρόσβασης για $RPID$ για τον χρήστη $USERNAME$. Το $RPID$ ζητά αυτόν τον έλεγχο για έλεγχο ταυτότητας πολλών παραγόντων.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "enableAutotypeGaShortcut": {
+    "m": "Ενεργοποίηση συντόμευσης αυτόματης πληκτρολόγησης"
+  },
+  "honkpassAppAlreadyAssigned": {
+    "m": "Έχει ήδη αντιστοιχιστεί"
+  },
+  "honkpassAppListError": {
+    "m": "Η φόρτωση των εφαρμογών απέτυχε. Ανανεώστε τη λίστα και δοκιμάστε ξανά."
+  },
+  "honkpassAppNotAccepted": {
+    "m": "Η επαλήθευση της εφαρμογής απέτυχε. Επιλέξτε την ξανά ή επιλέξτε άλλη εφαρμογή."
+  },
+  "honkpassAppSaveFailed": {
+    "m": "Η συμπλήρωση ολοκληρώθηκε. Η εφαρμογή δεν αποθηκεύτηκε σε αυτό το στοιχείο."
+  },
+  "honkpassAssignApp": {
+    "m": "Αντιστοίχιση εφαρμογής"
+  },
+  "honkpassAutoFillUnavailable": {
+    "m": "Αδυναμία σύνδεσης στο HonkPass"
+  },
+  "honkpassAutoFillUnavailableDescription": {
+    "m": "Ανοίξτε το HonkPass και ενεργοποιήστε την αυτόματη συμπλήρωση του συστήματος στις ρυθμίσεις της εφαρμογής. Το θησαυροφυλάκιο ενδέχεται να παραμένει ξεκλείδωτο."
+  },
+  "honkpassChooseApp": {
+    "m": "Επιλογή εφαρμογής"
+  },
+  "honkpassChooseAppFromDisk": {
+    "m": "Επιλογή εφαρμογής από τον δίσκο…"
+  },
+  "honkpassConfirmAppFill": {
+    "m": "Επιβεβαίωση αυτόματης συμπλήρωσης στην εφαρμογή"
+  },
+  "honkpassConfirmAppFillDescription": {
+    "m": "Αυτή η εφαρμογή θα λάβει τα στοιχεία σύνδεσης της καταχώρισης «$ITEM$».",
+    "p": {
+      "item": "$1"
+    }
+  },
+  "honkpassCurrentApp": {
+    "m": "Εφαρμογή για συμπλήρωση"
+  },
+  "honkpassFillAndSaveApp": {
+    "m": "Συμπλήρωση και αποθήκευση εφαρμογής"
+  },
+  "honkpassLegalSummary": {
+    "m": "Ελεύθερο λογισμικό υπό την άδεια GNU GPLv3. Μπορείτε να το τροποποιήσετε και να το αναδιανείμετε σύμφωνα με τους όρους της άδειας. Παρέχεται χωρίς εγγύηση στον βαθμό που επιτρέπει ο νόμος."
+  },
+  "honkpassLicensesAndSource": {
+    "m": "Άδειες, συντελεστές και πηγαίος κώδικας"
+  },
+  "honkpassLoadingApps": {
+    "m": "Φόρτωση εφαρμογών…"
+  },
+  "honkpassNoMatchingApps": {
+    "m": "Καμία εφαρμογή δεν ταιριάζει στην αναζήτησή σας."
+  },
+  "honkpassNoRunningApps": {
+    "m": "Δεν εκτελούνται εφαρμογές διαθέσιμες για αντιστοίχιση."
+  },
+  "honkpassOpenMainWindow": {
+    "m": "Άνοιγμα HonkPass"
+  },
+  "honkpassOpenQuickAccess": {
+    "m": "Άνοιγμα γρήγορης πρόσβασης"
+  },
+  "honkpassQuickAccess": {
+    "m": "Γρήγορη πρόσβαση"
+  },
+  "honkpassQuickChoose": {
+    "m": "↑ ↓ Επιλογή"
+  },
+  "honkpassQuickCode": {
+    "m": "Κωδικός 2FA"
+  },
+  "honkpassQuickFillTarget": {
+    "m": "Συμπλήρωση στην εφαρμογή $APPLICATION$",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassQuickItemCount": {
+    "m": "Στοιχεία: $COUNT$",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "honkpassQuickName": {
+    "m": "Όνομα χρήστη"
+  },
+  "honkpassQuickNewWindow": {
+    "m": "Άνοιγμα στοιχείου σε νέο παράθυρο"
+  },
+  "honkpassQuickOpenBrowser": {
+    "m": "Άνοιγμα στο πρόγραμμα περιήγησης"
+  },
+  "honkpassQuickOpenMain": {
+    "m": "Εμφάνιση στο HonkPass"
+  },
+  "honkpassQuickSearch": {
+    "m": "Αναζήτηση στο HonkPass"
+  },
+  "honkpassRefreshApps": {
+    "m": "Ανανέωση λίστας"
+  },
+  "honkpassRunningAppsHint": {
+    "m": "Εμφανίζονται μόνο εφαρμογές με επαληθευμένη υπογραφή. Αντιστοιχίστε τα στοιχεία σύνδεσης του προγράμματος περιήγησης στον αντίστοιχο ιστότοπο."
+  },
+  "honkpassSSHCopyFingerprint": {
+    "m": "Αντιγραφή δημόσιου αποτυπώματος"
+  },
+  "honkpassSSHFingerprint": {
+    "m": "Δημόσιο αποτύπωμα"
+  },
+  "honkpassSSHGitSign": {
+    "m": "υπογραφή δεδομένων για το Git"
+  },
+  "honkpassSSHNoFingerprint": {
+    "m": "Το αποτύπωμα δεν είναι διαθέσιμο"
+  },
+  "honkpassSSHPending": {
+    "m": "Άλλα αιτήματα σε αναμονή: $COUNT$",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "honkpassSSHRequest": {
+    "m": "Η εφαρμογή $APPLICATION$ ζητά να χρησιμοποιήσει ένα κλειδί SSH.",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassSSHRequestedPurpose": {
+    "m": "Δηλωμένος σκοπός: $PURPOSE$",
+    "p": {
+      "purpose": "$1"
+    }
+  },
+  "honkpassSSHUnknownDestination": {
+    "m": "Ο διακομιστής προορισμού δεν μπορεί να προσδιοριστεί αξιόπιστα από αυτό το αίτημα."
+  },
+  "honkpassSSHUnknownPurpose": {
+    "m": "υπογραφή δεδομένων, ο ακριβής σκοπός δεν μπορεί να επαληθευτεί"
+  },
+  "honkpassSSHUnlockRequest": {
+    "m": "Η εφαρμογή $APPLICATION$ περιμένει να ξεκλειδωθεί η θυρίδα.",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassSSHVault": {
+    "m": "Θυρίδα: $ACCOUNT$ ($SERVER$)",
+    "p": {
+      "account": "$1",
+      "server": "$2"
+    }
+  },
+  "honkpassSSHVerifiedHost": {
+    "m": "Επαληθευμένο κλειδί διακομιστή συνεδρίας: $FINGERPRINT$",
+    "p": {
+      "fingerprint": "$1"
+    }
+  },
+  "honkpassSearchApps": {
+    "m": "Αναζήτηση στις εφαρμογές που εκτελούνται"
+  },
+  "honkpassUpdateFinishWork": {
+    "m": "Πριν εγκαταστήσετε την ενημέρωση, ολοκληρώστε την τρέχουσα ενέργεια και κλείστε τα παράθυρα στοιχείων, Send, εισαγωγής και εξαγωγής. Το HonkPass κλειδώνει τη θυρίδα κατά την εγκατάσταση."
+  },
+  "passwordProtectedOptionDescription": {
+    "m": "Ορίστε κωδικό για την κρυπτογράφηση του αρχείου εξαγωγής. Οι συμβατές εφαρμογές Bitwarden χρησιμοποιούν αυτόν τον κωδικό για την αποκρυπτογράφηση και εισαγωγή του αρχείου."
+  },
+  "selfHostedBaseUrlHint": {
+    "m": "Εισαγάγετε τη βασική διεύθυνση URL του διακομιστή Vaultwarden. Παράδειγμα: https://vault.example.test"
+  }
+}

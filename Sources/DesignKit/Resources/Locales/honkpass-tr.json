@@ -1,0 +1,210 @@
+{
+  "accountRestrictedOptionDescription": {
+    "m": "Bu Bitwarden dışa aktarma biçimi hesabın şifreleme anahtarını kullanır. HonkPass bu biçimde dosya oluşturmaz."
+  },
+  "appLogoLabel": {
+    "m": "HonkPass logosu"
+  },
+  "autofillConfigurationMessage": {
+    "m": "HonkPass ile otomatik doldurma etkinleştiriliyor…"
+  },
+  "coachmarkFiltersDescription": {
+    "m": "Sonuçları daraltmak için aynı anda birden çok filtre seçin. Başka bir görünüme geçtiğinizde de filtreler etkin kalır."
+  },
+  "coachmarkFiltersTitle": {
+    "m": "Filtreleri birleştirin"
+  },
+  "confirmPasskeyAssertionMfaMacOS": {
+    "m": "$RPID$ geçiş anahtarınızla $USERNAME$ olarak oturum açmak. $RPID$ bu denetimi çok faktörlü kimlik doğrulaması için istiyor.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "confirmPasskeyOverwriteMfaMacOS": {
+    "m": "$USERNAME$ için $RPID$ geçiş anahtarının üzerine yazmak. $RPID$ bu denetimi çok faktörlü kimlik doğrulaması için istiyor.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "confirmPasskeyRegistrationMfaMacOS": {
+    "m": "$USERNAME$ için yeni bir $RPID$ geçiş anahtarı oluşturmak. $RPID$ bu denetimi çok faktörlü kimlik doğrulaması için istiyor.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "honkpassAppAlreadyAssigned": {
+    "m": "Zaten ilişkilendirilmiş"
+  },
+  "honkpassAppListError": {
+    "m": "Uygulamalar yüklenemedi. Listeyi yenileyip tekrar deneyin."
+  },
+  "honkpassAppNotAccepted": {
+    "m": "Uygulama doğrulanamadı. Yeniden seçin veya başka bir uygulama seçin."
+  },
+  "honkpassAppSaveFailed": {
+    "m": "Bilgiler dolduruldu. Uygulama bu öğeye kaydedilemedi."
+  },
+  "honkpassAssignApp": {
+    "m": "Uygulamayı ilişkilendir"
+  },
+  "honkpassAutoFillUnavailable": {
+    "m": "HonkPass’e bağlanılamadı"
+  },
+  "honkpassAutoFillUnavailableDescription": {
+    "m": "HonkPass’i açın ve uygulama ayarlarında sistemin otomatik doldurma özelliğini etkinleştirin. Kasa hâlâ açık olabilir."
+  },
+  "honkpassChooseApp": {
+    "m": "Uygulama seç"
+  },
+  "honkpassChooseAppFromDisk": {
+    "m": "Diskten uygulama seç…"
+  },
+  "honkpassConfirmAppFill": {
+    "m": "Uygulamada otomatik doldurmayı onayla"
+  },
+  "honkpassConfirmAppFillDescription": {
+    "m": "Bu uygulama “$ITEM$” öğesindeki oturum açma bilgilerini alacak.",
+    "p": {
+      "item": "$1"
+    }
+  },
+  "honkpassCurrentApp": {
+    "m": "Doldurulacak uygulama"
+  },
+  "honkpassFillAndSaveApp": {
+    "m": "Doldur ve uygulamayı kaydet"
+  },
+  "honkpassLegalSummary": {
+    "m": "GNU GPLv3 lisanslı özgür yazılım. Bu lisansın koşulları kapsamında yazılımı değiştirebilir ve yeniden dağıtabilirsiniz. Yasaların izin verdiği ölçüde garantisiz sunulur."
+  },
+  "honkpassLicensesAndSource": {
+    "m": "Lisanslar, katkıda bulunanlar ve kaynak kodu"
+  },
+  "honkpassLoadingApps": {
+    "m": "Uygulamalar yükleniyor…"
+  },
+  "honkpassNoMatchingApps": {
+    "m": "Aramanızla eşleşen uygulama yok."
+  },
+  "honkpassNoRunningApps": {
+    "m": "İlişkilendirilebilecek çalışan uygulama yok."
+  },
+  "honkpassOpenMainWindow": {
+    "m": "HonkPass’i aç"
+  },
+  "honkpassOpenQuickAccess": {
+    "m": "Hızlı erişimi aç"
+  },
+  "honkpassQuickAccess": {
+    "m": "Hızlı erişim"
+  },
+  "honkpassQuickChoose": {
+    "m": "↑ ↓ Seç"
+  },
+  "honkpassQuickCode": {
+    "m": "2FA kodu"
+  },
+  "honkpassQuickFillTarget": {
+    "m": "$APPLICATION$ içinde doldur",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassQuickItemCount": {
+    "m": "Öğe sayısı: $COUNT$",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "honkpassQuickName": {
+    "m": "Kullanıcı adı"
+  },
+  "honkpassQuickNewWindow": {
+    "m": "Öğeyi yeni pencerede aç"
+  },
+  "honkpassQuickOpenBrowser": {
+    "m": "Tarayıcıda aç"
+  },
+  "honkpassQuickOpenMain": {
+    "m": "HonkPass’te göster"
+  },
+  "honkpassQuickSearch": {
+    "m": "HonkPass’te ara"
+  },
+  "honkpassRefreshApps": {
+    "m": "Listeyi yenile"
+  },
+  "honkpassRunningAppsHint": {
+    "m": "Burada yalnızca imzası doğrulanmış uygulamalar gösterilir. Tarayıcıda kullandığınız oturum açma bilgilerini ilgili siteyle ilişkilendirin."
+  },
+  "honkpassSSHCopyFingerprint": {
+    "m": "Genel parmak izini kopyala"
+  },
+  "honkpassSSHFingerprint": {
+    "m": "Genel parmak izi"
+  },
+  "honkpassSSHGitSign": {
+    "m": "Git için veri imzalama"
+  },
+  "honkpassSSHNoFingerprint": {
+    "m": "Parmak izi kullanılamıyor"
+  },
+  "honkpassSSHPending": {
+    "m": "Bekleyen diğer istekler: $COUNT$",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "honkpassSSHRequest": {
+    "m": "$APPLICATION$ bir SSH anahtarı kullanmak istiyor.",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassSSHRequestedPurpose": {
+    "m": "İstenen amaç: $PURPOSE$",
+    "p": {
+      "purpose": "$1"
+    }
+  },
+  "honkpassSSHUnknownDestination": {
+    "m": "Bu istekten hedef sunucu güvenilir biçimde belirlenemiyor."
+  },
+  "honkpassSSHUnknownPurpose": {
+    "m": "verileri imzalama, kesin amaç doğrulanamıyor"
+  },
+  "honkpassSSHUnlockRequest": {
+    "m": "$APPLICATION$ kasanın kilidinin açılmasını bekliyor.",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassSSHVault": {
+    "m": "Kasa: $ACCOUNT$ ($SERVER$)",
+    "p": {
+      "account": "$1",
+      "server": "$2"
+    }
+  },
+  "honkpassSSHVerifiedHost": {
+    "m": "Oturumun doğrulanmış sunucu anahtarı: $FINGERPRINT$",
+    "p": {
+      "fingerprint": "$1"
+    }
+  },
+  "honkpassSearchApps": {
+    "m": "Çalışan uygulamalarda ara"
+  },
+  "honkpassUpdateFinishWork": {
+    "m": "Güncellemeyi yüklemeden önce devam eden işlemi tamamlayın ve öğe, Send, içe aktarma ve dışa aktarma pencerelerini kapatın. HonkPass yükleme sırasında kasayı kilitler."
+  },
+  "passwordProtectedOptionDescription": {
+    "m": "Dışa aktarılan dosyayı şifrelemek için bir parola belirleyin. Uyumlu Bitwarden istemcileri dosyanın şifresini çözmek ve dosyayı içe aktarmak için bu parolayı kullanır."
+  },
+  "selfHostedBaseUrlHint": {
+    "m": "Vaultwarden sunucunuzun temel URL’sini girin. Örnek: https://vault.example.test"
+  }
+}

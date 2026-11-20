@@ -1,0 +1,216 @@
+{
+  "accountRestrictedOptionDescription": {
+    "m": "Dette eksportformat fra Bitwarden bruger kontoens krypteringsnøgle. HonkPass opretter ikke filer i dette format."
+  },
+  "appLogoLabel": {
+    "m": "HonkPass-logo"
+  },
+  "autofillConfigurationMessage": {
+    "m": "Slår automatisk udfyldning med HonkPass til…"
+  },
+  "clearSearchTooltip": {
+    "m": "Klik her, eller tryk på Esc for at rydde søgningen."
+  },
+  "coachmarkFiltersDescription": {
+    "m": "Vælg flere filtre på én gang for at afgrænse resultaterne. De forbliver aktive, når du går til en anden visning."
+  },
+  "coachmarkFiltersTitle": {
+    "m": "Kombiner filtre"
+  },
+  "confirmPasskeyAssertionMfaMacOS": {
+    "m": "logge ind som $USERNAME$ med din adgangsnøgle til $RPID$. $RPID$ beder om denne kontrol til multifaktorgodkendelse.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "confirmPasskeyOverwriteMfaMacOS": {
+    "m": "overskrive adgangsnøglen til $RPID$ for $USERNAME$. $RPID$ beder om denne kontrol til multifaktorgodkendelse.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "confirmPasskeyRegistrationMfaMacOS": {
+    "m": "oprette en ny adgangsnøgle til $RPID$ for $USERNAME$. $RPID$ beder om denne kontrol til multifaktorgodkendelse.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "enableAutotypeGaShortcut": {
+    "m": "Aktivér genvejen til automatisk indtastning"
+  },
+  "honkpassAppAlreadyAssigned": {
+    "m": "Allerede tilknyttet"
+  },
+  "honkpassAppListError": {
+    "m": "Programmerne kunne ikke indlæses. Opdater listen, og prøv igen."
+  },
+  "honkpassAppNotAccepted": {
+    "m": "Programmet kunne ikke bekræftes. Vælg det igen, eller vælg et andet program."
+  },
+  "honkpassAppSaveFailed": {
+    "m": "Oplysningerne blev udfyldt. Programmet kunne ikke gemmes i dette element."
+  },
+  "honkpassAssignApp": {
+    "m": "Tilknyt program"
+  },
+  "honkpassAutoFillUnavailable": {
+    "m": "Der kunne ikke oprettes forbindelse til HonkPass"
+  },
+  "honkpassAutoFillUnavailableDescription": {
+    "m": "Åbn HonkPass, og slå systemets automatiske udfyldning til i appens indstillinger. Boksen kan stadig være låst op."
+  },
+  "honkpassChooseApp": {
+    "m": "Vælg et program"
+  },
+  "honkpassChooseAppFromDisk": {
+    "m": "Vælg et program på disken…"
+  },
+  "honkpassConfirmAppFill": {
+    "m": "Bekræft automatisk udfyldning i programmet"
+  },
+  "honkpassConfirmAppFillDescription": {
+    "m": "Denne app modtager loginoplysningerne fra elementet »$ITEM$«.",
+    "p": {
+      "item": "$1"
+    }
+  },
+  "honkpassCurrentApp": {
+    "m": "Program, der skal udfyldes i"
+  },
+  "honkpassFillAndSaveApp": {
+    "m": "Udfyld og gem program"
+  },
+  "honkpassLegalSummary": {
+    "m": "Fri software under GNU GPLv3. Du må ændre og videredistribuere softwaren på licensens vilkår. Den leveres uden garanti i det omfang, loven tillader det."
+  },
+  "honkpassLicensesAndSource": {
+    "m": "Licenser, bidragydere og kildekode"
+  },
+  "honkpassLoadingApps": {
+    "m": "Indlæser programmer…"
+  },
+  "honkpassNoMatchingApps": {
+    "m": "Ingen programmer matcher din søgning."
+  },
+  "honkpassNoRunningApps": {
+    "m": "Der er ingen åbne programmer at tilknytte."
+  },
+  "honkpassOpenMainWindow": {
+    "m": "Åbn HonkPass"
+  },
+  "honkpassOpenQuickAccess": {
+    "m": "Åbn hurtig adgang"
+  },
+  "honkpassQuickAccess": {
+    "m": "Hurtig adgang"
+  },
+  "honkpassQuickChoose": {
+    "m": "↑ ↓ Vælg"
+  },
+  "honkpassQuickCode": {
+    "m": "2FA-kode"
+  },
+  "honkpassQuickFillTarget": {
+    "m": "Udfyld i $APPLICATION$",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassQuickItemCount": {
+    "m": "Elementer: $COUNT$",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "honkpassQuickName": {
+    "m": "Brugernavn"
+  },
+  "honkpassQuickNewWindow": {
+    "m": "Åbn elementet i et nyt vindue"
+  },
+  "honkpassQuickOpenBrowser": {
+    "m": "Åbn i browseren"
+  },
+  "honkpassQuickOpenMain": {
+    "m": "Vis i HonkPass"
+  },
+  "honkpassQuickSearch": {
+    "m": "Søg i HonkPass"
+  },
+  "honkpassRefreshApps": {
+    "m": "Opdater listen"
+  },
+  "honkpassRunningAppsHint": {
+    "m": "Her vises kun programmer med bekræftet signatur. Knyt loginoplysninger til brug i browseren til det relevante websted."
+  },
+  "honkpassSSHCopyFingerprint": {
+    "m": "Kopiér offentligt fingeraftryk"
+  },
+  "honkpassSSHFingerprint": {
+    "m": "Offentligt fingeraftryk"
+  },
+  "honkpassSSHGitSign": {
+    "m": "signere data til Git"
+  },
+  "honkpassSSHNoFingerprint": {
+    "m": "Fingeraftryk ikke tilgængeligt"
+  },
+  "honkpassSSHPending": {
+    "m": "Flere afventende anmodninger: $COUNT$",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "honkpassSSHRequest": {
+    "m": "$APPLICATION$ vil bruge en SSH-nøgle.",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassSSHRequestedPurpose": {
+    "m": "Anmodningens formål: $PURPOSE$",
+    "p": {
+      "purpose": "$1"
+    }
+  },
+  "honkpassSSHUnknownDestination": {
+    "m": "Destinationsserveren kan ikke identificeres med sikkerhed ud fra denne anmodning."
+  },
+  "honkpassSSHUnknownPurpose": {
+    "m": "signere data, det præcise formål kan ikke bekræftes"
+  },
+  "honkpassSSHUnlockRequest": {
+    "m": "$APPLICATION$ venter på, at boksen bliver låst op.",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassSSHVault": {
+    "m": "Boks: $ACCOUNT$ ($SERVER$)",
+    "p": {
+      "account": "$1",
+      "server": "$2"
+    }
+  },
+  "honkpassSSHVerifiedHost": {
+    "m": "Bekræftet servernøgle for sessionen: $FINGERPRINT$",
+    "p": {
+      "fingerprint": "$1"
+    }
+  },
+  "honkpassSearchApps": {
+    "m": "Søg i åbne programmer"
+  },
+  "honkpassUpdateFinishWork": {
+    "m": "Afslut den igangværende handling, og luk vinduerne til elementer, Send, import og eksport, før du installerer opdateringen. HonkPass låser boksen under installationen."
+  },
+  "passwordProtectedOptionDescription": {
+    "m": "Angiv en adgangskode for at kryptere eksportfilen. Kompatible Bitwarden-klienter bruger adgangskoden til at dekryptere og importere filen."
+  },
+  "selfHostedBaseUrlHint": {
+    "m": "Indtast basisadressen til din Vaultwarden-server. Eksempel: https://vault.example.test"
+  }
+}

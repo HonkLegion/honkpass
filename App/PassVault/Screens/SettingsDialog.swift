@@ -447,11 +447,9 @@ struct SettingsDialog: View {
     }
 
     /// "default", then every language of the app as "code - name", in the order of the labels.
-    /// The names are the ones of translation.service.ts.
     private static var languages: [BWSelect<String?>.Option] {
-        let names = ["cs": "čeština", "en": "English"]
-        let named = BWText.supportedLanguages
-            .map { code in (code: code, label: names[code].map { "\(code) - \($0)" } ?? code) }
+        let named = BWText.languageNames
+            .map { (code: $0.key, label: "\($0.key) - \($0.value)") }
             .sorted { $0.label.localizedCompare($1.label) == .orderedAscending }
         return [.init(nil, BWText["default"])] + named.map { .init(Optional($0.code), $0.label) }
     }

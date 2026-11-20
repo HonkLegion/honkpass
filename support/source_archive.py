@@ -109,13 +109,20 @@ def create_archive(output):
                 "libs/components/src/tw-theme.css", "libs/components/src/theme.css",
                 "libs/components/src/webfonts/", "libs/angular/src/scss/bwicons/",
                 "libs/angular/src/billing/images/cards/", "libs/assets/src/svg/",
-                "apps/browser/src/_locales/en/", "apps/browser/src/_locales/cs/",
-                "apps/desktop/src/locales/en/", "apps/desktop/src/locales/cs/",
-                "apps/desktop/macos/autofill-extension/en.lproj/", "apps/desktop/macos/autofill-extension/cs.lproj/",
                 "LICENSE",
             )
+            languages = json.loads((ROOT / "Sources/DesignKit/Resources/Locales/languages.json").read_text())
+            locale_inputs = {
+                path
+                for language in languages
+                for path in (
+                    f"apps/browser/src/_locales/{language.replace('-', '_')}/messages.json",
+                    f"apps/desktop/src/locales/{language.replace('-', '_')}/messages.json",
+                    f"apps/desktop/macos/autofill-extension/{language}.lproj/Localizable.strings",
+                )
+            }
             clients_revision = run("git", "rev-parse", "HEAD", cwd=CLIENTS).strip()
-            for name, data, executable in git_snapshot(CLIENTS, clients_revision, lambda n: n.startswith(prefixes)):
+            for name, data, executable in git_snapshot(CLIENTS, clients_revision, lambda n: n.startswith(prefixes) or n in locale_inputs):
                 put("third-party/bitwarden-clients/" + name, data, executable)
 
             version = re.search(r"MARKETING_VERSION: (\S+)", (ROOT / "project.yml").read_text())[1]

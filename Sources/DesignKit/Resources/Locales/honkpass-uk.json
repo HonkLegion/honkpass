@@ -1,0 +1,210 @@
+{
+  "accountRestrictedOptionDescription": {
+    "m": "Цей формат експорту Bitwarden використовує ключ шифрування облікового запису. HonkPass не створює файлів у цьому форматі."
+  },
+  "appLogoLabel": {
+    "m": "Логотип HonkPass"
+  },
+  "autofillConfigurationMessage": {
+    "m": "Увімкнення автозаповнення за допомогою HonkPass…"
+  },
+  "coachmarkFiltersDescription": {
+    "m": "Виберіть кілька фільтрів одночасно, щоб звузити результати. Фільтри залишаться активними, навіть якщо ви перейдете до іншого розділу."
+  },
+  "coachmarkFiltersTitle": {
+    "m": "Поєднуйте фільтри"
+  },
+  "confirmPasskeyAssertionMfaMacOS": {
+    "m": "увійти як $USERNAME$ за допомогою ключа доступу до $RPID$. $RPID$ запитує цю перевірку для багатофакторної автентифікації.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "confirmPasskeyOverwriteMfaMacOS": {
+    "m": "перезаписати ключ доступу до $RPID$ для користувача $USERNAME$. $RPID$ запитує цю перевірку для багатофакторної автентифікації.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "confirmPasskeyRegistrationMfaMacOS": {
+    "m": "створити новий ключ доступу до $RPID$ для користувача $USERNAME$. $RPID$ запитує цю перевірку для багатофакторної автентифікації.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "honkpassAppAlreadyAssigned": {
+    "m": "Уже прив’язано"
+  },
+  "honkpassAppListError": {
+    "m": "Не вдалося завантажити програми. Оновіть список і спробуйте ще раз."
+  },
+  "honkpassAppNotAccepted": {
+    "m": "Не вдалося перевірити цю програму. Виберіть її ще раз або виберіть іншу."
+  },
+  "honkpassAppSaveFailed": {
+    "m": "Поля заповнено. Не вдалося зберегти програму в цьому записі."
+  },
+  "honkpassAssignApp": {
+    "m": "Прив’язати програму"
+  },
+  "honkpassAutoFillUnavailable": {
+    "m": "Не вдалося з’єднатися з HonkPass"
+  },
+  "honkpassAutoFillUnavailableDescription": {
+    "m": "Відкрийте HonkPass і ввімкніть системне автозаповнення в налаштуваннях програми. Сховище може залишатися розблокованим."
+  },
+  "honkpassChooseApp": {
+    "m": "Вибрати програму"
+  },
+  "honkpassChooseAppFromDisk": {
+    "m": "Вибрати програму на диску…"
+  },
+  "honkpassConfirmAppFill": {
+    "m": "Підтвердити автозаповнення в програмі"
+  },
+  "honkpassConfirmAppFillDescription": {
+    "m": "Ця програма отримає дані для входу із запису «$ITEM$».",
+    "p": {
+      "item": "$1"
+    }
+  },
+  "honkpassCurrentApp": {
+    "m": "Програма для автозаповнення"
+  },
+  "honkpassFillAndSaveApp": {
+    "m": "Заповнити та зберегти програму"
+  },
+  "honkpassLegalSummary": {
+    "m": "Вільне програмне забезпечення за ліцензією GNU GPLv3. Ви можете змінювати й поширювати його відповідно до умов ліцензії. Надається без гарантій у межах, дозволених законом."
+  },
+  "honkpassLicensesAndSource": {
+    "m": "Ліцензії, автори й вихідний код"
+  },
+  "honkpassLoadingApps": {
+    "m": "Завантаження програм…"
+  },
+  "honkpassNoMatchingApps": {
+    "m": "За вашим запитом програм не знайдено."
+  },
+  "honkpassNoRunningApps": {
+    "m": "Немає запущених програм, які можна прив’язати."
+  },
+  "honkpassOpenMainWindow": {
+    "m": "Відкрити HonkPass"
+  },
+  "honkpassOpenQuickAccess": {
+    "m": "Відкрити швидкий доступ"
+  },
+  "honkpassQuickAccess": {
+    "m": "Швидкий доступ"
+  },
+  "honkpassQuickChoose": {
+    "m": "↑ ↓ Вибрати"
+  },
+  "honkpassQuickCode": {
+    "m": "Код 2FA"
+  },
+  "honkpassQuickFillTarget": {
+    "m": "Заповнити в $APPLICATION$",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassQuickItemCount": {
+    "m": "Кількість записів: $COUNT$",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "honkpassQuickName": {
+    "m": "Ім’я користувача"
+  },
+  "honkpassQuickNewWindow": {
+    "m": "Відкрити запис у новому вікні"
+  },
+  "honkpassQuickOpenBrowser": {
+    "m": "Відкрити в браузері"
+  },
+  "honkpassQuickOpenMain": {
+    "m": "Показати в HonkPass"
+  },
+  "honkpassQuickSearch": {
+    "m": "Шукати в HonkPass"
+  },
+  "honkpassRefreshApps": {
+    "m": "Оновити список"
+  },
+  "honkpassRunningAppsHint": {
+    "m": "Тут відображаються лише програми з перевіреним підписом. Дані для входу в браузері прив’яжіть до відповідного сайту."
+  },
+  "honkpassSSHCopyFingerprint": {
+    "m": "Скопіювати відбиток відкритого ключа"
+  },
+  "honkpassSSHFingerprint": {
+    "m": "Відбиток відкритого ключа"
+  },
+  "honkpassSSHGitSign": {
+    "m": "підписати дані для Git"
+  },
+  "honkpassSSHNoFingerprint": {
+    "m": "Відбиток недоступний"
+  },
+  "honkpassSSHPending": {
+    "m": "Інші запити в черзі: $COUNT$",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "honkpassSSHRequest": {
+    "m": "$APPLICATION$ запитує дозвіл на використання ключа SSH.",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassSSHRequestedPurpose": {
+    "m": "Заявлена мета: $PURPOSE$",
+    "p": {
+      "purpose": "$1"
+    }
+  },
+  "honkpassSSHUnknownDestination": {
+    "m": "За цим запитом неможливо надійно визначити цільовий сервер."
+  },
+  "honkpassSSHUnknownPurpose": {
+    "m": "підписати дані, точну мету перевірити неможливо"
+  },
+  "honkpassSSHUnlockRequest": {
+    "m": "$APPLICATION$ очікує на розблокування сховища.",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassSSHVault": {
+    "m": "Сховище: $ACCOUNT$ ($SERVER$)",
+    "p": {
+      "account": "$1",
+      "server": "$2"
+    }
+  },
+  "honkpassSSHVerifiedHost": {
+    "m": "Перевірений ключ сервера цього сеансу: $FINGERPRINT$",
+    "p": {
+      "fingerprint": "$1"
+    }
+  },
+  "honkpassSearchApps": {
+    "m": "Шукати серед запущених програм"
+  },
+  "honkpassUpdateFinishWork": {
+    "m": "Перш ніж установити оновлення, завершіть поточну операцію та закрийте вікна редагування записів і Send, а також вікна імпорту й експорту. Під час установлення HonkPass заблокує сховище."
+  },
+  "passwordProtectedOptionDescription": {
+    "m": "Задайте пароль для шифрування експортованого файлу. Сумісні клієнти Bitwarden використовують цей пароль, щоб розшифрувати й імпортувати файл."
+  },
+  "selfHostedBaseUrlHint": {
+    "m": "Введіть базову URL-адресу свого сервера Vaultwarden. Приклад: https://vault.example.test"
+  }
+}

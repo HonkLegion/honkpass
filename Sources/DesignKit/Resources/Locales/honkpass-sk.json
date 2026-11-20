@@ -1,0 +1,195 @@
+{
+  "honkpassQuickName": {
+    "m": "Používateľské meno"
+  },
+  "honkpassQuickCode": {
+    "m": "Kód 2FA"
+  },
+  "honkpassQuickNewWindow": {
+    "m": "Otvoriť položku v novom okne"
+  },
+  "honkpassQuickOpenMain": {
+    "m": "Zobraziť v HonkPasse"
+  },
+  "honkpassQuickOpenBrowser": {
+    "m": "Otvoriť v prehliadači"
+  },
+  "honkpassAutoFillUnavailable": {
+    "m": "K HonkPassu sa nepodarilo pripojiť"
+  },
+  "honkpassAutoFillUnavailableDescription": {
+    "m": "Otvorte HonkPass a v jeho nastaveniach zapnite systémové automatické vypĺňanie. Trezor môže byť stále odomknutý."
+  },
+  "honkpassChooseApp": {
+    "m": "Vybrať aplikáciu"
+  },
+  "honkpassSearchApps": {
+    "m": "Hľadať medzi spustenými aplikáciami"
+  },
+  "honkpassLoadingApps": {
+    "m": "Načítavajú sa aplikácie…"
+  },
+  "honkpassAppListError": {
+    "m": "Aplikácie sa nepodarilo načítať. Obnovte zoznam a skúste to znova."
+  },
+  "honkpassNoRunningApps": {
+    "m": "Na priradenie nie je k dispozícii žiadna spustená aplikácia."
+  },
+  "honkpassNoMatchingApps": {
+    "m": "Hľadaniu nezodpovedá žiadna aplikácia."
+  },
+  "honkpassRunningAppsHint": {
+    "m": "Zobrazujú sa iba aplikácie s overeným podpisom. Prihlasovacie údaje používané v prehliadači priraďte k webovej stránke."
+  },
+  "honkpassChooseAppFromDisk": {
+    "m": "Vybrať aplikáciu z disku…"
+  },
+  "honkpassRefreshApps": {
+    "m": "Obnoviť zoznam"
+  },
+  "honkpassAssignApp": {
+    "m": "Priradiť aplikáciu"
+  },
+  "honkpassAppAlreadyAssigned": {
+    "m": "Už priradená"
+  },
+  "honkpassAppNotAccepted": {
+    "m": "Aplikáciu sa nepodarilo overiť. Vyberte ju znova alebo vyberte inú."
+  },
+  "honkpassConfirmAppFill": {
+    "m": "Potvrdiť automatické vyplnenie v aplikácii"
+  },
+  "honkpassConfirmAppFillDescription": {
+    "m": "Táto aplikácia dostane prihlasovacie údaje z položky „$ITEM$“.",
+    "p": {
+      "item": "$1"
+    }
+  },
+  "honkpassCurrentApp": {
+    "m": "Cieľová aplikácia"
+  },
+  "honkpassFillAndSaveApp": {
+    "m": "Vyplniť a uložiť aplikáciu"
+  },
+  "honkpassAppSaveFailed": {
+    "m": "Údaje sa vyplnili. Aplikáciu sa k tejto položke nepodarilo uložiť."
+  },
+  "honkpassOpenMainWindow": {
+    "m": "Otvoriť HonkPass"
+  },
+  "honkpassOpenQuickAccess": {
+    "m": "Otvoriť rýchly prístup"
+  },
+  "honkpassQuickAccess": {
+    "m": "Rýchly prístup"
+  },
+  "honkpassQuickSearch": {
+    "m": "Hľadať v HonkPasse"
+  },
+  "honkpassQuickFillTarget": {
+    "m": "Vyplniť do aplikácie $APPLICATION$",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassQuickItemCount": {
+    "m": "Počet položiek: $COUNT$",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "honkpassQuickChoose": {
+    "m": "↑ ↓ Vybrať"
+  },
+  "honkpassLegalSummary": {
+    "m": "Slobodný softvér pod licenciou GNU GPLv3. Podľa tejto licencie ho môžete upravovať a ďalej šíriť. Poskytuje sa bez záruky v rozsahu povolenom zákonom."
+  },
+  "honkpassLicensesAndSource": {
+    "m": "Licencie, autori a zdrojový kód"
+  },
+  "selfHostedBaseUrlHint": {
+    "m": "Zadajte základnú URL adresu svojho servera Vaultwarden. Príklad: https://vault.example.test"
+  },
+  "appLogoLabel": {
+    "m": "Logo HonkPassu"
+  },
+  "passwordProtectedOptionDescription": {
+    "m": "Nastavte heslo na zašifrovanie exportovaného súboru. Kompatibilné klienty Bitwarden ho použijú na dešifrovanie a import súboru."
+  },
+  "accountRestrictedOptionDescription": {
+    "m": "Tento formát exportu Bitwarden používa šifrovací kľúč účtu. HonkPass tento formát nevytvára."
+  },
+  "honkpassUpdateFinishWork": {
+    "m": "Pred inštaláciou aktualizácie dokončite prebiehajúcu operáciu a zatvorte okná úprav položiek, služby Send, importu a exportu. HonkPass počas inštalácie zamkne trezor."
+  },
+  "honkpassSSHRequest": {
+    "m": "Aplikácia $APPLICATION$ žiada o použitie kľúča SSH.",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassSSHUnlockRequest": {
+    "m": "Aplikácia $APPLICATION$ čaká na odomknutie trezora.",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassSSHFingerprint": {
+    "m": "Odtlačok verejného kľúča"
+  },
+  "honkpassSSHNoFingerprint": {
+    "m": "Odtlačok nie je k dispozícii"
+  },
+  "honkpassSSHPending": {
+    "m": "Ďalšie čakajúce žiadosti: $COUNT$",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "honkpassSSHCopyFingerprint": {
+    "m": "Kopírovať odtlačok verejného kľúča"
+  },
+  "honkpassSSHRequestedPurpose": {
+    "m": "Požadovaný účel: $PURPOSE$",
+    "p": {
+      "purpose": "$1"
+    }
+  },
+  "honkpassSSHGitSign": {
+    "m": "podpísanie údajov pre Git"
+  },
+  "honkpassSSHUnknownPurpose": {
+    "m": "podpísanie údajov, presný účel sa nedá overiť"
+  },
+  "honkpassSSHVault": {
+    "m": "Trezor: $ACCOUNT$ ($SERVER$)",
+    "p": {
+      "account": "$1",
+      "server": "$2"
+    }
+  },
+  "honkpassSSHVerifiedHost": {
+    "m": "Overený kľúč servera pre toto spojenie: $FINGERPRINT$",
+    "p": {
+      "fingerprint": "$1"
+    }
+  },
+  "honkpassSSHUnknownDestination": {
+    "m": "Z tejto žiadosti sa nedá spoľahlivo určiť cieľový server."
+  },
+  "autofillConfigurationMessage": {
+    "m": "Zapína sa automatické vypĺňanie pomocou HonkPassu…"
+  },
+  "coachmarkFiltersTitle": {
+    "m": "Kombinujte filtre"
+  },
+  "coachmarkFiltersDescription": {
+    "m": "Výsledky môžete zúžiť výberom viacerých filtrov naraz. Filtre zostanú aktívne, aj keď prejdete inam."
+  },
+  "premiumPrice": {
+    "m": "Všetko za len $PRICE$ /rok!",
+    "p": {
+      "price": "$1"
+    }
+  }
+}

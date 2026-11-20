@@ -1,0 +1,213 @@
+{
+  "accountRestrictedOptionDescription": {
+    "m": "Šis Bitwarden eksporta formāts izmanto konta šifrēšanas atslēgu. HonkPass neveido šāda formāta failus."
+  },
+  "appLogoLabel": {
+    "m": "HonkPass logotips"
+  },
+  "autofillConfigurationMessage": {
+    "m": "Tiek ieslēgta automātiskā aizpilde ar HonkPass…"
+  },
+  "coachmarkFiltersDescription": {
+    "m": "Atlasiet vairākus filtrus vienlaikus, lai sašaurinātu rezultātus. Filtri paliek spēkā, arī pārejot uz citu skatu."
+  },
+  "coachmarkFiltersTitle": {
+    "m": "Kombinējiet filtrus"
+  },
+  "confirmPasskeyAssertionMfaMacOS": {
+    "m": "pierakstīties kā $USERNAME$ ar vietnes $RPID$ piekļuves atslēgu. $RPID$ pieprasa šo pārbaudi daudzfaktoru autentifikācijai.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "confirmPasskeyOverwriteMfaMacOS": {
+    "m": "pārrakstīt lietotāja $USERNAME$ piekļuves atslēgu vietnei $RPID$. $RPID$ pieprasa šo pārbaudi daudzfaktoru autentifikācijai.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "confirmPasskeyRegistrationMfaMacOS": {
+    "m": "izveidot lietotājam $USERNAME$ jaunu piekļuves atslēgu vietnei $RPID$. $RPID$ pieprasa šo pārbaudi daudzfaktoru autentifikācijai.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "enableAutotypeGaShortcut": {
+    "m": "Iespējot automātiskās ievades īsinājumtaustiņu"
+  },
+  "honkpassAppAlreadyAssigned": {
+    "m": "Jau piesaistīta"
+  },
+  "honkpassAppListError": {
+    "m": "Neizdevās ielādēt lietotnes. Atsvaidziniet sarakstu un mēģiniet vēlreiz."
+  },
+  "honkpassAppNotAccepted": {
+    "m": "Lietotni neizdevās pārbaudīt. Atlasiet to vēlreiz vai izvēlieties citu lietotni."
+  },
+  "honkpassAppSaveFailed": {
+    "m": "Dati tika aizpildīti. Lietotni neizdevās saglabāt šajā ierakstā."
+  },
+  "honkpassAssignApp": {
+    "m": "Piesaistīt lietotni"
+  },
+  "honkpassAutoFillUnavailable": {
+    "m": "Neizdevās izveidot savienojumu ar HonkPass"
+  },
+  "honkpassAutoFillUnavailableDescription": {
+    "m": "Atveriet HonkPass un lietotnes iestatījumos ieslēdziet sistēmas automātisko aizpildi. Glabātava joprojām var būt atslēgta."
+  },
+  "honkpassChooseApp": {
+    "m": "Izvēlēties lietotni"
+  },
+  "honkpassChooseAppFromDisk": {
+    "m": "Izvēlēties lietotni no diska…"
+  },
+  "honkpassConfirmAppFill": {
+    "m": "Apstiprināt automātisko aizpildīšanu lietotnē"
+  },
+  "honkpassConfirmAppFillDescription": {
+    "m": "Šī lietotne saņems ieraksta “$ITEM$” pieteikšanās datus.",
+    "p": {
+      "item": "$1"
+    }
+  },
+  "honkpassCurrentApp": {
+    "m": "Aizpildāmā lietotne"
+  },
+  "honkpassFillAndSaveApp": {
+    "m": "Aizpildīt un saglabāt lietotni"
+  },
+  "honkpassLegalSummary": {
+    "m": "Brīvā programmatūra ar GNU GPLv3 licenci. To drīkst pārveidot un izplatīt tālāk saskaņā ar licences noteikumiem. Tā tiek nodrošināta bez garantijas, ciktāl to pieļauj likums."
+  },
+  "honkpassLicensesAndSource": {
+    "m": "Licences, autoru saraksts un pirmkods"
+  },
+  "honkpassLoadingApps": {
+    "m": "Ielādē lietotnes…"
+  },
+  "honkpassNoMatchingApps": {
+    "m": "Meklējumam neatbilst neviena lietotne."
+  },
+  "honkpassNoRunningApps": {
+    "m": "Nav nevienas darbojošās lietotnes, ko piesaistīt."
+  },
+  "honkpassOpenMainWindow": {
+    "m": "Atvērt HonkPass"
+  },
+  "honkpassOpenQuickAccess": {
+    "m": "Atvērt ātro piekļuvi"
+  },
+  "honkpassQuickAccess": {
+    "m": "Ātrā piekļuve"
+  },
+  "honkpassQuickChoose": {
+    "m": "↑ ↓ Atlasīt"
+  },
+  "honkpassQuickCode": {
+    "m": "2FA kods"
+  },
+  "honkpassQuickFillTarget": {
+    "m": "Aizpildīt lietotnē $APPLICATION$",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassQuickItemCount": {
+    "m": "Ieraksti: $COUNT$",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "honkpassQuickName": {
+    "m": "Lietotājvārds"
+  },
+  "honkpassQuickNewWindow": {
+    "m": "Atvērt ierakstu jaunā logā"
+  },
+  "honkpassQuickOpenBrowser": {
+    "m": "Atvērt pārlūkā"
+  },
+  "honkpassQuickOpenMain": {
+    "m": "Rādīt lietotnē HonkPass"
+  },
+  "honkpassQuickSearch": {
+    "m": "Meklēt lietotnē HonkPass"
+  },
+  "honkpassRefreshApps": {
+    "m": "Atsvaidzināt sarakstu"
+  },
+  "honkpassRunningAppsHint": {
+    "m": "Šeit redzamas tikai lietotnes ar pārbaudītu parakstu. Pārlūka pieteikšanās datus piesaistiet attiecīgajai vietnei."
+  },
+  "honkpassSSHCopyFingerprint": {
+    "m": "Kopēt publisko atslēgas nospiedumu"
+  },
+  "honkpassSSHFingerprint": {
+    "m": "Publiskais atslēgas nospiedums"
+  },
+  "honkpassSSHGitSign": {
+    "m": "parakstīt Git datus"
+  },
+  "honkpassSSHNoFingerprint": {
+    "m": "Atslēgas nospiedums nav pieejams"
+  },
+  "honkpassSSHPending": {
+    "m": "Citi pieprasījumi rindā: $COUNT$",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "honkpassSSHRequest": {
+    "m": "$APPLICATION$ vēlas izmantot SSH atslēgu.",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassSSHRequestedPurpose": {
+    "m": "Pieprasītais nolūks: $PURPOSE$",
+    "p": {
+      "purpose": "$1"
+    }
+  },
+  "honkpassSSHUnknownDestination": {
+    "m": "No šī pieprasījuma nevar droši noteikt mērķa serveri."
+  },
+  "honkpassSSHUnknownPurpose": {
+    "m": "parakstīt datus, precīzu nolūku nevar apstiprināt"
+  },
+  "honkpassSSHUnlockRequest": {
+    "m": "$APPLICATION$ gaida krātuves atslēgšanu.",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassSSHVault": {
+    "m": "Krātuve: $ACCOUNT$ ($SERVER$)",
+    "p": {
+      "account": "$1",
+      "server": "$2"
+    }
+  },
+  "honkpassSSHVerifiedHost": {
+    "m": "Pārbaudīta sesijas servera atslēga: $FINGERPRINT$",
+    "p": {
+      "fingerprint": "$1"
+    }
+  },
+  "honkpassSearchApps": {
+    "m": "Meklēt darbojošās lietotnes"
+  },
+  "honkpassUpdateFinishWork": {
+    "m": "Pirms atjauninājuma instalēšanas pabeidziet iesākto darbību un aizveriet ierakstu, Send, importa un eksporta logus. Instalēšanas laikā HonkPass bloķē krātuvi."
+  },
+  "passwordProtectedOptionDescription": {
+    "m": "Iestatiet paroli, lai šifrētu eksporta failu. Saderīgi Bitwarden klienti izmanto šo paroli faila atšifrēšanai un importēšanai."
+  },
+  "selfHostedBaseUrlHint": {
+    "m": "Ievadiet sava Vaultwarden servera pamata URL. Piemērs: https://vault.example.test"
+  }
+}

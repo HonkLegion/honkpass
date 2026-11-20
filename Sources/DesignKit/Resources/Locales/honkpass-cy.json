@@ -1,0 +1,216 @@
+{
+  "accountRestrictedOptionDescription": {
+    "m": "Mae’r fformat allforio Bitwarden hwn yn defnyddio allwedd amgryptio’r cyfrif. Nid yw HonkPass yn creu ffeiliau yn y fformat hwn."
+  },
+  "appLogoLabel": {
+    "m": "Logo HonkPass"
+  },
+  "autofillConfigurationMessage": {
+    "m": "Wrthi’n troi awtolenwi gyda HonkPass ymlaen…"
+  },
+  "clearSearchTooltip": {
+    "m": "Cliciwch yma neu pwyswch Esc i glirio’r chwiliad."
+  },
+  "coachmarkFiltersDescription": {
+    "m": "Dewiswch sawl hidlydd ar unwaith i gyfyngu’r canlyniadau. Bydd yr hidlyddion yn parhau’n weithredol pan ewch i wedd arall."
+  },
+  "coachmarkFiltersTitle": {
+    "m": "Cyfuno hidlyddion"
+  },
+  "confirmPasskeyAssertionMfaMacOS": {
+    "m": "mewngofnodi fel $USERNAME$ gyda’ch allwedd mynediad ar gyfer $RPID$. Mae $RPID$ yn gofyn am y gwiriad hwn ar gyfer dilysu aml-ffactor.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "confirmPasskeyOverwriteMfaMacOS": {
+    "m": "trosysgrifo allwedd mynediad $USERNAME$ ar gyfer $RPID$. Mae $RPID$ yn gofyn am y gwiriad hwn ar gyfer dilysu aml-ffactor.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "confirmPasskeyRegistrationMfaMacOS": {
+    "m": "creu allwedd mynediad newydd ar gyfer $USERNAME$ ar $RPID$. Mae $RPID$ yn gofyn am y gwiriad hwn ar gyfer dilysu aml-ffactor.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "enableAutotypeGaShortcut": {
+    "m": "Galluogi’r llwybr byr ar gyfer teipio awtomatig"
+  },
+  "honkpassAppAlreadyAssigned": {
+    "m": "Eisoes wedi’i gysylltu"
+  },
+  "honkpassAppListError": {
+    "m": "Methu llwytho’r apiau. Adnewyddwch y rhestr a rhowch gynnig arall arni."
+  },
+  "honkpassAppNotAccepted": {
+    "m": "Methu dilysu’r ap. Dewiswch ef eto neu dewiswch ap arall."
+  },
+  "honkpassAppSaveFailed": {
+    "m": "Llenwyd y manylion. Nid oedd modd cadw’r ap yn yr eitem hon."
+  },
+  "honkpassAssignApp": {
+    "m": "Cysylltu ap"
+  },
+  "honkpassAutoFillUnavailable": {
+    "m": "Methu cysylltu â HonkPass"
+  },
+  "honkpassAutoFillUnavailableDescription": {
+    "m": "Agorwch HonkPass a throwch awtolenwi’r system ymlaen yng ngosodiadau’r ap. Gall y gladdgell fod heb ei chloi o hyd."
+  },
+  "honkpassChooseApp": {
+    "m": "Dewis ap"
+  },
+  "honkpassChooseAppFromDisk": {
+    "m": "Dewis ap o’r ddisg…"
+  },
+  "honkpassConfirmAppFill": {
+    "m": "Cadarnhau awtolenwi’r ap"
+  },
+  "honkpassConfirmAppFillDescription": {
+    "m": "Bydd yr ap hwn yn derbyn y manylion mewngofnodi o’r eitem “$ITEM$”.",
+    "p": {
+      "item": "$1"
+    }
+  },
+  "honkpassCurrentApp": {
+    "m": "Ap i’w lenwi"
+  },
+  "honkpassFillAndSaveApp": {
+    "m": "Llenwi a chadw’r ap"
+  },
+  "honkpassLegalSummary": {
+    "m": "Meddalwedd rydd o dan drwydded GNU GPLv3. Cewch ei haddasu a’i hailddosbarthu o dan delerau’r drwydded. Fe’i darperir heb warant i’r graddau a ganiateir gan y gyfraith."
+  },
+  "honkpassLicensesAndSource": {
+    "m": "Trwyddedau, cydnabyddiaethau a chod ffynhonnell"
+  },
+  "honkpassLoadingApps": {
+    "m": "Wrthi’n llwytho apiau…"
+  },
+  "honkpassNoMatchingApps": {
+    "m": "Nid oes apiau sy’n cyfateb i’ch chwiliad."
+  },
+  "honkpassNoRunningApps": {
+    "m": "Nid oes apiau ar waith ar gael i’w cysylltu."
+  },
+  "honkpassOpenMainWindow": {
+    "m": "Agor HonkPass"
+  },
+  "honkpassOpenQuickAccess": {
+    "m": "Agor mynediad cyflym"
+  },
+  "honkpassQuickAccess": {
+    "m": "Mynediad cyflym"
+  },
+  "honkpassQuickChoose": {
+    "m": "↑ ↓ Dewis"
+  },
+  "honkpassQuickCode": {
+    "m": "Cod 2FA"
+  },
+  "honkpassQuickFillTarget": {
+    "m": "Llenwi yn $APPLICATION$",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassQuickItemCount": {
+    "m": "Eitemau: $COUNT$",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "honkpassQuickName": {
+    "m": "Enw defnyddiwr"
+  },
+  "honkpassQuickNewWindow": {
+    "m": "Agor yr eitem mewn ffenestr newydd"
+  },
+  "honkpassQuickOpenBrowser": {
+    "m": "Agor yn y porwr"
+  },
+  "honkpassQuickOpenMain": {
+    "m": "Dangos yn HonkPass"
+  },
+  "honkpassQuickSearch": {
+    "m": "Chwilio yn HonkPass"
+  },
+  "honkpassRefreshApps": {
+    "m": "Adnewyddu’r rhestr"
+  },
+  "honkpassRunningAppsHint": {
+    "m": "Dim ond apiau sydd â llofnod wedi’i ddilysu sy’n ymddangos yma. Cysylltwch fanylion mewngofnodi’r porwr â’r wefan berthnasol."
+  },
+  "honkpassSSHCopyFingerprint": {
+    "m": "Copïo’r ôl bys cyhoeddus"
+  },
+  "honkpassSSHFingerprint": {
+    "m": "Ôl bys cyhoeddus"
+  },
+  "honkpassSSHGitSign": {
+    "m": "llofnodi data ar gyfer Git"
+  },
+  "honkpassSSHNoFingerprint": {
+    "m": "Nid yw’r ôl bys ar gael"
+  },
+  "honkpassSSHPending": {
+    "m": "Ceisiadau eraill yn aros: $COUNT$",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "honkpassSSHRequest": {
+    "m": "Mae $APPLICATION$ yn gofyn am ganiatâd i ddefnyddio allwedd SSH.",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassSSHRequestedPurpose": {
+    "m": "Diben y cais: $PURPOSE$",
+    "p": {
+      "purpose": "$1"
+    }
+  },
+  "honkpassSSHUnknownDestination": {
+    "m": "Ni ellir adnabod y gweinydd cyrchfan yn ddibynadwy ar sail y cais hwn."
+  },
+  "honkpassSSHUnknownPurpose": {
+    "m": "llofnodi data, nid oes modd gwirio’r union ddiben"
+  },
+  "honkpassSSHUnlockRequest": {
+    "m": "Mae $APPLICATION$ yn aros i’r gladdgell gael ei datgloi.",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassSSHVault": {
+    "m": "Claddgell: $ACCOUNT$ ($SERVER$)",
+    "p": {
+      "account": "$1",
+      "server": "$2"
+    }
+  },
+  "honkpassSSHVerifiedHost": {
+    "m": "Allwedd ddilysedig gweinydd y sesiwn: $FINGERPRINT$",
+    "p": {
+      "fingerprint": "$1"
+    }
+  },
+  "honkpassSearchApps": {
+    "m": "Chwilio’r apiau sydd ar waith"
+  },
+  "honkpassUpdateFinishWork": {
+    "m": "Cyn gosod y diweddariad, gorffennwch y dasg gyfredol a chaewch y ffenestri ar gyfer eitemau, Send, mewnforio ac allforio. Mae HonkPass yn cloi’r gladdgell wrth osod y diweddariad."
+  },
+  "passwordProtectedOptionDescription": {
+    "m": "Gosodwch gyfrinair i amgryptio’r ffeil allforio. Mae rhaglenni Bitwarden cydnaws yn defnyddio’r cyfrinair i ddadgryptio a mewnforio’r ffeil."
+  },
+  "selfHostedBaseUrlHint": {
+    "m": "Rhowch URL sylfaenol eich gweinydd Vaultwarden. Er enghraifft: https://vault.example.test"
+  }
+}

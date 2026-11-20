@@ -1,0 +1,213 @@
+{
+  "accountRestrictedOptionDescription": {
+    "m": "Tämä Bitwardenin vientimuoto käyttää tilin salausavainta. HonkPass ei luo tämänmuotoisia tiedostoja."
+  },
+  "appLogoLabel": {
+    "m": "HonkPass-logo"
+  },
+  "autofillConfigurationMessage": {
+    "m": "Otetaan HonkPassin automaattista täyttöä käyttöön…"
+  },
+  "clearSearchTooltip": {
+    "m": "Tyhjennä haku napsauttamalla tästä tai painamalla Esc."
+  },
+  "coachmarkFiltersDescription": {
+    "m": "Rajaa tuloksia valitsemalla useita suodattimia kerralla. Suodattimet pysyvät käytössä, vaikka siirryt toiseen näkymään."
+  },
+  "coachmarkFiltersTitle": {
+    "m": "Yhdistä suodattimia"
+  },
+  "confirmPasskeyAssertionMfaMacOS": {
+    "m": "kirjautua käyttäjänä $USERNAME$ palvelun $RPID$ pääsyavaimella. $RPID$ pyytää tätä tarkistusta monivaiheista tunnistautumista varten.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "confirmPasskeyOverwriteMfaMacOS": {
+    "m": "korvata käyttäjän $USERNAME$ pääsyavain palvelussa $RPID$. $RPID$ pyytää tätä tarkistusta monivaiheista tunnistautumista varten.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "confirmPasskeyRegistrationMfaMacOS": {
+    "m": "luoda uusi pääsyavain käyttäjälle $USERNAME$ palvelussa $RPID$. $RPID$ pyytää tätä tarkistusta monivaiheista tunnistautumista varten.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "honkpassAppAlreadyAssigned": {
+    "m": "Jo yhdistetty"
+  },
+  "honkpassAppListError": {
+    "m": "Sovelluksia ei voitu ladata. Päivitä luettelo ja yritä uudelleen."
+  },
+  "honkpassAppNotAccepted": {
+    "m": "Sovellusta ei voitu vahvistaa. Valitse se uudelleen tai valitse toinen sovellus."
+  },
+  "honkpassAppSaveFailed": {
+    "m": "Tietojen täyttö onnistui. Sovellusta ei voitu tallentaa tähän kohteeseen."
+  },
+  "honkpassAssignApp": {
+    "m": "Yhdistä sovellus"
+  },
+  "honkpassAutoFillUnavailable": {
+    "m": "Yhteyttä HonkPassiin ei voitu muodostaa"
+  },
+  "honkpassAutoFillUnavailableDescription": {
+    "m": "Avaa HonkPass ja ota järjestelmän automaattinen täyttö käyttöön sovelluksen asetuksissa. Holvi voi edelleen olla auki."
+  },
+  "honkpassChooseApp": {
+    "m": "Valitse sovellus"
+  },
+  "honkpassChooseAppFromDisk": {
+    "m": "Valitse sovellus levyltä…"
+  },
+  "honkpassConfirmAppFill": {
+    "m": "Vahvista sovelluksen automaattinen täyttö"
+  },
+  "honkpassConfirmAppFillDescription": {
+    "m": "Tämä sovellus saa kohteen ”$ITEM$” kirjautumistiedot.",
+    "p": {
+      "item": "$1"
+    }
+  },
+  "honkpassCurrentApp": {
+    "m": "Täytettävä sovellus"
+  },
+  "honkpassFillAndSaveApp": {
+    "m": "Täytä ja tallenna sovellus"
+  },
+  "honkpassLegalSummary": {
+    "m": "Vapaa ohjelmisto, jonka lisenssi on GNU GPLv3. Ohjelmistoa saa muokata ja levittää lisenssin ehtojen mukaisesti. Se toimitetaan ilman takuuta lain sallimissa rajoissa."
+  },
+  "honkpassLicensesAndSource": {
+    "m": "Lisenssit, tekijät ja lähdekoodi"
+  },
+  "honkpassLoadingApps": {
+    "m": "Ladataan sovelluksia…"
+  },
+  "honkpassNoMatchingApps": {
+    "m": "Hakuasi vastaavia sovelluksia ei löytynyt."
+  },
+  "honkpassNoRunningApps": {
+    "m": "Yhdistettäviä käynnissä olevia sovelluksia ei ole."
+  },
+  "honkpassOpenMainWindow": {
+    "m": "Avaa HonkPass"
+  },
+  "honkpassOpenQuickAccess": {
+    "m": "Avaa pikakäyttö"
+  },
+  "honkpassQuickAccess": {
+    "m": "Pikakäyttö"
+  },
+  "honkpassQuickChoose": {
+    "m": "↑ ↓ Valitse"
+  },
+  "honkpassQuickCode": {
+    "m": "2FA-koodi"
+  },
+  "honkpassQuickFillTarget": {
+    "m": "Täytä sovellukseen $APPLICATION$",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassQuickItemCount": {
+    "m": "Kohteita: $COUNT$",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "honkpassQuickName": {
+    "m": "Käyttäjätunnus"
+  },
+  "honkpassQuickNewWindow": {
+    "m": "Avaa kohde uudessa ikkunassa"
+  },
+  "honkpassQuickOpenBrowser": {
+    "m": "Avaa selaimessa"
+  },
+  "honkpassQuickOpenMain": {
+    "m": "Näytä HonkPassissa"
+  },
+  "honkpassQuickSearch": {
+    "m": "Hae HonkPassista"
+  },
+  "honkpassRefreshApps": {
+    "m": "Päivitä luettelo"
+  },
+  "honkpassRunningAppsHint": {
+    "m": "Tässä näkyvät vain sovellukset, joiden allekirjoitus on vahvistettu. Yhdistä selaimessa käytettävät tunnukset niiden verkkosivustoihin."
+  },
+  "honkpassSSHCopyFingerprint": {
+    "m": "Kopioi julkinen sormenjälki"
+  },
+  "honkpassSSHFingerprint": {
+    "m": "Julkinen sormenjälki"
+  },
+  "honkpassSSHGitSign": {
+    "m": "allekirjoittaa tietoja Gitiä varten"
+  },
+  "honkpassSSHNoFingerprint": {
+    "m": "Sormenjälki ei ole saatavilla"
+  },
+  "honkpassSSHPending": {
+    "m": "Muita pyyntöjä jonossa: $COUNT$",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "honkpassSSHRequest": {
+    "m": "$APPLICATION$ pyytää lupaa käyttää SSH-avainta.",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassSSHRequestedPurpose": {
+    "m": "Pyydetty käyttötarkoitus: $PURPOSE$",
+    "p": {
+      "purpose": "$1"
+    }
+  },
+  "honkpassSSHUnknownDestination": {
+    "m": "Kohdepalvelinta ei voi tunnistaa luotettavasti tästä pyynnöstä."
+  },
+  "honkpassSSHUnknownPurpose": {
+    "m": "tietojen allekirjoitus, tarkkaa tarkoitusta ei voida varmistaa"
+  },
+  "honkpassSSHUnlockRequest": {
+    "m": "$APPLICATION$ odottaa holvin lukituksen avaamista.",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassSSHVault": {
+    "m": "Holvi: $ACCOUNT$ ($SERVER$)",
+    "p": {
+      "account": "$1",
+      "server": "$2"
+    }
+  },
+  "honkpassSSHVerifiedHost": {
+    "m": "Istunnon vahvistettu palvelinavain: $FINGERPRINT$",
+    "p": {
+      "fingerprint": "$1"
+    }
+  },
+  "honkpassSearchApps": {
+    "m": "Hae käynnissä olevia sovelluksia"
+  },
+  "honkpassUpdateFinishWork": {
+    "m": "Suorita keskeneräinen toiminto loppuun ja sulje kohteiden, Sendin, tuonnin ja viennin muokkausikkunat ennen päivityksen asentamista. HonkPass lukitsee holvin asennuksen ajaksi."
+  },
+  "passwordProtectedOptionDescription": {
+    "m": "Salaa vientitiedosto asettamalla sille salasana. Yhteensopivat Bitwarden-asiakasohjelmat käyttävät salasanaa tiedoston salauksen purkamiseen ja tiedoston tuontiin."
+  },
+  "selfHostedBaseUrlHint": {
+    "m": "Anna Vaultwarden-palvelimesi perusosoite. Esimerkki: https://vault.example.test"
+  }
+}

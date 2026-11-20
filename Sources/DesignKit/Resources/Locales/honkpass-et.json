@@ -1,0 +1,210 @@
+{
+  "accountRestrictedOptionDescription": {
+    "m": "See Bitwardeni ekspordivorming kasutab konto krüptovõtit. HonkPass selles vormingus faile ei loo."
+  },
+  "appLogoLabel": {
+    "m": "HonkPassi logo"
+  },
+  "autofillConfigurationMessage": {
+    "m": "HonkPassi automaattäite sisselülitamine…"
+  },
+  "coachmarkFiltersDescription": {
+    "m": "Vali tulemuste täpsustamiseks korraga mitu filtrit. Filtrid jäävad kehtima ka teise vaatesse liikudes."
+  },
+  "coachmarkFiltersTitle": {
+    "m": "Kombineeri filtreid"
+  },
+  "confirmPasskeyAssertionMfaMacOS": {
+    "m": "logida sisse kasutajana $USERNAME$ teenuse $RPID$ pääsuvõtmega. $RPID$ nõuab seda kontrolli mitmikautentimiseks.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "confirmPasskeyOverwriteMfaMacOS": {
+    "m": "kirjutada üle teenuse $RPID$ pääsuvõti kasutaja $USERNAME$ jaoks. $RPID$ nõuab seda kontrolli mitmikautentimiseks.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "confirmPasskeyRegistrationMfaMacOS": {
+    "m": "luua kasutajale $USERNAME$ teenuse $RPID$ uus pääsuvõti. $RPID$ nõuab seda kontrolli mitmikautentimiseks.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "honkpassAppAlreadyAssigned": {
+    "m": "Juba seostatud"
+  },
+  "honkpassAppListError": {
+    "m": "Rakenduste laadimine nurjus. Värskenda loendit ja proovi uuesti."
+  },
+  "honkpassAppNotAccepted": {
+    "m": "Rakendust ei õnnestunud kontrollida. Vali see uuesti või vali teine rakendus."
+  },
+  "honkpassAppSaveFailed": {
+    "m": "Andmed täideti. Rakendust ei õnnestunud selle kirje juurde salvestada."
+  },
+  "honkpassAssignApp": {
+    "m": "Seosta rakendus"
+  },
+  "honkpassAutoFillUnavailable": {
+    "m": "HonkPassiga ei saa ühendust"
+  },
+  "honkpassAutoFillUnavailableDescription": {
+    "m": "Ava HonkPass ja lülita rakenduse seadetes sisse süsteemi automaattäide. Hoidla võib endiselt avatud olla."
+  },
+  "honkpassChooseApp": {
+    "m": "Vali rakendus"
+  },
+  "honkpassChooseAppFromDisk": {
+    "m": "Vali rakendus kettalt…"
+  },
+  "honkpassConfirmAppFill": {
+    "m": "Kinnita automaattäitmine rakenduses"
+  },
+  "honkpassConfirmAppFillDescription": {
+    "m": "See rakendus saab kirje „$ITEM$“ sisselogimisandmed.",
+    "p": {
+      "item": "$1"
+    }
+  },
+  "honkpassCurrentApp": {
+    "m": "Täidetav rakendus"
+  },
+  "honkpassFillAndSaveApp": {
+    "m": "Täida väljad ja salvesta rakendus"
+  },
+  "honkpassLegalSummary": {
+    "m": "Vaba tarkvara GNU GPLv3 litsentsi alusel. Võid tarkvara selle litsentsi tingimuste kohaselt muuta ja edasi levitada. Tarkvara antakse seadusega lubatud ulatuses ilma garantiita."
+  },
+  "honkpassLicensesAndSource": {
+    "m": "Litsentsid, kaasautorid ja lähtekood"
+  },
+  "honkpassLoadingApps": {
+    "m": "Rakenduste laadimine…"
+  },
+  "honkpassNoMatchingApps": {
+    "m": "Otsingule vastavaid rakendusi ei leitud."
+  },
+  "honkpassNoRunningApps": {
+    "m": "Seostamiseks pole ühtegi töötavat rakendust."
+  },
+  "honkpassOpenMainWindow": {
+    "m": "Ava HonkPass"
+  },
+  "honkpassOpenQuickAccess": {
+    "m": "Ava kiirjuurdepääs"
+  },
+  "honkpassQuickAccess": {
+    "m": "Kiirjuurdepääs"
+  },
+  "honkpassQuickChoose": {
+    "m": "↑ ↓ Vali"
+  },
+  "honkpassQuickCode": {
+    "m": "2FA-kood"
+  },
+  "honkpassQuickFillTarget": {
+    "m": "Täida rakenduses $APPLICATION$",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassQuickItemCount": {
+    "m": "Kirjeid: $COUNT$",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "honkpassQuickName": {
+    "m": "Kasutajanimi"
+  },
+  "honkpassQuickNewWindow": {
+    "m": "Ava kirje uues aknas"
+  },
+  "honkpassQuickOpenBrowser": {
+    "m": "Ava brauseris"
+  },
+  "honkpassQuickOpenMain": {
+    "m": "Kuva HonkPassis"
+  },
+  "honkpassQuickSearch": {
+    "m": "Otsi HonkPassist"
+  },
+  "honkpassRefreshApps": {
+    "m": "Värskenda loendit"
+  },
+  "honkpassRunningAppsHint": {
+    "m": "Siin kuvatakse ainult kontrollitud allkirjaga rakendusi. Seo brauseris kasutatavad sisselogimisandmed vastava veebisaidiga."
+  },
+  "honkpassSSHCopyFingerprint": {
+    "m": "Kopeeri avalik sõrmejälg"
+  },
+  "honkpassSSHFingerprint": {
+    "m": "Avalik sõrmejälg"
+  },
+  "honkpassSSHGitSign": {
+    "m": "andmete allkirjastamine Giti jaoks"
+  },
+  "honkpassSSHNoFingerprint": {
+    "m": "Sõrmejälg pole saadaval"
+  },
+  "honkpassSSHPending": {
+    "m": "Muid ootel päringuid: $COUNT$",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "honkpassSSHRequest": {
+    "m": "$APPLICATION$ soovib kasutada SSH-võtit.",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassSSHRequestedPurpose": {
+    "m": "Soovitud otstarve: $PURPOSE$",
+    "p": {
+      "purpose": "$1"
+    }
+  },
+  "honkpassSSHUnknownDestination": {
+    "m": "Selle päringu põhjal ei saa sihtserverit usaldusväärselt tuvastada."
+  },
+  "honkpassSSHUnknownPurpose": {
+    "m": "andmete allkirjastamine, täpset eesmärki ei saa kinnitada"
+  },
+  "honkpassSSHUnlockRequest": {
+    "m": "$APPLICATION$ ootab hoidla lukust avamist.",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassSSHVault": {
+    "m": "Hoidla: $ACCOUNT$ ($SERVER$)",
+    "p": {
+      "account": "$1",
+      "server": "$2"
+    }
+  },
+  "honkpassSSHVerifiedHost": {
+    "m": "Seansi kinnitatud serverivõti: $FINGERPRINT$",
+    "p": {
+      "fingerprint": "$1"
+    }
+  },
+  "honkpassSearchApps": {
+    "m": "Otsi töötavaid rakendusi"
+  },
+  "honkpassUpdateFinishWork": {
+    "m": "Enne värskenduse paigaldamist lõpeta pooleliolev toiming ning sulge kirjete, Sendi, impordi ja ekspordi aknad. HonkPass lukustab paigaldamise ajaks hoidla."
+  },
+  "passwordProtectedOptionDescription": {
+    "m": "Määra ekspordifaili krüptimiseks parool. Ühilduvad Bitwardeni kliendid kasutavad seda parooli faili dekrüptimiseks ja importimiseks."
+  },
+  "selfHostedBaseUrlHint": {
+    "m": "Sisesta oma Vaultwardeni serveri baasaadress. Näide: https://vault.example.test"
+  }
+}

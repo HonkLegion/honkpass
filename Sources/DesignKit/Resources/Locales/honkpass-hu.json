@@ -1,0 +1,202 @@
+{
+  "accountRestrictedOptionDescription": {
+    "m": "Ez a Bitwarden-exportformátum a fiók titkosítási kulcsát használja. A HonkPass nem készít ilyen formátumú fájlt."
+  },
+  "appLogoLabel": {
+    "m": "HonkPass-embléma"
+  },
+  "autofillConfigurationMessage": {
+    "m": "A HonkPass automatikus kitöltésének bekapcsolása…"
+  },
+  "coachmarkFiltersDescription": {
+    "m": "A találatok szűkítéséhez válassz ki egyszerre több szűrőt. A szűrők akkor is érvényben maradnak, ha másik nézetre váltasz."
+  },
+  "coachmarkFiltersTitle": {
+    "m": "Szűrők kombinálása"
+  },
+  "honkpassAppAlreadyAssigned": {
+    "m": "Már hozzá van rendelve"
+  },
+  "honkpassAppListError": {
+    "m": "Az alkalmazások betöltése nem sikerült. Frissítsd a listát, és próbáld újra."
+  },
+  "honkpassAppNotAccepted": {
+    "m": "Az alkalmazás nem ellenőrizhető. Válaszd ki újra, vagy válassz másik alkalmazást."
+  },
+  "honkpassAppSaveFailed": {
+    "m": "A kitöltés sikerült. Az alkalmazást nem sikerült menteni ehhez az elemhez."
+  },
+  "honkpassAssignApp": {
+    "m": "Alkalmazás társítása"
+  },
+  "honkpassAutoFillUnavailable": {
+    "m": "Nem sikerült kapcsolódni a HonkPasshoz"
+  },
+  "honkpassAutoFillUnavailableDescription": {
+    "m": "Nyissa meg a HonkPass alkalmazást, és a beállításaiban kapcsolja be a rendszer automatikus kitöltését. A széf ettől még fel lehet oldva."
+  },
+  "honkpassChooseApp": {
+    "m": "Alkalmazás kiválasztása"
+  },
+  "honkpassChooseAppFromDisk": {
+    "m": "Alkalmazás kiválasztása a lemezről…"
+  },
+  "honkpassConfirmAppFill": {
+    "m": "Automatikus kitöltés jóváhagyása"
+  },
+  "honkpassConfirmAppFillDescription": {
+    "m": "Ez az alkalmazás megkapja a(z) „$ITEM$” elem bejelentkezési adatait.",
+    "p": {
+      "item": "$1"
+    }
+  },
+  "honkpassCurrentApp": {
+    "m": "Alkalmazás a kitöltéshez"
+  },
+  "honkpassFillAndSaveApp": {
+    "m": "Kitöltés és az alkalmazás mentése"
+  },
+  "honkpassLegalSummary": {
+    "m": "Szabad szoftver a GNU GPLv3 licenc feltételei szerint. A licenc alapján módosítható és továbbterjeszthető. A szoftverhez a jogszabályok által megengedett mértékig nem jár garancia."
+  },
+  "honkpassLicensesAndSource": {
+    "m": "Licencek, közreműködők és forráskód"
+  },
+  "honkpassLoadingApps": {
+    "m": "Alkalmazások betöltése…"
+  },
+  "honkpassNoMatchingApps": {
+    "m": "Nincs a keresésnek megfelelő alkalmazás."
+  },
+  "honkpassNoRunningApps": {
+    "m": "Nincs olyan futó alkalmazás, amelyet társítani lehetne."
+  },
+  "honkpassOpenMainWindow": {
+    "m": "A HonkPass megnyitása"
+  },
+  "honkpassOpenQuickAccess": {
+    "m": "Gyorselérés megnyitása"
+  },
+  "honkpassQuickAccess": {
+    "m": "Gyorselérés"
+  },
+  "honkpassQuickChoose": {
+    "m": "↑ ↓ Kiválasztás"
+  },
+  "honkpassQuickCode": {
+    "m": "2FA-kód"
+  },
+  "honkpassQuickFillTarget": {
+    "m": "Kitöltés itt: $APPLICATION$",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassQuickItemCount": {
+    "m": "Elemek száma: $COUNT$",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "honkpassQuickName": {
+    "m": "Felhasználónév"
+  },
+  "honkpassQuickNewWindow": {
+    "m": "Elem megnyitása új ablakban"
+  },
+  "honkpassQuickOpenBrowser": {
+    "m": "Megnyitás böngészőben"
+  },
+  "honkpassQuickOpenMain": {
+    "m": "Megjelenítés a HonkPassban"
+  },
+  "honkpassQuickSearch": {
+    "m": "Keresés a HonkPassban"
+  },
+  "honkpassRefreshApps": {
+    "m": "Lista frissítése"
+  },
+  "honkpassRunningAppsHint": {
+    "m": "Csak ellenőrzött aláírású alkalmazások jelennek meg. A böngészőben használt bejelentkezési adatokat a megfelelő webhelyhez társítsd."
+  },
+  "honkpassSSHCopyFingerprint": {
+    "m": "Nyilvános ujjlenyomat másolása"
+  },
+  "honkpassSSHFingerprint": {
+    "m": "Nyilvános ujjlenyomat"
+  },
+  "honkpassSSHGitSign": {
+    "m": "Git-adatok aláírása"
+  },
+  "honkpassSSHNoFingerprint": {
+    "m": "Az ujjlenyomat nem érhető el"
+  },
+  "honkpassSSHPending": {
+    "m": "További várakozó kérések: $COUNT$",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "honkpassSSHRequest": {
+    "m": "A(z) $APPLICATION$ SSH-kulcsot szeretne használni.",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassSSHRequestedPurpose": {
+    "m": "A kérés célja: $PURPOSE$",
+    "p": {
+      "purpose": "$1"
+    }
+  },
+  "honkpassSSHUnknownDestination": {
+    "m": "A célkiszolgáló ebből a kérésből nem azonosítható megbízhatóan."
+  },
+  "honkpassSSHUnknownPurpose": {
+    "m": "adatok aláírása, a pontos cél nem ellenőrizhető"
+  },
+  "honkpassSSHUnlockRequest": {
+    "m": "A(z) $APPLICATION$ a széf feloldására vár.",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassSSHVault": {
+    "m": "Széf: $ACCOUNT$ ($SERVER$)",
+    "p": {
+      "account": "$1",
+      "server": "$2"
+    }
+  },
+  "honkpassSSHVerifiedHost": {
+    "m": "A munkamenet ellenőrzött kiszolgálókulcsa: $FINGERPRINT$",
+    "p": {
+      "fingerprint": "$1"
+    }
+  },
+  "honkpassSearchApps": {
+    "m": "Keresés a futó alkalmazások között"
+  },
+  "honkpassUpdateFinishWork": {
+    "m": "A frissítés telepítése előtt fejezd be az aktuális műveletet, és zárd be az elemek, a Send, az importálás és az exportálás szerkesztőit. A HonkPass a telepítés idejére zárolja a széfet."
+  },
+  "movedItemToOrg": {
+    "m": "$ITEMNAME$ átkerült $ORGNAME$ szervezethez",
+    "p": {
+      "itemname": "$1",
+      "orgname": "$2"
+    }
+  },
+  "passwordProtectedOptionDescription": {
+    "m": "Állíts be egy jelszót az exportfájl titkosításához. A kompatibilis Bitwarden-kliensek ezzel a jelszóval fejtik vissza és importálják a fájlt."
+  },
+  "selfHostedBaseUrlHint": {
+    "m": "Add meg a Vaultwarden-kiszolgálód alap-URL-jét. Példa: https://vault.example.test"
+  },
+  "noSharedFoldersAddedDescription": {
+    "m": "Adj hozzá egy megosztott mappát, hogy biztonságosan megoszthasd a széf elemeit a többi taggal."
+  },
+  "phoneCall": {
+    "m": "Telefonhívás"
+  }
+}

@@ -1,5 +1,5 @@
 {
-  "build": "16",
+  "build": "17",
   "files": {
     ".github/actionlint.yaml": {
       "executable": false,
@@ -59,7 +59,7 @@
     },
     "App/PassVault/Info.plist": {
       "executable": false,
-      "sha256": "57d78abfaa6c268e16139f80ad57313c36bca9f59fdaf7d23eb08b413b3ff421"
+      "sha256": "7310df5bd51b2f1dfd9e629f92f63b9c456908df1cc986fd3ef88505eae82ef2"
     },
     "App/PassVault/ItemActions.swift": {
       "executable": false,
@@ -71,7 +71,7 @@
     },
     "App/PassVault/LaunchOptions.swift": {
       "executable": false,
-      "sha256": "b6c184213d7edd83680e9024aef8f23f220f7852dcd51accf4aa3685bfd39074"
+      "sha256": "4205468fb6076b1d30a5a7311b84099d2685f1c39f14bf785b0e420408a5d68d"
     },
     "App/PassVault/Legal/GPL-3.0.txt": {
       "executable": false,
@@ -87,7 +87,7 @@
     },
     "App/PassVault/Legal/inventory.json": {
       "executable": false,
-      "sha256": "3e8fd6fd85defb64054746713c3fc21a91a2d9cb8fd6ae413de5615288531795"
+      "sha256": "0962fd7ef1f7b7be81fa3ec6aeff9a815968e00a8226e832774c2817d92df088"
     },
     "App/PassVault/Legal/texts/003736bc98408b53511b9cc8ff5d1af3bf0a8f17d53841cc39d8ab1b96a195b0.txt": {
       "executable": false,
@@ -1155,7 +1155,7 @@
     },
     "App/PassVault/LegalInformation.swift": {
       "executable": false,
-      "sha256": "dfdb4f7bebf40a027c8585642fbb65c12767a917b3cdd2f13521b3122e23a53c"
+      "sha256": "dcb4eb71660403cc04bca20b33586f9558b4262138d2c7bc186a733d00b39065"
     },
     "App/PassVault/LogInFlow.swift": {
       "executable": false,
@@ -1279,7 +1279,7 @@
     },
     "App/PassVault/Screens/SettingsDialog.swift": {
       "executable": false,
-      "sha256": "4d8fbf21512311e85579e3c33e49a60007804138c97ce3980b0aff0708efae0f"
+      "sha256": "ff3ab67e0441c30c45c843edea455fbcc982a11fa93ca085c7001b3efb7e2ba5"
     },
     "App/PassVault/Screens/ShortcutDialog.swift": {
       "executable": false,
@@ -1355,7 +1355,7 @@
     },
     "App/Provider/Info.plist": {
       "executable": false,
-      "sha256": "0256f3a1929bcd164c99fc54b26979158e9b2055e19c28b505652fff49b990eb"
+      "sha256": "c2f94e66b118780bf3eb0af9c57d02f1ef68d6880aef5cd1de591e5b3bd0e4fc"
     },
     "App/Provider/Provider.entitlements": {
       "executable": false,
@@ -1403,7 +1403,7 @@
     },
     "README.md": {
       "executable": false,
-      "sha256": "e557be21eded15a72defdaca7efb5fad80e93b61ebac2888f89df3b50f0655c7"
+      "sha256": "e4979eae3384a548e7a0124cd322291169d36e0ea86c59a2cb78a7054d4f1ed3"
     },
     "Sources/AutoFillBridge/AutoFillClient.swift": {
       "executable": false,
@@ -1447,7 +1447,7 @@
     },
     "Sources/DesignKit/BWText.swift": {
       "executable": false,
-      "sha256": "1abf31476c0ba545291b9f0d1795c0822cc0f6deb60a9f5150a097115b1f25e0"
+      "sha256": "e2a97335f1c33c3a5b7bd83398ed7f66cacda56ab144b7226c783f339313f8a8"
     },
     "Sources/DesignKit/Badge.swift": {
       "executable": false,
@@ -1697,21 +1697,289 @@
       "executable": false,
       "sha256": "f2dbf9000f0b4327d1d7a3768f354340422e23762c0f95f192076e5799795b06"
     },
+    "Sources/DesignKit/Resources/Locales/az.json": {
+      "executable": false,
+      "sha256": "131dc09616c2cf44069009900e88103bf177b7e03a5c1a55edb506264e778e7a"
+    },
+    "Sources/DesignKit/Resources/Locales/bg.json": {
+      "executable": false,
+      "sha256": "c08c64ecda46c3e6cceb85a666a16a16537cd88919a0b753a9681e135b83fa82"
+    },
+    "Sources/DesignKit/Resources/Locales/bs.json": {
+      "executable": false,
+      "sha256": "1273e1a33e5bff22bdfd33f65182ddfbdcb7cf9f884a234a420d97fffb1a9397"
+    },
+    "Sources/DesignKit/Resources/Locales/ca.json": {
+      "executable": false,
+      "sha256": "8c99491ba823358edcc252ece673bf1248a49d28be0c81f73a355721c417f23e"
+    },
     "Sources/DesignKit/Resources/Locales/cs.json": {
       "executable": false,
       "sha256": "a71320e45791ec550c89aae6cd033c3624bc4b961a8fa712ccc0ccdc7fef5824"
+    },
+    "Sources/DesignKit/Resources/Locales/cy.json": {
+      "executable": false,
+      "sha256": "748a4baacb659dc7b521d92e83e9f32d9cba8f59df19588f17bf7be86a7807ba"
+    },
+    "Sources/DesignKit/Resources/Locales/da.json": {
+      "executable": false,
+      "sha256": "f238d77e4df9e09b2a94f731ded9e08b94fd5e49e398dd56ce10493452b091ec"
+    },
+    "Sources/DesignKit/Resources/Locales/de.json": {
+      "executable": false,
+      "sha256": "a5989ca41afe79868f2c44eb2fcc94c7b8286ec6b941fc791a18761f1922a464"
+    },
+    "Sources/DesignKit/Resources/Locales/el.json": {
+      "executable": false,
+      "sha256": "caa2c0c25f43e3aabacaa125695a83c2e94ae6f03f6bd0a82cbc7039949cb14c"
+    },
+    "Sources/DesignKit/Resources/Locales/en-GB.json": {
+      "executable": false,
+      "sha256": "8f295e589aebd42bb59c8abbdce51cd6d9c01e9409af6ec8c36cc94bf7f0b48e"
     },
     "Sources/DesignKit/Resources/Locales/en.json": {
       "executable": false,
       "sha256": "5ccd6399ede8d3aa07076cca84b0dd96e431c49a2d5caa5a645f2e46c33a3d37"
     },
+    "Sources/DesignKit/Resources/Locales/es.json": {
+      "executable": false,
+      "sha256": "78d36908b9fc323fc457493c35da52f7c93a8597a261cc721c758170e86c298f"
+    },
+    "Sources/DesignKit/Resources/Locales/et.json": {
+      "executable": false,
+      "sha256": "8de52e16999d04bc35777659ffbf7a19ad55bb06dd167951478537c85f6b4380"
+    },
+    "Sources/DesignKit/Resources/Locales/eu.json": {
+      "executable": false,
+      "sha256": "7e1911968470d4c8fac7ab374ff2bac06d85c00d3414c438b1db75f16994a27a"
+    },
+    "Sources/DesignKit/Resources/Locales/fi.json": {
+      "executable": false,
+      "sha256": "32de11b901fd1e03b80519afb4db625558ac82de5e98adf07bcd3781026ff0e5"
+    },
+    "Sources/DesignKit/Resources/Locales/fr.json": {
+      "executable": false,
+      "sha256": "71e0c9bd8e38230ced4955d78ad312d06dbd2b4c6775368d7231e4af73e0618f"
+    },
+    "Sources/DesignKit/Resources/Locales/gl.json": {
+      "executable": false,
+      "sha256": "9ce752654a699303125214d160b015ed5ecb118a80dec48555e1b838bb4adda9"
+    },
+    "Sources/DesignKit/Resources/Locales/honkpass-az.json": {
+      "executable": false,
+      "sha256": "71a9bd4a9b608405d44c6364866dc9b4c0693d6bdad4f3e109260f6122cfbe09"
+    },
+    "Sources/DesignKit/Resources/Locales/honkpass-bg.json": {
+      "executable": false,
+      "sha256": "a265bc02ad27f991e21e6f3ee38562d6b4ee623f1266a94982575a9fbef48c84"
+    },
+    "Sources/DesignKit/Resources/Locales/honkpass-bs.json": {
+      "executable": false,
+      "sha256": "08fc11c4dbc8674b555b25fac8478e01d7cc6de17d01df9926c337070033bd34"
+    },
+    "Sources/DesignKit/Resources/Locales/honkpass-ca.json": {
+      "executable": false,
+      "sha256": "783418e422bd8ffc15e02c4afbea301e814c130b56c85f8f901164fe82e4d4f7"
+    },
     "Sources/DesignKit/Resources/Locales/honkpass-cs.json": {
       "executable": false,
-      "sha256": "19882e91230ef9cfe056cb4409354acecd34823fbba2fe2e738e31799f50f580"
+      "sha256": "74b3fdbfb3f97b91188f539ef4749fbf4d19fa4e43a0d3bc7454b42c94d29dfe"
+    },
+    "Sources/DesignKit/Resources/Locales/honkpass-cy.json": {
+      "executable": false,
+      "sha256": "20888dada8b2f6e4f525ee7bd51430358b65d01541fc6c1d1d5439d894ee372c"
+    },
+    "Sources/DesignKit/Resources/Locales/honkpass-da.json": {
+      "executable": false,
+      "sha256": "48d867a7bd14f5915f16a0aa7f4b4d767287001b7788d42cbdffe60ad9b20d5c"
+    },
+    "Sources/DesignKit/Resources/Locales/honkpass-de.json": {
+      "executable": false,
+      "sha256": "82994c52024c8ce36fb34a32bdacafd95aecc35c5cafd4f4693fa8a2bfd77d7f"
+    },
+    "Sources/DesignKit/Resources/Locales/honkpass-el.json": {
+      "executable": false,
+      "sha256": "2cf333d18d0a73887d275cdd1f37348e292da9322ff14485a05e7da8ac651d32"
+    },
+    "Sources/DesignKit/Resources/Locales/honkpass-en-GB.json": {
+      "executable": false,
+      "sha256": "7885c798af5cc94db971233f4ece69c8e5a88d9467ba939e278e3e8b6352965c"
     },
     "Sources/DesignKit/Resources/Locales/honkpass-en.json": {
       "executable": false,
       "sha256": "7d607c36e654234d6da97928e267d90e568e24604f3f3a60c19674dc566ffbb1"
+    },
+    "Sources/DesignKit/Resources/Locales/honkpass-es.json": {
+      "executable": false,
+      "sha256": "c0947e4fd44307106d16d09bdbaaa1bd9a681589bfe079e2f8a9b55dde10ed7b"
+    },
+    "Sources/DesignKit/Resources/Locales/honkpass-et.json": {
+      "executable": false,
+      "sha256": "c1a933b524a7940c1c9399aa5153b7b6088b4c2f3378410c269f6a0268543dcf"
+    },
+    "Sources/DesignKit/Resources/Locales/honkpass-eu.json": {
+      "executable": false,
+      "sha256": "f0caf15907c42f759b3c47a76c3686678b11f0f6e114c10ddabb305c4b1b9774"
+    },
+    "Sources/DesignKit/Resources/Locales/honkpass-fi.json": {
+      "executable": false,
+      "sha256": "ccc245dfcd37761f01c0c47e682b9a20a1ef00de00ba786313454e5f7b3d21db"
+    },
+    "Sources/DesignKit/Resources/Locales/honkpass-fr.json": {
+      "executable": false,
+      "sha256": "42511a54ba2725dcf6b4ec43eb5e78d67449ca0124bd89e294b20040fcfb7403"
+    },
+    "Sources/DesignKit/Resources/Locales/honkpass-gl.json": {
+      "executable": false,
+      "sha256": "9d57a9f37b86686e4107a0a684fcf06420ed9158a4938a1ce250f180ebbff76e"
+    },
+    "Sources/DesignKit/Resources/Locales/honkpass-hr.json": {
+      "executable": false,
+      "sha256": "58099190d88ead8929abe3f7fd8d1966c1da1fcb769f5cc7a5dca4bb52cac3eb"
+    },
+    "Sources/DesignKit/Resources/Locales/honkpass-hu.json": {
+      "executable": false,
+      "sha256": "0af044f416e1b31443f22a5d63a76239aed0392be87ed0375bd1889d6ef167eb"
+    },
+    "Sources/DesignKit/Resources/Locales/honkpass-it.json": {
+      "executable": false,
+      "sha256": "6d3cad2d271771b9bfefcfe9cbeb1fa42bbd82de444cd7ed387292df743fc8e0"
+    },
+    "Sources/DesignKit/Resources/Locales/honkpass-ka.json": {
+      "executable": false,
+      "sha256": "66017df80210e06fdc0c9cdbbfca5360d7b5c90b30481d7abf3240e61add46d1"
+    },
+    "Sources/DesignKit/Resources/Locales/honkpass-lt.json": {
+      "executable": false,
+      "sha256": "90dc4d4609209efadfaebe651f85a3717bc80a6246b3aebad75f9595e7eaf45a"
+    },
+    "Sources/DesignKit/Resources/Locales/honkpass-lv.json": {
+      "executable": false,
+      "sha256": "2ebff83b221a1f074de2a5d20d1c836a3e6dc12bffeba5adcbe06bd77d0784a2"
+    },
+    "Sources/DesignKit/Resources/Locales/honkpass-nb.json": {
+      "executable": false,
+      "sha256": "c201dc75afa5a9239098d72e3ff74171f2e77ea68e46a6714b6caefc5b568d13"
+    },
+    "Sources/DesignKit/Resources/Locales/honkpass-nl.json": {
+      "executable": false,
+      "sha256": "5f0afd963da2669fe4279874b82df91e30923aef09a498861cf94f74bbdcd527"
+    },
+    "Sources/DesignKit/Resources/Locales/honkpass-nn.json": {
+      "executable": false,
+      "sha256": "d5e77a91c77f90ebe735b8dec5727910611a9a93a80891902f81547ab3d61a6d"
+    },
+    "Sources/DesignKit/Resources/Locales/honkpass-pl.json": {
+      "executable": false,
+      "sha256": "ba317748ea4ffaf4f042697ff2dd68202bd127cd70e98ba7fdb2c9d3e3075d75"
+    },
+    "Sources/DesignKit/Resources/Locales/honkpass-pt-PT.json": {
+      "executable": false,
+      "sha256": "1203ad1065da59f0729495da89df5758eb405f087c9da6a6d59b119a3793163e"
+    },
+    "Sources/DesignKit/Resources/Locales/honkpass-ro.json": {
+      "executable": false,
+      "sha256": "1c4618f9e5fdc58e8cf4ce5334f8539fdb80ffea19b255f480e3b20ac057cf74"
+    },
+    "Sources/DesignKit/Resources/Locales/honkpass-sk.json": {
+      "executable": false,
+      "sha256": "02401bb46096fa318cba4bbc0539695d8645dd4883d7ad76f14408ff985725fa"
+    },
+    "Sources/DesignKit/Resources/Locales/honkpass-sl.json": {
+      "executable": false,
+      "sha256": "2cd6dfc9e2f8ef11c8b757b918e6de09e2b36517324ee41f51217295729b0978"
+    },
+    "Sources/DesignKit/Resources/Locales/honkpass-sr.json": {
+      "executable": false,
+      "sha256": "feb924aaa79c73254f1c473422919a06fcecb93b6b1b633b14b68747087950a1"
+    },
+    "Sources/DesignKit/Resources/Locales/honkpass-sv.json": {
+      "executable": false,
+      "sha256": "bbb555f833be6f2f05b485f6773d0a4099a5fc046b0ab9d9a2b18c9dacaf0d85"
+    },
+    "Sources/DesignKit/Resources/Locales/honkpass-tr.json": {
+      "executable": false,
+      "sha256": "cc89bca7a2516718a028540ed8f1f8c2e4d6e2a5851f7655f93e115eef0ad998"
+    },
+    "Sources/DesignKit/Resources/Locales/honkpass-uk.json": {
+      "executable": false,
+      "sha256": "92c5765b748f3362271dba0ef4d63932365b23a431651fab3bce14dfbaf5d2ce"
+    },
+    "Sources/DesignKit/Resources/Locales/hr.json": {
+      "executable": false,
+      "sha256": "5c65685e6adf687396f341635c58a401bcc7d7160bc6bafaa6861f0400e58b45"
+    },
+    "Sources/DesignKit/Resources/Locales/hu.json": {
+      "executable": false,
+      "sha256": "78406328aca7cc1fd46bde0346d3cdeafa3c5078a15114d833e8b5ced01c1307"
+    },
+    "Sources/DesignKit/Resources/Locales/it.json": {
+      "executable": false,
+      "sha256": "8f298cf62f3dff3328c30e22fa4cc2f92e2107fc3cf494074fa7179db367b6d9"
+    },
+    "Sources/DesignKit/Resources/Locales/ka.json": {
+      "executable": false,
+      "sha256": "b50269562b421af92998a4b50358e248ae272245943dd1c75a7b33aa6fa709a1"
+    },
+    "Sources/DesignKit/Resources/Locales/languages.json": {
+      "executable": false,
+      "sha256": "c260ffe2f0e97dc3714a7243ced0d0805a05652210d82f317d81b164b583d96e"
+    },
+    "Sources/DesignKit/Resources/Locales/lt.json": {
+      "executable": false,
+      "sha256": "6f4fd0560c5b61b2e3ba263f24b9ab32c168e76c6ea27dc26df866e943543ac0"
+    },
+    "Sources/DesignKit/Resources/Locales/lv.json": {
+      "executable": false,
+      "sha256": "6747a88f39fa61a73d48d8b986ca8056885474d5b72ca27ae7dca0e0cff7f020"
+    },
+    "Sources/DesignKit/Resources/Locales/nb.json": {
+      "executable": false,
+      "sha256": "ea1fe8fe86c1fceb9b0e82abe89b5278e698acd018942064c8e3a3985b637dca"
+    },
+    "Sources/DesignKit/Resources/Locales/nl.json": {
+      "executable": false,
+      "sha256": "9af7295b10015efb47bb2d9191d45e37206f0039315fba5789957bf961befe29"
+    },
+    "Sources/DesignKit/Resources/Locales/nn.json": {
+      "executable": false,
+      "sha256": "9a5bbb67c4db1e76f27ed035e0ff5d0c58aa1c048307c4419bc8381dcb415bb7"
+    },
+    "Sources/DesignKit/Resources/Locales/pl.json": {
+      "executable": false,
+      "sha256": "18b4311cbbb7d14e7a99e16888a96ed35f5535009a69fc930bafd63046294d2b"
+    },
+    "Sources/DesignKit/Resources/Locales/pt-PT.json": {
+      "executable": false,
+      "sha256": "b450f0c8a2b66f962b5c81b44d8fda48e24e3fd31953487325ce3ddc522c347d"
+    },
+    "Sources/DesignKit/Resources/Locales/ro.json": {
+      "executable": false,
+      "sha256": "8144671e4cb9eec8090ed7f4165c15e0015d04a83c95be2c0787386d56b67424"
+    },
+    "Sources/DesignKit/Resources/Locales/sk.json": {
+      "executable": false,
+      "sha256": "7c2afee369173d9f30d52af013aece5ce43b60fad34b1127821aa0426286271d"
+    },
+    "Sources/DesignKit/Resources/Locales/sl.json": {
+      "executable": false,
+      "sha256": "8bddb72aefa63f2eb423ae4a5cd8789bba33065ab22e2d5cd1fe6422ecc8f41b"
+    },
+    "Sources/DesignKit/Resources/Locales/sr.json": {
+      "executable": false,
+      "sha256": "0c5d97c0719d93d110713d6c90028a8d11e993b2d73420c9c9870f1be8990344"
+    },
+    "Sources/DesignKit/Resources/Locales/sv.json": {
+      "executable": false,
+      "sha256": "c681f3aa7f512cffe523682ca11dc80dae6f4166bdd9d828d67a6b1a60af286b"
+    },
+    "Sources/DesignKit/Resources/Locales/tr.json": {
+      "executable": false,
+      "sha256": "9855ee0cda871812335abf443fb66ffe30465a3749af8c5c056b216acd9ac0c2"
+    },
+    "Sources/DesignKit/Resources/Locales/uk.json": {
+      "executable": false,
+      "sha256": "ea09d76a4a40a3105ef5a14be57e3c5ef0b3d431220c18ec7970b5bc5760222a"
     },
     "Sources/DesignKit/Select.swift": {
       "executable": false,
@@ -2015,7 +2283,7 @@
     },
     "Tests/DesignKitTests/DesignKitTests.swift": {
       "executable": false,
-      "sha256": "69abd8956c0b1b28decdc8834fae80f581348be755333c49cc15460a6812d859"
+      "sha256": "a96e3610686d73991adf34925a493524dd061747557c0282bf9eafd4469c59ff"
     },
     "Tests/DesignKitTests/EscapeLayersTests.swift": {
       "executable": false,
@@ -2027,7 +2295,7 @@
     },
     "Tests/DesignKitTests/LocaleCoverageTests.swift": {
       "executable": false,
-      "sha256": "dd1a5b0c64546ba39b818e04cb3a0621838103b0f81f264b9a1ab6d4e68b1154"
+      "sha256": "e83351f2200a61add4bdec67cea287c7fd0c5555155f7676c9ae5c4f2d3e23b5"
     },
     "Tests/DesignKitTests/TableLayoutTests.swift": {
       "executable": false,
@@ -2255,7 +2523,7 @@
     },
     "project.yml": {
       "executable": false,
-      "sha256": "9c1d1522ad721e45e43058cb2cb2bff99ceb58aff1158c1526a6667df9ed9829"
+      "sha256": "96af754d00f5b0a49d9ea434aee01992fc59bda7c99e9065aa8731a359e4bb66"
     },
     "scripts/archive-developer-id.fish": {
       "executable": false,
@@ -2379,7 +2647,7 @@
     },
     "support/generate-design-kit.py": {
       "executable": false,
-      "sha256": "4d7433610ff829d32e9a4e73c1717c80e0d5282f97c48183441fa0a9838bebab"
+      "sha256": "4a5e952697cb3e3eed17ffdc2b58c7fe12c3ad9bfd7b6c4d14444f163e3fd48c"
     },
     "support/generate-public-suffixes.py": {
       "executable": false,
@@ -2423,7 +2691,7 @@
     },
     "support/public-source-files.txt": {
       "executable": false,
-      "sha256": "ea3b4cb633293338ca1a16576649fd868120b3312baae052a5c5769d4de5a0d4"
+      "sha256": "73b34f8d41aa64a2aa8d15ac82cdb74d153408caf40e314d4f6e9ce9e9507d07"
     },
     "support/public_source.py": {
       "executable": false,
@@ -2435,7 +2703,7 @@
     },
     "support/source_archive.py": {
       "executable": false,
-      "sha256": "11874f6d03e5bdb0584104c1b5df17082ea5332ddbbf25454ab1119dc011a3b3"
+      "sha256": "0d4b29d19f4bf8790793043ef0ec6d775537cae14edeea3c2f4c0ae9f475f8d2"
     },
     "support/vaultwarden/Caddyfile": {
       "executable": false,
@@ -2468,7 +2736,7 @@
     "sha256": "965f7081df13756c47091029135a661ad6075bf7ca9ece65884aa33c6fdebd0c",
     "version": "0.1.9"
   },
-  "source_revision": "a11fa78f9a3985b4d2cdf6fc767bf538ed9a84fb",
-  "tag": "v0.1.15",
-  "version": "0.1.15"
+  "source_revision": "bc1bc79573bf1f406127626c37cbe0a49ba2ffaa",
+  "tag": "v0.2.0",
+  "version": "0.2.0"
 }

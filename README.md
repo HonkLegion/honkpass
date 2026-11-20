@@ -2,7 +2,8 @@
 
 HonkPass is a native macOS client for [Vaultwarden](https://github.com/dani-garcia/vaultwarden), written in Swift.
 It stores passwords, passkeys and other vault items, with native macOS controls and Liquid Glass surfaces.
-The interface supports English and Czech.
+The interface supports 35 language variants. It uses your preferred macOS language when available.
+You can also choose a language in HonkPass settings and restart the app.
 
 HonkPass is an independent, unofficial client. It is not affiliated with Bitwarden Inc.
 

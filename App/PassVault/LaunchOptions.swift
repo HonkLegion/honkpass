@@ -17,7 +17,7 @@ struct LaunchOptions {
     let appearance: NSAppearance.Name?
     /// `--window-size <width>x<height>`, in points
     let windowSize: NSSize?
-    /// `--language en|cs`
+    /// `--language` followed by a supported language identifier.
     let language: String?
     /// `--product-name <name>`: the name in the texts. A comparison with the reference uses "Bitwarden".
     let productName: String?

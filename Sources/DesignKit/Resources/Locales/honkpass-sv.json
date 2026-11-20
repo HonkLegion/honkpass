@@ -1,0 +1,216 @@
+{
+  "accountRestrictedOptionDescription": {
+    "m": "Det här exportformatet från Bitwarden använder kontots krypteringsnyckel. HonkPass skapar inte filer i det här formatet."
+  },
+  "appLogoLabel": {
+    "m": "HonkPass-logotyp"
+  },
+  "autofillConfigurationMessage": {
+    "m": "Aktiverar autofyll med HonkPass…"
+  },
+  "coachmarkFiltersDescription": {
+    "m": "Välj flera filter samtidigt för att begränsa resultaten. Filtren fortsätter att gälla när du går till en annan vy."
+  },
+  "coachmarkFiltersTitle": {
+    "m": "Kombinera filter"
+  },
+  "confirmPasskeyAssertionMfaMacOS": {
+    "m": "logga in som $USERNAME$ med din nyckel för $RPID$. $RPID$ kräver denna kontroll för flerfaktorsautentisering.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "confirmPasskeyOverwriteMfaMacOS": {
+    "m": "skriva över en nyckel för $RPID$ för användaren $USERNAME$. $RPID$ kräver denna kontroll för flerfaktorsautentisering.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "confirmPasskeyRegistrationMfaMacOS": {
+    "m": "skapa en ny nyckel för $RPID$ för användaren $USERNAME$. $RPID$ kräver denna kontroll för flerfaktorsautentisering.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "honkpassAppAlreadyAssigned": {
+    "m": "Redan kopplad"
+  },
+  "honkpassAppListError": {
+    "m": "Apparna kunde inte läsas in. Uppdatera listan och försök igen."
+  },
+  "honkpassAppNotAccepted": {
+    "m": "Det gick inte att verifiera appen. Välj den igen eller välj en annan app."
+  },
+  "honkpassAppSaveFailed": {
+    "m": "Uppgifterna har fyllts i. Det gick inte att spara appen i objektet."
+  },
+  "honkpassAssignApp": {
+    "m": "Koppla app"
+  },
+  "honkpassAutoFillUnavailable": {
+    "m": "Kunde inte ansluta till HonkPass"
+  },
+  "honkpassAutoFillUnavailableDescription": {
+    "m": "Öppna HonkPass och slå på systemets autofyll i appens inställningar. Valvet kan fortfarande vara upplåst."
+  },
+  "honkpassChooseApp": {
+    "m": "Välj en app"
+  },
+  "honkpassChooseAppFromDisk": {
+    "m": "Välj en app från skivan…"
+  },
+  "honkpassConfirmAppFill": {
+    "m": "Bekräfta autofyll i appen"
+  },
+  "honkpassConfirmAppFillDescription": {
+    "m": "Den här appen får inloggningsuppgifterna från objektet ”$ITEM$”.",
+    "p": {
+      "item": "$1"
+    }
+  },
+  "honkpassCurrentApp": {
+    "m": "App att fylla i"
+  },
+  "honkpassFillAndSaveApp": {
+    "m": "Fyll i och spara appen"
+  },
+  "honkpassLegalSummary": {
+    "m": "Fri programvara under GNU GPLv3. Du får ändra och vidaredistribuera programvaran enligt licensvillkoren. Den tillhandahålls utan garanti i den utsträckning lagen tillåter."
+  },
+  "honkpassLicensesAndSource": {
+    "m": "Licenser, medverkande och källkod"
+  },
+  "honkpassLoadingApps": {
+    "m": "Läser in appar…"
+  },
+  "honkpassNoMatchingApps": {
+    "m": "Inga appar matchar din sökning."
+  },
+  "honkpassNoRunningApps": {
+    "m": "Det finns inga appar som körs att koppla."
+  },
+  "honkpassOpenMainWindow": {
+    "m": "Öppna HonkPass"
+  },
+  "honkpassOpenQuickAccess": {
+    "m": "Öppna snabbåtkomst"
+  },
+  "honkpassQuickAccess": {
+    "m": "Snabbåtkomst"
+  },
+  "honkpassQuickChoose": {
+    "m": "↑ ↓ Välj"
+  },
+  "honkpassQuickCode": {
+    "m": "2FA-kod"
+  },
+  "honkpassQuickFillTarget": {
+    "m": "Fyll i i $APPLICATION$",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassQuickItemCount": {
+    "m": "Objekt: $COUNT$",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "honkpassQuickName": {
+    "m": "Användarnamn"
+  },
+  "honkpassQuickNewWindow": {
+    "m": "Öppna objektet i ett nytt fönster"
+  },
+  "honkpassQuickOpenBrowser": {
+    "m": "Öppna i webbläsaren"
+  },
+  "honkpassQuickOpenMain": {
+    "m": "Visa i HonkPass"
+  },
+  "honkpassQuickSearch": {
+    "m": "Sök i HonkPass"
+  },
+  "honkpassRefreshApps": {
+    "m": "Uppdatera listan"
+  },
+  "honkpassRunningAppsHint": {
+    "m": "Här visas bara appar med verifierad signatur. Koppla inloggningar i webbläsaren till deras webbplatser."
+  },
+  "honkpassSSHCopyFingerprint": {
+    "m": "Kopiera offentligt fingeravtryck"
+  },
+  "honkpassSSHFingerprint": {
+    "m": "Offentligt fingeravtryck"
+  },
+  "honkpassSSHGitSign": {
+    "m": "signera data för Git"
+  },
+  "honkpassSSHNoFingerprint": {
+    "m": "Fingeravtrycket är inte tillgängligt"
+  },
+  "honkpassSSHPending": {
+    "m": "Ytterligare väntande förfrågningar: $COUNT$",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "honkpassSSHRequest": {
+    "m": "$APPLICATION$ vill använda en SSH-nyckel.",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassSSHRequestedPurpose": {
+    "m": "Begärt ändamål: $PURPOSE$",
+    "p": {
+      "purpose": "$1"
+    }
+  },
+  "honkpassSSHUnknownDestination": {
+    "m": "Det går inte att säkert identifiera målservern utifrån den här förfrågan."
+  },
+  "honkpassSSHUnknownPurpose": {
+    "m": "signera data, det exakta syftet kan inte verifieras"
+  },
+  "honkpassSSHUnlockRequest": {
+    "m": "$APPLICATION$ väntar på att valvet ska låsas upp.",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassSSHVault": {
+    "m": "Valv: $ACCOUNT$ ($SERVER$)",
+    "p": {
+      "account": "$1",
+      "server": "$2"
+    }
+  },
+  "honkpassSSHVerifiedHost": {
+    "m": "Verifierad servernyckel för sessionen: $FINGERPRINT$",
+    "p": {
+      "fingerprint": "$1"
+    }
+  },
+  "honkpassSearchApps": {
+    "m": "Sök bland appar som körs"
+  },
+  "honkpassUpdateFinishWork": {
+    "m": "Avsluta den pågående åtgärden och stäng fönstren för objekt, Send, import och export innan du installerar uppdateringen. HonkPass låser valvet under installationen."
+  },
+  "passwordProtectedOptionDescription": {
+    "m": "Ange ett lösenord för att kryptera exportfilen. Kompatibla Bitwarden-klienter använder lösenordet för att dekryptera och importera filen."
+  },
+  "selfHostedBaseUrlHint": {
+    "m": "Ange basadressen till din Vaultwarden-server. Exempel: https://vault.example.test"
+  },
+  "showMatchDetection": {
+    "m": "Visa matchningsdetektering $WEBSITE$",
+    "p": {
+      "website": "$1"
+    }
+  }
+}

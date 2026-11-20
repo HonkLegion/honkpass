@@ -1,0 +1,216 @@
+{
+  "accountRestrictedOptionDescription": {
+    "m": "Este formato de exportación de Bitwarden usa a chave de cifrado da conta. HonkPass non crea ficheiros neste formato."
+  },
+  "appLogoLabel": {
+    "m": "Logotipo de HonkPass"
+  },
+  "autofillConfigurationMessage": {
+    "m": "Estase activando o enchemento automático con HonkPass…"
+  },
+  "clearSearchTooltip": {
+    "m": "Preme aquí ou pulsa Esc para limpar a busca."
+  },
+  "coachmarkFiltersDescription": {
+    "m": "Selecciona varios filtros á vez para limitar os resultados. Os filtros seguirán activos cando cambies de vista."
+  },
+  "coachmarkFiltersTitle": {
+    "m": "Combinar filtros"
+  },
+  "confirmPasskeyAssertionMfaMacOS": {
+    "m": "iniciar sesión como $USERNAME$ coa chave de acceso de $RPID$. $RPID$ solicita esta comprobación para a autenticación multifactor.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "confirmPasskeyOverwriteMfaMacOS": {
+    "m": "sobrescribir unha chave de acceso de $RPID$ para $USERNAME$. $RPID$ solicita esta comprobación para a autenticación multifactor.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "confirmPasskeyRegistrationMfaMacOS": {
+    "m": "crear unha nova chave de acceso de $RPID$ para $USERNAME$. $RPID$ solicita esta comprobación para a autenticación multifactor.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "enableAutotypeGaShortcut": {
+    "m": "Activar o atallo de escritura automática"
+  },
+  "honkpassAppAlreadyAssigned": {
+    "m": "Xa asociada"
+  },
+  "honkpassAppListError": {
+    "m": "Non se puideron cargar as aplicacións. Actualiza a lista e téntao de novo."
+  },
+  "honkpassAppNotAccepted": {
+    "m": "Non se puido verificar a aplicación. Selecciónaa de novo ou escolle outra."
+  },
+  "honkpassAppSaveFailed": {
+    "m": "Enchéronse os datos. Non se puido gardar a aplicación neste elemento."
+  },
+  "honkpassAssignApp": {
+    "m": "Asociar aplicación"
+  },
+  "honkpassAutoFillUnavailable": {
+    "m": "Non se puido conectar con HonkPass"
+  },
+  "honkpassAutoFillUnavailableDescription": {
+    "m": "Abre HonkPass e activa o enchemento automático do sistema na configuración da aplicación. A caixa forte pode seguir desbloqueada."
+  },
+  "honkpassChooseApp": {
+    "m": "Escoller unha aplicación"
+  },
+  "honkpassChooseAppFromDisk": {
+    "m": "Escoller unha aplicación do disco…"
+  },
+  "honkpassConfirmAppFill": {
+    "m": "Confirmar o enchido automático na aplicación"
+  },
+  "honkpassConfirmAppFillDescription": {
+    "m": "Esta aplicación recibirá os datos de acceso do elemento «$ITEM$».",
+    "p": {
+      "item": "$1"
+    }
+  },
+  "honkpassCurrentApp": {
+    "m": "Aplicación de destino"
+  },
+  "honkpassFillAndSaveApp": {
+    "m": "Encher e gardar a aplicación"
+  },
+  "honkpassLegalSummary": {
+    "m": "Software libre baixo a licenza GNU GPLv3. Podes modificalo e redistribuílo segundo os termos da licenza. Ofrécese sen garantía na medida en que o permita a lei."
+  },
+  "honkpassLicensesAndSource": {
+    "m": "Licenzas, créditos e código fonte"
+  },
+  "honkpassLoadingApps": {
+    "m": "Cargando aplicacións…"
+  },
+  "honkpassNoMatchingApps": {
+    "m": "Ningunha aplicación coincide coa busca."
+  },
+  "honkpassNoRunningApps": {
+    "m": "Non hai aplicacións en execución dispoñibles para asociar."
+  },
+  "honkpassOpenMainWindow": {
+    "m": "Abrir HonkPass"
+  },
+  "honkpassOpenQuickAccess": {
+    "m": "Abrir o acceso rápido"
+  },
+  "honkpassQuickAccess": {
+    "m": "Acceso rápido"
+  },
+  "honkpassQuickChoose": {
+    "m": "↑ ↓ Seleccionar"
+  },
+  "honkpassQuickCode": {
+    "m": "Código 2FA"
+  },
+  "honkpassQuickFillTarget": {
+    "m": "Encher en $APPLICATION$",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassQuickItemCount": {
+    "m": "Elementos: $COUNT$",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "honkpassQuickName": {
+    "m": "Nome de usuario"
+  },
+  "honkpassQuickNewWindow": {
+    "m": "Abrir o elemento nunha xanela nova"
+  },
+  "honkpassQuickOpenBrowser": {
+    "m": "Abrir no navegador"
+  },
+  "honkpassQuickOpenMain": {
+    "m": "Amosar en HonkPass"
+  },
+  "honkpassQuickSearch": {
+    "m": "Buscar en HonkPass"
+  },
+  "honkpassRefreshApps": {
+    "m": "Actualizar a lista"
+  },
+  "honkpassRunningAppsHint": {
+    "m": "Aquí só se amosan aplicacións coa sinatura verificada. Asocia os datos de acceso do navegador ao sitio web correspondente."
+  },
+  "honkpassSSHCopyFingerprint": {
+    "m": "Copiar a pegada dixital pública"
+  },
+  "honkpassSSHFingerprint": {
+    "m": "Pegada dixital pública"
+  },
+  "honkpassSSHGitSign": {
+    "m": "asinar datos para Git"
+  },
+  "honkpassSSHNoFingerprint": {
+    "m": "Pegada dixital non dispoñible"
+  },
+  "honkpassSSHPending": {
+    "m": "Outras solicitudes en espera: $COUNT$",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "honkpassSSHRequest": {
+    "m": "$APPLICATION$ solicita permiso para usar unha chave SSH.",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassSSHRequestedPurpose": {
+    "m": "Finalidade solicitada: $PURPOSE$",
+    "p": {
+      "purpose": "$1"
+    }
+  },
+  "honkpassSSHUnknownDestination": {
+    "m": "Esta solicitude non permite identificar con fiabilidade o servidor de destino."
+  },
+  "honkpassSSHUnknownPurpose": {
+    "m": "asinar datos, non se pode verificar a finalidade exacta"
+  },
+  "honkpassSSHUnlockRequest": {
+    "m": "$APPLICATION$ agarda a que se desbloquee a caixa forte.",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassSSHVault": {
+    "m": "Caixa forte: $ACCOUNT$ ($SERVER$)",
+    "p": {
+      "account": "$1",
+      "server": "$2"
+    }
+  },
+  "honkpassSSHVerifiedHost": {
+    "m": "Chave verificada do servidor da sesión: $FINGERPRINT$",
+    "p": {
+      "fingerprint": "$1"
+    }
+  },
+  "honkpassSearchApps": {
+    "m": "Buscar aplicacións en execución"
+  },
+  "honkpassUpdateFinishWork": {
+    "m": "Antes de instalar a actualización, remata a operación en curso e pecha os editores de elementos, Send, importación e exportación. HonkPass bloquea a caixa forte durante a instalación."
+  },
+  "passwordProtectedOptionDescription": {
+    "m": "Define un contrasinal para cifrar o ficheiro exportado. Os clientes de Bitwarden compatibles úsano para descifrar e importar o ficheiro."
+  },
+  "selfHostedBaseUrlHint": {
+    "m": "Introduce o URL base do teu servidor Vaultwarden. Exemplo: https://vault.example.test"
+  }
+}

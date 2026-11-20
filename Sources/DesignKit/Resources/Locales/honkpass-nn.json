@@ -1,0 +1,216 @@
+{
+  "accountRestrictedOptionDescription": {
+    "m": "Dette eksportformatet frå Bitwarden brukar krypteringsnøkkelen til kontoen. HonkPass lagar ikkje filer i dette formatet."
+  },
+  "appLogoLabel": {
+    "m": "HonkPass-logo"
+  },
+  "autofillConfigurationMessage": {
+    "m": "Slår på automatisk utfylling med HonkPass…"
+  },
+  "clearSearchTooltip": {
+    "m": "Klikk her eller trykk på Esc for å tømme søket."
+  },
+  "coachmarkFiltersDescription": {
+    "m": "Vel fleire filter samstundes for å avgrense resultata. Filtera gjeld framleis når du går til ei anna vising."
+  },
+  "coachmarkFiltersTitle": {
+    "m": "Kombiner filter"
+  },
+  "confirmPasskeyAssertionMfaMacOS": {
+    "m": "logge inn som $USERNAME$ med passnøkkelen din for $RPID$. $RPID$ ber om denne kontrollen for fleirfaktorautentisering.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "confirmPasskeyOverwriteMfaMacOS": {
+    "m": "skrive over ein passnøkkel for $RPID$ for brukaren $USERNAME$. $RPID$ ber om denne kontrollen for fleirfaktorautentisering.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "confirmPasskeyRegistrationMfaMacOS": {
+    "m": "lage ein ny passnøkkel for $RPID$ for brukaren $USERNAME$. $RPID$ ber om denne kontrollen for fleirfaktorautentisering.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "enableAutotypeGaShortcut": {
+    "m": "Slå på snarvegen for automatisk inntasting"
+  },
+  "honkpassAppAlreadyAssigned": {
+    "m": "Allereie tilknytt"
+  },
+  "honkpassAppListError": {
+    "m": "Klarte ikkje å laste inn appane. Oppdater lista og prøv igjen."
+  },
+  "honkpassAppNotAccepted": {
+    "m": "Klarte ikkje å stadfeste appen. Vel han på nytt eller vel ein annan app."
+  },
+  "honkpassAppSaveFailed": {
+    "m": "Opplysningane vart fylte ut. Appen kunne ikkje lagrast i dette elementet."
+  },
+  "honkpassAssignApp": {
+    "m": "Knyt til app"
+  },
+  "honkpassAutoFillUnavailable": {
+    "m": "Klarte ikkje å kople til HonkPass"
+  },
+  "honkpassAutoFillUnavailableDescription": {
+    "m": "Opne HonkPass og slå på automatisk utfylling i innstillingane til appen. Kvelvet kan framleis vere ulåst."
+  },
+  "honkpassChooseApp": {
+    "m": "Vel ein app"
+  },
+  "honkpassChooseAppFromDisk": {
+    "m": "Vel ein app frå disken…"
+  },
+  "honkpassConfirmAppFill": {
+    "m": "Stadfest automatisk utfylling i appen"
+  },
+  "honkpassConfirmAppFillDescription": {
+    "m": "Denne appen får innloggingsopplysningane frå elementet «$ITEM$».",
+    "p": {
+      "item": "$1"
+    }
+  },
+  "honkpassCurrentApp": {
+    "m": "App å fylle ut i"
+  },
+  "honkpassFillAndSaveApp": {
+    "m": "Fyll ut og lagre appen"
+  },
+  "honkpassLegalSummary": {
+    "m": "Fri programvare under GNU GPLv3. Du kan endre og distribuere programvara vidare på vilkåra i lisensen. Ho vert levert utan garanti så langt lova tillèt det."
+  },
+  "honkpassLicensesAndSource": {
+    "m": "Lisensar, bidragsytarar og kjeldekode"
+  },
+  "honkpassLoadingApps": {
+    "m": "Lastar inn appar…"
+  },
+  "honkpassNoMatchingApps": {
+    "m": "Ingen appar samsvarar med søket."
+  },
+  "honkpassNoRunningApps": {
+    "m": "Det finst ingen opne appar å knyte til."
+  },
+  "honkpassOpenMainWindow": {
+    "m": "Opne HonkPass"
+  },
+  "honkpassOpenQuickAccess": {
+    "m": "Opne snøggtilgang"
+  },
+  "honkpassQuickAccess": {
+    "m": "Snøggtilgang"
+  },
+  "honkpassQuickChoose": {
+    "m": "↑ ↓ Vel"
+  },
+  "honkpassQuickCode": {
+    "m": "2FA-kode"
+  },
+  "honkpassQuickFillTarget": {
+    "m": "Fyll ut i $APPLICATION$",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassQuickItemCount": {
+    "m": "Element: $COUNT$",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "honkpassQuickName": {
+    "m": "Brukarnamn"
+  },
+  "honkpassQuickNewWindow": {
+    "m": "Opne elementet i eit nytt vindauge"
+  },
+  "honkpassQuickOpenBrowser": {
+    "m": "Opne i nettlesaren"
+  },
+  "honkpassQuickOpenMain": {
+    "m": "Vis i HonkPass"
+  },
+  "honkpassQuickSearch": {
+    "m": "Søk i HonkPass"
+  },
+  "honkpassRefreshApps": {
+    "m": "Oppdater lista"
+  },
+  "honkpassRunningAppsHint": {
+    "m": "Her blir berre appar med stadfesta signatur viste. Knyt nettlesarinnloggingar til den aktuelle nettstaden."
+  },
+  "honkpassSSHCopyFingerprint": {
+    "m": "Kopier offentleg fingeravtrykk"
+  },
+  "honkpassSSHFingerprint": {
+    "m": "Offentleg fingeravtrykk"
+  },
+  "honkpassSSHGitSign": {
+    "m": "signere data for Git"
+  },
+  "honkpassSSHNoFingerprint": {
+    "m": "Fingeravtrykket er ikkje tilgjengeleg"
+  },
+  "honkpassSSHPending": {
+    "m": "Fleire førespurnader i kø: $COUNT$",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "honkpassSSHRequest": {
+    "m": "$APPLICATION$ ber om å få bruke ein SSH-nøkkel.",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassSSHRequestedPurpose": {
+    "m": "Oppgjeve føremål: $PURPOSE$",
+    "p": {
+      "purpose": "$1"
+    }
+  },
+  "honkpassSSHUnknownDestination": {
+    "m": "Førespurnaden identifiserer ikkje måltenaren sikkert."
+  },
+  "honkpassSSHUnknownPurpose": {
+    "m": "signere data, det nøyaktige føremålet kan ikkje stadfestast"
+  },
+  "honkpassSSHUnlockRequest": {
+    "m": "$APPLICATION$ ventar på at kvelvet skal låsast opp.",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassSSHVault": {
+    "m": "Kvelv: $ACCOUNT$ ($SERVER$)",
+    "p": {
+      "account": "$1",
+      "server": "$2"
+    }
+  },
+  "honkpassSSHVerifiedHost": {
+    "m": "Stadfesta tenarnøkkel for økta: $FINGERPRINT$",
+    "p": {
+      "fingerprint": "$1"
+    }
+  },
+  "honkpassSearchApps": {
+    "m": "Søk blant opne appar"
+  },
+  "honkpassUpdateFinishWork": {
+    "m": "Fullfør handlinga og lat att vindauga for element, Send, import og eksport før du installerer oppdateringa. HonkPass låser kvelvet under installasjonen."
+  },
+  "passwordProtectedOptionDescription": {
+    "m": "Vel eit passord for å kryptere eksportfila. Kompatible Bitwarden-klientar brukar passordet til å dekryptere og importere fila."
+  },
+  "selfHostedBaseUrlHint": {
+    "m": "Skriv inn grunnadressa til Vaultwarden-tenaren din. Døme: https://vault.example.test"
+  }
+}

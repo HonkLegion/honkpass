@@ -1,4 +1,7 @@
 {
+  "autofillConfigurationMessage": { "m": "Zapíná se automatické vyplňování pomocí HonkPassu…" },
+  "coachmarkFiltersTitle": { "m": "Kombinujte filtry" },
+  "coachmarkFiltersDescription": { "m": "Výsledky můžete zúžit výběrem více filtrů najednou. Filtry zůstanou aktivní, i když přejdete jinam." },
   "honkpassQuickName": { "m": "Jméno" },
   "honkpassQuickCode": { "m": "Kód 2FA" },
   "honkpassQuickNewWindow": { "m": "Otevřít položku v novém okně" },
@@ -105,5 +108,8 @@
   },
   "honkpassSSHUnknownDestination": {
     "m": "Cílový server nelze z tohoto požadavku spolehlivě určit."
+  },
+  "orgTrustWarning": {
+    "m": "Kvůli bezpečnosti účtu pokračujte pouze v případě, že jste členem této organizace, máte zapnuté obnovení účtu a níže zobrazený otisk se shoduje s otiskem organizace."
   }
 }

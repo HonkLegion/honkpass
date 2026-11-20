@@ -1,0 +1,189 @@
+{
+  "honkpassQuickName": {
+    "m": "Username"
+  },
+  "honkpassQuickCode": {
+    "m": "2FA code"
+  },
+  "honkpassQuickNewWindow": {
+    "m": "Open item in a new window"
+  },
+  "honkpassQuickOpenMain": {
+    "m": "Show in HonkPass"
+  },
+  "honkpassQuickOpenBrowser": {
+    "m": "Open in browser"
+  },
+  "honkpassAutoFillUnavailable": {
+    "m": "Unable to connect to HonkPass"
+  },
+  "honkpassAutoFillUnavailableDescription": {
+    "m": "Open HonkPass and turn on system AutoFill in its settings. This connection problem does not mean that the vault is locked."
+  },
+  "honkpassChooseApp": {
+    "m": "Choose an application"
+  },
+  "honkpassSearchApps": {
+    "m": "Search running applications"
+  },
+  "honkpassLoadingApps": {
+    "m": "Loading applications…"
+  },
+  "honkpassAppListError": {
+    "m": "Unable to load applications. Refresh the list to try again."
+  },
+  "honkpassNoRunningApps": {
+    "m": "No running applications are available to assign."
+  },
+  "honkpassNoMatchingApps": {
+    "m": "No applications match your search."
+  },
+  "honkpassRunningAppsHint": {
+    "m": "Only applications with a verified signature appear here. Associate browser logins with their website."
+  },
+  "honkpassChooseAppFromDisk": {
+    "m": "Choose an application from disk…"
+  },
+  "honkpassRefreshApps": {
+    "m": "Refresh list"
+  },
+  "honkpassAssignApp": {
+    "m": "Assign application"
+  },
+  "honkpassAppAlreadyAssigned": {
+    "m": "Already assigned"
+  },
+  "honkpassAppNotAccepted": {
+    "m": "Unable to verify this application. Select it again or choose another application."
+  },
+  "honkpassConfirmAppFill": {
+    "m": "Confirm application autofill"
+  },
+  "honkpassConfirmAppFillDescription": {
+    "m": "This application will receive credentials from “$ITEM$”.",
+    "p": {
+      "item": "$1"
+    }
+  },
+  "honkpassCurrentApp": {
+    "m": "Application to fill"
+  },
+  "honkpassFillAndSaveApp": {
+    "m": "Fill and save application"
+  },
+  "honkpassAppSaveFailed": {
+    "m": "Filled successfully. The application could not be saved to this item."
+  },
+  "honkpassOpenMainWindow": {
+    "m": "Open HonkPass"
+  },
+  "honkpassOpenQuickAccess": {
+    "m": "Open Quick Access"
+  },
+  "honkpassQuickAccess": {
+    "m": "Quick access"
+  },
+  "honkpassQuickSearch": {
+    "m": "Search HonkPass"
+  },
+  "honkpassQuickFillTarget": {
+    "m": "Fill into $APPLICATION$",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassQuickItemCount": {
+    "m": "Items: $COUNT$",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "honkpassQuickChoose": {
+    "m": "↑ ↓ Select"
+  },
+  "honkpassLegalSummary": {
+    "m": "Free software under GNU GPLv3. You can modify and redistribute it under that licence. Provided without warranty to the extent permitted by law."
+  },
+  "honkpassLicensesAndSource": {
+    "m": "Licences, credits and source code"
+  },
+  "selfHostedBaseUrlHint": {
+    "m": "Enter the base URL of your Vaultwarden server. Example: https://vault.example.test"
+  },
+  "appLogoLabel": {
+    "m": "HonkPass logo"
+  },
+  "passwordProtectedOptionDescription": {
+    "m": "Set a file password to encrypt the export. Compatible Bitwarden clients use this password to decrypt and import the file."
+  },
+  "accountRestrictedOptionDescription": {
+    "m": "This Bitwarden export format uses the account encryption key. HonkPass does not create this format."
+  },
+  "honkpassUpdateFinishWork": {
+    "m": "Finish the current operation and close the item, Send, import and export editors before installing an update. HonkPass locks the vault during installation."
+  },
+  "honkpassSSHRequest": {
+    "m": "$APPLICATION$ requests use of an SSH key.",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassSSHUnlockRequest": {
+    "m": "$APPLICATION$ is waiting for the vault to unlock.",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassSSHFingerprint": {
+    "m": "Public fingerprint"
+  },
+  "honkpassSSHNoFingerprint": {
+    "m": "Fingerprint unavailable"
+  },
+  "honkpassSSHPending": {
+    "m": "Additional requests waiting: $COUNT$",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "honkpassSSHCopyFingerprint": {
+    "m": "Copy public fingerprint"
+  },
+  "honkpassSSHRequestedPurpose": {
+    "m": "Requested purpose: $PURPOSE$",
+    "p": {
+      "purpose": "$1"
+    }
+  },
+  "honkpassSSHGitSign": {
+    "m": "sign data for Git"
+  },
+  "honkpassSSHUnknownPurpose": {
+    "m": "sign data, exact purpose cannot be verified"
+  },
+  "honkpassSSHVault": {
+    "m": "Vault: $ACCOUNT$ ($SERVER$)",
+    "p": {
+      "account": "$1",
+      "server": "$2"
+    }
+  },
+  "honkpassSSHVerifiedHost": {
+    "m": "Verified session server key: $FINGERPRINT$",
+    "p": {
+      "fingerprint": "$1"
+    }
+  },
+  "honkpassSSHUnknownDestination": {
+    "m": "The destination server cannot be reliably identified from this request."
+  },
+  "autofillConfigurationMessage": {
+    "m": "Enabling AutoFill with HonkPass…"
+  },
+  "coachmarkFiltersTitle": {
+    "m": "Mix and match filters"
+  },
+  "coachmarkFiltersDescription": {
+    "m": "Select multiple filters at once to narrow down to exactly the results you want. They'll stay applied even when you navigate away."
+  }
+}

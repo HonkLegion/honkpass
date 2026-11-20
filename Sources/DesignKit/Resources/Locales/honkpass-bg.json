@@ -1,0 +1,196 @@
+{
+  "accountRestrictedOptionDescription": {
+    "m": "Този формат за износ на Bitwarden използва ключа за шифроване на акаунта. HonkPass не създава файлове в този формат."
+  },
+  "appLogoLabel": {
+    "m": "Лого на HonkPass"
+  },
+  "autofillConfigurationMessage": {
+    "m": "Включване на автоматичното попълване с HonkPass…"
+  },
+  "coachmarkFiltersDescription": {
+    "m": "Изберете няколко филтъра едновременно, за да стесните резултатите. Филтрите остават активни и когато отворите друг изглед."
+  },
+  "coachmarkFiltersTitle": {
+    "m": "Комбиниране на филтри"
+  },
+  "honkpassAppAlreadyAssigned": {
+    "m": "Вече е свързано"
+  },
+  "honkpassAppListError": {
+    "m": "Приложенията не можаха да се заредят. Обновете списъка и опитайте отново."
+  },
+  "honkpassAppNotAccepted": {
+    "m": "Приложението не можа да бъде проверено. Изберете го отново или изберете друго приложение."
+  },
+  "honkpassAppSaveFailed": {
+    "m": "Данните са попълнени. Приложението не можа да бъде запазено в този запис."
+  },
+  "honkpassAssignApp": {
+    "m": "Свързване на приложение"
+  },
+  "honkpassAutoFillUnavailable": {
+    "m": "Няма връзка с HonkPass"
+  },
+  "honkpassAutoFillUnavailableDescription": {
+    "m": "Отворете HonkPass и включете автоматичното попълване на системата в настройките на приложението. Трезорът може все още да е отключен."
+  },
+  "honkpassChooseApp": {
+    "m": "Избор на приложение"
+  },
+  "honkpassChooseAppFromDisk": {
+    "m": "Избор на приложение от диска…"
+  },
+  "honkpassConfirmAppFill": {
+    "m": "Потвърждаване на автоматичното попълване в приложението"
+  },
+  "honkpassConfirmAppFillDescription": {
+    "m": "Това приложение ще получи данните за вход от записа „$ITEM$“.",
+    "p": {
+      "item": "$1"
+    }
+  },
+  "honkpassCurrentApp": {
+    "m": "Приложение за попълване"
+  },
+  "honkpassFillAndSaveApp": {
+    "m": "Попълване и запазване на приложението"
+  },
+  "honkpassLegalSummary": {
+    "m": "Свободен софтуер под лиценза GNU GPLv3. Можете да го променяте и разпространявате съгласно условията на лиценза. Предоставя се без гаранция, доколкото законът позволява."
+  },
+  "honkpassLicensesAndSource": {
+    "m": "Лицензи, автори и изходен код"
+  },
+  "honkpassLoadingApps": {
+    "m": "Зареждане на приложения…"
+  },
+  "honkpassNoMatchingApps": {
+    "m": "Няма приложения, които отговарят на търсенето."
+  },
+  "honkpassNoRunningApps": {
+    "m": "Няма работещи приложения, които могат да бъдат свързани."
+  },
+  "honkpassOpenMainWindow": {
+    "m": "Отваряне на HonkPass"
+  },
+  "honkpassOpenQuickAccess": {
+    "m": "Отваряне на бързия достъп"
+  },
+  "honkpassQuickAccess": {
+    "m": "Бърз достъп"
+  },
+  "honkpassQuickChoose": {
+    "m": "↑ ↓ Избор"
+  },
+  "honkpassQuickCode": {
+    "m": "Код за 2FA"
+  },
+  "honkpassQuickFillTarget": {
+    "m": "Попълване в $APPLICATION$",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassQuickItemCount": {
+    "m": "Записи: $COUNT$",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "honkpassQuickName": {
+    "m": "Потребителско име"
+  },
+  "honkpassQuickNewWindow": {
+    "m": "Отваряне на записа в нов прозорец"
+  },
+  "honkpassQuickOpenBrowser": {
+    "m": "Отваряне в браузъра"
+  },
+  "honkpassQuickOpenMain": {
+    "m": "Показване в HonkPass"
+  },
+  "honkpassQuickSearch": {
+    "m": "Търсене в HonkPass"
+  },
+  "honkpassRefreshApps": {
+    "m": "Обновяване на списъка"
+  },
+  "honkpassRunningAppsHint": {
+    "m": "Тук се показват само приложения с проверен подпис. Свържете данните за вход в браузъра със съответния уебсайт."
+  },
+  "honkpassSSHCopyFingerprint": {
+    "m": "Копиране на публичния отпечатък"
+  },
+  "honkpassSSHFingerprint": {
+    "m": "Публичен отпечатък"
+  },
+  "honkpassSSHGitSign": {
+    "m": "подписване на данни за Git"
+  },
+  "honkpassSSHNoFingerprint": {
+    "m": "Отпечатъкът не е наличен"
+  },
+  "honkpassSSHPending": {
+    "m": "Други чакащи заявки: $COUNT$",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "honkpassSSHRequest": {
+    "m": "$APPLICATION$ иска да използва SSH ключ.",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassSSHRequestedPurpose": {
+    "m": "Заявена цел: $PURPOSE$",
+    "p": {
+      "purpose": "$1"
+    }
+  },
+  "honkpassSSHUnknownDestination": {
+    "m": "От тази заявка не може надеждно да се определи целевият сървър."
+  },
+  "honkpassSSHUnknownPurpose": {
+    "m": "подписване на данни, точната цел не може да се потвърди"
+  },
+  "honkpassSSHUnlockRequest": {
+    "m": "$APPLICATION$ изчаква отключването на трезора.",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassSSHVault": {
+    "m": "Трезор: $ACCOUNT$ ($SERVER$)",
+    "p": {
+      "account": "$1",
+      "server": "$2"
+    }
+  },
+  "honkpassSSHVerifiedHost": {
+    "m": "Проверен ключ на сървъра за сесията: $FINGERPRINT$",
+    "p": {
+      "fingerprint": "$1"
+    }
+  },
+  "honkpassSearchApps": {
+    "m": "Търсене сред работещите приложения"
+  },
+  "honkpassUpdateFinishWork": {
+    "m": "Преди да инсталирате актуализацията, завършете текущата операция и затворете прозорците за записи, Send, внос и износ. HonkPass заключва трезора по време на инсталацията."
+  },
+  "passwordProtectedOptionDescription": {
+    "m": "Задайте парола, за да шифровате файла за износ. Съвместимите клиенти на Bitwarden използват тази парола за дешифриране и внос на файла."
+  },
+  "selfHostedBaseUrlHint": {
+    "m": "Въведете основния URL адрес на вашия сървър Vaultwarden. Пример: https://vault.example.test"
+  },
+  "sessionTimeoutSettingsPolicySetMaximumTimeoutToHoursMinutes": {
+    "m": "Вашата организация е установила максимално време за изтичане на сесията до $HOURS$ час(а) и $MINUTES$ минута(и).",
+    "p": {
+      "hours": "$1",
+      "minutes": "$2"
+    }
+  }
+}

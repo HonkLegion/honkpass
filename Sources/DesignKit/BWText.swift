@@ -5,7 +5,7 @@ import Synchronization
 /// HonkPass additions live separately from the imported locale files.
 public enum BWText {
     public struct Settings: Sendable {
-        /// "en" or "cs".
+        /// Language identifier from the bundled catalog, for example "en" or "pt-PT".
         public var language: String
         /// The name that replaces "Bitwarden" in the texts.
         public var productName: String
@@ -16,7 +16,16 @@ public enum BWText {
         }
     }
 
-    public static let supportedLanguages = ["en", "cs"]
+    public static let languageNames: [String: String] = {
+        guard let url = Bundle.module.url(forResource: "languages", withExtension: "json", subdirectory: "Resources/Locales"),
+              let data = try? Data(contentsOf: url),
+              let names = try? JSONDecoder().decode([String: String].self, from: data) else {
+            preconditionFailure("The language catalog is missing")
+        }
+        return names
+    }()
+
+    public static let supportedLanguages = ["en"] + languageNames.keys.filter { $0 != "en" }.sorted()
 
     private struct Entry: Decodable {
         let m: String
@@ -57,15 +66,13 @@ public enum BWText {
         // Rename the app in the template only. Arguments can name an import format, another
         // product or user content and must remain verbatim.
         let describesExportFormat = key == "accountRestrictedOptionDescription" || key == "passwordProtectedOptionDescription"
-        var message = describesExportFormat ? entry.m : productNamed(entry.m, productName)
-        for (name, content) in entry.p ?? [:] {
-            var value = content
-            for (index, argument) in arguments.enumerated() {
-                value = value.replacingOccurrences(of: "$\(index + 1)", with: argument)
-            }
-            message = message.replacingOccurrences(of: "$\(name.uppercased())$", with: value)
+        let message = describesExportFormat ? entry.m : productNamed(entry.m, productName)
+        guard let placeholders = entry.p else { return message }
+        return message.replacing(/\$([A-Za-z0-9_]+)\$/) { match in
+            guard let slot = placeholders[match.1.lowercased()] else { return String(match.0) }
+            guard let position = Int(slot.dropFirst()), position > 0, position <= arguments.count else { return slot }
+            return arguments[position - 1]
         }
-        return message
     }
 
     /// "Bitwarden" becomes the name of this app, except in the names of other products of Bitwarden.
@@ -100,8 +107,7 @@ public enum BWText {
         return table.merging(additions) { _, own in own }
     }
 
-    private static func systemLanguage() -> String {
-        let preferred = Locale.preferredLanguages.first?.prefix(2).lowercased() ?? "en"
-        return supportedLanguages.contains(preferred) ? preferred : "en"
+    static func systemLanguage(_ preferences: [String] = Locale.preferredLanguages) -> String {
+        return Bundle.preferredLocalizations(from: supportedLanguages, forPreferences: preferences).first ?? "en"
     }
 }

@@ -8,6 +8,7 @@ final class LegalInformation: NSObject {
 
     static var indexURL: URL? {
         Bundle.main.url(forResource: "index-" + BWText.settings.language, withExtension: "html", subdirectory: "Legal")
+            ?? Bundle.main.url(forResource: "index-en", withExtension: "html", subdirectory: "Legal")
     }
 
     @objc func showAbout(_ sender: Any?) {

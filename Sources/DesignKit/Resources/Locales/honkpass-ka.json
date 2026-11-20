@@ -1,0 +1,216 @@
+{
+  "accountRestrictedOptionDescription": {
+    "m": "Bitwarden-ის ექსპორტის ეს ფორმატი ანგარიშის დაშიფვრის გასაღებს იყენებს. HonkPass ამ ფორმატის ფაილებს არ ქმნის."
+  },
+  "appLogoLabel": {
+    "m": "HonkPass-ის ლოგო"
+  },
+  "autofillConfigurationMessage": {
+    "m": "ირთვება ავტომატური შევსება HonkPass-ის მეშვეობით…"
+  },
+  "clearSearchTooltip": {
+    "m": "ძიების გასასუფთავებლად დააწკაპუნეთ აქ ან დააჭირეთ Esc-ს."
+  },
+  "coachmarkFiltersDescription": {
+    "m": "შედეგების დასაზუსტებლად ერთდროულად რამდენიმე ფილტრი აირჩიეთ. სხვა ხედზე გადასვლისას ფილტრები აქტიური დარჩება."
+  },
+  "coachmarkFiltersTitle": {
+    "m": "ფილტრების გაერთიანება"
+  },
+  "confirmPasskeyAssertionMfaMacOS": {
+    "m": "$RPID$-ის წვდომის გასაღებით ანგარიშში $USERNAME$ შესვლა. $RPID$ ამ შემოწმებას მრავალფაქტორიანი ავთენტიფიკაციისთვის ითხოვს.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "confirmPasskeyOverwriteMfaMacOS": {
+    "m": "მომხმარებლისთვის $USERNAME$ სერვისის $RPID$ წვდომის გასაღების გადაწერა. $RPID$ ამ შემოწმებას მრავალფაქტორიანი ავთენტიფიკაციისთვის ითხოვს.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "confirmPasskeyRegistrationMfaMacOS": {
+    "m": "მომხმარებლისთვის $USERNAME$ სერვისის $RPID$ ახალი წვდომის გასაღების შექმნა. $RPID$ ამ შემოწმებას მრავალფაქტორიანი ავთენტიფიკაციისთვის ითხოვს.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "enableAutotypeGaShortcut": {
+    "m": "ავტომატური აკრეფის მალსახმობის ჩართვა"
+  },
+  "honkpassAppAlreadyAssigned": {
+    "m": "უკვე დაკავშირებულია"
+  },
+  "honkpassAppListError": {
+    "m": "აპები ვერ ჩაიტვირთა. განაახლეთ სია და სცადეთ ხელახლა."
+  },
+  "honkpassAppNotAccepted": {
+    "m": "აპის შემოწმება ვერ მოხერხდა. ხელახლა აირჩიეთ ის ან აირჩიეთ სხვა აპი."
+  },
+  "honkpassAppSaveFailed": {
+    "m": "მონაცემები შეივსო. ამ ელემენტში აპის შენახვა ვერ მოხერხდა."
+  },
+  "honkpassAssignApp": {
+    "m": "აპის დაკავშირება"
+  },
+  "honkpassAutoFillUnavailable": {
+    "m": "HonkPass-თან დაკავშირება ვერ მოხერხდა"
+  },
+  "honkpassAutoFillUnavailableDescription": {
+    "m": "გახსენით HonkPass და აპის პარამეტრებში ჩართეთ სისტემის ავტომატური შევსება. საცავი შესაძლოა კვლავ განბლოკილი იყოს."
+  },
+  "honkpassChooseApp": {
+    "m": "აირჩიეთ აპი"
+  },
+  "honkpassChooseAppFromDisk": {
+    "m": "აირჩიეთ აპი დისკიდან…"
+  },
+  "honkpassConfirmAppFill": {
+    "m": "აპში ავტომატური შევსების დადასტურება"
+  },
+  "honkpassConfirmAppFillDescription": {
+    "m": "ეს აპი მიიღებს „$ITEM$“ ჩანაწერში შენახულ შესვლის მონაცემებს.",
+    "p": {
+      "item": "$1"
+    }
+  },
+  "honkpassCurrentApp": {
+    "m": "შესავსები აპი"
+  },
+  "honkpassFillAndSaveApp": {
+    "m": "შევსება და აპის შენახვა"
+  },
+  "honkpassLegalSummary": {
+    "m": "თავისუფალი პროგრამული უზრუნველყოფა GNU GPLv3 ლიცენზიით. შეგიძლიათ შეცვალოთ და გაავრცელოთ იგი ამ ლიცენზიის პირობების შესაბამისად. პროგრამა მოწოდებულია გარანტიის გარეშე, კანონით დაშვებულ ფარგლებში."
+  },
+  "honkpassLicensesAndSource": {
+    "m": "ლიცენზიები, ავტორები და საწყისი კოდი"
+  },
+  "honkpassLoadingApps": {
+    "m": "აპები იტვირთება…"
+  },
+  "honkpassNoMatchingApps": {
+    "m": "ძიებას არცერთი აპი არ შეესაბამება."
+  },
+  "honkpassNoRunningApps": {
+    "m": "დასაკავშირებლად გაშვებული აპები არ არის."
+  },
+  "honkpassOpenMainWindow": {
+    "m": "HonkPass-ის გახსნა"
+  },
+  "honkpassOpenQuickAccess": {
+    "m": "სწრაფი წვდომის გახსნა"
+  },
+  "honkpassQuickAccess": {
+    "m": "სწრაფი წვდომა"
+  },
+  "honkpassQuickChoose": {
+    "m": "↑ ↓ არჩევა"
+  },
+  "honkpassQuickCode": {
+    "m": "2FA კოდი"
+  },
+  "honkpassQuickFillTarget": {
+    "m": "შევსება აპში $APPLICATION$",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassQuickItemCount": {
+    "m": "ელემენტები: $COUNT$",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "honkpassQuickName": {
+    "m": "მომხმარებლის სახელი"
+  },
+  "honkpassQuickNewWindow": {
+    "m": "ელემენტის ახალ ფანჯარაში გახსნა"
+  },
+  "honkpassQuickOpenBrowser": {
+    "m": "ბრაუზერში გახსნა"
+  },
+  "honkpassQuickOpenMain": {
+    "m": "HonkPass-ში ჩვენება"
+  },
+  "honkpassQuickSearch": {
+    "m": "ძიება HonkPass-ში"
+  },
+  "honkpassRefreshApps": {
+    "m": "სიის განახლება"
+  },
+  "honkpassRunningAppsHint": {
+    "m": "აქ ჩანს მხოლოდ აპები, რომელთა ხელმოწერაც დამოწმებულია. ბრაუზერში შესასვლელი მონაცემები შესაბამის ვებსაიტს დაუკავშირეთ."
+  },
+  "honkpassSSHCopyFingerprint": {
+    "m": "საჯარო ანაბეჭდის კოპირება"
+  },
+  "honkpassSSHFingerprint": {
+    "m": "საჯარო ანაბეჭდი"
+  },
+  "honkpassSSHGitSign": {
+    "m": "Git-ისთვის მონაცემების ხელმოწერა"
+  },
+  "honkpassSSHNoFingerprint": {
+    "m": "ანაბეჭდი მიუწვდომელია"
+  },
+  "honkpassSSHPending": {
+    "m": "სხვა მოთხოვნები რიგში: $COUNT$",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "honkpassSSHRequest": {
+    "m": "$APPLICATION$ SSH გასაღების გამოყენების ნებართვას ითხოვს.",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassSSHRequestedPurpose": {
+    "m": "მოთხოვნის მიზანი: $PURPOSE$",
+    "p": {
+      "purpose": "$1"
+    }
+  },
+  "honkpassSSHUnknownDestination": {
+    "m": "ამ მოთხოვნით დანიშნულების სერვერის საიმედოდ დადგენა შეუძლებელია."
+  },
+  "honkpassSSHUnknownPurpose": {
+    "m": "მონაცემების ხელმოწერა, ზუსტი მიზნის გადამოწმება შეუძლებელია"
+  },
+  "honkpassSSHUnlockRequest": {
+    "m": "$APPLICATION$ საცავის განბლოკვას ელოდება.",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassSSHVault": {
+    "m": "საცავი: $ACCOUNT$ ($SERVER$)",
+    "p": {
+      "account": "$1",
+      "server": "$2"
+    }
+  },
+  "honkpassSSHVerifiedHost": {
+    "m": "სეანსის სერვერის დამოწმებული გასაღები: $FINGERPRINT$",
+    "p": {
+      "fingerprint": "$1"
+    }
+  },
+  "honkpassSearchApps": {
+    "m": "ძიება გაშვებულ აპებში"
+  },
+  "honkpassUpdateFinishWork": {
+    "m": "განახლების დაყენებამდე დაასრულეთ მიმდინარე მოქმედება და დახურეთ ელემენტების, Send-ის, იმპორტისა და ექსპორტის რედაქტორები. დაყენების დროს HonkPass საცავს კეტავს."
+  },
+  "passwordProtectedOptionDescription": {
+    "m": "ექსპორტის ფაილის დასაშიფრად დააყენეთ პაროლი. თავსებადი Bitwarden კლიენტები ამ პაროლს ფაილის გასაშიფრად და იმპორტისთვის იყენებენ."
+  },
+  "selfHostedBaseUrlHint": {
+    "m": "შეიყვანეთ თქვენი Vaultwarden სერვერის საბაზისო URL. მაგალითად: https://vault.example.test"
+  }
+}

@@ -1,0 +1,225 @@
+{
+  "accountRestrictedOptionDescription": {
+    "m": "Ten format eksportu Bitwarden korzysta z klucza szyfrowania konta. HonkPass nie tworzy plików w tym formacie."
+  },
+  "appLogoLabel": {
+    "m": "Logo HonkPass"
+  },
+  "autofillConfigurationMessage": {
+    "m": "Włączanie autouzupełniania z HonkPass…"
+  },
+  "clearSearchTooltip": {
+    "m": "Wyczyść klikając tutaj lub naciskając Esc."
+  },
+  "coachmarkFiltersDescription": {
+    "m": "Wybierz kilka filtrów naraz, aby zawęzić wyniki. Filtry pozostaną aktywne po przejściu do innego widoku."
+  },
+  "coachmarkFiltersTitle": {
+    "m": "Łącz filtry"
+  },
+  "confirmPasskeyAssertionMfaMacOS": {
+    "m": "zalogować się jako $USERNAME$ za pomocą klucza dostępu do $RPID$. $RPID$ wymaga tej weryfikacji w ramach uwierzytelniania wieloskładnikowego.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "confirmPasskeyOverwriteMfaMacOS": {
+    "m": "nadpisać klucz dostępu do $RPID$ dla użytkownika $USERNAME$. $RPID$ wymaga tej weryfikacji w ramach uwierzytelniania wieloskładnikowego.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "confirmPasskeyRegistrationMfaMacOS": {
+    "m": "utworzyć nowy klucz dostępu do $RPID$ dla użytkownika $USERNAME$. $RPID$ wymaga tej weryfikacji w ramach uwierzytelniania wieloskładnikowego.",
+    "p": {
+      "rpid": "$1",
+      "username": "$2"
+    }
+  },
+  "honkpassAppAlreadyAssigned": {
+    "m": "Już przypisano"
+  },
+  "honkpassAppListError": {
+    "m": "Nie udało się wczytać aplikacji. Odśwież listę i spróbuj ponownie."
+  },
+  "honkpassAppNotAccepted": {
+    "m": "Nie udało się zweryfikować aplikacji. Wybierz ją ponownie lub wybierz inną."
+  },
+  "honkpassAppSaveFailed": {
+    "m": "Uzupełniono dane. Nie udało się zapisać aplikacji w tym elemencie."
+  },
+  "honkpassAssignApp": {
+    "m": "Przypisz aplikację"
+  },
+  "honkpassAutoFillUnavailable": {
+    "m": "Nie można połączyć się z HonkPass"
+  },
+  "honkpassAutoFillUnavailableDescription": {
+    "m": "Otwórz HonkPass i w jego ustawieniach włącz systemowe autouzupełnianie. Sejf może nadal być odblokowany."
+  },
+  "honkpassChooseApp": {
+    "m": "Wybierz aplikację"
+  },
+  "honkpassChooseAppFromDisk": {
+    "m": "Wybierz aplikację z dysku…"
+  },
+  "honkpassConfirmAppFill": {
+    "m": "Potwierdź autouzupełnianie w aplikacji"
+  },
+  "honkpassConfirmAppFillDescription": {
+    "m": "Ta aplikacja otrzyma dane logowania z elementu „$ITEM$”.",
+    "p": {
+      "item": "$1"
+    }
+  },
+  "honkpassCurrentApp": {
+    "m": "Aplikacja docelowa"
+  },
+  "honkpassFillAndSaveApp": {
+    "m": "Uzupełnij i zapisz aplikację"
+  },
+  "honkpassLegalSummary": {
+    "m": "Wolne oprogramowanie na licencji GNU GPLv3. Możesz je modyfikować i rozpowszechniać na warunkach tej licencji. Jest udostępniane bez gwarancji w zakresie dozwolonym przez prawo."
+  },
+  "honkpassLicensesAndSource": {
+    "m": "Licencje, autorzy i kod źródłowy"
+  },
+  "honkpassLoadingApps": {
+    "m": "Wczytywanie aplikacji…"
+  },
+  "honkpassNoMatchingApps": {
+    "m": "Żadna aplikacja nie pasuje do wyszukiwania."
+  },
+  "honkpassNoRunningApps": {
+    "m": "Brak uruchomionych aplikacji do przypisania."
+  },
+  "honkpassOpenMainWindow": {
+    "m": "Otwórz HonkPass"
+  },
+  "honkpassOpenQuickAccess": {
+    "m": "Otwórz szybki dostęp"
+  },
+  "honkpassQuickAccess": {
+    "m": "Szybki dostęp"
+  },
+  "honkpassQuickChoose": {
+    "m": "↑ ↓ Wybierz"
+  },
+  "honkpassQuickCode": {
+    "m": "Kod 2FA"
+  },
+  "honkpassQuickFillTarget": {
+    "m": "Uzupełnij w aplikacji $APPLICATION$",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassQuickItemCount": {
+    "m": "Liczba elementów: $COUNT$",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "honkpassQuickName": {
+    "m": "Nazwa użytkownika"
+  },
+  "honkpassQuickNewWindow": {
+    "m": "Otwórz element w nowym oknie"
+  },
+  "honkpassQuickOpenBrowser": {
+    "m": "Otwórz w przeglądarce"
+  },
+  "honkpassQuickOpenMain": {
+    "m": "Pokaż w HonkPass"
+  },
+  "honkpassQuickSearch": {
+    "m": "Szukaj w HonkPass"
+  },
+  "honkpassRefreshApps": {
+    "m": "Odśwież listę"
+  },
+  "honkpassRunningAppsHint": {
+    "m": "Lista obejmuje tylko aplikacje ze zweryfikowanym podpisem. Dane logowania używane w przeglądarce przypisz do odpowiedniej witryny."
+  },
+  "honkpassSSHCopyFingerprint": {
+    "m": "Kopiuj odcisk klucza publicznego"
+  },
+  "honkpassSSHFingerprint": {
+    "m": "Odcisk klucza publicznego"
+  },
+  "honkpassSSHGitSign": {
+    "m": "podpisanie danych na potrzeby Git"
+  },
+  "honkpassSSHNoFingerprint": {
+    "m": "Odcisk klucza niedostępny"
+  },
+  "honkpassSSHPending": {
+    "m": "Pozostałe oczekujące żądania: $COUNT$",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "honkpassSSHRequest": {
+    "m": "Aplikacja $APPLICATION$ prosi o użycie klucza SSH.",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassSSHRequestedPurpose": {
+    "m": "Deklarowany cel: $PURPOSE$",
+    "p": {
+      "purpose": "$1"
+    }
+  },
+  "honkpassSSHUnknownDestination": {
+    "m": "Na podstawie tego żądania nie można wiarygodnie ustalić serwera docelowego."
+  },
+  "honkpassSSHUnknownPurpose": {
+    "m": "podpisanie danych, nie można zweryfikować dokładnego celu"
+  },
+  "honkpassSSHUnlockRequest": {
+    "m": "Aplikacja $APPLICATION$ czeka na odblokowanie sejfu.",
+    "p": {
+      "application": "$1"
+    }
+  },
+  "honkpassSSHVault": {
+    "m": "Sejf: $ACCOUNT$ ($SERVER$)",
+    "p": {
+      "account": "$1",
+      "server": "$2"
+    }
+  },
+  "honkpassSSHVerifiedHost": {
+    "m": "Zweryfikowany klucz serwera tej sesji: $FINGERPRINT$",
+    "p": {
+      "fingerprint": "$1"
+    }
+  },
+  "honkpassSearchApps": {
+    "m": "Szukaj wśród uruchomionych aplikacji"
+  },
+  "honkpassUpdateFinishWork": {
+    "m": "Przed instalacją aktualizacji zakończ bieżącą operację i zamknij okna edycji elementów i Send oraz okna importu i eksportu. Na czas instalacji HonkPass zablokuje sejf."
+  },
+  "passwordProtectedOptionDescription": {
+    "m": "Ustaw hasło do pliku, aby zaszyfrować eksport. Zgodne klienty Bitwarden użyją tego hasła do odszyfrowania i zaimportowania pliku."
+  },
+  "reviewAndChangeAtRiskPasswordsPlural": {
+    "m": "Przeglądaj i zmień $COUNT$ hasła podatnych na atak",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "reviewXAtRiskPasswordsPlural": {
+    "m": "Przeglądaj $COUNT$ hasła podatnych na atak",
+    "p": {
+      "count": "$1"
+    }
+  },
+  "selfHostedBaseUrlHint": {
+    "m": "Podaj bazowy adres URL swojego serwera Vaultwarden. Przykład: https://vault.example.test"
+  }
+}
