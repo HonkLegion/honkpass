@@ -273,6 +273,7 @@ public struct SideNavigation<Items: View, Footer: View>: View {
     private let footer: Footer
     private let onHome: () -> Void
     @State private var isLogoHovered = false
+    @State private var headerFadeOpacity: Double = 0
 
     /// - Parameters:
     ///   - isCollapsed: the rail of icons. It is as wide as one item: 56 pixels.
@@ -289,9 +290,15 @@ public struct SideNavigation<Items: View, Footer: View>: View {
     public var body: some View {
         VStack(spacing: 0) {
             logo
-            BWScrollView(isNavigation: true) {
+            BWScrollView(isNavigation: true, onScroll: { metrics in
+                headerFadeOpacity = min(max(metrics.offset / Metric.headerFadeHeight, 0), 1)
+            }) {
                 VStack(spacing: 0) { items }
                     .environment(\.isSideNavigationCollapsed, isCollapsed)
+            }
+            .overlay(alignment: .top) {
+                BWHeaderFade(background: .navBgPrimary)
+                    .opacity(headerFadeOpacity)
             }
             // data-footer: "tw-shrink-0 tw-py-3 tw-flex tw-flex-col tw-gap-2 tw-border-solid tw-border-0 tw-border-t
             // tw-border-border-nav-divider", open "tw-px-3", on the rail a padding that centres 2.5 rem.

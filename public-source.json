@@ -1,5 +1,5 @@
 {
-  "build": "15",
+  "build": "16",
   "files": {
     ".github/actionlint.yaml": {
       "executable": false,
@@ -7,7 +7,7 @@
     },
     ".github/workflows/release.yml": {
       "executable": false,
-      "sha256": "7ae605378960eb8bf96962335cbfb5113cfc3d855f1e365aac45504682956885"
+      "sha256": "14c46c47d79821780829066090613eaea3e0dfc5566c3c2b79e45799f3cc06b7"
     },
     ".gitignore": {
       "executable": false,
@@ -1723,7 +1723,7 @@
     },
     "Sources/DesignKit/SideNavigation.swift": {
       "executable": false,
-      "sha256": "c7fb49f41039f881d742239c020452a3ec14788477a63b36e1263979839752c0"
+      "sha256": "c33faebe5ec56d90b5f9589199bc21b75f7bb1e315453c973f16233c5d650969"
     },
     "Sources/DesignKit/SideNavigationSize.swift": {
       "executable": false,
@@ -2255,7 +2255,7 @@
     },
     "project.yml": {
       "executable": false,
-      "sha256": "c931c88a46fc750f30f5981a5d300a50af2ca90c61212072146e77ecf1dbf002"
+      "sha256": "9c1d1522ad721e45e43058cb2cb2bff99ceb58aff1158c1526a6667df9ed9829"
     },
     "scripts/archive-developer-id.fish": {
       "executable": false,
@@ -2468,7 +2468,7 @@
     "sha256": "965f7081df13756c47091029135a661ad6075bf7ca9ece65884aa33c6fdebd0c",
     "version": "0.1.9"
   },
-  "source_revision": "e55169d4d41ea684323c6dbaaae9da3e39b57a1c",
-  "tag": "v0.1.14",
-  "version": "0.1.14"
+  "source_revision": "a11fa78f9a3985b4d2cdf6fc767bf538ed9a84fb",
+  "tag": "v0.1.15",
+  "version": "0.1.15"
 }
