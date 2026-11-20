@@ -25,13 +25,9 @@ final class StatusItemController: NSObject, NSMenuItemValidation {
         self.isUnlocked = isUnlocked
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         super.init()
-        // The menu bar measures the image itself when it chooses the symbol's drawing size.
-        let symbol = NSImage(systemSymbolName: "lock.shield", accessibilityDescription: BWText.settings.productName)?
-            .withSymbolConfiguration(.init(pointSize: Metric.statusItemSymbolSize, weight: .medium))
-        symbol?.isTemplate = true
         statusItem.button?.imageScaling = .scaleNone
         statusItem.button?.imagePosition = .imageOnly
-        statusItem.button?.image = symbol
+        statusItem.button?.image = Self.shieldImage()
         statusItem.button?.toolTip = BWText.settings.productName
         add(.show, "honkpassOpenMainWindow", #selector(show))
         add(.quickAccess, "honkpassOpenQuickAccess", #selector(quickAccess))
@@ -42,6 +38,21 @@ final class StatusItemController: NSObject, NSMenuItemValidation {
         menu.addItem(.separator())
         add(.exit, "exit", #selector(quit))
         statusItem.menu = menu
+    }
+
+    /// On a 1× display, the menu bar crops a symbol to its alignment rectangle when that rectangle
+    /// has a half-point height, as the 18-point shield has. A plain image of the same size has no
+    /// separate alignment rectangle, so every display shows the whole shield.
+    private static func shieldImage() -> NSImage? {
+        guard let symbol = NSImage(systemSymbolName: "lock.shield", accessibilityDescription: nil)?
+            .withSymbolConfiguration(.init(pointSize: Metric.statusItemSymbolSize, weight: .medium)) else { return nil }
+        let image = NSImage(size: symbol.size, flipped: false) { rect in
+            symbol.draw(in: rect)
+            return true
+        }
+        image.isTemplate = true
+        image.accessibilityDescription = BWText.settings.productName
+        return image
     }
 
     var isInstalled: Bool { statusItem.button?.window != nil }

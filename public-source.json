@@ -1,5 +1,5 @@
 {
-  "build": "18",
+  "build": "19",
   "files": {
     ".github/actionlint.yaml": {
       "executable": false,
@@ -1315,7 +1315,7 @@
     },
     "App/PassVault/StatusItemController.swift": {
       "executable": false,
-      "sha256": "b46da2a39562e90f1eef6953838db3978c3290aed668e6ed114fc2018723fbb2"
+      "sha256": "a3ab97604c647045c25498a9c749aac3a5ab8a5f8d29c12d526869c41e880b57"
     },
     "App/PassVault/Toasts.swift": {
       "executable": false,
@@ -2523,7 +2523,7 @@
     },
     "project.yml": {
       "executable": false,
-      "sha256": "80f1f91270460d4b49a735ee1d5d338a60f0b7fbb8b2e98a37ab7f7d65988220"
+      "sha256": "3849c1bb879f91777b6586cff8800316fd3f53ade6f6a833fcaa7650d2a9a21a"
     },
     "scripts/archive-developer-id.fish": {
       "executable": false,
@@ -2736,7 +2736,7 @@
     "sha256": "965f7081df13756c47091029135a661ad6075bf7ca9ece65884aa33c6fdebd0c",
     "version": "0.1.9"
   },
-  "source_revision": "1c0730dab09cd3fcdff7cd68ef19d54831d1b983",
-  "tag": "v0.2.1",
-  "version": "0.2.1"
+  "source_revision": "779e97f529c23519606023e5e5a976aa5fd25970",
+  "tag": "v0.2.2",
+  "version": "0.2.2"
 }
