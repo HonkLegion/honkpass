@@ -28,6 +28,13 @@ private actor TestAvatars: AccountAvatarPort {
         let account = FakeAccount.demo
         try await engine.logIn(server: account.server, email: account.email, masterPassword: account.masterPassword)
         #expect(await avatars.requests == 0)
+        var settings = await engine.state.settings
+        settings.usesGravatar = false
+        try await engine.setSettings(settings)
+        #expect(await engine.accountAvatar() == nil)
+        #expect(await avatars.requests == 0)
+        settings.usesGravatar = true
+        try await engine.setSettings(settings)
         #expect(await engine.accountAvatar() == nil)
         #expect(await engine.accountAvatar() == nil)
         #expect(await avatars.requests == 1)

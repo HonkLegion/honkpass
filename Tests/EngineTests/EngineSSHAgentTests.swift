@@ -40,6 +40,17 @@ import VaultModel
                               requesterApplicationURL: applicationURL)
     }
 
+    @Test func aKeyThatRequiresTheMasterPasswordIsNotAvailableToTheAgent() async throws {
+        let (engine, handles, client) = try await makeAgent(prompt: .never)
+        var contents = FakeAccount.demo.contents
+        let index = try #require(contents.items.firstIndex { $0.id == keyID })
+        contents.items[index] = VaultItemSummary(id: keyID, type: .sshKey, name: "Synthetic key", asksForMasterPassword: true)
+        await handles.server.setContents(contents)
+        try await engine.sync()
+        #expect(await client.sshIdentities().isEmpty)
+        #expect(await client.sshSignature(for: request()) == nil)
+    }
+
     private var signature: Data { Data("fake-signature:item-6:to-sign".utf8) }
 
     @Test(arguments: [false, true])

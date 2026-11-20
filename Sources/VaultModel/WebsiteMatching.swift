@@ -26,6 +26,11 @@ public enum WebAddress {
         return PublicSuffixes.shared.registrableDomain(of: host)
     }
 
+    public static func explicitScheme(of address: String) -> String? {
+        let trimmed = address.trimmingCharacters(in: .whitespacesAndNewlines)
+        return URLComponents(string: trimmed)?.scheme?.lowercased()
+    }
+
     private static func components(of address: String) -> (scheme: String, host: String, port: Int?)? {
         let text = address.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !text.isEmpty, !text.hasPrefix("data:"), !text.hasPrefix("about:") else { return nil }
@@ -183,6 +188,7 @@ public extension ItemDraft.Website {
     func matches(page: String, equivalentDomains: Set<String> = [], defaultMatch: WebsiteMatch = .baseDomain) -> Bool {
         // The address of an app is no website, whatever its match says: it is the page of no browser.
         guard !address.isEmpty, !page.isEmpty, app == nil else { return false }
+        if WebAddress.explicitScheme(of: page) == "http", WebAddress.explicitScheme(of: address) == "https" { return false }
         switch match ?? defaultMatch {
         case .baseDomain:
             guard let own = WebAddress.domain(of: address), let pageDomain = WebAddress.domain(of: page),

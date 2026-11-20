@@ -13,7 +13,13 @@ enum VaultFileIO {
     @concurrent static func importFile(_ url: URL?, pasted: String, format: VaultImportFormat,
                                       folder: VaultFolder?) async throws -> PreparedImport {
         let contents: Data
-        if let url { contents = try await read(url) } else { contents = Data(pasted.utf8) }
+        let limit = 64 * 1_024 * 1_024
+        if let url {
+            contents = try await read(url, maximumBytes: limit)
+        } else {
+            guard pasted.utf8.count <= limit else { throw Failure.tooLarge }
+            contents = Data(pasted.utf8)
+        }
         try Task.checkCancellation()
         guard !contents.isEmpty else { throw Failure.empty }
         var imported = try format.read(contents)

@@ -384,13 +384,20 @@ struct ItemActions {
     }
 
     private func openForm(_ mode: ItemForm.Mode, of item: VaultItemSummary) {
+        let context = VaultFileContext(model: model, navigation: navigation)
         Task {
             do {
+                let session = try await context.session()
                 var draft = try await model.draft(of: item.id)
+                try await context.check(session)
+                try context.checkCurrent()
                 if mode == .copy { draft = draft.copy(named: draft.name + " - " + BWText["clone"]) }
                 navigation.openItemID = mode == .edit ? item.id : nil
                 navigation.itemForm = ItemForm(mode: mode, draft: draft)
+            } catch is CancellationError {
+            } catch EngineError.cancelled {
             } catch EngineError.itemNotWritable {
+                guard (try? context.checkCurrent()) != nil else { return }
                 // A part of the item did not decrypt, so PassVault does not write it back. The
                 // dialog names the item, as when it is opened.
                 navigation.decryptionFailureItemID = item.id

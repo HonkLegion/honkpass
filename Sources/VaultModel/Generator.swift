@@ -31,7 +31,7 @@ public struct PasswordOptions: Sendable, Codable, Equatable {
         options.minNumbers = numbers ? min(max(minNumbers, Self.minimumRange.lowerBound), Self.minimumRange.upperBound) : 0
         options.minSpecial = special ? min(max(minSpecial, Self.minimumRange.lowerBound), Self.minimumRange.upperBound) : 0
         if !uppercase, !lowercase, !numbers, !special { options.lowercase = true }
-        let needed = options.minNumbers + options.minSpecial + (options.uppercase ? 1 : 0) + (options.lowercase ? 1 : 0)
+        let needed = (numbers ? max(1, options.minNumbers) : 0) + (special ? max(1, options.minSpecial) : 0) + (options.uppercase ? 1 : 0) + (options.lowercase ? 1 : 0)
         options.length = min(max(length, Self.lengthRange.lowerBound, needed), Self.lengthRange.upperBound)
         return options
     }

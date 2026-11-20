@@ -1,5 +1,5 @@
 {
-  "build": "17",
+  "build": "18",
   "files": {
     ".github/actionlint.yaml": {
       "executable": false,
@@ -23,7 +23,7 @@
     },
     "App/PassVault/AppDelegate.swift": {
       "executable": false,
-      "sha256": "51e378e36a27c50df4123c769fe4d74e0140289eb8621a86441eb9b9916416c1"
+      "sha256": "a4c707e4c10cd76c4aecbb58ae895f902b4b81c9a5912cf5ad0edd7b5b76769d"
     },
     "App/PassVault/AppIcon.icon/Assets/GooseKey.png": {
       "executable": false,
@@ -35,7 +35,7 @@
     },
     "App/PassVault/AppModel.swift": {
       "executable": false,
-      "sha256": "8eddb5732193d683a94cfb593ac81a8663bc4bc34486fb8bedccc1e78842006d"
+      "sha256": "bc675855998a0c48acb0e54f07c3d3439d83802d558adcb0c3b8482b438ec8e4"
     },
     "App/PassVault/AppPreferences.swift": {
       "executable": false,
@@ -63,7 +63,7 @@
     },
     "App/PassVault/ItemActions.swift": {
       "executable": false,
-      "sha256": "e369c22f07cf81864d20cfd710536d33558386a33c5f0d08339e4caa04d037b1"
+      "sha256": "0922c6d78f952e95a12cb2a74827dfa03be1ab2a06753dfc674f49c7fdc51b29"
     },
     "App/PassVault/ItemForm.swift": {
       "executable": false,
@@ -71,7 +71,7 @@
     },
     "App/PassVault/LaunchOptions.swift": {
       "executable": false,
-      "sha256": "4205468fb6076b1d30a5a7311b84099d2685f1c39f14bf785b0e420408a5d68d"
+      "sha256": "2ed124c07267bda5803b5ee660f7b43028204c400a2d45943aac6bce806e0c22"
     },
     "App/PassVault/Legal/GPL-3.0.txt": {
       "executable": false,
@@ -1159,7 +1159,7 @@
     },
     "App/PassVault/LogInFlow.swift": {
       "executable": false,
-      "sha256": "615944c5cc2aba765b45749e5be174c1ddaf7f15d0718d98b88c90c1fa62a0ca"
+      "sha256": "5b4a6970d0035d5718d89f7cc111afc6665d6c50634e8e621576174ef675cae9"
     },
     "App/PassVault/MainMenu.swift": {
       "executable": false,
@@ -1167,7 +1167,7 @@
     },
     "App/PassVault/MainWindowController.swift": {
       "executable": false,
-      "sha256": "fd43bcdd632b127a1374d8a525f731a416cb85b606957f4b638658cf4af53c79"
+      "sha256": "4bbd98c4f5e97f5832d7edb6018bd1949ca2c15f0f79f932566791151cc9b013"
     },
     "App/PassVault/PassVault.entitlements": {
       "executable": false,
@@ -1175,7 +1175,7 @@
     },
     "App/PassVault/QuickAccess.swift": {
       "executable": false,
-      "sha256": "1e4f4a120ca5f3cf7aa58835d7eb0530304b9fcd39ed028a2d0cbf9b22277ba7"
+      "sha256": "5c5c43f1a8a350cda8b498b1c67afb8420c1f4c24fa0406b67d3b5206d25eaa3"
     },
     "App/PassVault/RootView.swift": {
       "executable": false,
@@ -1191,7 +1191,7 @@
     },
     "App/PassVault/Scenes.swift": {
       "executable": false,
-      "sha256": "91e8b3df312840a801a10a19e1372335fe109d368bc5d894d5b752295f79541f"
+      "sha256": "d1b8075d083a689bad58406fd3437d7ca6abdabade4319258a6a3cdba747630a"
     },
     "App/PassVault/Screens/AssignCollectionsDialog.swift": {
       "executable": false,
@@ -1199,7 +1199,7 @@
     },
     "App/PassVault/Screens/AttachmentsDialog.swift": {
       "executable": false,
-      "sha256": "78611b30ace972e95d3ea7516584b06d49829252ee8db8c7606aa109a0ced053"
+      "sha256": "a86c2f3073e1146349498794d304e6f77b1f8586e7952bf615aff921c17123c3"
     },
     "App/PassVault/Screens/ExportDialog.swift": {
       "executable": false,
@@ -1227,7 +1227,7 @@
     },
     "App/PassVault/Screens/ItemPanel.swift": {
       "executable": false,
-      "sha256": "cf79f5349ac867588061eb1bd36f2d374ffdc0d62a852e7160890daac30cc7b5"
+      "sha256": "5ec863e7b5031cd8ec2178e04f72491561988826c0d6912e6d368f949f29940b"
     },
     "App/PassVault/Screens/ItemRowIcon.swift": {
       "executable": false,
@@ -1235,11 +1235,11 @@
     },
     "App/PassVault/Screens/LockScreen.swift": {
       "executable": false,
-      "sha256": "b8f7e6929a7880db75096b621fad4c36beedce33862eec18257484fba0a2afa2"
+      "sha256": "2fc228b335c75cd2cc9c6ab9af3912ad108348a13a341f6394836a7b7a6a53db"
     },
     "App/PassVault/Screens/LogInScreen.swift": {
       "executable": false,
-      "sha256": "52e386c64c041f002f9ef072c0676be0af1b52e979af488dc6b4b294695355b6"
+      "sha256": "162ef6350c68ced0a734c1230bcfea15f432478d1b664f5753f2867c2dcea37e"
     },
     "App/PassVault/Screens/LoginAppRow.swift": {
       "executable": false,
@@ -1255,7 +1255,7 @@
     },
     "App/PassVault/Screens/QuickAccessView.swift": {
       "executable": false,
-      "sha256": "78c93d8f8ca5c748895e8787f6b4ae13f62e44428ba7ecef1da8290f1fb137c4"
+      "sha256": "b164a979f5e1054e22973329a2616b377c0a5d0df55cc01c57cd9846089fda6b"
     },
     "App/PassVault/Screens/RunningAppsPicker.swift": {
       "executable": false,
@@ -1279,7 +1279,7 @@
     },
     "App/PassVault/Screens/SettingsDialog.swift": {
       "executable": false,
-      "sha256": "ff3ab67e0441c30c45c843edea455fbcc982a11fa93ca085c7001b3efb7e2ba5"
+      "sha256": "8f76341795d4fe098fab2fc218e27a17615365a69554f2b4eaf63cd4ceec5745"
     },
     "App/PassVault/Screens/ShortcutDialog.swift": {
       "executable": false,
@@ -1287,7 +1287,7 @@
     },
     "App/PassVault/Screens/TwoStepScreen.swift": {
       "executable": false,
-      "sha256": "979357baa8dc212f74b23ca7ac9866f456432144dc40e64afe29ba2dc91f7c4a"
+      "sha256": "58f7dea191627f450d196c93c7272edf6886f2459865ccee9a938442a9264e44"
     },
     "App/PassVault/Screens/VaultScreen.swift": {
       "executable": false,
@@ -1303,7 +1303,7 @@
     },
     "App/PassVault/SendForm.swift": {
       "executable": false,
-      "sha256": "4c33a5c30f9ef195ef0faaff777784f6a1ce8f73930941631e94f9e457bdd549"
+      "sha256": "085c2fbf2ba8b00ff7f75f352c32bf7a6bbbb9d9976142dd7d26eceee37cd8c7"
     },
     "App/PassVault/SmokeTest.swift": {
       "executable": false,
@@ -1327,7 +1327,7 @@
     },
     "App/PassVault/VaultFileIO.swift": {
       "executable": false,
-      "sha256": "6ef388e2c1be16e9317ded624e4bcf177c2f6020ebe6c9c53d8dd6e5d70e7fc5"
+      "sha256": "171b8b76c84a4e1bd075bdfac61a47be3848253ac80607139989104b3135f956"
     },
     "App/PassVault/VaultFileSavePanel.swift": {
       "executable": false,
@@ -1347,7 +1347,7 @@
     },
     "App/PassVault/main.swift": {
       "executable": false,
-      "sha256": "0ddfd0bab8cc5b8ccf6f3e9b942b97a46eccf71e5925c291a29fb21f6b60a603"
+      "sha256": "029b037b9f517bd307b2c21071d661d8355c4c579f1f686da6db2a6b19c569dc"
     },
     "App/Provider/CredentialProviderViewController.swift": {
       "executable": false,
@@ -1403,7 +1403,7 @@
     },
     "README.md": {
       "executable": false,
-      "sha256": "e4979eae3384a548e7a0124cd322291169d36e0ea86c59a2cb78a7054d4f1ed3"
+      "sha256": "7e4133ea435af0d1e9e1d20d9bb9a99e9a1536ca4b23abd1bd78d050f93f3df0"
     },
     "Sources/AutoFillBridge/AutoFillClient.swift": {
       "executable": false,
@@ -2039,11 +2039,11 @@
     },
     "Sources/Engine/Engine.swift": {
       "executable": false,
-      "sha256": "16372f15e1565acd88e42cc7c806f4456b1758a8b81443077090d898e99bfa85"
+      "sha256": "f914e67ac476af079e9ab381a9a25a1d356915ef2fa18c572bf4034bcea827f5"
     },
     "Sources/Engine/EngineSettings.swift": {
       "executable": false,
-      "sha256": "5610f6ce65c7fc8874abc6b575ace8f46f4c90dd8c44fb0451d92651f9920cd0"
+      "sha256": "46c1e6cf899007760f940cabc0a98f6a8ac6305f34f0621f2c4f5d240788c724"
     },
     "Sources/Engine/EngineState.swift": {
       "executable": false,
@@ -2063,7 +2063,7 @@
     },
     "Sources/Engine/Ports.swift": {
       "executable": false,
-      "sha256": "c6dca2898887c3b8c9ebacbda862cb7d507f2a2006ce455c978bb007d46dbba2"
+      "sha256": "caf6455f0585cdbfe8b09a37aba1268bfafd1e5004cd3b6fe2540632c271718f"
     },
     "Sources/Engine/SSHAgent.swift": {
       "executable": false,
@@ -2079,7 +2079,7 @@
     },
     "Sources/EngineFakes/FakeBackend.swift": {
       "executable": false,
-      "sha256": "b62871f6104a434aa67e5747cb372d283e778a76159a73a20297dce59747393b"
+      "sha256": "f20c01e028acd3c8c60083297e02b5f4e122ffe54fec77c2bd4835e2fc9e6eae"
     },
     "Sources/EngineFakes/FakeServerRouter.swift": {
       "executable": false,
@@ -2095,7 +2095,7 @@
     },
     "Sources/EngineLive/BitwardenCrypto.swift": {
       "executable": false,
-      "sha256": "b6993fb78db35a19d87041994c8609e5e2d35a1e3eb419f6b1b46dee548352dd"
+      "sha256": "adbae766ff5ae6b233ffbe8c4822fa0fcc31440f17782318c008c9bdf3617365"
     },
     "Sources/EngineLive/BrowserInputText.swift": {
       "executable": false,
@@ -2111,15 +2111,15 @@
     },
     "Sources/EngineLive/FileAccountStore.swift": {
       "executable": false,
-      "sha256": "59e9b3b93af808decf29442302ac76e8427da8d0ac758f419b68c62ea37385fc"
+      "sha256": "9cd7544a3b2ace031d6efa15fc7812061754028b02a69128184e7e2e94dc76cf"
     },
     "Sources/EngineLive/Gravatar.swift": {
       "executable": false,
-      "sha256": "12f85f6e1ac8f9e8a76947ac6bee9384fb9970f31306224b045ab025a81e24ac"
+      "sha256": "16ea32f6815a803df7fc6da0be202e29607c3c2e90116905446fffea9c06b619"
     },
     "Sources/EngineLive/HTTPClient.swift": {
       "executable": false,
-      "sha256": "ea1e718733e21c88efe2820ebc43352bd0c76ab122e86b0651645f807866f40b"
+      "sha256": "b2f3b8eacf22629acb0da79c93112094102ce924947c68589710d5e43ca52e56"
     },
     "Sources/EngineLive/ItemWriting.swift": {
       "executable": false,
@@ -2131,7 +2131,7 @@
     },
     "Sources/EngineLive/MacActiveField.swift": {
       "executable": false,
-      "sha256": "982d76e3d179a2e0f7dd5b20f94ec33f546163b5f44a5328fa85b6134b94ae31"
+      "sha256": "f427e27cfbd929f45718142599513d6a8c1a8ede5e042377c1627cb54853737f"
     },
     "Sources/EngineLive/MacAppUpdater.swift": {
       "executable": false,
@@ -2175,7 +2175,7 @@
     },
     "Sources/EngineLive/TokenResponse.swift": {
       "executable": false,
-      "sha256": "8a65de5bce8cb3e1d9848257f50a2865e8a4925b81f5d452e29354469fc0fc5c"
+      "sha256": "dc1b89810b709ee2de58462fa813fae2d9454ce86e9166abb5116c887984dbb4"
     },
     "Sources/EngineLive/UnixSSHAgentSocket.swift": {
       "executable": false,
@@ -2183,7 +2183,7 @@
     },
     "Sources/EngineLive/VaultwardenServer.swift": {
       "executable": false,
-      "sha256": "544e0a7c65b30b65bac85da2c473ad9878d3720fa5dedc4bbcd751bca5c03f0a"
+      "sha256": "2f5b0999f079e156bc9f5088c26a92ca46f5d7e2cead2c9cd00601034bf2e359"
     },
     "Sources/EngineLive/VerificationCodeField.swift": {
       "executable": false,
@@ -2219,7 +2219,7 @@
     },
     "Sources/VaultModel/Generator.swift": {
       "executable": false,
-      "sha256": "2a3e5bbd60122dc644f244129f3a8c6a15f9d429b5b3624e12d72a3dc1f85091"
+      "sha256": "33a24cf45b8f4d871dbb2f867117343ab0a56d984cecfe791f99fb1454a9bc87"
     },
     "Sources/VaultModel/ItemChange.swift": {
       "executable": false,
@@ -2259,7 +2259,7 @@
     },
     "Sources/VaultModel/VaultImport.swift": {
       "executable": false,
-      "sha256": "85e363bdd7f76de6674f3916fde76e3ba1c884295b722f475d03a50d7cb4af70"
+      "sha256": "c1c03c1f99c06c97f13dff004e549111f3be2c4ed89b23cde5ad32cd02734cce"
     },
     "Sources/VaultModel/VaultItem.swift": {
       "executable": false,
@@ -2267,7 +2267,7 @@
     },
     "Sources/VaultModel/WebsiteMatching.swift": {
       "executable": false,
-      "sha256": "1f007aedbc47f0c108eb4e9eddea86481e3c0b2a570262b9c336dda459c60f90"
+      "sha256": "a9266dea0a16b25cb85c2285310e2832229f018dac5ff327a4b0185deb43bcb6"
     },
     "Tests/AutoFillBridgeTests/AutoFillBridgeTests.swift": {
       "executable": false,
@@ -2315,11 +2315,11 @@
     },
     "Tests/EngineLiveTests/FileAccountStoreTests.swift": {
       "executable": false,
-      "sha256": "46ff955ba5834ddb918c56a33f94c0262328f6865be484e7ed34a5ae09c614ad"
+      "sha256": "7775f7df7d36e6a062a022674c45740cc70e18e3e8ee0b558b9ab2c95b973bed"
     },
     "Tests/EngineLiveTests/FillInputTests.swift": {
       "executable": false,
-      "sha256": "0b74a0c414084d3fe1e13526cff4ae252f4a84557fff7f8f6c3e145da9bf21e6"
+      "sha256": "383343be784bf3946f15e164d6b7aec49550de12e964ebca25af8a34a5059e38"
     },
     "Tests/EngineLiveTests/GeneratorTests.swift": {
       "executable": false,
@@ -2335,7 +2335,7 @@
     },
     "Tests/EngineLiveTests/LocalServerTests.swift": {
       "executable": false,
-      "sha256": "217839bf43b1c68cf0bb7f5630cdfeb80b8ef6522f78dfdb10319886c46f25e3"
+      "sha256": "36c182156b6434bf848783eb0f3df3dd32750efbdfc286dde940f67e8a413d3b"
     },
     "Tests/EngineLiveTests/OrganizationServerTests.swift": {
       "executable": false,
@@ -2351,7 +2351,7 @@
     },
     "Tests/EngineLiveTests/TokenResponseTests.swift": {
       "executable": false,
-      "sha256": "2ed4c6ae4e36ff53de1651bb400ffb06a0054cf408ff61c8d6c0280c6f33b612"
+      "sha256": "d39935c6e7096ff0b732e8c2f3fd6651f2b52f39549f8c6b1db9c8ad5c2c8f84"
     },
     "Tests/EngineLiveTests/TwoStepServerTests.swift": {
       "executable": false,
@@ -2391,7 +2391,7 @@
     },
     "Tests/EngineTests/EngineAvatarTests.swift": {
       "executable": false,
-      "sha256": "6eac7c9ff5ad102a561c85cfe40a4489eb29ab7d5b765858bd2e20c02a20103a"
+      "sha256": "0579821f18943563a49ddf22549edc5d6c824f3b47a435075d2cdfb8af5fd283"
     },
     "Tests/EngineTests/EngineBiometricTests.swift": {
       "executable": false,
@@ -2423,7 +2423,7 @@
     },
     "Tests/EngineTests/EngineItemTests.swift": {
       "executable": false,
-      "sha256": "2027a43fff84d73a853908eac4c306530a3829168cfe5940cf155d7339e3e684"
+      "sha256": "026957b77683ac658a9d4046ee8a6a80e8843df81579c37ac1e44e96a756317a"
     },
     "Tests/EngineTests/EngineNoticeTests.swift": {
       "executable": false,
@@ -2439,7 +2439,7 @@
     },
     "Tests/EngineTests/EnginePinTests.swift": {
       "executable": false,
-      "sha256": "c0e09a18c2b2d19ff758c71afb8ea19f10a2683ee678b5d925d43f372e9511e8"
+      "sha256": "bce9f45610112d554e8c21475c8a09bd7f0aefa8b2b3c070686140bc23f8872c"
     },
     "Tests/EngineTests/EngineRunningAppTests.swift": {
       "executable": false,
@@ -2447,7 +2447,7 @@
     },
     "Tests/EngineTests/EngineSSHAgentTests.swift": {
       "executable": false,
-      "sha256": "a4f7bf505ff29ea56db504970eab02f88b02be5bbf7c397836aa35e3ff3c1ca6"
+      "sha256": "2d9c678ddee203503861268965e05bcb1d087a4521287d6d30008d8c19c5d1dd"
     },
     "Tests/EngineTests/EngineSendTests.swift": {
       "executable": false,
@@ -2455,7 +2455,7 @@
     },
     "Tests/EngineTests/EngineSessionTests.swift": {
       "executable": false,
-      "sha256": "b6bc76862304bde596b11a776d0d7f491819772a3e58fb535f05d7b3b6a702d9"
+      "sha256": "bb37d5b2f859666bb1a715c291a2601b5d6df7a842bcbe4121d35e0519f47483"
     },
     "Tests/EngineTests/EngineSettingsTests.swift": {
       "executable": false,
@@ -2495,7 +2495,7 @@
     },
     "Tests/VaultModelTests/GeneratorOptionsTests.swift": {
       "executable": false,
-      "sha256": "fbb6cc1dd1036a54015b94db97c75aa7a9fcafafe0cb8fb436633aad2a74d86a"
+      "sha256": "f1852f26a23b02af500250c5b3ca6bd54d03663860db4e0659c53016fc7bc1fa"
     },
     "Tests/VaultModelTests/ItemDisplayTests.swift": {
       "executable": false,
@@ -2511,7 +2511,7 @@
     },
     "Tests/VaultModelTests/WebsiteMatchingTests.swift": {
       "executable": false,
-      "sha256": "c01c48ea44b68de58b1ae56b51f95dcbd36c02a5d62ed917ed5f6d1c091cef39"
+      "sha256": "603193e2fc0884925a1d123f24022e47a94420f1e44aed62ba4d80f798f34a86"
     },
     "docs/reference/README.md": {
       "executable": false,
@@ -2523,7 +2523,7 @@
     },
     "project.yml": {
       "executable": false,
-      "sha256": "96af754d00f5b0a49d9ea434aee01992fc59bda7c99e9065aa8731a359e4bb66"
+      "sha256": "80f1f91270460d4b49a735ee1d5d338a60f0b7fbb8b2e98a37ab7f7d65988220"
     },
     "scripts/archive-developer-id.fish": {
       "executable": false,
@@ -2736,7 +2736,7 @@
     "sha256": "965f7081df13756c47091029135a661ad6075bf7ca9ece65884aa33c6fdebd0c",
     "version": "0.1.9"
   },
-  "source_revision": "bc1bc79573bf1f406127626c37cbe0a49ba2ffaa",
-  "tag": "v0.2.0",
-  "version": "0.2.0"
+  "source_revision": "1c0730dab09cd3fcdff7cd68ef19d54831d1b983",
+  "tag": "v0.2.1",
+  "version": "0.2.1"
 }

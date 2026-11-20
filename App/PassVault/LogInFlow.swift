@@ -1,4 +1,5 @@
 import Engine
+import EngineLive
 import Foundation
 import Observation
 
@@ -25,6 +26,7 @@ final class LogInFlow {
     var serverURL: URL? {
         didSet { defaults?.set(serverURL?.absoluteString, forKey: Key.server) }
     }
+    var serverLabel: String? { serverURL?.absoluteString }
     var isServerDialogOpen = false
     /// The method chosen for the second step of the log-in; nil is the one the reference prefers.
     var twoStepMethod: TwoStepMethod?
@@ -43,7 +45,7 @@ final class LogInFlow {
 
     init(defaults: UserDefaults?) {
         self.defaults = defaults
-        serverURL = defaults?.string(forKey: Key.server).flatMap(URL.init(string:))
+        serverURL = defaults?.string(forKey: Key.server).flatMap(URL.init(string:)).flatMap { VaultwardenServer.accepts($0) ? $0 : nil }
         let remembered = defaults?.string(forKey: Key.email)
         email = remembered ?? ""
         rememberEmail = remembered != nil

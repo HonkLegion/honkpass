@@ -154,10 +154,16 @@ struct SendActions {
 
     /// Opens a Send of the list: its view, as the reference opens it.
     func open(_ send: VaultSendSummary) {
+        let context = VaultFileContext(model: model, navigation: navigation)
         navigation.leaveForm {
             Task {
                 do {
-                    navigation.sendForm = SendForm(try await model.send(id: send.id))
+                    let session = try await context.session()
+                    let value = try await model.send(id: send.id)
+                    try await context.check(session)
+                    try context.checkCurrent()
+                    navigation.sendForm = SendForm(value)
+                } catch is CancellationError {
                 } catch EngineError.invalidState, EngineError.cancelled {
                     // The vault has locked meanwhile.
                 } catch {
@@ -187,7 +193,9 @@ struct SendActions {
                 try await model.removeSendPassword(of: id)
                 // The open panel of that Send shows it without its password.
                 if let form = navigation.sendForm, form.original?.id == id, !form.isDirty {
-                    form.show(try await model.send(id: id))
+                    let value = try await model.send(id: id)
+                    guard navigation.sendForm === form, model.state.session.isUnlocked else { return }
+                    form.show(value)
                 }
             }
         }

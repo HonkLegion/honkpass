@@ -1,5 +1,7 @@
 import Engine
+import Darwin
 import Foundation
+import Synchronization
 
 /// How PassVault presents itself to the server. The version is the Bitwarden client version
 /// whose protocol PassVault implements; servers use it to decide which features to offer.
@@ -44,33 +46,37 @@ final class HTTPClient: Sendable {
         files.finishTasksAndInvalidate()
     }
 
-    func send(_ request: URLRequest) async throws -> (data: Data, status: Int) {
-        try await answer { try await session.data(for: request) }
+    func send(_ request: URLRequest, maximumBytes: Int = 8 * 1_024 * 1_024) async throws -> (data: Data, status: Int) {
+        try await perform(session.dataTask(with: request), maximumBytes: maximumBytes)
     }
 
     /// A request that brings a file, or sends one without telling its progress.
     func sendFile(_ request: URLRequest) async throws -> (data: Data, status: Int) {
-        try await answer { try await files.data(for: request) }
+        let limit = request.httpMethod == "GET" ? Engine.maximumAttachmentBytes + 65_536 : 1_048_576
+        return try await perform(files.dataTask(with: request), maximumBytes: limit)
     }
 
     /// A request whose body is a file and goes as an upload: `progress` hears the bytes of the
     /// body that have gone and the bytes of the whole body, as the session sends them.
     func upload(_ request: URLRequest, body: Data,
                 progress: @escaping @Sendable (_ sent: Int64, _ total: Int64) -> Void) async throws -> (data: Data, status: Int) {
-        try await answer { try await files.upload(for: request, from: body, delegate: UploadProgress(progress)) }
+        try await perform(files.uploadTask(with: request, from: body), maximumBytes: 1_048_576, progress: progress)
     }
 
-    private func answer(_ call: () async throws -> (Data, URLResponse)) async throws -> (data: Data, status: Int) {
-        do {
-            let (data, response) = try await call()
-            guard let http = response as? HTTPURLResponse else {
-                throw EngineError.server("The answer is not an HTTP response.")
+    private func perform(_ task: URLSessionDataTask, maximumBytes: Int,
+                         progress: (@Sendable (Int64, Int64) -> Void)? = nil) async throws -> (Data, Int) {
+        let started = Mutex(false)
+        return try await withTaskCancellationHandler {
+            try await withCheckedThrowingContinuation { continuation in
+                task.delegate = BoundedResponse(limit: maximumBytes, progress: progress, completion: continuation)
+                started.withLock { active in
+                    active = true
+                    task.resume()
+                    if Task.isCancelled { task.cancel() }
+                }
             }
-            return (data, http.statusCode)
-        } catch let error as EngineError {
-            throw error
-        } catch {
-            throw EngineError.serverUnreachable
+        } onCancel: {
+            started.withLock { if $0 { task.cancel() } }
         }
     }
 
@@ -108,9 +114,31 @@ final class HTTPClient: Sendable {
               server.user == nil, server.password == nil, server.query == nil, server.fragment == nil else { return false }
         switch server.scheme?.lowercased() {
         case "https": return true
-        case "http": return host == "localhost" || host == "127.0.0.1" || host == "::1" || host.hasSuffix(".local") || !host.contains(".")
+        case "http": return localHTTPHost(host)
         default: return false
         }
+    }
+
+    private static func localHTTPHost(_ host: String) -> Bool {
+        guard !host.contains("%") else { return false }
+        var ipv4 = in_addr()
+        if inet_aton(host, &ipv4) == 1 {
+            // inet_aton also accepts historical shorthand, hexadecimal and octal spellings.
+            guard inet_pton(AF_INET, host, &ipv4) == 1 else { return false }
+            let ip = UInt32(bigEndian: ipv4.s_addr)
+            return ip >> 24 == 127 || ip >> 24 == 10 || ip >> 20 == 0xac1
+                || ip >> 16 == 0xc0a8 || ip >> 16 == 0xa9fe
+        }
+        var ipv6 = in6_addr()
+        if inet_pton(AF_INET6, host, &ipv6) == 1 {
+            return withUnsafeBytes(of: ipv6) { bytes in
+                (bytes.dropLast().allSatisfy { $0 == 0 } && bytes.last == 1)
+                    || bytes[0] & 0xfe == 0xfc || (bytes[0] == 0xfe && bytes[1] & 0xc0 == 0x80)
+            }
+        }
+        if host.hasSuffix(".local") { return true }
+        return !host.isEmpty && host.utf8.contains { (97...122).contains($0) }
+            && host.utf8.allSatisfy { (97...122).contains($0) || (48...57).contains($0) || $0 == 45 }
     }
 
     /// A short text for a refused request. Server messages are shortened and hold no secret.
@@ -127,18 +155,55 @@ final class HTTPClient: Sendable {
     }
 }
 
-/// The delegate of one upload. The session's delegate still refuses redirects: a task delegate
-/// gets only the calls it implements.
-private final class UploadProgress: NSObject, URLSessionTaskDelegate, Sendable {
-    private let report: @Sendable (Int64, Int64) -> Void
+/// Bound received chunks even when the server omits Content-Length or compresses the body.
+private final class BoundedResponse: NSObject, URLSessionDataDelegate, Sendable {
+    private let limit: Int
+    private let progress: (@Sendable (Int64, Int64) -> Void)?
+    private let completion: CheckedContinuation<(Data, Int), any Error>
+    private let received = Mutex<Data?>(Data())
 
-    init(_ report: @escaping @Sendable (Int64, Int64) -> Void) {
-        self.report = report
+    init(limit: Int, progress: (@Sendable (Int64, Int64) -> Void)?, completion: CheckedContinuation<(Data, Int), any Error>) {
+        self.limit = limit
+        self.progress = progress
+        self.completion = completion
+    }
+
+    func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive response: URLResponse,
+                    completionHandler: @escaping (URLSession.ResponseDisposition) -> Void) {
+        if response.expectedContentLength > Int64(limit) {
+            received.withLock { $0 = nil }
+            completionHandler(.cancel)
+        } else {
+            completionHandler(.allow)
+        }
+    }
+
+    func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
+        let accepted = received.withLock { buffer in
+            guard let count = buffer?.count, data.count <= limit - count else { buffer = nil; return false }
+            buffer?.append(data)
+            return true
+        }
+        if !accepted { dataTask.cancel() }
+    }
+
+    func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: (any Error)?) {
+        let data = received.withLock { buffer in let result = buffer; buffer = nil; return result }
+        if let data, error == nil, let response = task.response as? HTTPURLResponse {
+            completion.resume(returning: (data, response.statusCode))
+        } else {
+            completion.resume(throwing: data == nil ? EngineError.server("The response exceeds the size limit.") : .serverUnreachable)
+        }
+    }
+
+    func urlSession(_ session: URLSession, task: URLSessionTask, willPerformHTTPRedirection response: HTTPURLResponse,
+                    newRequest request: URLRequest, completionHandler: @escaping (URLRequest?) -> Void) {
+        completionHandler(nil)
     }
 
     func urlSession(_ session: URLSession, task: URLSessionTask, didSendBodyData bytesSent: Int64,
                     totalBytesSent: Int64, totalBytesExpectedToSend: Int64) {
-        report(totalBytesSent, totalBytesExpectedToSend)
+        progress?(totalBytesSent, totalBytesExpectedToSend)
     }
 }
 

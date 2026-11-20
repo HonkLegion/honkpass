@@ -89,7 +89,7 @@ import VaultModel
     @Test func aWrongPinThatCannotBeCountedTurnsThePinOff() async throws {
         let (engine, handles) = try await lockedEngineWithPin()
         await handles.store.failNextPinSave()
-        #expect(await engineError { try await engine.unlock(pin: "0000") } == .wrongPin)
+        #expect(await engineError { try await engine.unlock(pin: "0000") } == .storage("The PIN attempt could not be saved."))
         #expect(await !engine.state.pin.canUnlock)
         #expect(await engineError { try await engine.unlock(pin: "4812") } == .invalidState)
 

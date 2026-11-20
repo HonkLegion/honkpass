@@ -14,6 +14,7 @@ public struct EngineSettings: Sendable, Codable, Equatable {
     public var clipboardClearing: ClipboardClearing
     /// Ask the icon service of the server for the pictures of websites.
     public var showsWebsiteIcons: Bool
+    public var usesGravatar = true
     /// What the generator was last asked for.
     public var generator: GeneratorOptions
     /// The SSH agent: whether SSH clients can use the keys of the vault, and how it asks.
@@ -45,6 +46,7 @@ public struct EngineSettings: Sendable, Codable, Equatable {
         clipboardClearing = try container.decodeIfPresent(ClipboardClearing.self, forKey: .clipboardClearing)
             ?? fallback.clipboardClearing
         showsWebsiteIcons = try container.decodeIfPresent(Bool.self, forKey: .showsWebsiteIcons) ?? fallback.showsWebsiteIcons
+        usesGravatar = try container.decodeIfPresent(Bool.self, forKey: .usesGravatar) ?? fallback.usesGravatar
         // Options this version cannot read are the defaults again; they hold no secret and no choice of safety.
         generator = (try? container.decodeIfPresent(GeneratorOptions.self, forKey: .generator)) ?? fallback.generator
         // An agent whose settings cannot be read is off.

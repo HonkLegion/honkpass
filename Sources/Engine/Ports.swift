@@ -356,6 +356,20 @@ public struct TokenRefresh: Sendable {
 public enum KeyDerivation: Sendable, Codable, Equatable {
     case pbkdf2(iterations: UInt32)
     case argon2id(iterations: UInt32, memory: UInt32, parallelism: UInt32)
+
+    /// New network authentication uses current work factors. Existing offline accounts
+    /// retain support for older costs, with the same upper bounds on CPU and memory.
+    public func isSupported(forNetworkLogin: Bool) -> Bool {
+        switch self {
+        case .pbkdf2(let iterations):
+            let minimum: UInt32 = forNetworkLogin ? 600_000 : 5_000
+            return (minimum...2_000_000).contains(iterations)
+        case .argon2id(let iterations, let memory, let parallelism):
+            return (2...10).contains(iterations) && (16...1_024).contains(memory)
+                && (1...16).contains(parallelism)
+                && (!forNetworkLogin || (memory >= 32 && memory * iterations >= 192))
+        }
+    }
 }
 
 public struct Prelogin: Sendable, Codable, Equatable {
@@ -578,6 +592,8 @@ public protocol AccountStorePort: Sendable {
     func save(_ account: StoredAccount) async throws
     /// Removes the account. Its settings stay for the next login.
     func clear() async throws
+    func pendingLogout() async throws -> String?
+    func setPendingLogout(_ accountID: String?) async throws
     /// The other accounts that are logged in on this Mac beside the stored one. Each is kept as
     /// it was stored, and can take the place of the stored one. The one that was put aside last
     /// comes first: the order of the account menu of the reference, "most recently active first".
@@ -614,6 +630,7 @@ public struct StoredAccount: Sendable, Codable, Equatable {
     public var accessToken: String
     public var refreshToken: String?
     public var accessTokenExpiry: Date
+    var hasSessionCredentials: Bool { !accessToken.isEmpty || refreshToken?.isEmpty == false }
     /// The last encrypted sync response.
     public var vaultPayload: Data?
     public var lastSync: Date?

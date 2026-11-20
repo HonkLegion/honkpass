@@ -124,7 +124,10 @@ final class QuickAccessState {
     var fillAnswers: [FillAnswer] {
         guard let pending = pendingFill else { return [] }
         var answers: [FillAnswer] = []
-        if target?.website != nil, pending.item.type == .login { answers.append(.saveAndFill) }
+        if let website = target?.website, pending.item.type == .login,
+           !(WebAddress.explicitScheme(of: website) == "http" && pending.item.websites.contains {
+               WebAddress.explicitScheme(of: $0.address) == "https"
+           }) { answers.append(.saveAndFill) }
         if let target, target.website == nil, let app = target.app, target.bundleID == app.bundleID,
            pending.item.type == .login, !pending.item.isReadOnly, !pending.item.isUndecryptable,
            !pending.item.isInTrash, !pending.item.isArchived,

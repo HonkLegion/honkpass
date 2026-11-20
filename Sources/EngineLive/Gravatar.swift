@@ -20,7 +20,7 @@ public actor Gravatar: AccountAvatarPort {
             .appending(path: "cz.honklegion.honkpass/Gravatar", directoryHint: .isDirectory)
         now = { Date() }
         let http = HTTPClient()
-        fetch = { request in try? await http.send(request) }
+        fetch = { request in try? await http.send(request, maximumBytes: 262_144) }
     }
 
     /// Tests supply their own directory, clock and synthetic transport.

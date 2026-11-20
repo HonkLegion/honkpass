@@ -2,7 +2,7 @@ import CommonCrypto
 import CryptoKit
 import Engine
 import EngineFakes
-import EngineLive
+@testable import EngineLive
 import Foundation
 import Testing
 import VaultModel
@@ -44,6 +44,15 @@ enum LocalServer {
 /// Only the store and the system events are in-memory.
 @Suite(.enabled("Needs the local Vaultwarden: make server") { await LocalServer.isReachable() }, .serialized)
 struct LocalServerTests {
+    @Test func responseLimitAppliesToTheLocalHealthResponse() async throws {
+        let account = try #require(LocalServer.account)
+        let request = try HTTPClient.request("GET", account.server, "alive")
+        let client = HTTPClient()
+        let response = try await client.send(request, maximumBytes: 1024)
+        #expect(response.status == 200 && !response.data.isEmpty)
+        await #expect(throws: EngineError.self) { _ = try await client.send(request, maximumBytes: 0) }
+    }
+
     let account = LocalServer.account!
     let clipboard = FakeClipboard()
 

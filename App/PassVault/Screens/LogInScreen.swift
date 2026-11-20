@@ -131,6 +131,7 @@ struct LogInScreen: View {
             accountMenuButton
         } content: {
             VStack(alignment: .leading, spacing: 0) {
+                environmentSelector.padding(.bottom, Metric.space(3))
                 // bit-form-field class="!tw-mb-1"
                 BWFormField(BWText["masterPass"], isRequired: true, isFocused: focus == .masterPassword, error: problem,
                             bottomMargin: Metric.space(1)) {
@@ -179,7 +180,7 @@ struct LogInScreen: View {
                     .disabled(true)
             }
         } footer: {
-            environmentSelector
+            EmptyView()
         }
         .onAppear { focus = .masterPassword }
         // The server is asked when this step opens, for the address of the step before.
@@ -209,7 +210,7 @@ struct LogInScreen: View {
             Text("\(BWText["accessing"]):")
             // b "tw-text-primary-600 tw-font-medium" inside the link, then bwi-angle-down "bwi-fw bwi-sm".
             // The link is a button, and buttons have the 14 pixel font of the desktop styles.
-            BWLink(BWText["selfHostedServer"], size: TextStyle.body.size, weight: 500, colour: .primary600, trailingIcon: .angleDown) {
+            BWLink(flow.serverLabel ?? BWText["selfHostedServer"], size: TextStyle.body.size, weight: 500, colour: .primary600, trailingIcon: .angleDown) {
                 flow.isServerDialogOpen = true
             }
         }

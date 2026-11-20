@@ -40,7 +40,10 @@ struct ItemPanel: View {
         // A sync can change the open item.
         .task(id: LoadKey(id: itemID, sync: model.state.vault.lastSync)) {
             do {
-                item = try await model.item(id: itemID)
+                let revision = navigation.fileWorkRevision
+                let value = try await model.item(id: itemID)
+                guard !Task.isCancelled, navigation.fileWorkRevision == revision, model.state.session.isUnlocked else { return }
+                item = value
             } catch EngineError.itemNotReadable {
                 // A part of the item did not decrypt: nothing of it is shown, and a dialog says why.
                 if navigation.openItemID == itemID {
@@ -398,7 +401,7 @@ struct ItemPanel: View {
             BWReadOnlyField("", isTextArea: true) {
                 BWFieldText(notes, rows: 5)
             } suffix: {
-                copyButton(BWText["copyNotes"], notes, label: "")
+                copyButton(BWText["copyNotes"], notes, label: "", isSensitive: true)
             }
         }
     }
@@ -630,6 +633,7 @@ final class QuickItemWindow: NSWindow, NSWindowDelegate {
         super.init(contentRect: NSRect(x: 0, y: 0, width: 520, height: 620),
                    styleMask: [.titled, .closable, .resizable, .miniaturizable], backing: .buffered, defer: false)
         isReleasedWhenClosed = false
+        isRestorable = false
         delegate = self
         title = BWText.settings.productName
         contentMinSize = NSSize(width: 380, height: 360)

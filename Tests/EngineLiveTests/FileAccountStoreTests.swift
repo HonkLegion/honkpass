@@ -11,7 +11,7 @@ final class MemorySecretStore: SecretStore, Sendable {
     func read(_ key: String) throws -> Data? { values.withLock { $0[key] } }
     func write(_ data: Data, key: String) throws { values.withLock { $0[key] = data } }
     func delete(_ key: String) throws { values.withLock { $0[key] = nil } }
-    var isEmpty: Bool { values.withLock { $0.isEmpty } }
+    var keys: Set<String> { values.withLock { Set($0.keys) } }
 }
 
 @Suite struct FileAccountStoreTests {
@@ -27,6 +27,65 @@ final class MemorySecretStore: SecretStore, Sendable {
             accessToken: "synthetic-access-token", refreshToken: "synthetic-refresh-token",
             accessTokenExpiry: Date(timeIntervalSince1970: 1_800_003_600),
             vaultPayload: Data(#"{"ciphers":[]}"#.utf8), lastSync: Date(timeIntervalSince1970: 1_800_000_000))
+    }
+
+    @Test func sessionsAndSecuritySettingsUseTheirProtectedIdentity() async throws {
+        let store = FileAccountStore(directory: directory, secrets: secrets)
+        try await store.save(record)
+        var settings = EngineSettings.default
+        settings.sshAgent = .init(isEnabled: true, prompt: .always)
+        try await store.saveSettings(settings, accountID: record.account.id)
+        var legacy = settings
+        legacy.sshAgent.prompt = .never
+        try JSONEncoder().encode([record.account.id: legacy]).write(to: directory.appending(path: "settings.json"))
+        #expect(try await store.loadSettings(accountID: record.account.id) == settings)
+        let path = directory.appending(path: "account.json")
+        let data = try Data(contentsOf: path)
+        var file = try #require(JSONSerialization.jsonObject(with: data) as? [String: Any])
+        let alternate = Account(id: record.account.id, email: record.account.email, serverURL: URL(string: "https://other.example")!)
+        file["account"] = try JSONSerialization.jsonObject(with: JSONEncoder().encode(alternate))
+        try JSONSerialization.data(withJSONObject: file).write(to: path)
+        await #expect(throws: EngineError.self) { _ = try await store.load() }
+        await #expect(throws: EngineError.self) { try await store.park() }
+        try data.write(to: path)
+        #expect(try await store.load() == record)
+    }
+
+    @Test func aLegacySessionUsesOnlyTheIssuerStoredInTheKeychain() async throws {
+        let store = FileAccountStore(directory: directory, secrets: secrets)
+        try await store.save(record)
+        try secrets.delete("account-owner." + record.account.id)
+        func put(issuer: String) throws {
+            let claims = try JSONEncoder().encode(["iss": issuer, "sub": record.account.id]).base64EncodedString()
+            let legacy = ["accessToken": "synthetic." + claims + ".fixture", "refreshToken": "synthetic-refresh"]
+            try secrets.write(JSONEncoder().encode(legacy), key: "session-tokens")
+        }
+        try put(issuer: "https://other.example|login")
+        let offline = try #require(await store.load())
+        #expect(offline.accessToken.isEmpty && offline.refreshToken == nil && offline.vaultPayload == record.vaultPayload)
+        try put(issuer: record.account.serverURL.absoluteString + "|login")
+        #expect(try await store.load()?.refreshToken == "synthetic-refresh")
+    }
+
+    @Test func aRestartFinishesMovingFilesAfterTheTokensMoved() async throws {
+        let store = FileAccountStore(directory: directory, secrets: secrets)
+        try await store.save(record)
+        try await store.saveGeneratorHistory([Data([1, 2, 3])])
+        let parked = directory.appending(path: "parked").appending(path: record.account.id)
+        try FileManager.default.createDirectory(at: parked, withIntermediateDirectories: true)
+        let marker = try JSONSerialization.data(withJSONObject: ["id": record.account.id, "parking": true])
+        try secrets.write(marker, key: "account-move")
+        let movingTokens = try secrets.read("session-tokens")
+        try secrets.write(try #require(movingTokens), key: "session-tokens." + record.account.id)
+        try secrets.delete("session-tokens")
+        try FileManager.default.moveItem(at: directory.appending(path: "generator-history.json"),
+                                         to: parked.appending(path: "generator-history.json"))
+        let reopened = FileAccountStore(directory: directory, secrets: secrets)
+        #expect(try await reopened.load() == nil)
+        #expect(try await reopened.parkedAccounts() == [record.account])
+        try await reopened.unpark(accountID: record.account.id)
+        #expect(try await reopened.load() == record)
+        #expect(try await reopened.loadGeneratorHistory() == [Data([1, 2, 3])])
     }
 
     @Test func aSavedAccountIsLoadedByANewStore() async throws {
@@ -72,7 +131,7 @@ final class MemorySecretStore: SecretStore, Sendable {
         try await store.removeParked(accountID: other.account.id)
         #expect(try await store.parkedAccounts().isEmpty)
         try await store.clear()
-        #expect(secrets.isEmpty)
+        #expect(secrets.keys.allSatisfy { $0.hasPrefix("account-owner.") })
         await #expect(throws: EngineError.self) { try await store.unpark(accountID: "../outside") }
     }
 
@@ -125,7 +184,7 @@ final class MemorySecretStore: SecretStore, Sendable {
         try await reopened.savePin(nil, accountID: record.account.id)
         try await reopened.saveTwoStepRememberToken(nil, server: record.account.serverURL, email: record.account.email)
         try await reopened.clear()
-        #expect(secrets.isEmpty)
+        #expect(secrets.keys.allSatisfy { $0.hasPrefix("account-owner.") })
     }
 
     @Test func damagedFilesAreReportedAndNotReadAsEmpty() async throws {
@@ -139,8 +198,9 @@ final class MemorySecretStore: SecretStore, Sendable {
         await #expect(throws: EngineError.storage("The stored file account.json is not readable.")) {
             _ = try await reopened.load()
         }
+        #expect(try await reopened.loadSettings(accountID: record.account.id) == .default)
         await #expect(throws: EngineError.storage("The stored file settings.json is not readable.")) {
-            _ = try await reopened.loadSettings(accountID: record.account.id)
+            _ = try await reopened.loadSettings(accountID: "unmigrated")
         }
         // The damaged files are still there.
         #expect(FileManager.default.fileExists(atPath: directory.appending(path: "account.json").path))
@@ -164,7 +224,7 @@ final class MemorySecretStore: SecretStore, Sendable {
         try await store.clear()
 
         #expect(try await store.load() == nil)
-        #expect(secrets.isEmpty)
+        #expect(secrets.keys.allSatisfy { $0.hasPrefix("account-owner.") })
         #expect(try await FileAccountStore(directory: directory, secrets: secrets).deviceIdentifier() == device)
     }
 

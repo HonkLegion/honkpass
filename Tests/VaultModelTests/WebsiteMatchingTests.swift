@@ -7,6 +7,16 @@ import VaultModel
         ItemDraft.Website(address: address, match: match)
     }
 
+    @Test func secureWebsitesRequireASecurePageWhenTheSchemeIsKnown() {
+        for match in [WebsiteMatch.baseDomain, .host] {
+            let saved = site("  https://login.example.com  ", match)
+            #expect(!saved.matches(page: "http://login.example.com"))
+            #expect(saved.matches(page: "https://login.example.com"))
+            #expect(saved.matches(page: "login.example.com"))
+            #expect(site("http://login.example.com", match).matches(page: "http://login.example.com"))
+        }
+    }
+
     @Test func theBaseDomainIsWhatOneOwnerRegistered() {
         #expect(WebAddress.domain(of: "https://www.example.com/login?next=1") == "example.com")
         #expect(WebAddress.domain(of: "shop.example.co.uk") == "example.co.uk")

@@ -117,6 +117,7 @@ public actor MacActiveField: ActiveFieldPort {
             return pair
         }
         Self.log.notice("capture: a field of \(name, privacy: .public) was found; a login form around it: \(form != nil)")
+        guard Self.permitsFrame(page) else { return nil }
         let origin = Self.origin(of: app, page: page)
         let target = FillTarget(appName: app.localizedName ?? app.bundleIdentifier ?? "", bundleID: app.bundleIdentifier,
                                 app: origin.app, website: origin.website,
@@ -161,6 +162,7 @@ public actor MacActiveField: ActiveFieldPort {
         let form = fullForm.flatMap { CFEqual($0.password, basicForm.password) ? $0 : nil } ?? basicForm
         guard let shared = Self.formPage(form) else { return nil }
         Self.log.notice("capture: a login form of \(name, privacy: .public) was found without a cursor in a field")
+        guard Self.permitsFrame(shared.page) else { return nil }
         let origin = Self.origin(of: app, page: shared.page)
         let target = FillTarget(appName: app.localizedName ?? app.bundleIdentifier ?? "", bundleID: app.bundleIdentifier,
                                 app: origin.app, website: origin.website, takesLogin: true, takesValue: false,
@@ -368,6 +370,34 @@ public actor MacActiveField: ActiveFieldPort {
                    reportedWebsite: page.flatMap(pageAddress))
     }
 
+    /// Accessibility can expose nested web areas. Only fill when each containing
+    /// document shares the focused document's origin; recheck while delivering input.
+    private static func permitsFrame(_ page: AXUIElement?) -> Bool {
+        guard let page else { return true }
+        let address = pageAddress(page)
+        var current = page
+        for _ in 0..<48 {
+            guard let parent = element(current, kAXParentAttribute) else { return false }
+            switch text(parent, kAXRoleAttribute) {
+            case "AXWindow", "AXApplication": return true
+            case "AXWebArea":
+                guard let address, let outer = pageAddress(parent), sameWebOrigin(address, outer) else { return false }
+            default: break
+            }
+            current = parent
+        }
+        return false
+    }
+
+    static func sameWebOrigin(_ lhs: String, _ rhs: String) -> Bool {
+        guard let a = URL(string: lhs), let b = URL(string: rhs),
+              let scheme = a.scheme?.lowercased(), ["http", "https"].contains(scheme),
+              scheme == b.scheme?.lowercased(), let host = a.host()?.lowercased(),
+              host == b.host()?.lowercased() else { return false }
+        let defaultPort = scheme == "https" ? 443 : 80
+        return (a.port ?? defaultPort) == (b.port ?? defaultPort)
+    }
+
     private static func formPage(_ form: LoginForm) -> FillFormPage<AXUIElement>? {
         FillFormPage(usernamePage: webArea(above: form.username), passwordPage: webArea(above: form.password),
                      equal: { CFEqual($0, $1) })
@@ -377,6 +407,7 @@ public actor MacActiveField: ActiveFieldPort {
         guard let app = appInFront(), app.processIdentifier == capture.processID, app.launchDate == capture.launched else {
             throw EngineError.fill(.targetChanged)
         }
+        guard permitsFrame(capture.webArea) else { throw EngineError.fill(.targetChanged) }
         let current = origin(of: app, page: capture.webArea)
         guard current.website == capture.target.website, current.app == capture.target.app else {
             throw EngineError.fill(.targetChanged)

@@ -2,6 +2,15 @@ import Testing
 import VaultModel
 
 @Suite struct GeneratorOptionsTests {
+    @Test func everyEnabledCharacterClassHasRoomInThePassword() {
+        var options = PasswordOptions()
+        options.length = 5
+        options.special = true
+        options.minSpecial = 0
+        options.minNumbers = 7
+        #expect(options.normalized.length == 10)
+    }
+
     @Test func theDefaultsAreTheOnesOfTheReference() {
         let password = PasswordOptions()
         #expect(password.length == 14 && password.uppercase && password.lowercase && password.numbers && !password.special)

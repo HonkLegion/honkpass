@@ -1,5 +1,6 @@
 import Engine
 import Foundation
+import VaultModel
 
 /// Reads the answer of `identity/connect/token` for a password log-in, with or without a second step.
 enum TokenResponse {
@@ -95,6 +96,7 @@ enum TokenResponse {
             wrappedUserKey = key
             userKeyID = JSON.string(unlock, "ContainedKeyId")
         }
+        guard kdf.isSupported(forNetworkLogin: true) else { throw unreadable }
         guard let wrappedUserKey, !wrappedUserKey.isEmpty else { throw unreadable }
         return AccountCryptoMaterial(kdf: kdf, salt: salt, masterKeyWrappedUserKey: wrappedUserKey,
                                      userKeyID: userKeyID, keys: try accountKeys(object, unreadable: unreadable))
@@ -127,16 +129,29 @@ enum TokenResponse {
         return Int(value[..<dot])
     }
 
+    /// This migration accepts only an access token read from the app's protected Keychain.
+    static func legacySession(_ token: String, belongsTo account: Account) -> Bool {
+        guard let claims = claims(from: token), let subject = claims["sub"] as? String,
+              subject.caseInsensitiveCompare(account.id) == .orderedSame,
+              let issuer = claims["iss"] as? String else { return false }
+        let base = account.serverURL.absoluteString.trimmingCharacters(in: CharacterSet(charactersIn: "/"))
+        if let email = claims["email"] as? String, email.caseInsensitiveCompare(account.email) != .orderedSame { return false }
+        return issuer == base + "|login"
+    }
+
     /// The `sub` claim of the access token. The token is not verified here; the server issued it.
     private static func userID(fromAccessToken token: String) -> String? {
+        guard let id = claims(from: token)?["sub"] as? String, UUID(uuidString: id) != nil else { return nil }
+        return id
+    }
+
+    private static func claims(from token: String) -> [String: Any]? {
         let parts = token.split(separator: ".")
         guard parts.count == 3 else { return nil }
         var encoded = String(parts[1]).replacingOccurrences(of: "-", with: "+").replacingOccurrences(of: "_", with: "/")
         encoded += String(repeating: "=", count: (4 - encoded.count % 4) % 4)
-        guard let bytes = Data(base64Encoded: encoded),
-              let claims = (try? JSONSerialization.jsonObject(with: bytes)) as? [String: Any],
-              let id = claims["sub"] as? String, UUID(uuidString: id) != nil else { return nil }
-        return id
+        guard let bytes = Data(base64Encoded: encoded) else { return nil }
+        return (try? JSONSerialization.jsonObject(with: bytes)) as? [String: Any]
     }
 
     private static func failure(_ data: Data, status: Int) -> EngineError {

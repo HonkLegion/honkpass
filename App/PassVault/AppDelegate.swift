@@ -289,6 +289,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation, 
                 }
                 do {
                     try await self.engine.prepareForAppUpdate()
+                    await self.engine.clearPendingClipboard()
                     return true
                 } catch {
                     self.showUpdateBlocked()
@@ -369,8 +370,15 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation, 
         return true
     }
 
-    /// Closing the main window ends nothing here: the engine and the menu bar item stay. The
-    /// window itself quits the app when the user has turned "keep running in the background" off.
+    func applicationShouldTerminate(_ sender: NSApplication) -> NSApplication.TerminateReply {
+        Task {
+            await engine.clearPendingClipboard()
+            sender.reply(toApplicationShouldTerminate: true)
+        }
+        return .terminateLater
+    }
+
+    /// The window handles the user's background-mode preference when it closes.
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool { false }
 
     func applicationDidBecomeActive(_ notification: Notification) {
@@ -457,7 +465,11 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation, 
         guard model.state.session.account != nil,
               confirm(title: BWText["logOut"], text: BWText["logOutConfirmation"], accept: BWText["logOut"], decline: BWText["cancel"])
         else { return }
-        Task { await model.logOut() }
+        Task {
+            do { try await model.logOut() } catch {
+                navigation.toasts.show(.error, title: BWText["logOut"], message: BWText["unexpectedError"])
+            }
+        }
     }
 
     /// "Sync now": the toast says how it went, as in the reference.

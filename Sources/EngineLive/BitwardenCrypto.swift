@@ -9,6 +9,7 @@ public struct BitwardenCrypto: CryptoPort {
     public init() {}
 
     public func serverPasswordHash(password: String, prelogin: Prelogin) async throws -> String {
+        guard prelogin.kdf.isSupported(forNetworkLogin: true) else { throw EngineError.invalidState }
         do {
             return try await SDK.makeClient().auth().hashPassword(
                 email: prelogin.salt, password: password, kdfParams: Kdf(prelogin.kdf), purpose: .serverAuthorization)
@@ -129,7 +130,7 @@ final class SDKVault: UnlockedCrypto {
     static func open(_ request: UnlockRequest) async throws -> SDKVault {
         let vault = SDKVault(userID: request.userID)
         let material = request.material
-        let kdf = Kdf(material.kdf)
+        let kdf = try Kdf(material.kdf)
         do {
             try await vault.client.crypto().initializeUserCrypto(req: InitUserCryptoRequest(
                 userId: request.userID, kdfParams: kdf, email: request.email,
@@ -165,6 +166,7 @@ final class SDKVault: UnlockedCrypto {
         } catch {
             throw EngineError.unexpected("The SDK could not open the account keys with the PIN.")
         }
+        guard vault.opensThePrivateKey else { throw EngineError.wrongPin }
         await vault.prepareStrictDecryption()
         return vault
     }
@@ -431,7 +433,8 @@ final class SDKVault: UnlockedCrypto {
 // MARK: Conversions between engine values and SDK values
 
 extension Kdf {
-    init(_ kdf: KeyDerivation) {
+    init(_ kdf: KeyDerivation) throws {
+        guard kdf.isSupported(forNetworkLogin: false) else { throw EngineError.invalidState }
         switch kdf {
         case .pbkdf2(let iterations):
             self = .pbkdf2(iterations: iterations)

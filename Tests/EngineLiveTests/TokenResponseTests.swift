@@ -157,11 +157,19 @@ import Testing
         #expect(failure(["message": "Too many requests"], status: 429) == .server("HTTP 429: Too many requests"))
     }
 
+    @Test func keyDerivationHasNetworkAndOfflineResourceBounds() {
+        let legacy = KeyDerivation.pbkdf2(iterations: 100_000)
+        #expect(legacy.isSupported(forNetworkLogin: false))
+        #expect(!legacy.isSupported(forNetworkLogin: true))
+        #expect(KeyDerivation.argon2id(iterations: 6, memory: 32, parallelism: 4).isSupported(forNetworkLogin: true))
+        #expect(!KeyDerivation.argon2id(iterations: 6, memory: .max, parallelism: 4).isSupported(forNetworkLogin: false))
+    }
+
     @Test func plainHTTPIsAcceptedForLocalServersOnly() {
         let accepted = ["https://vault.example.com", "https://vault.example.com/base", "http://localhost:8642",
-                        "http://127.0.0.1:8642", "http://nas.local", "http://vaultwarden"]
+                        "http://127.0.0.1:8642", "http://192.168.1.10", "http://[::1]", "http://[fd00::1]", "http://nas.local", "http://vaultwarden"]
         let refused = ["http://vault.example.com", "ftp://vault.example.com", "https://user:secret@vault.example.com",
-                       "https://vault.example.com/?x=1", "vault.example.com"]
+                       "https://vault.example.com/?x=1", "vault.example.com", "http://[2001:db8::1]", "http://3221225985", "http://0xc0000201"]
         for url in accepted { #expect(HTTPClient.isAcceptable(URL(string: url)!), "\(url)") }
         for url in refused { #expect(!HTTPClient.isAcceptable(URL(string: url)!), "\(url)") }
     }

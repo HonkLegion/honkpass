@@ -105,6 +105,22 @@ import VaultModel
         #expect(await handles.store.stored == nil)
     }
 
+    @Test func anInterruptedLogoutRevokesTheSessionAndCanFinishLater() async throws {
+        let (engine, handles) = try await makeUnlockedEngine()
+        try await engine.setPin("1234", asksForMasterPasswordAfterRestart: false)
+        await handles.store.failNextPinSave()
+        await #expect(throws: EngineError.self) { try await engine.logOut() }
+        #expect(await engine.state.session.account?.id == account.userID)
+        #expect(await engine.state.vault == .empty)
+        #expect(await handles.store.stored == nil)
+        #expect(try await handles.store.pendingLogout() == account.userID)
+        #expect(await engineError { try await engine.unlock(masterPassword: account.masterPassword) } != nil)
+        try await engine.logOut()
+        #expect(try await handles.store.pendingLogout() == nil)
+        #expect(try await handles.store.loadPin(accountID: account.userID) == nil)
+        #expect(await engine.state.session == .loggedOut)
+    }
+
     @Test func commandsThatDoNotFitTheStateAreRejected() async throws {
         let (engine, _) = await makeEngine()
         #expect(await engineError { try await engine.unlock(masterPassword: "x") } == .invalidState)

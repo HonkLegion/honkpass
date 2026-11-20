@@ -3,6 +3,13 @@ import Foundation
 import Testing
 
 @Suite struct FillInputTests {
+    @Test func nestedWebAreasShareSchemeHostAndEffectivePort() {
+        #expect(MacActiveField.sameWebOrigin("https://example.com:443/frame", "https://example.com/"))
+        #expect(!MacActiveField.sameWebOrigin("http://example.com/frame", "https://example.com/"))
+        #expect(!MacActiveField.sameWebOrigin("https://login.example.com/frame", "https://example.com/"))
+        #expect(!MacActiveField.sameWebOrigin("https://example.com:8443", "https://example.com"))
+    }
+
     @Test func microsoftCodeFieldsAndAmbiguousTokens() {
         for identifier in ["idTxtBx_SAOTCC_OTC", "otc"] {
             #expect(VerificationCodeField.matches(identifier: identifier, labels: ["Code"]))

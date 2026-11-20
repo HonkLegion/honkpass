@@ -23,10 +23,17 @@ HonkPass is an independent, unofficial client. It is not affiliated with Bitward
 With background mode enabled, closing the main window hides the Dock icon and keeps HonkPass in the menu bar.
 Quick Access opens in the center of the screen and closes when it loses focus.
 
+For account pictures, HonkPass sends a SHA-256 hash of the account email address to Gravatar. You can turn off Gravatar in Settings.
+
 ## Requirements
 
 HonkPass requires macOS 26.4 or later on Apple Silicon.
 It connects to a Vaultwarden server.
+
+For a new login, HonkPass accepts PBKDF2 with 600,000 to 2,000,000 iterations.
+For Argon2id, it accepts 2 to 10 iterations, 32 to 1,024 MiB of memory, and 1 to 16 lanes.
+Memory in MiB multiplied by the iteration count must reach 192. For example, 64 MiB with three iterations meets this requirement.
+If your account uses other values, review its key derivation settings in the Vaultwarden web vault.
 
 To build the application, install these tools:
 

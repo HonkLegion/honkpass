@@ -349,6 +349,8 @@ struct SettingsDialog: View {
             BWCheckbox(BWText["minimizeOnCopyToClipboard"], isOn: $preferences.minimizesOnCopy,
                        hint: BWText["minimizeOnCopyToClipboardDesc"])
                 .padding(.bottom, Metric.space(4))
+            BWCheckbox("Gravatar", isOn: Binding(get: { settings.usesGravatar }, set: { value in change { $0.usesGravatar = value } }))
+                .padding(.bottom, Metric.space(4))
             BWCheckbox(BWText["showIconsChangePasswordUrls"],
                        isOn: Binding(get: { settings.showsWebsiteIcons }, set: { isOn in change { $0.showsWebsiteIcons = isOn } }),
                        help: help(.websiteIcons, "permitCipherDetailsDescription", "https://bitwarden.com/help/website-icons/"))

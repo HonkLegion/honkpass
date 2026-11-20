@@ -1440,6 +1440,9 @@ public actor InMemoryAccountStore: AccountStorePort {
         if accountIsUnreadable { throw EngineError.storage("The stored file account.json is not readable.") }
         return stored
     }
+    private var logoutID: String?
+    public func pendingLogout() async throws -> String? { logoutID }
+    public func setPendingLogout(_ accountID: String?) async throws { logoutID = accountID }
     public func save(_ account: StoredAccount) async throws { stored = account }
     public func clear() async throws {
         stored = nil

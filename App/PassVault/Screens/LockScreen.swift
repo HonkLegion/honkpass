@@ -249,7 +249,11 @@ struct LockScreen: View {
         alert.addButton(withTitle: BWText["logOut"])
         alert.addButton(withTitle: BWText["cancel"])
         guard alert.runModal() == .alertFirstButtonReturn else { return }
-        Task { await model.logOut() }
+        Task {
+            do { try await model.logOut() } catch {
+                toasts.show(.error, title: BWText["logOut"], message: BWText["unexpectedError"])
+            }
+        }
     }
 }
 
@@ -271,7 +275,7 @@ struct AccountNavButton: View {
             .onChange(of: opensMenu, initial: true) {
                 if opensMenu { isMenuOpen = true }
             }
-            .task(id: account.id) {
+            .task(id: model.state.settings.usesGravatar ? account.id : "") {
                 avatar = nil
                 let data = await model.accountAvatar()
                 guard !Task.isCancelled else { return }

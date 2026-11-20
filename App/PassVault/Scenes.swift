@@ -246,7 +246,11 @@ struct SceneDriver {
                 // The reference picture is of a device the server knows: one log-in before
                 // makes this run such a device.
                 guard await logIn(account) else { return }
-                await model.logOut()
+                for _ in 0..<100 where !flow.twoStepEndedByUser {
+                    try? await Task.sleep(for: .milliseconds(30))
+                }
+                guard flow.twoStepEndedByUser else { finish("SCENE FAILED: login screen did not reset"); return }
+                do { try await model.logOut() } catch { finish("SCENE FAILED: synthetic logout failed"); return }
                 flow.email = account.email
                 flow.step = .masterPassword
             case "log-in-hint":

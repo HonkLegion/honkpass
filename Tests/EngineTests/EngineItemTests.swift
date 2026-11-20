@@ -5,6 +5,17 @@ import Testing
 import VaultModel
 
 @Suite struct EngineItemTests {
+    @Test func quittingClearsOnlyThePendingClipboardValue() async throws {
+        let (engine, handles) = try await makeUnlockedEngine()
+        try await engine.copy(.password, of: "item-1")
+        await engine.clearPendingClipboard()
+        #expect(await handles.clipboard.text == nil)
+        try await engine.copy(.password, of: "item-1")
+        await handles.clipboard.copy("new synthetic text", isSensitive: false)
+        await engine.clearPendingClipboard()
+        #expect(await handles.clipboard.text == "new synthetic text")
+    }
+
     @Test func anItemOpensOnlyWhileTheVaultIsUnlocked() async throws {
         let (engine, _) = try await makeUnlockedEngine()
         let item = try await engine.item(id: "item-1")

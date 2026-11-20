@@ -178,6 +178,7 @@ public enum VaultImportFormat: String, Sendable, CaseIterable {
             let lastUsedDate: Date
         }
         for item in items {
+            try Task.checkCancellation()
             guard item["deletedDate"] as? String == nil, item["organizationId"] as? String == nil,
                   let name = text(item, "name") else { continue }
             let content: ItemDraft.Content
@@ -263,15 +264,17 @@ public enum VaultImportFormat: String, Sendable, CaseIterable {
     /// them, its custom fields in one cell as lines of "name: value".
     private static func readCSV(_ file: Data) throws -> VaultImport {
         guard let text = String(data: file, encoding: .utf8) else { throw VaultImportError.notReadable }
-        var rows = rows(ofCSV: text)
+        var rows = try rows(ofCSV: text)
         guard let header = rows.first?.map({ $0.trimmingCharacters(in: .whitespaces).lowercased() }),
               let nameColumn = header.firstIndex(of: "name"), header.contains("type") else { throw VaultImportError.notReadable }
+        let columns = Dictionary(header.enumerated().map { ($0.element, $0.offset) }, uniquingKeysWith: { first, _ in first })
         rows.removeFirst()
         var result = VaultImport()
         var folderPlaces: [String: Int] = [:]
         for row in rows where row.count > nameColumn {
+            try Task.checkCancellation()
             func cell(_ column: String) -> String {
-                guard let index = header.firstIndex(of: column), index < row.count else { return "" }
+                guard let index = columns[column], index < row.count else { return "" }
                 return row[index]
             }
             let name = cell("name")
@@ -312,14 +315,17 @@ public enum VaultImportFormat: String, Sendable, CaseIterable {
 
     /// The rows of a CSV text: cells between commas, a cell in quotes may hold commas, line
     /// breaks and doubled quotes.
-    static func rows(ofCSV text: String) -> [[String]] {
+    static func rows(ofCSV text: String) throws -> [[String]] {
         var rows: [[String]] = []
         var row: [String] = []
         var cell = ""
         var isQuoted = false
         var characters = text.makeIterator()
         var pending = characters.next()
+        var scanned = 0
         while let character = pending {
+            if scanned.isMultiple(of: 4096) { try Task.checkCancellation() }
+            scanned += 1
             pending = characters.next()
             if isQuoted {
                 if character == "\"" {

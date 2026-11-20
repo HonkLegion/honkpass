@@ -374,7 +374,13 @@ struct QuickAccessView: View {
         // `FULL_URI_MATCH_STRATEGIES`: with such a rule the whole addresses are shown, else the hosts.
         let showsWhole = saved.contains { [.startsWith, .regularExpression, .exact].contains($0.match) }
         func shown(_ address: String) -> String {
-            showsWhole ? address : (URL(string: address)?.host() ?? VaultItemSummary.websiteHost(of: address) ?? address)
+            guard var url = URLComponents(string: address), url.host != nil else { return address }
+            url.user = nil
+            url.password = nil
+            url.query = nil
+            url.fragment = nil
+            if !showsWhole { url.path = "" }
+            return url.string ?? address
         }
         let neverMatches = page.map { page in saved.contains { $0.match == .never && shown($0.address) == shown(page) } } ?? false
         let title = isApp ? "honkpassConfirmAppFill" : (neverMatches ? "loginNeverMatchTitle" : (saved.isEmpty ? "loginHasNoSiteSaved" : "siteDoesntMatch"))

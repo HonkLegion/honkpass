@@ -26,7 +26,17 @@ public actor Engine {
     /// Metadata issued by the active-field port, never supplied by a client for remembering an app.
     private var capturedFillTarget: (target: FillTarget, epoch: Int)?
     /// Session persistence that does not occupy the vault command slot.
-    private var sessionChanges = 0
+    private var sessionChangeWaiters: [CheckedContinuation<Void, Never>] = []
+    private var sessionChanges = 0 {
+        didSet {
+            if sessionChanges == 0 {
+                let waiters = sessionChangeWaiters
+                sessionChangeWaiters.removeAll()
+                for waiter in waiters { waiter.resume() }
+            }
+        }
+    }
+    private var unfinishedLogout: String?
     private var timerGeneration = 0
     private var inactivityTimer: Task<Void, Never>?
     /// The PIN of the logged-in account as it is stored, and the envelope that opens the vault.
@@ -48,6 +58,7 @@ public actor Engine {
     /// How long a log-in waits for its second step.
     static let twoStepPatience: Duration = .seconds(300)
     private var clipboardTimer: Task<Void, Never>?
+    private var pendingClipboardValue: String?
     /// Pictures of websites by host; nil for a host the server has no picture for.
     private var websiteIcons: [String: Data?] = [:]
     private var accountAvatars: [String: Data?] = [:]
@@ -382,6 +393,8 @@ public actor Engine {
         // What cannot be read is not thrown away: the engine goes on without it and says so.
         var found: [EngineNotice] = []
         do {
+            unfinishedLogout = try await ports.store.pendingLogout()
+            if let unfinishedLogout { try await finishLogout(of: unfinishedLogout) }
             stored = try await ports.store.load()
         } catch {
             stored = nil
@@ -396,7 +409,8 @@ public actor Engine {
             if stored != nil { others.removeFirst() }
         }
         var settings = EngineSettings.default
-        if let id = stored?.account.id {
+        if let record = stored, record.hasSessionCredentials {
+            let id = record.account.id
             do {
                 settings = try await ports.store.loadSettings(accountID: id) ?? .default
                 storedPin = try await ports.store.loadPin(accountID: id)
@@ -428,7 +442,7 @@ public actor Engine {
     public func addAccount() async throws {
         try beginSessionChange()
         defer { sessionChanges -= 1 }
-        guard current.activity != .starting, current.session.account != nil,
+        guard unfinishedLogout == nil, current.activity != .starting, current.session.account != nil,
               current.otherAccounts.count + 1 < Engine.accountLimit else { throw EngineError.invalidState }
         await whenIdle()
         try await parkAccount()
@@ -440,7 +454,7 @@ public actor Engine {
     public func switchAccount(to id: String) async throws {
         try beginSessionChange()
         defer { sessionChanges -= 1 }
-        guard current.activity != .starting, current.otherAccounts.contains(where: { $0.id == id }) else {
+        guard unfinishedLogout == nil, current.activity != .starting, current.otherAccounts.contains(where: { $0.id == id }) else {
             throw EngineError.notFound
         }
         await whenIdle()
@@ -490,9 +504,10 @@ public actor Engine {
             guard let record = try await ports.store.load(), record.account.id == id else {
                 throw EngineError.storage("The account that was put aside is not readable.")
             }
-            let settings = await savedSettings(of: id)
-            let pin = try? await ports.store.loadPin(accountID: id)
-            let hasBiometricKey = await ports.biometrics.hasKey(accountID: id)
+            let trusted = record.hasSessionCredentials
+            let settings = trusted ? await savedSettings(of: id) : .default
+            let pin = trusted ? try? await ports.store.loadPin(accountID: id) : nil
+            let hasBiometricKey = trusted ? await ports.biometrics.hasKey(accountID: id) : false
             // A log-in that began meanwhile has the session; the account waits on.
             guard case .loggedOut = current.session, stored == nil else { throw EngineError.cancelled }
             stored = record
@@ -551,6 +566,8 @@ public actor Engine {
         defer { finish(token) }
         update { $0.authenticationPhase = .authenticating }
         do {
+            if let id = try await ports.store.pendingLogout() ?? unfinishedLogout { try await finishLogout(of: id) }
+            try check(token)
             let email = email.trimmingCharacters(in: .whitespacesAndNewlines)
             let prelogin = try await ports.server.prelogin(server: server, email: email)
             let hash = try await ports.crypto.serverPasswordHash(password: masterPassword, prelogin: prelogin)
@@ -667,10 +684,16 @@ public actor Engine {
             accessToken: grant.accessToken, refreshToken: grant.refreshToken,
             accessTokenExpiry: syncDate.addingTimeInterval(grant.expiresIn), vaultPayload: payload, lastSync: syncDate)
         // An account that waits beside this log-in and is the same one is replaced by it.
-        if current.otherAccounts.contains(where: { $0.id == grant.userID }) {
-            try await ports.store.removeParked(accountID: grant.userID)
+        let existing = current.otherAccounts.first { $0.id.caseInsensitiveCompare(grant.userID) == .orderedSame }
+        if let existing {
+            guard existing.serverURL == login.server, existing.email.caseInsensitiveCompare(login.email) == .orderedSame else {
+                throw EngineError.invalidState
+            }
         }
         try await ports.store.save(record)
+        if let existing {
+            try await ports.store.removeParked(accountID: existing.id)
+        }
         let settings = await savedSettings(of: grant.userID)
         let pin = try? await ports.store.loadPin(accountID: grant.userID)
         let hasBiometricKey = await ports.biometrics.hasKey(accountID: grant.userID)
@@ -690,7 +713,7 @@ public actor Engine {
             state.settings = settings
             state.pin = pinState
             state.biometrics = biometricState
-            state.otherAccounts.removeAll { $0.id == grant.userID }
+            state.otherAccounts.removeAll { $0.id.caseInsensitiveCompare(grant.userID) == .orderedSame }
         }
         restartInactivityTimer()
     }
@@ -741,6 +764,7 @@ public actor Engine {
                 try authenticationPhase(.preparingPin, token: token)
                 envelope = try? await unlocked.enrollPin(encryptedPin: storedPin.encryptedPin).envelope
             }
+            try check(token)
             await forgetWrongPins(accountID: account.id)
             try check(token)
             finishUnlock(unlocked, contents: contents, account: account, lastSync: stored.lastSync, envelope: envelope)
@@ -760,25 +784,32 @@ public actor Engine {
         let token = try begin(.unlocking)
         defer { finish(token) }
         do {
+            guard storedPin.failedAttempts < Self.pinAttemptLimit else {
+                try await logOut()
+                throw EngineError.tooManyPinAttempts
+            }
+            var counted = storedPin
+            counted.failedAttempts += 1
+            self.storedPin = counted
+            do {
+                try await ports.store.savePin(counted, accountID: account.id)
+            } catch {
+                if token == epoch {
+                    pinEnvelope = nil
+                    update { $0.pin = pinState }
+                }
+                throw EngineError.storage("The PIN attempt could not be saved.")
+            }
+            try check(token)
             let unlocked: any UnlockedCrypto
             do {
                 unlocked = try await ports.crypto.unlock(PinUnlockRequest(
                     userID: account.id, email: account.email, material: stored.crypto, pin: pin, envelope: envelope))
             } catch EngineError.wrongPin {
                 try check(token)
-                var counted = storedPin
-                counted.failedAttempts += 1
                 if counted.failedAttempts >= Engine.pinAttemptLimit {
                     try? await logOut()
                     throw EngineError.tooManyPinAttempts
-                }
-                self.storedPin = counted
-                // An attempt that cannot be counted must not be free: the PIN stops working instead.
-                do {
-                    try await ports.store.savePin(counted, accountID: account.id)
-                } catch {
-                    pinEnvelope = nil
-                    update { $0.pin = pinState }
                 }
                 throw EngineError.wrongPin
             }
@@ -787,6 +818,7 @@ public actor Engine {
                 try authenticationPhase(.loadingVault, token: token)
                 contents = try await unlocked.decryptVault(syncPayload: payload)
             }
+            try check(token)
             await forgetWrongPins(accountID: account.id)
             try check(token)
             finishUnlock(unlocked, contents: contents, account: account, lastSync: stored.lastSync, envelope: envelope)
@@ -824,14 +856,20 @@ public actor Engine {
     public func setPin(_ pin: String, asksForMasterPasswordAfterRestart: Bool) async throws {
         try beginSessionChange()
         defer { sessionChanges -= 1 }
-        guard case .unlocked(let account) = current.session, let crypto else { throw EngineError.invalidState }
+        guard stored?.hasSessionCredentials == true, case .unlocked(let account) = current.session,
+              let crypto else { throw EngineError.invalidState }
         guard pin.count >= Engine.minimumPinLength else { throw EngineError.wrongPin }
         do {
+            let token = epoch
             let enrollment = try await crypto.enrollPin(pin)
+            try check(token)
             let record = StoredPin(envelope: asksForMasterPasswordAfterRestart ? nil : enrollment.envelope,
                                    encryptedPin: enrollment.encryptedPin)
             try await ports.store.savePin(record, accountID: account.id)
-            guard current.session.account?.id == account.id else { throw EngineError.cancelled }
+            if token != epoch {
+                try await ports.store.savePin(storedPin, accountID: account.id)
+                throw EngineError.cancelled
+            }
             storedPin = record
             pinEnvelope = enrollment.envelope
             update { $0.pin = pinState }
@@ -843,7 +881,7 @@ public actor Engine {
     public func removePin() async throws {
         try beginSessionChange()
         defer { sessionChanges -= 1 }
-        guard let account = current.session.account else { throw EngineError.invalidState }
+        guard stored?.hasSessionCredentials == true, let account = current.session.account else { throw EngineError.invalidState }
         do {
             try await ports.store.savePin(nil, accountID: account.id)
         } catch {
@@ -864,7 +902,9 @@ public actor Engine {
         let accountID = current.session.account?.id
         let isAvailable = await ports.biometrics.isAvailable()
         var isKept = false
-        if let accountID { isKept = await ports.biometrics.hasKey(accountID: accountID) }
+        if let accountID, stored?.hasSessionCredentials == true {
+            isKept = await ports.biometrics.hasKey(accountID: accountID)
+        }
         // The account may have changed while the system was asked.
         guard current.session.account?.id == accountID else { return }
         biometricsAvailable = isAvailable
@@ -880,7 +920,7 @@ public actor Engine {
     public func setBiometricUnlock(_ isOn: Bool) async throws {
         try beginSessionChange()
         defer { sessionChanges -= 1 }
-        guard let account = current.session.account else { throw EngineError.invalidState }
+        guard stored?.hasSessionCredentials == true, let account = current.session.account else { throw EngineError.invalidState }
         do {
             if isOn {
                 guard case .unlocked = current.session, let crypto else { throw EngineError.invalidState }
@@ -909,8 +949,9 @@ public actor Engine {
     /// PIN open the vault meanwhile, and then this command ends with `cancelled`. Throws
     /// `EngineError.biometrics`; after `.keyRejected` the key is removed.
     public func unlockWithBiometrics(reason: String) async throws {
-        guard !current.isPreparingAppUpdate else { throw EngineError.busy }
-        guard case .locked(let account) = current.session, stored != nil else { throw EngineError.invalidState }
+        guard !current.isPreparingAppUpdate, sessionChanges == 0 else { throw EngineError.busy }
+        guard case .locked(let account) = current.session, stored?.hasSessionCredentials == true else { throw EngineError.invalidState }
+        let requestedEpoch = epoch
         guard biometricKeyKept else { throw EngineError.biometrics(.notEnabled) }
         guard !isAskingForBiometrics else { throw EngineError.busy }
         isAskingForBiometrics = true
@@ -924,7 +965,7 @@ public actor Engine {
             throw EngineError(error)
         }
         // The vault was opened another way meanwhile, or the account is another one.
-        guard case .locked(let now) = current.session, now.id == account.id, let stored else { throw EngineError.cancelled }
+        guard epoch == requestedEpoch, current.session == .locked(account), let stored else { throw EngineError.cancelled }
         let token = try begin(.unlocking)
         defer { finish(token) }
         do {
@@ -949,6 +990,7 @@ public actor Engine {
                 try authenticationPhase(.preparingPin, token: token)
                 envelope = try? await unlocked.enrollPin(encryptedPin: storedPin.encryptedPin).envelope
             }
+            try check(token)
             await forgetWrongPins(accountID: account.id)
             try check(token)
             finishUnlock(unlocked, contents: contents, account: account, lastSync: stored.lastSync, envelope: envelope)
@@ -979,9 +1021,10 @@ public actor Engine {
     /// Fetches the vault, decrypts it, stores it and shows it.
     private func reload(account: Account, token: Int) async throws {
         guard let crypto else { throw EngineError.cancelled }
-        let payload = try await withAccessToken(token: token) { accessToken in
+        let payload = try await withAccessToken(account: account, token: token) { accessToken in
             try await ports.server.sync(server: account.serverURL, accessToken: accessToken)
         }
+        try check(token)
         var contents = try await crypto.decryptVault(syncPayload: payload)
         try check(token)
         guard var record = stored else { throw EngineError.cancelled }
@@ -1005,21 +1048,27 @@ public actor Engine {
 
     /// Sends a request with the access token: with a new one when the old one is at its end, and
     /// once more when the server refuses a token that should still be good.
-    private func withAccessToken<Answer: Sendable>(token: Int,
+    private func withAccessToken<Answer: Sendable>(account: Account, token: Int,
                                                    _ request: (String) async throws -> Answer) async throws -> Answer {
-        guard var record = stored else { throw EngineError.cancelled }
+        try check(token)
+        guard var record = stored, record.account == account, current.session == .unlocked(account) else { throw EngineError.cancelled }
+        guard record.hasSessionCredentials else { throw EngineError.serverUnreachable }
         if record.accessToken.isEmpty || now() >= record.accessTokenExpiry.addingTimeInterval(-60) {
             record = try await renewTokens(record, token: token)
         }
         do {
+            try check(token)
             return try await request(record.accessToken)
         } catch EngineError.sessionExpired {
             record = try await renewTokens(record, token: token)
+            try check(token)
             return try await request(record.accessToken)
         }
     }
 
     private func renewTokens(_ record: StoredAccount, token: Int) async throws -> StoredAccount {
+        try check(token)
+        guard stored?.account == record.account else { throw EngineError.cancelled }
         guard let refreshToken = record.refreshToken else { throw EngineError.sessionExpired }
         let fresh = try await ports.server.refresh(server: record.account.serverURL, refreshToken: refreshToken)
         try check(token)
@@ -1039,7 +1088,10 @@ public actor Engine {
     public func item(id: String) async throws -> VaultItem {
         guard current.session.isUnlocked, let crypto else { throw EngineError.invalidState }
         do {
-            return try await crypto.item(id: id)
+            let token = epoch
+            let result = try await crypto.item(id: id)
+            try check(token)
+            return result
         } catch {
             throw EngineError(error)
         }
@@ -1049,7 +1101,10 @@ public actor Engine {
     public func verificationCode(for id: String) async throws -> VerificationCode {
         guard current.session.isUnlocked, let crypto else { throw EngineError.invalidState }
         do {
-            return try await crypto.verificationCode(itemID: id, at: now())
+            let token = epoch
+            let result = try await crypto.verificationCode(itemID: id, at: now())
+            try check(token)
+            return result
         } catch {
             throw EngineError(error)
         }
@@ -1217,14 +1272,24 @@ public actor Engine {
     private func place(_ value: String, isSensitive: Bool) async {
         await ports.clipboard.copy(value, isSensitive: isSensitive)
         clipboardTimer?.cancel()
+        pendingClipboardValue = nil
         guard case .after(let seconds) = current.settings.clipboardClearing else { return }
+        pendingClipboardValue = value
         let clipboardLifetime = Duration.seconds(seconds)
         let clock = self.clock
-        let clipboard = ports.clipboard
-        clipboardTimer = Task {
+        clipboardTimer = Task { [weak self] in
             do { try await clock.sleep(for: clipboardLifetime) } catch { return }
-            await clipboard.clear(ifStill: value)
+            guard !Task.isCancelled else { return }
+            await self?.clearPendingClipboard(ifStill: value)
         }
+    }
+
+    public func clearPendingClipboard(ifStill expected: String? = nil) async {
+        guard let value = pendingClipboardValue, expected == nil || expected == value else { return }
+        clipboardTimer?.cancel()
+        clipboardTimer = nil
+        pendingClipboardValue = nil
+        await ports.clipboard.clear(ifStill: value)
     }
 
     // MARK: Changes
@@ -1241,8 +1306,9 @@ public actor Engine {
         do {
             let answer: Answer
             do {
-                answer = try await withAccessToken(token: token, send)
+                answer = try await withAccessToken(account: account, token: token, send)
             } catch let error as EngineError {
+                try check(token)
                 switch error {
                 case .server, .itemChanged: try? await reload(account: account, token: token)
                 default: break
@@ -1335,7 +1401,10 @@ public actor Engine {
     public func draft(of id: String) async throws -> ItemDraft {
         guard current.session.isUnlocked, let crypto else { throw EngineError.invalidState }
         do {
-            return try await crypto.draft(id: id)
+            let token = epoch
+            let result = try await crypto.draft(id: id)
+            try check(token)
+            return result
         } catch {
             throw EngineError(error)
         }
@@ -1493,10 +1562,12 @@ public actor Engine {
     /// it for the life of the process. nil when the server has none, and when the settings say
     /// that the server is not to be asked.
     public func websiteIcon(host: String) async -> Data? {
-        guard current.settings.showsWebsiteIcons else { return nil }
+        guard current.settings.showsWebsiteIcons, let stored, !stored.accessToken.isEmpty || stored.refreshToken != nil else { return nil }
         if let known = websiteIcons[host] { return known }
         guard let server = current.session.account?.serverURL, current.session.isUnlocked else { return nil }
+        let token = epoch
         let icon = try? await ports.server.websiteIcon(server: server, host: host)
+        guard token == epoch, current.settings.showsWebsiteIcons else { return nil }
         websiteIcons[host] = .some(icon)
         return icon
     }
@@ -1517,7 +1588,7 @@ public actor Engine {
             guard let listed = try await crypto.item(id: itemID).attachments.first(where: { $0.id == attachmentID }) else {
                 throw EngineError.notFound
             }
-            let contents = try await withAccessToken(token: token) { accessToken in
+            let contents = try await withAccessToken(account: account, token: token) { accessToken in
                 try await ports.server.attachmentContents(itemID: itemID, attachmentID: attachmentID, server: account.serverURL,
                                                           accessToken: accessToken)
             }
@@ -1856,8 +1927,10 @@ public actor Engine {
     private func refreshSSHIdentities() async {
         guard current.session.isUnlocked, let crypto else { return }
         let token = epoch
-        let identities = await crypto.sshIdentities()
+        let candidates = await crypto.sshIdentities()
         guard token == epoch, current.session.isUnlocked else { return }
+        let eligible = Set(current.vault.items.lazy.filter { $0.type == .sshKey && !$0.isInTrash && !$0.isArchived && !$0.asksForMasterPassword }.map(\.id))
+        let identities = candidates.filter { eligible.contains($0.itemID) }
         if sshIdentityList != identities {
             sshAuthorizationGeneration += 1
             sshAuthorized = []
@@ -1903,7 +1976,7 @@ public actor Engine {
               current.session.isUnlocked, current.session.account?.id == accountID,
               let identity = sshIdentityList.first(where: { $0.publicKeyBlob == request.publicKeyBlob }),
               let item = current.vault.items.first(where: { $0.id == identity.itemID }),
-              item.type == .sshKey, !item.isInTrash, !item.isArchived else { return nil }
+              item.type == .sshKey, !item.isInTrash, !item.isArchived, !item.asksForMasterPassword else { return nil }
         let authorization = SSHAuthorization(itemID: item.id, request: request)
         let prompt = current.settings.sshAgent.prompt
         let token = epoch
@@ -1914,7 +1987,7 @@ public actor Engine {
                 && current.session.account?.id == accountID && current.settings.sshAgent.isEnabled
                 && current.settings.sshAgent.prompt == prompt
                 && sshIdentityList.contains(identity)
-                && current.vault.items.contains { $0.id == item.id && $0.type == .sshKey && !$0.isInTrash && !$0.isArchived }
+                && current.vault.items.contains { $0.id == item.id && $0.type == .sshKey && !$0.isInTrash && !$0.isArchived && !$0.asksForMasterPassword }
         }
         let asks: Bool = switch prompt {
         case .never: false
@@ -2024,7 +2097,10 @@ public actor Engine {
         guard current.session.isUnlocked, let crypto else { throw EngineError.invalidState }
         guard current.vault.sends.contains(where: { $0.id == id }) else { throw EngineError.notFound }
         do {
-            return try await crypto.send(id: id)
+            let token = epoch
+            let result = try await crypto.send(id: id)
+            try check(token)
+            return result
         } catch {
             throw EngineError(error)
         }
@@ -2042,6 +2118,8 @@ public actor Engine {
     public func copySendLink(of id: String) async throws {
         let link = try await sendLink(of: id)
         guard current.session.isUnlocked else { throw EngineError.cancelled }
+        clipboardTimer?.cancel()
+        pendingClipboardValue = nil
         await ports.clipboard.copy(link, isSensitive: false)
     }
 
@@ -2233,37 +2311,58 @@ public actor Engine {
     }
 
     public func logOut() async throws {
+        guard !current.isPreparingAppUpdate else { throw EngineError.busy }
+        if sessionChanges != 0 {
+            let original = current.session.account
+            lock()
+            while sessionChanges != 0 {
+                await withCheckedContinuation { sessionChangeWaiters.append($0) }
+            }
+            guard current.session.account == original else { return }
+        }
         try beginSessionChange()
         defer { sessionChanges -= 1 }
         guard current.activity != .starting else { return }
-        interrupt()
-        let accountID = stored?.account.id
-        stored = nil
+        let accountID = unfinishedLogout ?? (stored?.hasSessionCredentials == true ? stored?.account.id : nil)
+        lock()
         storedPin = nil
         pinEnvelope = nil
         biometricKeyKept = false
+        update { $0.pin = .none; $0.biometrics = biometricState }
+        do {
+            if let accountID {
+                try await finishLogout(of: accountID)
+            } else if stored != nil {
+                // An offline copy cannot identify the owner of any account-specific Keychain item.
+                try await ports.store.clear()
+            }
+        } catch {
+            note(.storeUnavailable)
+            throw EngineError(error)
+        }
+        let hadAccount = stored != nil || accountID != nil
+        stored = nil
         websiteIcons = [:]
         update { state in
             state.session = .loggedOut
             state.vault = .empty
             state.activity = nil
             state.settings = .default
-            state.pin = .none
-            state.biometrics = biometricState
         }
-        do {
-            // The PIN opens the keys of the stored account and goes with it.
-            if let accountID { try await ports.store.savePin(nil, accountID: accountID) }
-            try await ports.store.clear()
-        } catch {
-            if let accountID { try? await ports.biometrics.remove(accountID: accountID) }
-            throw EngineError(error)
-        }
-        // The key behind Touch ID opens the keys of the account too and goes with it,
-        // whether the store could be cleared or not.
-        if let accountID { try? await ports.biometrics.remove(accountID: accountID) }
-        // The next of the other accounts takes its place, locked, as in the reference.
-        if accountID != nil, let next = current.otherAccounts.first { try? await activateAccount(next.id) }
+        if hadAccount, let next = current.otherAccounts.first { try await activateAccount(next.id) }
+    }
+
+    private func finishLogout(of accountID: String) async throws {
+        unfinishedLogout = accountID
+        try await ports.store.setPendingLogout(accountID)
+        var failure: EngineError?
+        do { try await ports.store.savePin(nil, accountID: accountID) } catch { failure = EngineError(error) }
+        do { try await ports.biometrics.remove(accountID: accountID) } catch { failure = EngineError(error) }
+        do { try await ports.store.clear() } catch { failure = EngineError(error) }
+        do { try await ports.store.removeParked(accountID: accountID) } catch { failure = EngineError(error) }
+        if let failure { throw failure }
+        try await ports.store.setPendingLogout(nil)
+        unfinishedLogout = nil
     }
 
     /// Clients call this when the user does something. It restarts the inactivity timeout.
@@ -2276,7 +2375,7 @@ public actor Engine {
     public func setSettings(_ settings: EngineSettings) async throws {
         try beginSessionChange()
         defer { sessionChanges -= 1 }
-        guard let account = current.session.account else { throw EngineError.invalidState }
+        guard stored?.hasSessionCredentials == true, let account = current.session.account else { throw EngineError.invalidState }
         guard settings != current.settings else { return }
         do {
             try await ports.store.saveSettings(settings, accountID: account.id)
@@ -2287,6 +2386,7 @@ public actor Engine {
         guard current.session.account?.id == account.id else { throw EngineError.cancelled }
         let policyChanged = settings.lockPolicy != current.settings.lockPolicy
         if !settings.showsWebsiteIcons { websiteIcons = [:] }
+        if !settings.usesGravatar { accountAvatars = [:] }
         update { $0.settings = settings }
         if policyChanged { restartInactivityTimer() }
     }
@@ -2295,22 +2395,23 @@ public actor Engine {
 
     /// An optional avatar is fetched independently of authentication and cached for this session.
     public func accountAvatar() async -> Data? {
-        guard case .unlocked(let account) = current.session else { return nil }
+        guard stored?.hasSessionCredentials == true, current.settings.usesGravatar, case .unlocked(let account) = current.session else { return nil }
         if let cached = accountAvatars[account.email] { return cached }
         let token = epoch
         let image = await ports.avatars.image(email: account.email)
-        guard token == epoch, current.session == .unlocked(account) else { return nil }
+        guard token == epoch, current.settings.usesGravatar, current.session == .unlocked(account) else { return nil }
         accountAvatars[account.email] = .some(image)
         return image
     }
 
     private func beginSessionChange() throws {
-        guard !current.isPreparingAppUpdate else { throw EngineError.busy }
+        guard !current.isPreparingAppUpdate, sessionChanges == 0 else { throw EngineError.busy }
         sessionChanges += 1
     }
 
     private func begin(_ activity: EngineActivity) throws -> Int {
-        guard current.activity == nil, !current.isPreparingAppUpdate else { throw EngineError.busy }
+        guard current.activity == nil, sessionChanges == 0, !current.isPreparingAppUpdate,
+              unfinishedLogout == nil || activity == .loggingIn else { throw EngineError.busy }
         update {
             $0.activity = activity
             $0.authenticationPhase = activity == .unlocking || activity == .loggingIn ? .authenticating : nil

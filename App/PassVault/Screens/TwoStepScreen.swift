@@ -64,6 +64,11 @@ struct TwoStepScreen: View {
 
     private var form: some View {
         VStack(alignment: .leading, spacing: 0) {
+            if let server = flow.serverLabel {
+                Text(verbatim: server).textStyle(.sm)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .padding(.bottom, Metric.space(3))
+            }
             if method == .webAuthn {
                 // two-factor-auth-webauthn: the button that has the key read, in place of the
                 // frame of the reference. A browser of the system does the reading.

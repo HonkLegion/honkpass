@@ -28,7 +28,12 @@ struct LaunchOptions {
     /// Every other start is the start of the user, with the stored session.
     var isDevelopmentRun: Bool { usesFakeBackend || runsSmokeTest || scene != nil }
 
-    init(arguments: [String]) {
+    init(arguments supplied: [String]) {
+        #if DEBUG
+        let arguments = supplied
+        #else
+        let arguments: [String] = []
+        #endif
         func value(_ name: String) -> String? {
             guard let index = arguments.firstIndex(of: name), index + 1 < arguments.count else { return nil }
             return arguments[index + 1]

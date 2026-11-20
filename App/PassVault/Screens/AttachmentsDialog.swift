@@ -74,7 +74,10 @@ struct AttachmentsDialog: View {
         .onExitCommand(perform: close)
         // A sync, an upload and a deletion change the list.
         .task(id: model.state.vault.lastSync) {
-            attachments = (try? await model.item(id: itemID).attachments) ?? []
+            let revision = navigation.fileWorkRevision
+            let values = (try? await model.item(id: itemID).attachments) ?? []
+            guard !Task.isCancelled, navigation.fileWorkRevision == revision, model.state.session.isUnlocked else { return }
+            attachments = values
         }
     }
 

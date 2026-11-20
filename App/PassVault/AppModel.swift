@@ -301,8 +301,8 @@ final class AppModel {
         await engine.isMasterPassword(password)
     }
 
-    func logOut() async {
-        try? await engine.logOut()
+    func logOut() async throws {
+        try await engine.logOut()
     }
 
     func dismiss(_ notice: EngineNotice) async {

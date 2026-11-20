@@ -14,7 +14,7 @@ public struct VaultwardenServer: ServerPort {
 
     public func prelogin(server: URL, email: String) async throws -> Prelogin {
         let body = try JSONSerialization.data(withJSONObject: ["email": email])
-        let (data, status) = try await http.send(HTTPClient.jsonRequest("POST", server, "identity/accounts/prelogin", body: body))
+        let (data, status) = try await http.send(HTTPClient.jsonRequest("POST", server, "identity/accounts/prelogin", body: body), maximumBytes: 1_048_576)
         guard status == 200 else { throw HTTPClient.refusal(data, status: status) }
         guard let object = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any],
               let type = JSON.integer(object, "Kdf"),
@@ -34,6 +34,7 @@ public struct VaultwardenServer: ServerPort {
         default:
             throw EngineError.server("The account uses an unknown key derivation.")
         }
+        guard kdf.isSupported(forNetworkLogin: true) else { throw EngineError.server("HonkPass cannot use this account’s key derivation settings. Review the KDF settings in your Vaultwarden web vault.") }
         // Without a salt from the server, the salt is the email as Bitwarden normalises it.
         let salt = JSON.string(object, "Salt") ?? email.trimmingCharacters(in: .whitespaces).lowercased()
         return Prelogin(kdf: kdf, salt: salt)
@@ -64,7 +65,7 @@ public struct VaultwardenServer: ServerPort {
                        ("twoFactorRemember", proof.remember ? "1" : "0")]
         }
         urlRequest.httpBody = JSON.formEncoded(fields)
-        let (data, status) = try await http.send(urlRequest)
+        let (data, status) = try await http.send(urlRequest, maximumBytes: 1_048_576)
         return try TokenResponse.outcome(from: data, status: status, prelogin: request.prelogin, sentCode: sentCode)
     }
 
@@ -106,7 +107,7 @@ public struct VaultwardenServer: ServerPort {
     public func sync(server: URL, accessToken: String) async throws -> Data {
         // With the domains: the groups that count as one domain when a login is matched to a page.
         let request = try HTTPClient.request("GET", server, "api/sync", accessToken: accessToken)
-        let (data, status) = try await http.send(request)
+        let (data, status) = try await http.send(request, maximumBytes: 128 * 1_024 * 1_024)
         if status == 401 { throw EngineError.sessionExpired }
         guard status == 200 else { throw HTTPClient.refusal(data, status: status) }
         return data
