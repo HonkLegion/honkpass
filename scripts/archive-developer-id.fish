@@ -33,6 +33,11 @@ if set -q HONKPASS_CI_SIGNING_IDENTITY
     end
     set provisioning_options
     set signing_options CODE_SIGN_STYLE=Manual CODE_SIGN_IDENTITY="$HONKPASS_CI_SIGNING_IDENTITY"
+    if set -q HONKPASS_CI_KEYCHAIN
+        test -f "$HONKPASS_CI_KEYCHAIN"; and test -n "$APPLE_TEAM_ID"; or exit 2
+        set signing_options DEVELOPMENT_TEAM="$APPLE_TEAM_ID" CODE_SIGN_STYLE=Manual \
+            CODE_SIGN_IDENTITY="Developer ID Application" OTHER_CODE_SIGN_FLAGS="--keychain $HONKPASS_CI_KEYCHAIN"
+    end
     set export_options "$HONKPASS_CI_EXPORT_OPTIONS"
 end
 run_step 'Packaging corresponding source' "$logs/source.log" fish --no-config scripts/source-python.fish support/source_archive.py --output "$source_archive"; or exit $status

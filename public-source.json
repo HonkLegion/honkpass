@@ -1,13 +1,9 @@
 {
-  "build": "19",
+  "build": "20",
   "files": {
     ".github/actionlint.yaml": {
       "executable": false,
       "sha256": "2628088cdb15d72d5cc612aa3e7ec12b6aa0d0652c145ec3fb721f578bf73152"
-    },
-    ".github/workflows/release.yml": {
-      "executable": false,
-      "sha256": "14c46c47d79821780829066090613eaea3e0dfc5566c3c2b79e45799f3cc06b7"
     },
     ".gitignore": {
       "executable": false,
@@ -1403,7 +1399,7 @@
     },
     "README.md": {
       "executable": false,
-      "sha256": "7e4133ea435af0d1e9e1d20d9bb9a99e9a1536ca4b23abd1bd78d050f93f3df0"
+      "sha256": "ec4493354e9d9a700038ad635a12bba5206726ddf5db323e93772757a5ba352c"
     },
     "Sources/AutoFillBridge/AutoFillClient.swift": {
       "executable": false,
@@ -2523,11 +2519,11 @@
     },
     "project.yml": {
       "executable": false,
-      "sha256": "3849c1bb879f91777b6586cff8800316fd3f53ade6f6a833fcaa7650d2a9a21a"
+      "sha256": "fcd3e2f4f84f4d87b7e462aa94704f6bbdd5fc3819041d020c05f674c552de3b"
     },
     "scripts/archive-developer-id.fish": {
       "executable": false,
-      "sha256": "216ca6eae3d31b7d68b6149de2c25a6e847fbdaf10ab6689aed0ad87db21c1fa"
+      "sha256": "20dc9ef4c3322b9e9f3a08038d11fe4897e7ce9a0d36b46dee9a794ca15d82b2"
     },
     "scripts/capture-window.fish": {
       "executable": false,
@@ -2535,11 +2531,11 @@
     },
     "scripts/ci_release.py": {
       "executable": false,
-      "sha256": "d4ff5fa5b499b21608ad3fda9bfd2db0300e8e7749d629021add5ede16a59eed"
+      "sha256": "5c38faefd84e75907350b33e0c9d7b9878fcf3971145e35007f9cdffcded3460"
     },
     "scripts/ci_signing.py": {
       "executable": false,
-      "sha256": "2d84dc3f5a2b16f23e40a4932c4ba6cef187f729a4d6fa3297e96193a94ea192"
+      "sha256": "635e558289c663d392687eeff63b174435795d6199da3b1e0cdc602513b0c156"
     },
     "scripts/compare-screen.fish": {
       "executable": false,
@@ -2563,7 +2559,7 @@
     },
     "scripts/package-update.fish": {
       "executable": false,
-      "sha256": "1b59f6d17e513442b4db1e910f9c272a306e1ff1d5610f6bfdedfc6461445bba"
+      "sha256": "9c3638bb4c2b22b0fb2383b5e0d8450bfc2dd5ca877114cbedbef81ef1dd29a0"
     },
     "scripts/progress.fish": {
       "executable": false,
@@ -2595,7 +2591,7 @@
     },
     "scripts/test-make-workflow.py": {
       "executable": false,
-      "sha256": "b9ade98399da42ad5d0476c8eaef87a793a4caffd6262f18adfa7dd605d690ef"
+      "sha256": "c13abfdd8d7b046c47bc69cfa91863472359b54ac89941723b9aeaea18db42ff"
     },
     "scripts/test-release-source.py": {
       "executable": false,
@@ -2607,7 +2603,7 @@
     },
     "scripts/test_ci_release.py": {
       "executable": false,
-      "sha256": "8c14f0824632d918dc339643abaf44d80f3f78835666856d276a6b2e1cfb555e"
+      "sha256": "828d36d4b79f510161cee55371cb7fd38e69819af459c4430e98d88e86bf23bf"
     },
     "scripts/test_public_source.py": {
       "executable": false,
@@ -2624,6 +2620,10 @@
     "scripts/upload_release.py": {
       "executable": false,
       "sha256": "c307a0052ea9ff4ecd8ed15635b0bc0f24c19bd298179f48f31d0becc6ccd038"
+    },
+    "scripts/verify-sparkle.swift": {
+      "executable": false,
+      "sha256": "b8a94ffecfeaa6053d52266b76d379e6cf73a602147e279201e0d29f86ee25da"
     },
     "scripts/verify_release.py": {
       "executable": false,
@@ -2691,7 +2691,7 @@
     },
     "support/public-source-files.txt": {
       "executable": false,
-      "sha256": "73b34f8d41aa64a2aa8d15ac82cdb74d153408caf40e314d4f6e9ce9e9507d07"
+      "sha256": "d43c46d82ea897bd45c632172afdf0bf0889d091f3d448aba6f6e18d3f78a34c"
     },
     "support/public_source.py": {
       "executable": false,
@@ -2736,7 +2736,7 @@
     "sha256": "965f7081df13756c47091029135a661ad6075bf7ca9ece65884aa33c6fdebd0c",
     "version": "0.1.9"
   },
-  "source_revision": "779e97f529c23519606023e5e5a976aa5fd25970",
-  "tag": "v0.2.2",
-  "version": "0.2.2"
+  "source_revision": "f5c2a45eb073746a56b4925d903f4f1b5d330ad6",
+  "tag": "v0.2.3",
+  "version": "0.2.3"
 }

@@ -137,6 +137,13 @@ class ReleaseAssetTests(unittest.TestCase):
 
 
 class SigningTests(unittest.TestCase):
+    def test_ephemeral_user_with_no_default_keychain(self):
+        missing = subprocess.CompletedProcess([], 1, b"", b"A default keychain could not be found.")
+        with patch("ci_signing.subprocess.run", return_value=missing):
+            self.assertEqual(ci_signing.run("security", "default-keychain", "-d", "user"), b"")
+            with self.assertRaises(ci_signing.SigningError):
+                ci_signing.run("security", "import")
+
     def profile(self, **changes):
         profile = {"UUID": "00000000-0000-0000-0000-000000000001", "TeamIdentifier": ["ABCDEFGHIJ"],
                    "ExpirationDate": datetime.now() + timedelta(days=1),
@@ -179,14 +186,18 @@ class SigningTests(unittest.TestCase):
                 if args[0:2] == ("security", "find-identity"):
                     return ('1) ' + 'A' * 40 + ' "Developer ID Application: Synthetic (ABCDEFGHIJ)"').encode()
                 if args[0:2] == ("security", "cms"):
+                    self.assertEqual(args[2:6], ("-D", "-k", str(directory / "release.keychain-db"), "-i"))
                     provider = "PROVIDER" in args[-1]
                     return self.profile(UUID="00000000-0000-0000-0000-00000000000" + ("2" if provider else "1"),
                                         Entitlements={"com.apple.application-identifier":
                                                       "ABCDEFGHIJ.cz.honklegion.honkpass" + (".provider" if provider else "")})
                 if args[0] == "fish":
                     return b"/synthetic/Sparkle"
-                if args[0].endswith("generate_keys") and "-p" in args:
-                    return b"synthetic-public-key"
+                if args[0].endswith("sign_update"):
+                    self.assertEqual(args[1:4], ("--ed-key-file", str(directory / "sparkle-key"), "-p"))
+                    return b"synthetic-signature"
+                if args[:2] == ("xcrun", "swift"):
+                    self.assertEqual(args[-3:], ("synthetic-public-key", "synthetic-signature", str(directory / "signing-check.bin")))
                 return b""
             with patch("ci_signing.ROOT", root), patch("ci_signing.runner_directory", return_value=directory), \
                     patch("ci_signing.Path.home", return_value=Path(temporary) / "home"), \

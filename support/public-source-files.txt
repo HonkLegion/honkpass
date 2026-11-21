@@ -1,6 +1,5 @@
 # Exact public build inputs. Review additions before publication. No glob patterns.
 .github/actionlint.yaml
-.github/workflows/release.yml
 .gitignore
 .gitleaks.toml
 App/ExportOptions-DeveloperID.plist
@@ -655,6 +654,7 @@ scripts/test_public_source.py
 scripts/test_release_update.py
 scripts/test_updater.py
 scripts/upload_release.py
+scripts/verify-sparkle.swift
 scripts/verify_release.py
 scripts/window-id.swift
 support/bitwarden-sdk-package.swift

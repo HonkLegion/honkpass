@@ -154,7 +154,7 @@ if __name__ == "__main__":
     parser.add_argument("--directory", type=Path, default=ROOT / ".build/github-release")
     args = parser.parse_args()
     try:
-        if os.environ.get("GITHUB_REPOSITORY") != REPOSITORY:
+        if os.environ.get("GITHUB_REPOSITORY", "").lower() != REPOSITORY.lower():
             raise ValueError("The release workflow is restricted to HonkLegion/honkpass.")
         if args.action == "preflight":
             print("OK: release identity " + json.dumps(identity(ROOT, args.tag)))

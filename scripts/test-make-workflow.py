@@ -142,6 +142,20 @@ else:
         self.assertEqual(exported[exported.index("-exportOptionsPlist") + 1], str(options))
         self.assertTrue(all("-allowProvisioningUpdates" not in call for call in calls))
 
+    def test_tart_archive_uses_guest_keychain_and_team(self):
+        keychain = self.root / "synthetic.keychain-db"
+        keychain.touch()
+        options = self.root / "export.plist"
+        options.write_text("synthetic")
+        result = self.run_workflow("archive", HONKPASS_CI_SIGNING_IDENTITY="A" * 40,
+                                   HONKPASS_CI_EXPORT_OPTIONS=str(options), HONKPASS_CI_KEYCHAIN=str(keychain),
+                                   APPLE_TEAM_ID="EXAMPLETE1")
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        archive = next(call for call in self.calls() if "archive" in call)
+        self.assertIn("DEVELOPMENT_TEAM=EXAMPLETE1", archive)
+        self.assertIn("CODE_SIGN_IDENTITY=Developer ID Application", archive)
+        self.assertIn(f"OTHER_CODE_SIGN_FLAGS=--keychain {keychain}", archive)
+
     def test_invalid_ci_identity_stops_before_source_packaging(self):
         result = self.run_workflow("archive", HONKPASS_CI_SIGNING_IDENTITY="invalid",
                                    HONKPASS_CI_EXPORT_OPTIONS="missing")

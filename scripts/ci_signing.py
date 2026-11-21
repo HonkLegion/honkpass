@@ -26,9 +26,23 @@ class SigningError(Exception):
 
 
 def run(*args):
-    environment = {key: value for key, value in os.environ.items() if key not in SECRET_NAMES}
+    environment = {key: value for key, value in os.environ.items()
+                   if key not in SECRET_NAMES | {"FORGEJO_TOKEN", "GITEA_TOKEN", "ACTIONS_RUNTIME_TOKEN"}}
     result = subprocess.run(args, env=environment, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=120)
     if result.returncode:
+        if args[0] == "security":
+            # The second argument is a fixed subcommand. Other arguments can hold passwords.
+            reasons = (("user interaction is not allowed", "interactive Keychain session unavailable"),
+                       ("mac verification failed", "P12 password or file mismatch"),
+                       ("unknown format", "unrecognized input format"),
+                       ("could not be found", "Keychain item not found"),
+                       ("duplicate", "duplicate Keychain item"))
+            diagnostic = result.stderr.decode(errors="replace").lower()
+            if (args == ("security", "default-keychain", "-d", "user")
+                    and "a default keychain could not be found" in diagnostic):
+                return b""
+            reason = next((label for message, label in reasons if message in diagnostic), "operation rejected")
+            raise SigningError(f"Keychain {args[1]} failed ({result.returncode}): {reason}.")
         raise SigningError(f"Credential setup failed in {Path(args[0]).name}. Credential output was suppressed.")
     return result.stdout
 
@@ -74,12 +88,13 @@ def write_private(path, data):
         stream.write(data)
 
 
-def setup():
-    directory = runner_directory()
+def setup(directory=None, keychain=None):
+    if directory is None:
+        directory = runner_directory()
     missing = sorted(name for name in SECRET_NAMES - {"UPDATER_TOKEN", "GH_TOKEN", "GITHUB_TOKEN"}
                      if not os.environ.get(name))
     if missing:
-        raise SigningError("Missing GitHub secrets: " + ", ".join(missing))
+        raise SigningError("Missing signing secrets: " + ", ".join(missing))
     team = os.environ.get("APPLE_TEAM_ID", "")
     key_id = os.environ["APPLE_NOTARY_KEY_ID"]
     issuer = os.environ["APPLE_NOTARY_ISSUER_ID"]
@@ -91,9 +106,11 @@ def setup():
         raise SigningError("SPARKLE_PRIVATE_KEY must contain the existing exported Sparkle key.")
     # All local mutations use fresh runner-owned paths. Never use the developer's Keychain.
     directory.mkdir(mode=0o700)
-    keychain = directory / "release.keychain-db"
-    state = {"default_keychain": shlex.split(run("security", "default-keychain", "-d", "user").decode())[0],
-             "search_list": shlex.split(run("security", "list-keychains", "-d", "user").decode()), "profiles": []}
+    keychain = keychain or directory / "release.keychain-db"
+    search_list = shlex.split(run("security", "list-keychains", "-d", "user").decode())
+    defaults = shlex.split(run("security", "default-keychain", "-d", "user").decode()) if search_list else []
+    state = {"default_keychain": defaults[0] if defaults else None,
+             "search_list": search_list, "profiles": []}
     state_path = directory / "state.json"
     write_private(state_path, json.dumps(state).encode())
     password = secrets.token_urlsafe(40)
@@ -116,7 +133,7 @@ def setup():
                            ("APPLE_PROVIDER_PROFILE_BASE64", "cz.honklegion.honkpass.provider")):
         source = directory / (secret + ".provisionprofile")
         write_private(source, secret_bytes(secret))
-        identifier = profile_identity(run("security", "cms", "-D", "-i", str(source)), team, bundle)
+        identifier = profile_identity(run("security", "cms", "-D", "-k", str(keychain), "-i", str(source)), team, bundle)
         profiles[bundle] = identifier
         for base in (Path.home() / "Library/MobileDevice/Provisioning Profiles",
                      Path.home() / "Library/Developer/Xcode/UserData/Provisioning Profiles"):
@@ -141,11 +158,11 @@ def setup():
     sparkle = Path(run("fish", "--no-config", str(ROOT / "scripts/sparkle-tools.fish")).decode().strip())
     private_key = directory / "sparkle-key"
     write_private(private_key, base64.b64encode(sparkle_secret))
-    run(str(sparkle / "bin/generate_keys"), "--account", "cz.honklegion.honkpass.sparkle", "-f", str(private_key))
-    actual = run(str(sparkle / "bin/generate_keys"), "--account", "cz.honklegion.honkpass.sparkle", "-p").decode().strip()
     public = re.search(r"^HONKPASS_SPARKLE_PUBLIC_KEY = (\S+)$", (ROOT / "Config/Sparkle.xcconfig").read_text(), re.M)[1]
-    if actual != public:
-        raise SigningError("The Sparkle private key does not match the existing application. Do not generate a replacement key.")
+    challenge = directory / "signing-check.bin"
+    write_private(challenge, secrets.token_bytes(32))
+    signature = run(str(sparkle / "bin/sign_update"), "--ed-key-file", str(private_key), "-p", str(challenge)).decode().strip()
+    run("xcrun", "swift", str(ROOT / "scripts/verify-sparkle.swift"), public, signature, str(challenge))
     # sign_update uses the file directly to avoid a Keychain access prompt for a different executable.
     for path in (certificate, notary_key):
         path.unlink()
@@ -155,16 +172,18 @@ def setup():
     print("OK: ephemeral signing credentials are ready.")
 
 
-def cleanup():
-    directory = runner_directory()
+def cleanup(directory=None, keychain=None):
+    if directory is None:
+        directory = runner_directory()
     if not directory.exists():
         return
     state_path = directory / "state.json"
     if state_path.exists():
         state = json.loads(state_path.read_text())
-        run("security", "default-keychain", "-d", "user", "-s", state["default_keychain"])
+        if state["default_keychain"]:
+            run("security", "default-keychain", "-d", "user", "-s", state["default_keychain"])
         run("security", "list-keychains", "-d", "user", "-s", *state["search_list"])
-        keychain = directory / "release.keychain-db"
+        keychain = keychain or directory / "release.keychain-db"
         if keychain.exists():
             run("security", "delete-keychain", str(keychain))
         for path in state["profiles"]:
