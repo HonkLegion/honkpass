@@ -1,5 +1,5 @@
 {
-  "build": "21",
+  "build": "22",
   "files": {
     ".github/actionlint.yaml": {
       "executable": false,
@@ -83,7 +83,7 @@
     },
     "App/PassVault/Legal/inventory.json": {
       "executable": false,
-      "sha256": "b0ca5beea99e828c821ba4f0b8d5ea3b2f70894ddfe1e9e78f9583354432b811"
+      "sha256": "3c1b3a0423a66c36911789f29e94058c44f537c258f2e5e8da6fc6baf88b4760"
     },
     "App/PassVault/Legal/texts/003736bc98408b53511b9cc8ff5d1af3bf0a8f17d53841cc39d8ab1b96a195b0.txt": {
       "executable": false,
@@ -2519,7 +2519,7 @@
     },
     "project.yml": {
       "executable": false,
-      "sha256": "ccbd49d6560b54985ac08ee8e0dd4f648508ebe3b7c8f799676f29ed8a49beeb"
+      "sha256": "435687481dd9b93080ef537cce2eec04fdc2d2553f70e3ce5f587d924b76c3cf"
     },
     "scripts/archive-developer-id.fish": {
       "executable": false,
@@ -2736,7 +2736,7 @@
     "sha256": "965f7081df13756c47091029135a661ad6075bf7ca9ece65884aa33c6fdebd0c",
     "version": "0.1.9"
   },
-  "source_revision": "6b7d313501cc80491b5fdda368c040977bd98b8b",
-  "tag": "v0.2.4",
-  "version": "0.2.4"
+  "source_revision": "522994e830a914b0d8e500a95f69b1c29e80f70f",
+  "tag": "v0.3.0",
+  "version": "0.3.0"
 }
