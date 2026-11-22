@@ -39,6 +39,7 @@ public actor Engine {
     private var unfinishedLogout: String?
     private var timerGeneration = 0
     private var inactivityTimer: Task<Void, Never>?
+    private var syncTimer: Task<Void, Never>?
     /// The PIN of the logged-in account as it is stored, and the envelope that opens the vault.
     /// A PIN that asks for the master password after a restart has its envelope here only.
     private var storedPin: StoredPin?
@@ -103,6 +104,7 @@ public actor Engine {
     }
 
     deinit {
+        syncTimer?.cancel()
         clipboardTimer?.cancel()
         inactivityTimer?.cancel()
         pendingLoginTimer?.cancel()
@@ -138,6 +140,9 @@ public actor Engine {
         guard next != current else { return }
         let before = current
         current = next
+        if next.session != before.session || next.settings.syncInterval != before.settings.syncInterval {
+            restartSyncTimer()
+        }
         for observer in observers.values { observer.yield(next) }
         noteIdentities(before: before, after: next)
         noteSSHAgent(before: before, after: next)
@@ -2456,6 +2461,22 @@ public actor Engine {
         switch current.lockPolicy.action {
         case .lock: lock()
         case .logOut: try? await logOut()
+        }
+    }
+
+    private func restartSyncTimer() {
+        syncTimer?.cancel()
+        syncTimer = nil
+        let interval = current.settings.syncInterval
+        guard current.session.isUnlocked, stored?.hasSessionCredentials == true, interval != .disabled else { return }
+        let clock = self.clock
+        syncTimer = Task { [weak self] in
+            while !Task.isCancelled {
+                do { try await clock.sleep(for: .seconds(interval.rawValue * 60)) } catch { return }
+                guard !Task.isCancelled else { return }
+                // sync() serializes with other vault operations. Retry at the next interval if busy or offline.
+                try? await self?.sync()
+            }
         }
     }
 

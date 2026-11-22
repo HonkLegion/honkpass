@@ -1,4 +1,11 @@
 {
+  "hpWebsiteMatchSummary": { "m": "HonkPass pakub automaattäitmist, kui aadress vastab sellele reeglile." },
+  "hpVaultSyncInterval": { "m": "Taustal sünkroonimise intervall" },
+  "hpGravatarHint": { "m": "HonkPass saadab Gravatarile sinu e-posti aadressi SHA-256 räsi, et leida sinu profiilipilt." },
+  "hpUpdateMode": { "m": "Uuendused" },
+  "hpUpdateManual": { "m": "Käsitsi" },
+  "hpUpdateNotify": { "m": "Kontrolli ja teavita" },
+  "hpUpdateInstall": { "m": "Laadi alla ja paigalda" },
   "accountRestrictedOptionDescription": {
     "m": "See Bitwardeni ekspordivorming kasutab konto krüptovõtit. HonkPass selles vormingus faile ei loo."
   },

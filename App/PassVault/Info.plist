@@ -77,7 +77,7 @@
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.utilities</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>© 2026 HonkPass contributors</string>
+	<string>© 2026 HonkLegion</string>
 	<key>HonkPassSourceRevision</key>
 	<string>$(HONKPASS_SOURCE_REVISION)</string>
 	<key>HonkPassSourceSHA256</key>
@@ -103,7 +103,7 @@
 	<key>SUAutomaticallyUpdate</key>
 	<false/>
 	<key>SUAllowsAutomaticUpdates</key>
-	<false/>
+	<true/>
 	<key>SUEnableSystemProfiling</key>
 	<false/>
 	<key>SUVerifyUpdateBeforeExtraction</key>

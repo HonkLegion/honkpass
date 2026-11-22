@@ -1,4 +1,11 @@
 {
+  "hpWebsiteMatchSummary": { "m": "HonkPass ავტომატურ შევსებას გთავაზობთ, როცა მისამართი ამ წესს შეესაბამება." },
+  "hpVaultSyncInterval": { "m": "ფონური სინქრონიზაციის ინტერვალი" },
+  "hpGravatarHint": { "m": "პროფილის სურათის მოსაძებნად HonkPass Gravatar-ს თქვენი ელფოსტის მისამართის SHA-256 ჰეშს უგზავნის." },
+  "hpUpdateMode": { "m": "განახლებები" },
+  "hpUpdateManual": { "m": "ხელით" },
+  "hpUpdateNotify": { "m": "შემოწმება და შეტყობინება" },
+  "hpUpdateInstall": { "m": "ჩამოტვირთვა და დაყენება" },
   "accountRestrictedOptionDescription": {
     "m": "Bitwarden-ის ექსპორტის ეს ფორმატი ანგარიშის დაშიფვრის გასაღებს იყენებს. HonkPass ამ ფორმატის ფაილებს არ ქმნის."
   },

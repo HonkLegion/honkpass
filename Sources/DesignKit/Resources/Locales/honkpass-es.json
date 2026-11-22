@@ -1,4 +1,11 @@
 {
+  "hpWebsiteMatchSummary": { "m": "HonkPass ofrece el autocompletado cuando la dirección cumple esta regla." },
+  "hpVaultSyncInterval": { "m": "Intervalo de sincronización en segundo plano" },
+  "hpGravatarHint": { "m": "HonkPass envía a Gravatar un hash SHA-256 de tu dirección de correo para obtener tu imagen de perfil." },
+  "hpUpdateMode": { "m": "Actualizaciones" },
+  "hpUpdateManual": { "m": "Manualmente" },
+  "hpUpdateNotify": { "m": "Buscar y avisar" },
+  "hpUpdateInstall": { "m": "Descargar e instalar" },
   "accountRestrictedOptionDescription": {
     "m": "Este formato de exportación de Bitwarden utiliza la clave de cifrado de la cuenta. HonkPass no crea archivos en este formato."
   },

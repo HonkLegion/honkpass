@@ -14,9 +14,7 @@ struct ItemFormPanel: View {
     let navigation: VaultNavigation
     @Bindable var form: ItemForm
     @FocusState private var focus: String?
-    /// The website and the custom field that are being dragged by their handles.
-    @State private var draggedWebsite: Int?
-    @State private var draggedField: Int?
+    @State private var revealedField: UUID?
 
     var body: some View {
         // The cross asks before it throws changes away; "cancel" is the answer already.
@@ -40,7 +38,7 @@ struct ItemFormPanel: View {
                     EmptyView()
                 }
                 additionalOptions
-                if !form.draft.customFields.isEmpty { customFields }
+                if !form.fieldIDs.isEmpty || form.removedField != nil { customFields }
                 // "Attachments are only available for existing ciphers": bit-item with an arrow.
                 if form.mode == .edit, let id = form.draft.id {
                     BWItem(BWText["attachments"]) { navigation.attachmentsItemID = id } start: { EmptyView() }
@@ -234,17 +232,16 @@ struct ItemFormPanel: View {
     private var websites: some View {
         let rows = form.websiteRows
         return section(BWText["autofillOptions"]) {
-            ForEach(Array(rows.enumerated()), id: \.element) { place, index in
-                websiteRow(index, place: place, count: rows.count)
-                    // host: "tw-p-3 -tw-mx-3", "first:-tw-mt-3"
-                    .padding(Metric.space(3))
-                    .padding(.horizontal, -Metric.space(3))
-                    .padding(.top, place == 0 ? -Metric.space(3) : 0)
-                    // cdkDropList: a row that is dragged over another one takes its place.
-                    .onDrop(of: [.text], delegate: ReorderDrop(index: index, dragged: $draggedWebsite) { source, target in
-                        form.moveWebsite(from: source, to: target)
-                    })
+            ReorderRows(ids: rows, label: { index in
+                let place = rows.firstIndex(of: index) ?? 0
+                return BWText["reorderToggleButton", place == 0 ? BWText["websiteUri"] : BWText["websiteUriCount", String(place + 1)]]
+            }, move: { from, to in form.moveWebsite(from: rows[from], to: rows[to]) },
+                        focusFollowsIndex: true) { index in
+                if let place = rows.firstIndex(of: index) {
+                    websiteRow(index, place: place, count: rows.count)
+                }
             }
+            .padding(.bottom, Metric.space(3))
             BWLink(BWText["addWebsiteOrApp"], startIcon: .plus) { form.isAddWebsiteMenuOpen = true }
                 .frame(height: Self.linkLine)
                 .disabled(form.isReadingApp)
@@ -288,46 +285,32 @@ struct ItemFormPanel: View {
         let label = place == 0 ? BWText["websiteUri"] : BWText["websiteUriCount", String(place + 1)]
         let address = Binding(get: { index < login.wrappedValue.websites.count ? login.wrappedValue.websites[index].address : "" },
                               set: { if index < login.wrappedValue.websites.count { login.wrappedValue.websites[index].address = $0 } })
-        let match = Binding(get: { index < login.wrappedValue.websites.count ? login.wrappedValue.websites[index].match : nil },
-                            set: { if index < login.wrappedValue.websites.count { login.wrappedValue.websites[index].match = $0 } })
-        return VStack(alignment: .leading, spacing: 0) {
-            // div "tw-flex tw-flex-1", with "!tw-mb-1" while the match detection shows
-            HStack(alignment: .bottom, spacing: 0) {
-                BWFormField(label, isFocused: focus == key, bottomMargin: 0) {
-                    BWTextInput(text: address).focused($focus, equals: key)
-                } suffix: {
-                    BWIconButton(isOpen ? .cogF : .cog,
-                                 label: BWText[isOpen ? "hideMatchDetectionNoPlaceholder" : "showMatchDetectionNoPlaceholder"],
-                                 size: .small) {
-                        if isOpen { form.openMatchDetection.remove(index) } else { form.openMatchDetection.insert(index) }
-                    }
-                    if count > 1 {
-                        BWIconButton(.minusCircle, label: BWText["deleteWebsite"], size: .small, kind: .dangerGhost) {
-                            login.wrappedValue.websites.remove(at: index)
-                            form.openMatchDetection = []
-                        }
+        let presented = Binding(get: { form.openMatchDetection.contains(index) }, set: { open in
+            if open { form.openMatchDetection = [index] } else { form.openMatchDetection.remove(index) }
+        })
+        return HStack(alignment: .bottom, spacing: 0) {
+            BWFormField(label, isFocused: focus == key, bottomMargin: 0) {
+                BWTextInput(text: address).focused($focus, equals: key)
+            } suffix: {
+                BWIconButton(isOpen ? .cogF : .cog,
+                             label: BWText[isOpen ? "hideMatchDetectionNoPlaceholder" : "showMatchDetectionNoPlaceholder"],
+                             size: .small) {
+                    form.openMatchDetection = [index]
+                }
+                .popover(isPresented: presented, arrowEdge: .trailing) {
+                    if login.wrappedValue.websites.indices.contains(index) {
+                        WebsiteMatchPopover(website: login.wrappedValue.websites[index]) { edited in
+                            if login.wrappedValue.websites.indices.contains(index) { login.wrappedValue.websites[index] = edited }
+                            presented.wrappedValue = false
+                        } cancel: { presented.wrappedValue = false }
                     }
                 }
                 if count > 1 {
-                    // div "tw-flex tw-items-center tw-ml-1.5 tw-self-end tw-min-h-10" around the handle.
-                    ReorderHandle(label: BWText["reorderToggleButton", label], size: .small, dragged: $draggedWebsite, index: index,
-                                  count: count) { source, target in
-                        form.moveWebsite(from: source, to: target)
-                        focus = "website-handle-\(target)"
+                    BWIconButton(.minusCircle, label: BWText["deleteWebsite"], size: .small, kind: .dangerGhost) {
+                        login.wrappedValue.websites.remove(at: index)
+                        form.openMatchDetection = []
                     }
-                    .focused($focus, equals: "website-handle-\(index)")
-                    .frame(height: Metric.space(10))
-                    .padding(.leading, Metric.space(1.5))
                 }
-            }
-            .padding(.bottom, isOpen ? Metric.space(1) : 0)
-            if isOpen {
-                BWSelect(BWText["matchDetection"], selection: match, options: [
-                    .init(nil, BWText["default"]), .init(.baseDomain, BWText["baseDomain"]), .init(.host, BWText["host"]),
-                    .init(.exact, BWText["exact"]), .init(.never, BWText["never"]),
-                    .init(.startsWith, BWText["startsWith"]), .init(.regularExpression, BWText["regEx"]),
-                ], bottomMargin: 0)
-                    .padding(.top, Metric.space(4))
             }
         }
     }
@@ -433,7 +416,7 @@ struct ItemFormPanel: View {
 
     /// additional-options-section
     private var additionalOptions: some View {
-        let hasFields = !form.draft.customFields.isEmpty
+        let hasFields = !form.fieldIDs.isEmpty || form.removedField != nil
         return section(BWText["additionalOptions"]) {
             BWFormField(BWText["notes"], isFocused: focus == "notes", isTextArea: true) {
                 BWTextArea(text: $form.draft.notes, rows: 5).focused($focus, equals: "notes")
@@ -442,78 +425,115 @@ struct ItemFormPanel: View {
             BWCheckbox(BWText["passwordPrompt"], isOn: $form.draft.asksForMasterPassword)
                 .padding(.bottom, hasFields ? 0 : Metric.space(4))
             if !hasFields {
-                BWLink(BWText["addField"], startIcon: .plus) { form.fieldDialog = .add }
+                BWLink(BWText["addField"], startIcon: .plus) { form.showsAddField = true }
                     .frame(height: Self.linkLine)
             }
         }
     }
 
-    /// custom-fields.component.html
-    private var customFields: some View {
-        section(BWText["customFields"]) {
-            ForEach(Array(form.draft.customFields.indices), id: \.self) { index in
-                customFieldRow(index)
-                    // "tw-flex tw-p-3 -tw-mx-3 tw-gap-4", "first:-tw-mt-3"
-                    .padding(Metric.space(3))
-                    .padding(.horizontal, -Metric.space(3))
-                    .padding(.top, index == 0 ? -Metric.space(3) : 0)
-                    .onDrop(of: [.text], delegate: ReorderDrop(index: index, dragged: $draggedField) { source, target in
-                        form.moveCustomField(from: source, to: target)
-                    })
-            }
-            BWLink(BWText["addField"], startIcon: .plus) { form.fieldDialog = .add }
-                .frame(height: Self.linkLine)
-        }
-    }
-
-    /// A link that stands alone in a card is an inline button on a line of the body text:
-    /// the line is 20 pixels high, the link with its "tw-py-0.5" in the middle of it.
     private static let linkLine = TextStyle.body.lineHeight
 
-    @ViewBuilder
-    private func customFieldRow(_ index: Int) -> some View {
-        let fields = form.draft.customFields
-        if index < fields.count {
-            let field = fields[index]
-            let key = "field-\(index)"
-            let value = Binding(get: { index < form.draft.customFields.count ? form.draft.customFields[index].value : .text("") },
-                                set: { if index < form.draft.customFields.count { form.draft.customFields[index].value = $0 } })
-            HStack(alignment: .center, spacing: Metric.space(4)) {
-                Group {
-                    switch field.value {
-                    case .text:
-                        input(field.name, key, Binding(get: { if case .text(let text) = value.wrappedValue { text } else { "" } },
-                                                       set: { value.wrappedValue = .text($0) }), isLast: true)
-                    case .hidden:
-                        input(field.name, key, Binding(get: { if case .hidden(let text) = value.wrappedValue { text } else { "" } },
-                                                       set: { value.wrappedValue = .hidden($0) }), isHidden: true, isLast: true)
-                    case .boolean:
-                        BWCheckbox(field.name, isOn: Binding(get: { if case .boolean(let isOn) = value.wrappedValue { isOn } else { false } },
-                                                             set: { value.wrappedValue = .boolean($0) }))
-                    case .linked:
-                        BWSelect(field.name, selection: Binding(get: { if case .linked(let id) = value.wrappedValue { id } else { 0 } },
-                                                                set: { value.wrappedValue = .linked($0) }),
-                                 options: LinkedField.options(for: form.draft.type).map { id in
-                                     .init(id, LinkedField.labelKey(id).map { BWText[$0] } ?? "")
-                                 }, bottomMargin: 0)
-                    }
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                // "tw-self-center tw-mt-2"
-                BWIconButton(.pencilSquare, label: BWText["editFieldLabel", field.name]) { form.fieldDialog = .edit(index) }
-                    .padding(.top, Metric.space(2))
-                if fields.count > 1 {
-                    ReorderHandle(label: BWText["reorderToggleButton", field.name], size: .regular, dragged: $draggedField,
-                                  index: index, count: fields.count) { source, target in
-                        form.moveCustomField(from: source, to: target)
-                        focus = "field-handle-\(target)"
-                    }
-                    .focused($focus, equals: "field-handle-\(index)")
-                    .padding(.top, Metric.space(2))
+    private var customFields: some View {
+        section(BWText["customFields"]) {
+            ReorderRows(ids: form.fieldIDs, label: { id in
+                let name = form.fieldIDs.firstIndex(of: id).map { form.draft.customFields[$0].name } ?? ""
+                return BWText["reorderToggleButton", name]
+            }, move: form.moveCustomField, onGrab: { revealedField = nil }) { id in
+                if let index = form.fieldIDs.firstIndex(of: id) { customFieldRow(id, index: index) }
+            }
+            HStack {
+                BWLink(BWText["addField"], startIcon: .plus) { form.showsAddField = true }
+                if form.removedField != nil {
+                    Spacer()
+                    BWLink(BWText["undo"]) { form.undoRemoveField() }
                 }
             }
+            .padding(.top, Metric.space(3))
+        }
+        .onChange(of: focus) { old, new in
+            if let id = revealedField, old == "clear-\(id)", new != old { revealedField = nil }
+        }
+        .onReceive(NotificationCenter.default.publisher(for: NSWindow.didResignKeyNotification)) { _ in
+            if revealedField != nil { revealedField = nil }
+        }
+        .onDisappear { revealedField = nil }
+    }
+
+    private func customFieldRow(_ id: UUID, index: Int) -> some View {
+        let field = form.draft.customFields[index]
+        let binding = Binding<CustomField>(get: {
+            form.fieldIDs.firstIndex(of: id).map { form.draft.customFields[$0] } ?? field
+        }, set: { new in
+            if let i = form.fieldIDs.firstIndex(of: id) { form.draft.customFields[i] = new }
+        })
+        let active = ["name-\(id)", "value-\(id)", "clear-\(id)"].contains(focus ?? "")
+        let shape = RoundedRectangle(cornerRadius: Metric.fieldCornerRadius)
+        return HStack(spacing: Metric.space(2)) {
+            VStack(alignment: .leading, spacing: Metric.space(1)) {
+                TextField(BWText["fieldLabel"], text: binding.name)
+                    .textFieldStyle(.plain).fontWeight(.semibold)
+                    .focused($focus, equals: "name-\(id)")
+                customValue(id, field: binding)
+            }
+            .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+            BWIconButton(.trash, label: BWText["deleteCustomField", field.name], size: .small, kind: .dangerGhost) {
+                revealedField = nil
+                form.removeField(id)
+            }
+        }
+        .padding(.leading, Metric.space(3)).padding(.trailing, Metric.space(1))
+        .padding(.vertical, Metric.space(2))
+        .background(shape.fill(.theme(.bgSecondary)))
+        .overlay(shape.strokeBorder(.theme(active ? .borderBrand : .borderBase), lineWidth: active ? 2 : 1).allowsHitTesting(false))
+    }
+
+    @ViewBuilder
+    private func customValue(_ id: UUID, field: Binding<CustomField>) -> some View {
+        switch field.wrappedValue.value {
+        case .text, .hidden:
+            let hidden = if case .hidden = field.wrappedValue.value { true } else { false }
+            let text = Binding<String>(get: {
+                switch field.wrappedValue.value {
+                case .text(let s), .hidden(let s): s
+                default: ""
+                }
+            }, set: { field.wrappedValue.value = hidden ? .hidden($0) : .text($0) })
+            if hidden && revealedField != id {
+                BWTextInput(text: text, isSecure: true, isMonospaced: true)
+                    .focused($focus, equals: "value-\(id)")
+                    .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                    .overlay {
+                        Color.clear.contentShape(Rectangle())
+                            .onTapGesture { revealedField = id }
+                            .accessibilityHidden(true)
+                    }
+                    .accessibilityLabel(field.wrappedValue.name)
+            } else {
+                BWTextInput(text: text, isMonospaced: hidden)
+                    .focused($focus, equals: hidden ? "clear-\(id)" : "value-\(id)")
+                    .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                    .onAppear { if hidden && revealedField == id { focus = "clear-\(id)" } }
+                    .accessibilityLabel(field.wrappedValue.name)
+            }
+        case .boolean(let on):
+            Toggle(BWText[on ? "yes" : "no"], isOn: Binding(get: {
+                if case .boolean(let value) = field.wrappedValue.value { value } else { false }
+            }, set: { field.wrappedValue.value = .boolean($0) }))
+            .toggleStyle(.checkbox).focused($focus, equals: "value-\(id)")
+            .accessibilityLabel(field.wrappedValue.name)
+        case .linked(let link):
+            Picker(field.wrappedValue.name, selection: Binding(get: {
+                if case .linked(let current) = field.wrappedValue.value { current } else { link }
+            }, set: { field.wrappedValue.value = .linked($0) })) {
+                ForEach(LinkedField.options(for: form.draft.type), id: \.self) { option in
+                    Text(LinkedField.labelKey(option).map { BWText[$0] } ?? "").tag(option)
+                }
+            }
+            .pickerStyle(.menu).labelsHidden().buttonStyle(.plain)
+            .focused($focus, equals: "value-\(id)")
         }
     }
+
 
     // MARK: Footer
 
@@ -538,6 +558,10 @@ struct ItemFormPanel: View {
     }
 
     private func save() {
+        if !isNameMissing, let index = form.draft.customFields.firstIndex(where: { $0.name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty }) {
+            focus = "name-\(form.fieldIDs[index])"
+            return
+        }
         if isNameMissing { focus = "name" }
         ItemActions(model: model, navigation: navigation).save(form)
     }
@@ -547,49 +571,30 @@ struct ItemFormPanel: View {
 /// Source: cipher-form/components/custom-fields/add-edit-custom-field-dialog.
 struct CustomFieldDialog: View {
     @Bindable var form: ItemForm
-    let dialog: ItemForm.FieldDialog
     @State private var kind = Kind.text
-    @State private var label: String
+    @State private var label = ""
     @FocusState private var isLabelFocused: Bool
 
     enum Kind: Hashable {
         case text, hidden, boolean, linked
     }
 
-    init(form: ItemForm, dialog: ItemForm.FieldDialog) {
-        self.form = form
-        self.dialog = dialog
-        var label = ""
-        if case .edit(let index) = dialog, index < form.draft.customFields.count { label = form.draft.customFields[index].name }
-        _label = State(initialValue: label)
-    }
-
-    private var isAdd: Bool { dialog == .add }
-
     var body: some View {
-        BWDialog(title: BWText[isAdd ? "addField" : "editField"], onClose: close) {
+        BWDialog(title: BWText["addField"], onClose: close) {
             VStack(alignment: .leading, spacing: 0) {
-                if isAdd {
-                    BWSelect(BWText["fieldType"], selection: $kind, options: kinds, hint: hint)
-                }
+                BWSelect(BWText["fieldType"], selection: $kind, options: kinds, hint: hint)
                 BWFormField(BWText["fieldLabel"], isFocused: isLabelFocused,
-                            hint: isAdd && kind == .linked ? BWText["linkedFieldLabelHelpText"] : nil, bottomMargin: 0) {
+                            hint: kind == .linked ? BWText["linkedFieldLabelHelpText"] : nil, bottomMargin: 0) {
                     BWTextInput(text: $label)
                         .focused($isLabelFocused)
                         .onSubmit(confirm)
                 }
             }
         } footer: {
-            BWButton(BWText[isAdd ? "add" : "save"], kind: .primary, isBlock: false, action: confirm)
+            BWButton(BWText["add"], kind: .primary, isBlock: false, action: confirm)
                 .disabled(label.isEmpty)
             BWButton(BWText["cancel"], isBlock: false, action: close)
-            if case .edit(let index) = dialog {
-                Spacer(minLength: 0)
-                BWIconButton(.trash, label: BWText["deleteCustomField", label], kind: .dangerGhost) {
-                    if index < form.draft.customFields.count { form.draft.customFields.remove(at: index) }
-                    close()
-                }
-            }
+
         }
         .onAppear { isLabelFocused = true }
         .onExitCommand(perform: close)
@@ -614,23 +619,18 @@ struct CustomFieldDialog: View {
 
     private func confirm() {
         guard !label.isEmpty else { return }
-        switch dialog {
-        case .add:
-            let value: CustomField.Value = switch kind {
-            case .text: .text("")
-            case .hidden: .hidden("")
-            case .boolean: .boolean(false)
-            case .linked: .linked(LinkedField.options(for: form.draft.type).first ?? 0)
-            }
-            form.draft.customFields.append(CustomField(name: label, value: value))
-        case .edit(let index):
-            if index < form.draft.customFields.count { form.draft.customFields[index].name = label }
+        let value: CustomField.Value = switch kind {
+        case .text: .text("")
+        case .hidden: .hidden("")
+        case .boolean: .boolean(false)
+        case .linked: .linked(LinkedField.options(for: form.draft.type).first ?? 0)
         }
+        form.addField(CustomField(name: label, value: value))
         close()
     }
 
     private func close() {
-        form.fieldDialog = nil
+        form.showsAddField = false
     }
 }
 
@@ -687,68 +687,218 @@ struct SSHKeyPasswordDialog: View {
     }
 }
 
-/// The handle that moves a row of a list of the form: `cdkDragHandle` on a `bitIconButton` with
-/// "bwi-drag-and-drop". The row follows the pointer while the handle is dragged; with the focus on
-/// the handle, the up and down arrows move the row by one place, as `handleKeydown` of the reference.
-private struct ReorderHandle: View {
-    let label: String
-    let size: BWIconButton.Size
-    @Binding var dragged: Int?
-    let index: Int
-    let count: Int
-    let move: (Int, Int) -> Void
-    @State private var isHovered = false
-    @FocusState private var isFocused: Bool
+private struct WebsiteMatchPopover: View {
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    let website: ItemDraft.Website
+    let apply: (ItemDraft.Website) -> Void
+    let cancel: () -> Void
+    @State private var draft: ItemDraft.Website
+    @FocusState private var menuFocused: Bool
+    @FocusState private var patternFocused: Bool
+    private static let modes: [(WebsiteMatch?, String)] = [
+        (nil, "default"), (.baseDomain, "baseDomain"), (.host, "host"), (.exact, "exact"),
+        (.never, "never"), (.startsWith, "startsWith"), (.regularExpression, "regEx")
+    ]
+
+    init(website: ItemDraft.Website, apply: @escaping (ItemDraft.Website) -> Void, cancel: @escaping () -> Void) {
+        self.website = website
+        self.apply = apply
+        self.cancel = cancel
+        _draft = State(initialValue: website)
+    }
+
+    private var usesPattern: Bool { draft.match == .regularExpression || draft.match == .startsWith }
+
+    private var rulePreview: (label: String, value: String?) {
+        let address = usesPattern ? draft.address : website.address
+        switch draft.match ?? .baseDomain {
+        case .baseDomain: return (BWText["baseDomain"], WebAddress.domain(of: address))
+        case .host: return (BWText["host"], WebAddress.host(of: address))
+        case .exact: return (BWText["exact"], address)
+        case .startsWith: return (BWText["startsWith"], address)
+        case .regularExpression: return (BWText["regEx"], address)
+        case .never: return (BWText["doNotAutofill"], nil)
+        }
+    }
 
     var body: some View {
-        let box = size == .small ? Metric.space(8) : Metric.space(10)
-        let icon = size == .small ? 1.25 * Metric.rem : 1.5 * Metric.rem
-        IconView(.dragAndDrop, size: icon)
-            .frame(width: box, height: box)
-            .foregroundStyle(.theme(isHovered || isFocused ? .fgBrand : .fgHeading))
-            .background(BWControlShape().fill(.theme(isHovered || isFocused ? .bgHover : .clear)))
-            .contentShape(Rectangle())
-            .onHover { isHovered = $0 }
-            .pointerStyle(.grabIdle)
-            .help(label)
-            .accessibilityLabel(label)
-            .focusable()
-            .focused($isFocused)
-            .onKeyPress(.upArrow) {
-                guard index > 0 else { return .ignored }
-                move(index, index - 1)
-                return .handled
+        VStack(alignment: .leading, spacing: Metric.space(3)) {
+            Text(BWText["autofillOptions"])
+                .font(.caption.weight(.semibold))
+                .textCase(.uppercase)
+                .foregroundStyle(.secondary)
+                .accessibilityAddTraits(.isHeader)
+            let selection = BWText[Self.modes.first { $0.0 == draft.match }?.1 ?? "default"]
+            Menu {
+                Picker(BWText["matchDetection"], selection: $draft.match) {
+                    ForEach(Self.modes, id: \.1) { mode in
+                        Text(BWText[mode.1]).tag(mode.0)
+                    }
+                }
+                .pickerStyle(.inline)
+            } label: {
+                BWFieldContainer(isFocused: menuFocused) {
+                    HStack {
+                        Text(selection).textStyle(.body)
+                        Spacer(minLength: Metric.space(2))
+                        Image(systemName: "chevron.down").font(.caption)
+                    }
+                    .padding(.horizontal, Metric.space(3))
+                    .foregroundStyle(.theme(.fgHeading))
+                }
+                .contentShape(Rectangle())
             }
-            .onKeyPress(.downArrow) {
-                guard index < count - 1 else { return .ignored }
-                move(index, index + 1)
-                return .handled
+            .menuStyle(.button)
+            .buttonStyle(.plain)
+            .menuIndicator(.hidden)
+            .focused($menuFocused)
+            .accessibilityLabel(BWText["matchDetection"])
+            .accessibilityValue(selection)
+            if usesPattern {
+                VStack(alignment: .leading, spacing: Metric.space(2)) {
+                    let label = BWText[draft.match == .regularExpression ? "regEx" : "websiteUri"]
+                    BWFieldLabel(label, isRequired: true)
+                    BWFieldContainer(isFocused: patternFocused) {
+                        BWTextInput(text: $draft.address, placeholder: draft.match == .regularExpression ? #"^https://shop\.example\.com/"# : "https://shop.example.com/")
+                            .padding(.horizontal, Metric.space(3))
+                            .foregroundStyle(.theme(.fgHeading))
+                            .accessibilityLabel(label)
+                            .focused($patternFocused)
+                            .disableAutocorrection(true)
+                            .onSubmit { confirm() }
+                    }
+                }
+                .transition(.opacity.combined(with: .offset(y: -4)))
             }
-            .onDrag {
-                dragged = index
-                return NSItemProvider(object: label as NSString)
+            let preview = rulePreview
+            VStack(alignment: .leading, spacing: Metric.space(1)) {
+                if draft.match != .never {
+                    Text(BWText["hpWebsiteMatchSummary"])
+                }
+                Text(verbatim: [preview.label, preview.value].compactMap { $0 }.filter { !$0.isEmpty }.joined(separator: " · "))
+                    .fontWeight(.semibold)
+                    .lineLimit(2)
+                    .truncationMode(.middle)
             }
+            .font(.callout)
+            .fixedSize(horizontal: false, vertical: true)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(Metric.space(3))
+            .background(.theme(.bgBrandSofter), in: RoundedRectangle(cornerRadius: Metric.fieldCornerRadius))
+            HStack {
+                Spacer()
+                BWIconButton(.close, label: BWText["cancel"], size: .small, action: cancel)
+                    .keyboardShortcut(.cancelAction)
+                BWIconButton(.check, label: BWText["save"], size: .small, action: confirm)
+                    .disabled(usesPattern && draft.address.isEmpty)
+                    .keyboardShortcut(.defaultAction)
+            }
+        }
+        .submitScope()
+        .padding(Metric.space(4))
+        .frame(width: 330)
+        .animation(reduceMotion ? nil : .easeInOut(duration: 0.18), value: usesPattern)
+    }
+
+    private func confirm() {
+        guard !usesPattern || !draft.address.isEmpty else { return }
+        apply(.init(address: usesPattern ? draft.address : website.address, match: draft.match))
     }
 }
 
-/// A row of a reordered list as the place a dragged row is dropped on.
-private struct ReorderDrop: DropDelegate {
-    let index: Int
-    @Binding var dragged: Int?
+private struct ReorderRows<ID: Hashable, Row: View>: View {
+    let ids: [ID]
+    let label: (ID) -> String
     let move: (Int, Int) -> Void
+    var focusFollowsIndex = false
+    var onGrab: () -> Void = {}
+    @ViewBuilder let row: (ID) -> Row
+    @Namespace private var space
+    @State private var frames: [ID: CGRect] = [:]
+    @GestureState private var drag: Drag?
+    @FocusState private var focused: ID?
 
-    func dropEntered(info: DropInfo) {
-        guard let source = dragged, source != index else { return }
-        move(source, index)
-        dragged = index
+    private struct Drag {
+        let id: ID
+        let offset: CGFloat
+        let y: CGFloat
     }
 
-    func dropUpdated(info: DropInfo) -> DropProposal? {
-        DropProposal(operation: .move)
+    private func destination(_ id: ID, y: CGFloat) -> Int {
+        ids.filter { $0 != id && (frames[$0]?.midY ?? .infinity) < y }.count
     }
 
-    func performDrop(info: DropInfo) -> Bool {
-        dragged = nil
-        return true
+    var body: some View {
+        VStack(spacing: Metric.space(3)) {
+            ForEach(Array(ids.enumerated()), id: \.element) { index, id in
+                let moving = drag?.id == id
+                let shape = RoundedRectangle(cornerRadius: Metric.fieldCornerRadius)
+                HStack(spacing: Metric.space(1.5)) {
+                    if ids.count > 1 {
+                        ReorderDots()
+                            .foregroundStyle(.theme(moving || focused == id ? .fgBrand : .fgHeading))
+                            .frame(width: Metric.space(8), height: Metric.space(10))
+                            .contentShape(Rectangle())
+                            .pointerStyle(.grabIdle)
+                            .help(label(id))
+                            .accessibilityLabel(label(id))
+                            .focusable().focused($focused, equals: id)
+                            .focusEffectDisabled()
+                            .onKeyPress(.upArrow) { keyboardMove(index, by: -1) }
+                            .onKeyPress(.downArrow) { keyboardMove(index, by: 1) }
+                            .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .named(space))
+                                .updating($drag) { event, state, _ in
+                                    state = Drag(id: id, offset: event.translation.height, y: event.location.y)
+                                }
+                                .onChanged { _ in onGrab() }
+                                .onEnded { event in
+                                    let target = destination(id, y: event.location.y)
+                                    if index != target { move(index, target) }
+                                })
+                    }
+                    row(id)
+                }
+                .opacity(moving ? 0.35 : 1)
+                .background {
+                    if moving {
+                        shape.strokeBorder(.theme(.borderStrong), style: StrokeStyle(lineWidth: 1, dash: [4, 3]))
+                    }
+                }
+                .overlay {
+                    if let drag, !moving, destination(drag.id, y: drag.y) == index,
+                       let from = ids.firstIndex(of: drag.id) {
+                        Capsule().fill(.theme(.fgBrand)).frame(height: 3)
+                            .offset(y: index < from ? -Metric.space(1.5) : Metric.space(1.5))
+                            .frame(maxHeight: .infinity, alignment: index < from ? .top : .bottom)
+                    }
+                }
+                .onGeometryChange(for: CGRect.self) { [space] in $0.frame(in: .named(space)) } action: { frames[id] = $0 }
+                .onDisappear { frames.removeValue(forKey: id) }
+            }
+        }
+        .overlay(alignment: .topLeading) {
+            GeometryReader { geometry in
+                if let drag, let frame = frames[drag.id] {
+                    let top = min(max(0, frame.minY + drag.offset), max(0, geometry.size.height - frame.height))
+                    RoundedRectangle(cornerRadius: Metric.fieldCornerRadius)
+                        .fill(.theme(.fgBrand).opacity(0.12))
+                        .strokeBorder(.theme(.borderBrand), lineWidth: 2)
+                        .frame(width: frame.width, height: frame.height)
+                        .offset(x: frame.minX, y: top)
+                }
+            }
+            .allowsHitTesting(false)
+            .accessibilityHidden(true)
+        }
+        .coordinateSpace(name: space)
+    }
+
+    private func keyboardMove(_ index: Int, by step: Int) -> KeyPress.Result {
+        let target = index + step
+        guard ids.indices.contains(target) else { return .ignored }
+        let focusAfterMove = focusFollowsIndex ? ids[target] : ids[index]
+        move(index, target)
+        focused = focusAfterMove
+        return .handled
     }
 }

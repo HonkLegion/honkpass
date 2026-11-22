@@ -62,8 +62,8 @@ struct RootView: View {
                 SSHKeyPasswordDialog(model: model, navigation: navigation, form: form)
             } else if let form = navigation.itemForm, form.isAppPickerOpen, model.state.session.isUnlocked {
                 RunningAppsPicker(model: model, navigation: navigation, form: form)
-            } else if let form = navigation.itemForm, let dialog = form.fieldDialog, model.state.session.isUnlocked {
-                CustomFieldDialog(form: form, dialog: dialog)
+            } else if let form = navigation.itemForm, form.showsAddField, model.state.session.isUnlocked {
+                CustomFieldDialog(form: form)
             } else if navigation.showsGeneratorHistory, model.state.session.isUnlocked {
                 GeneratorHistoryDialog(model: model, navigation: navigation)
             } else if let session = navigation.generator, model.state.session.isUnlocked {

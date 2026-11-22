@@ -7,6 +7,10 @@ public enum ClipboardClearing: Sendable, Codable, Hashable {
     case after(seconds: Int)
 }
 
+public enum VaultSyncInterval: Int, Codable, Sendable {
+    case disabled = 0, fiveMinutes = 5, fifteenMinutes = 15, thirtyMinutes = 30, oneHour = 60
+}
+
 /// What the user has set for an account on this Mac. The engine keeps it in the account store,
 /// where it survives a logout, and acts on it; clients show it and send a changed copy.
 public struct EngineSettings: Sendable, Codable, Equatable {
@@ -15,6 +19,7 @@ public struct EngineSettings: Sendable, Codable, Equatable {
     /// Ask the icon service of the server for the pictures of websites.
     public var showsWebsiteIcons: Bool
     public var usesGravatar = true
+    public var syncInterval: VaultSyncInterval = .fifteenMinutes
     /// What the generator was last asked for.
     public var generator: GeneratorOptions
     /// The SSH agent: whether SSH clients can use the keys of the vault, and how it asks.
@@ -47,6 +52,7 @@ public struct EngineSettings: Sendable, Codable, Equatable {
             ?? fallback.clipboardClearing
         showsWebsiteIcons = try container.decodeIfPresent(Bool.self, forKey: .showsWebsiteIcons) ?? fallback.showsWebsiteIcons
         usesGravatar = try container.decodeIfPresent(Bool.self, forKey: .usesGravatar) ?? fallback.usesGravatar
+        syncInterval = (try? container.decode(VaultSyncInterval.self, forKey: .syncInterval)) ?? fallback.syncInterval
         // Options this version cannot read are the defaults again; they hold no secret and no choice of safety.
         generator = (try? container.decodeIfPresent(GeneratorOptions.self, forKey: .generator)) ?? fallback.generator
         // An agent whose settings cannot be read is off.

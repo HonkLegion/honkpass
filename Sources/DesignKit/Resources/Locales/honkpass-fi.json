@@ -1,4 +1,11 @@
 {
+  "hpWebsiteMatchSummary": { "m": "HonkPass ehdottaa automaattista täyttöä, kun osoite vastaa tätä sääntöä." },
+  "hpVaultSyncInterval": { "m": "Taustasynkronoinnin aikaväli" },
+  "hpGravatarHint": { "m": "HonkPass lähettää sähköpostiosoitteesi SHA-256-tiivisteen Gravatarille profiilikuvasi hakemista varten." },
+  "hpUpdateMode": { "m": "Päivitykset" },
+  "hpUpdateManual": { "m": "Manuaalisesti" },
+  "hpUpdateNotify": { "m": "Tarkista ja ilmoita" },
+  "hpUpdateInstall": { "m": "Lataa ja asenna" },
   "accountRestrictedOptionDescription": {
     "m": "Tämä Bitwardenin vientimuoto käyttää tilin salausavainta. HonkPass ei luo tämänmuotoisia tiedostoja."
   },

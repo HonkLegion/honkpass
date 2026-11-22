@@ -1,5 +1,5 @@
 {
-  "build": "20",
+  "build": "21",
   "files": {
     ".github/actionlint.yaml": {
       "executable": false,
@@ -19,7 +19,7 @@
     },
     "App/PassVault/AppDelegate.swift": {
       "executable": false,
-      "sha256": "a4c707e4c10cd76c4aecbb58ae895f902b4b81c9a5912cf5ad0edd7b5b76769d"
+      "sha256": "d81a029c667737a3524ab9a92f887cf09903df49dc4677d9ce8948254f774630"
     },
     "App/PassVault/AppIcon.icon/Assets/GooseKey.png": {
       "executable": false,
@@ -35,7 +35,7 @@
     },
     "App/PassVault/AppPreferences.swift": {
       "executable": false,
-      "sha256": "519584a7a29bccfb2364dc2f82c961c924cad78be6d4b9feaed77d9533dfa74a"
+      "sha256": "8bf61bb2f486afb3948d1c9143c4681a9867bef184eb16bbb2c87b232f898abd"
     },
     "App/PassVault/AutoFillController.swift": {
       "executable": false,
@@ -55,7 +55,7 @@
     },
     "App/PassVault/Info.plist": {
       "executable": false,
-      "sha256": "7310df5bd51b2f1dfd9e629f92f63b9c456908df1cc986fd3ef88505eae82ef2"
+      "sha256": "04da651e341b85460f23fcf356073e71eee5b6996eaff50e1b58e157f06e61e1"
     },
     "App/PassVault/ItemActions.swift": {
       "executable": false,
@@ -63,7 +63,7 @@
     },
     "App/PassVault/ItemForm.swift": {
       "executable": false,
-      "sha256": "6d9927b0edbf30a3df503c71e28133540ff7cdc9d52cde5d3006235f0971255e"
+      "sha256": "de2216443f6316489faaea9f65582dfffb06ea4c37effeeda1e6cfaa692a7201"
     },
     "App/PassVault/LaunchOptions.swift": {
       "executable": false,
@@ -83,7 +83,7 @@
     },
     "App/PassVault/Legal/inventory.json": {
       "executable": false,
-      "sha256": "0962fd7ef1f7b7be81fa3ec6aeff9a815968e00a8226e832774c2817d92df088"
+      "sha256": "b0ca5beea99e828c821ba4f0b8d5ea3b2f70894ddfe1e9e78f9583354432b811"
     },
     "App/PassVault/Legal/texts/003736bc98408b53511b9cc8ff5d1af3bf0a8f17d53841cc39d8ab1b96a195b0.txt": {
       "executable": false,
@@ -1163,7 +1163,7 @@
     },
     "App/PassVault/MainWindowController.swift": {
       "executable": false,
-      "sha256": "4bbd98c4f5e97f5832d7edb6018bd1949ca2c15f0f79f932566791151cc9b013"
+      "sha256": "edaa61f150c58f7b42a3c652d7ce708328e88d3998859df378e3b9b8819c03c2"
     },
     "App/PassVault/PassVault.entitlements": {
       "executable": false,
@@ -1175,7 +1175,7 @@
     },
     "App/PassVault/RootView.swift": {
       "executable": false,
-      "sha256": "399432b8d0d1aff84416b3e7e4e6f622ab01bb2a230109bf2e1edfb84e110dd5"
+      "sha256": "5339c472906f75357e9b15f866333e96e3783b5f840a81ba700782e05c368649"
     },
     "App/PassVault/SSHApprovalPanel.swift": {
       "executable": false,
@@ -1187,7 +1187,7 @@
     },
     "App/PassVault/Scenes.swift": {
       "executable": false,
-      "sha256": "d1b8075d083a689bad58406fd3437d7ca6abdabade4319258a6a3cdba747630a"
+      "sha256": "3eb3a8fd37c5c738f458a87593b691b621009aba3e260bf2309278172b5d996d"
     },
     "App/PassVault/Screens/AssignCollectionsDialog.swift": {
       "executable": false,
@@ -1219,11 +1219,11 @@
     },
     "App/PassVault/Screens/ItemFormPanel.swift": {
       "executable": false,
-      "sha256": "ff2862f20bea120ab01b4fca193145cea514c6a5120f2259d23577a09cd4e652"
+      "sha256": "fe18c05e2b5a669c7c2dc0f8e3a2e00e8ba2a561a31fd9841d93a37278f0e3c2"
     },
     "App/PassVault/Screens/ItemPanel.swift": {
       "executable": false,
-      "sha256": "5ec863e7b5031cd8ec2178e04f72491561988826c0d6912e6d368f949f29940b"
+      "sha256": "437129041aeed4cbf964c28f0789e4261e0dbfdc30fd36722a4f6c0566a3f100"
     },
     "App/PassVault/Screens/ItemRowIcon.swift": {
       "executable": false,
@@ -1275,7 +1275,7 @@
     },
     "App/PassVault/Screens/SettingsDialog.swift": {
       "executable": false,
-      "sha256": "8f76341795d4fe098fab2fc218e27a17615365a69554f2b4eaf63cd4ceec5745"
+      "sha256": "bbc1b941cb2e80ec0eb1bc44e51fd47c46a929c1fba8aa0efabef3a497e3018d"
     },
     "App/PassVault/Screens/ShortcutDialog.swift": {
       "executable": false,
@@ -1399,7 +1399,7 @@
     },
     "README.md": {
       "executable": false,
-      "sha256": "ec4493354e9d9a700038ad635a12bba5206726ddf5db323e93772757a5ba352c"
+      "sha256": "4bc9c37ec9d928f144d5dd1939617b996f59c81b3a28bb02f2577680f626b7d4"
     },
     "Sources/AutoFillBridge/AutoFillClient.swift": {
       "executable": false,
@@ -1459,7 +1459,7 @@
     },
     "Sources/DesignKit/Card.swift": {
       "executable": false,
-      "sha256": "b57f82d337d88f6f9ec29effe44c366db89469844e17b6f20c34b7202982bff8"
+      "sha256": "309631f0f0236af3829538fee8078e2ef956b391c241676341e98c7ea224b777"
     },
     "Sources/DesignKit/Controls.swift": {
       "executable": false,
@@ -1479,7 +1479,7 @@
     },
     "Sources/DesignKit/FormField.swift": {
       "executable": false,
-      "sha256": "58f6c9ddd9fc44152886ede13c35356801e01f3813eeb1b3deb0a00fe62eb72a"
+      "sha256": "71ca1665209d201866016034f4739c59984fd18abab143b917eb08dfce130afd"
     },
     "Sources/DesignKit/Generated/Colors.generated.swift": {
       "executable": false,
@@ -1763,143 +1763,143 @@
     },
     "Sources/DesignKit/Resources/Locales/honkpass-az.json": {
       "executable": false,
-      "sha256": "71a9bd4a9b608405d44c6364866dc9b4c0693d6bdad4f3e109260f6122cfbe09"
+      "sha256": "d52027d0dfa2167ac8eb2a1c180d429937c30f4c00c9fb50389a454490287085"
     },
     "Sources/DesignKit/Resources/Locales/honkpass-bg.json": {
       "executable": false,
-      "sha256": "a265bc02ad27f991e21e6f3ee38562d6b4ee623f1266a94982575a9fbef48c84"
+      "sha256": "d7eb46e9b2911340fcd95c11edf973d32d707972bb91a01861c6e3d06750be01"
     },
     "Sources/DesignKit/Resources/Locales/honkpass-bs.json": {
       "executable": false,
-      "sha256": "08fc11c4dbc8674b555b25fac8478e01d7cc6de17d01df9926c337070033bd34"
+      "sha256": "817e1cb0b1cd1db05fc2d92c8bf675c8b050c7ccc232566f2104a5836c67dbc3"
     },
     "Sources/DesignKit/Resources/Locales/honkpass-ca.json": {
       "executable": false,
-      "sha256": "783418e422bd8ffc15e02c4afbea301e814c130b56c85f8f901164fe82e4d4f7"
+      "sha256": "4441d4521c97abb7df77b8d814c3003d64cb1e05915adae49ed774742c880a48"
     },
     "Sources/DesignKit/Resources/Locales/honkpass-cs.json": {
       "executable": false,
-      "sha256": "74b3fdbfb3f97b91188f539ef4749fbf4d19fa4e43a0d3bc7454b42c94d29dfe"
+      "sha256": "07b2d3cd5d7c57e7402d0255668168cfab746ee5cefecc3cc18c302d0654e3e9"
     },
     "Sources/DesignKit/Resources/Locales/honkpass-cy.json": {
       "executable": false,
-      "sha256": "20888dada8b2f6e4f525ee7bd51430358b65d01541fc6c1d1d5439d894ee372c"
+      "sha256": "60f5838f042ff54befe158d4a9f6cefea41554541c9d5ff5bda8aab15bda27e2"
     },
     "Sources/DesignKit/Resources/Locales/honkpass-da.json": {
       "executable": false,
-      "sha256": "48d867a7bd14f5915f16a0aa7f4b4d767287001b7788d42cbdffe60ad9b20d5c"
+      "sha256": "7c08f9831c4be81ab1dfadbeb714c305e3c7d196434ad3acbef8ab5374f9f7e1"
     },
     "Sources/DesignKit/Resources/Locales/honkpass-de.json": {
       "executable": false,
-      "sha256": "82994c52024c8ce36fb34a32bdacafd95aecc35c5cafd4f4693fa8a2bfd77d7f"
+      "sha256": "7ff14e663b6ba1b5a2cd4359e1b35f4997b18a2aa6a84ba438e2bdbc23c993a0"
     },
     "Sources/DesignKit/Resources/Locales/honkpass-el.json": {
       "executable": false,
-      "sha256": "2cf333d18d0a73887d275cdd1f37348e292da9322ff14485a05e7da8ac651d32"
+      "sha256": "749ef352603bafbdfb7b2360e070ad77baa0f5e62b167e0baf7fad2dc66245c1"
     },
     "Sources/DesignKit/Resources/Locales/honkpass-en-GB.json": {
       "executable": false,
-      "sha256": "7885c798af5cc94db971233f4ece69c8e5a88d9467ba939e278e3e8b6352965c"
+      "sha256": "b033bedc07bb229a326761ec34788f776c5ae4bd2a01c121d82751c8d2adc5a3"
     },
     "Sources/DesignKit/Resources/Locales/honkpass-en.json": {
       "executable": false,
-      "sha256": "7d607c36e654234d6da97928e267d90e568e24604f3f3a60c19674dc566ffbb1"
+      "sha256": "2455b9c3d45d076b5c050a15fc692bceb0f4fc69c3cc61751fe4d59da44643c9"
     },
     "Sources/DesignKit/Resources/Locales/honkpass-es.json": {
       "executable": false,
-      "sha256": "c0947e4fd44307106d16d09bdbaaa1bd9a681589bfe079e2f8a9b55dde10ed7b"
+      "sha256": "550092ff5883ba9bee01c9c1f49eebbf405a9cc394374400a6a2eed1973ba290"
     },
     "Sources/DesignKit/Resources/Locales/honkpass-et.json": {
       "executable": false,
-      "sha256": "c1a933b524a7940c1c9399aa5153b7b6088b4c2f3378410c269f6a0268543dcf"
+      "sha256": "c10c65a5ecdcd49d40fcc6439417c249c3fd0374b63e9deefee0d539d3e28419"
     },
     "Sources/DesignKit/Resources/Locales/honkpass-eu.json": {
       "executable": false,
-      "sha256": "f0caf15907c42f759b3c47a76c3686678b11f0f6e114c10ddabb305c4b1b9774"
+      "sha256": "42dc8b372acbf2da3fa7f8c13559779fcff428c1b7fb1f7ef2cacd4d175f734f"
     },
     "Sources/DesignKit/Resources/Locales/honkpass-fi.json": {
       "executable": false,
-      "sha256": "ccc245dfcd37761f01c0c47e682b9a20a1ef00de00ba786313454e5f7b3d21db"
+      "sha256": "90fc8ac3ebaa48fc692af84f048ee23ac4989dae1a49c0b228e9f489bbadbef8"
     },
     "Sources/DesignKit/Resources/Locales/honkpass-fr.json": {
       "executable": false,
-      "sha256": "42511a54ba2725dcf6b4ec43eb5e78d67449ca0124bd89e294b20040fcfb7403"
+      "sha256": "9366942b361ae185ea63fcbb00d42a5bac2ab331ea57aace79586d70119faba1"
     },
     "Sources/DesignKit/Resources/Locales/honkpass-gl.json": {
       "executable": false,
-      "sha256": "9d57a9f37b86686e4107a0a684fcf06420ed9158a4938a1ce250f180ebbff76e"
+      "sha256": "8a8350f9d1e97a9bbf19b4d0d379b7eac86bd2efeacdc1edcb7d554d31448a38"
     },
     "Sources/DesignKit/Resources/Locales/honkpass-hr.json": {
       "executable": false,
-      "sha256": "58099190d88ead8929abe3f7fd8d1966c1da1fcb769f5cc7a5dca4bb52cac3eb"
+      "sha256": "cfc031b2d7672645a91c85071078a8f5dec9fefed8009756e752ecd639e19202"
     },
     "Sources/DesignKit/Resources/Locales/honkpass-hu.json": {
       "executable": false,
-      "sha256": "0af044f416e1b31443f22a5d63a76239aed0392be87ed0375bd1889d6ef167eb"
+      "sha256": "0f68ab236766b6678426aa3ba2738a848882550bd2b0364aee58c284727ebd88"
     },
     "Sources/DesignKit/Resources/Locales/honkpass-it.json": {
       "executable": false,
-      "sha256": "6d3cad2d271771b9bfefcfe9cbeb1fa42bbd82de444cd7ed387292df743fc8e0"
+      "sha256": "960421d46815d1f716247a0889f322db89cd973820de8107e658dbd0a08f6908"
     },
     "Sources/DesignKit/Resources/Locales/honkpass-ka.json": {
       "executable": false,
-      "sha256": "66017df80210e06fdc0c9cdbbfca5360d7b5c90b30481d7abf3240e61add46d1"
+      "sha256": "8e6cd92e2ff1f2f0b5d3a9edfef6a9e1a0dedf51759a1e42935eb10467e08a9e"
     },
     "Sources/DesignKit/Resources/Locales/honkpass-lt.json": {
       "executable": false,
-      "sha256": "90dc4d4609209efadfaebe651f85a3717bc80a6246b3aebad75f9595e7eaf45a"
+      "sha256": "0a8152582b89def154a3613724827497ffbd0b9dafc3cb5da92031e1c87d42a8"
     },
     "Sources/DesignKit/Resources/Locales/honkpass-lv.json": {
       "executable": false,
-      "sha256": "2ebff83b221a1f074de2a5d20d1c836a3e6dc12bffeba5adcbe06bd77d0784a2"
+      "sha256": "7fb93f117c671537337172d3bf90638077aa876a72a7f1e19ca180590de0570e"
     },
     "Sources/DesignKit/Resources/Locales/honkpass-nb.json": {
       "executable": false,
-      "sha256": "c201dc75afa5a9239098d72e3ff74171f2e77ea68e46a6714b6caefc5b568d13"
+      "sha256": "f6219d36d84c44c38dea6eb4bdef7fb7b9df10021ceb835b5ced94cb44d5ff92"
     },
     "Sources/DesignKit/Resources/Locales/honkpass-nl.json": {
       "executable": false,
-      "sha256": "5f0afd963da2669fe4279874b82df91e30923aef09a498861cf94f74bbdcd527"
+      "sha256": "e9ad3003012aa1b13d9bad5655cc1e1ecf35946e299b35ef4d581ea05c227e11"
     },
     "Sources/DesignKit/Resources/Locales/honkpass-nn.json": {
       "executable": false,
-      "sha256": "d5e77a91c77f90ebe735b8dec5727910611a9a93a80891902f81547ab3d61a6d"
+      "sha256": "bd3cce5c79f96b57f7338abb3ee1f70181af4285e66d0767f6115780b9805bf6"
     },
     "Sources/DesignKit/Resources/Locales/honkpass-pl.json": {
       "executable": false,
-      "sha256": "ba317748ea4ffaf4f042697ff2dd68202bd127cd70e98ba7fdb2c9d3e3075d75"
+      "sha256": "d36f52de0555273a2201983c0c162f01c84b1c0840ddf01a1b58b87e1dcb6c4d"
     },
     "Sources/DesignKit/Resources/Locales/honkpass-pt-PT.json": {
       "executable": false,
-      "sha256": "1203ad1065da59f0729495da89df5758eb405f087c9da6a6d59b119a3793163e"
+      "sha256": "e3cd1a37ef48496de846a96c2f598eb17fb2e5195667a037a450b4b5260c66b9"
     },
     "Sources/DesignKit/Resources/Locales/honkpass-ro.json": {
       "executable": false,
-      "sha256": "1c4618f9e5fdc58e8cf4ce5334f8539fdb80ffea19b255f480e3b20ac057cf74"
+      "sha256": "8c1d5acf64862dbe4c91ff0ad90662b0faf714a0f2d55086aee2f375899f8e06"
     },
     "Sources/DesignKit/Resources/Locales/honkpass-sk.json": {
       "executable": false,
-      "sha256": "02401bb46096fa318cba4bbc0539695d8645dd4883d7ad76f14408ff985725fa"
+      "sha256": "a81c710d27470ef06a6039c5090ee4a6a51bc6f20733d495c07a294bdb7fb01d"
     },
     "Sources/DesignKit/Resources/Locales/honkpass-sl.json": {
       "executable": false,
-      "sha256": "2cd6dfc9e2f8ef11c8b757b918e6de09e2b36517324ee41f51217295729b0978"
+      "sha256": "1d3b60b7bff8fdfa2abbf86abb83c28c517b8971c3ba53650dff6b4561830683"
     },
     "Sources/DesignKit/Resources/Locales/honkpass-sr.json": {
       "executable": false,
-      "sha256": "feb924aaa79c73254f1c473422919a06fcecb93b6b1b633b14b68747087950a1"
+      "sha256": "bb808e5f6fa4469fe796c9f59ba8886d18e79c552f7aad62d7c3c4d25de153cb"
     },
     "Sources/DesignKit/Resources/Locales/honkpass-sv.json": {
       "executable": false,
-      "sha256": "bbb555f833be6f2f05b485f6773d0a4099a5fc046b0ab9d9a2b18c9dacaf0d85"
+      "sha256": "e93f72d7598688b78e56a315f5deaa62c6e906a24bb818751d3e06f0a886e458"
     },
     "Sources/DesignKit/Resources/Locales/honkpass-tr.json": {
       "executable": false,
-      "sha256": "cc89bca7a2516718a028540ed8f1f8c2e4d6e2a5851f7655f93e115eef0ad998"
+      "sha256": "b253d132cee41eb19f711971a62c9cb86433c1ba453deedf635f4f9d2dabbb99"
     },
     "Sources/DesignKit/Resources/Locales/honkpass-uk.json": {
       "executable": false,
-      "sha256": "92c5765b748f3362271dba0ef4d63932365b23a431651fab3bce14dfbaf5d2ce"
+      "sha256": "7d3e29461fe3a093f3175ef44a11fa7f57d7b9c195447a5abafe8674de368edc"
     },
     "Sources/DesignKit/Resources/Locales/hr.json": {
       "executable": false,
@@ -2019,7 +2019,7 @@
     },
     "Sources/DesignKit/VaultControls.swift": {
       "executable": false,
-      "sha256": "6f5067c99ef9685e539217a26fd3e657de279df217bb4b8df3ad74acdd5aa00f"
+      "sha256": "8f43648a89aacb33f039eec83e7f017c3b0e612b9ed3823b49998ae5592861a2"
     },
     "Sources/DesignKit/VaultOpeningCover.swift": {
       "executable": false,
@@ -2035,11 +2035,11 @@
     },
     "Sources/Engine/Engine.swift": {
       "executable": false,
-      "sha256": "f914e67ac476af079e9ab381a9a25a1d356915ef2fa18c572bf4034bcea827f5"
+      "sha256": "72b88f69dfd29ba7bec966793378537f4bd8855c3822e5a4e4fe774f338a617f"
     },
     "Sources/Engine/EngineSettings.swift": {
       "executable": false,
-      "sha256": "46c1e6cf899007760f940cabc0a98f6a8ac6305f34f0621f2c4f5d240788c724"
+      "sha256": "46e1fc97c823ca7452236e48eec42d801f84484307cc53cfdfcda6df88211e48"
     },
     "Sources/Engine/EngineState.swift": {
       "executable": false,
@@ -2131,7 +2131,7 @@
     },
     "Sources/EngineLive/MacAppUpdater.swift": {
       "executable": false,
-      "sha256": "dfff47c424eb10d7d7e48a833a2b307e492e9b6ddaa89aada9c28003b1a7a93e"
+      "sha256": "c7cc8b36d55a18eef95d3091d02d765c529aca87b90b00c66e3622b39d055d3d"
     },
     "Sources/EngineLive/MacClipboard.swift": {
       "executable": false,
@@ -2303,7 +2303,7 @@
     },
     "Tests/EngineLiveTests/AppUpdateTests.swift": {
       "executable": false,
-      "sha256": "a3b2cd993583ec222d4640dc7bc07c1545412e443958f08a08dbb2c9f93ed6bf"
+      "sha256": "d22e778df8f432eec481a7ff2584e37c3b2f816d5cb78c1002e11e8738999ba6"
     },
     "Tests/EngineLiveTests/AuthenticationResponsivenessTests.swift": {
       "executable": false,
@@ -2459,11 +2459,11 @@
     },
     "Tests/EngineTests/EngineSyncTests.swift": {
       "executable": false,
-      "sha256": "dd696f5fd4360824c302ab776a153e81bea9f9f7f68a5af71ce1dacb68f48cf6"
+      "sha256": "e359e2319ac749fc844c6e4cc001b54113c5c2aadecc886a7cd77e69b17528e5"
     },
     "Tests/EngineTests/EngineTestSupport.swift": {
       "executable": false,
-      "sha256": "77b44f85a9be13f92bdbb17f11beb8f42fd6cebc2c538c243dac3ea51a65bd68"
+      "sha256": "6b0c3ba311092d5c0db919b32881c953933eb11426a050b0f0b8a567838f06dd"
     },
     "Tests/EngineTests/EngineTimeoutTests.swift": {
       "executable": false,
@@ -2519,7 +2519,7 @@
     },
     "project.yml": {
       "executable": false,
-      "sha256": "fcd3e2f4f84f4d87b7e462aa94704f6bbdd5fc3819041d020c05f674c552de3b"
+      "sha256": "ccbd49d6560b54985ac08ee8e0dd4f648508ebe3b7c8f799676f29ed8a49beeb"
     },
     "scripts/archive-developer-id.fish": {
       "executable": false,
@@ -2611,7 +2611,7 @@
     },
     "scripts/test_release_update.py": {
       "executable": false,
-      "sha256": "91b0fd67fff4bef640e3d50ffdba2693991c3c0e897bf945329564846c88ec47"
+      "sha256": "e134c2ce642937534f1654ba27c94e4f2936e085b9bcab646c3096dfe4b5a026"
     },
     "scripts/test_updater.py": {
       "executable": false,
@@ -2627,7 +2627,7 @@
     },
     "scripts/verify_release.py": {
       "executable": false,
-      "sha256": "9968ba093947dcc9f1f88828822d5c173af51395b8783a10ccf7bc951d241944"
+      "sha256": "ac2242ede3b5b25ea332056f0662d806af12a97009fad1aa3af636dc0526c0e8"
     },
     "scripts/window-id.swift": {
       "executable": false,
@@ -2736,7 +2736,7 @@
     "sha256": "965f7081df13756c47091029135a661ad6075bf7ca9ece65884aa33c6fdebd0c",
     "version": "0.1.9"
   },
-  "source_revision": "f5c2a45eb073746a56b4925d903f4f1b5d330ad6",
-  "tag": "v0.2.3",
-  "version": "0.2.3"
+  "source_revision": "6b7d313501cc80491b5fdda368c040977bd98b8b",
+  "tag": "v0.2.4",
+  "version": "0.2.4"
 }

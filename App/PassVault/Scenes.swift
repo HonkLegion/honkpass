@@ -384,7 +384,7 @@ struct SceneDriver {
                     finish("SCENE FAILED: the form of \(scene) did not open")
                     return
                 }
-                if form.showsFieldDialog { navigation.itemForm?.fieldDialog = .add }
+                if form.showsFieldDialog { navigation.itemForm?.showsAddField = true }
                 if form.showsHelp { navigation.itemForm?.showsVerificationKeyHelp = true }
                 for app in form.apps.compactMap(AppAddress.init) { navigation.itemForm?.addApp(app) }
                 if form.showsAddMenu { navigation.itemForm?.isAddWebsiteMenuOpen = true }

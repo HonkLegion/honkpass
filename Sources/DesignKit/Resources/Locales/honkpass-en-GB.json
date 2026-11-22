@@ -1,4 +1,11 @@
 {
+  "hpWebsiteMatchSummary": { "m": "HonkPass offers autofill when the address matches this rule." },
+  "hpVaultSyncInterval": { "m": "Background sync interval" },
+  "hpGravatarHint": { "m": "HonkPass sends Gravatar a SHA-256 hash of your email address to look up your profile picture." },
+  "hpUpdateMode": { "m": "Updates" },
+  "hpUpdateManual": { "m": "Manual" },
+  "hpUpdateNotify": { "m": "Check and notify" },
+  "hpUpdateInstall": { "m": "Download and install" },
   "honkpassQuickName": {
     "m": "Username"
   },

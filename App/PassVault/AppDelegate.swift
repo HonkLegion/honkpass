@@ -203,7 +203,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation, 
         sshApprovalWindow.update()
         let statusItem = StatusItemController(showMainWindow: { [weak self, weak quickAccess] in
                                                   quickAccess?.close()
-                                                  self?.showMainWindow(nil)
+                                                  self?.mainWindow?.showFromStatusMenu()
                                               },
                                               showQuickAccess: { [weak quickAccess] in quickAccess?.show() },
                                               autofill: { [weak quickAccess] in quickAccess?.fillFromShortcut() },
@@ -298,6 +298,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation, 
             }, recover: { [engine] in
                 await engine.resumeAfterAppUpdate()
             })
+            preferences.updater = appUpdater
         }
         #endif
         NSApp.mainMenu = MainMenu.build(delegate: self)
@@ -372,6 +373,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuItemValidation, 
 
     func applicationShouldTerminate(_ sender: NSApplication) -> NSApplication.TerminateReply {
         Task {
+            if let appUpdater, !(await appUpdater.prepareForTermination()) {
+                sender.reply(toApplicationShouldTerminate: false)
+                return
+            }
             await engine.clearPendingClipboard()
             sender.reply(toApplicationShouldTerminate: true)
         }

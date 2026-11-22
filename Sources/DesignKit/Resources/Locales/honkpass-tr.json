@@ -1,4 +1,11 @@
 {
+  "hpWebsiteMatchSummary": { "m": "Adres bu kuralla eşleştiğinde otomatik doldurma önerilir." },
+  "hpVaultSyncInterval": { "m": "Arka planda eşitleme aralığı" },
+  "hpGravatarHint": { "m": "HonkPass, profil resminizi almak için e-posta adresinizin SHA-256 özetini Gravatar’a gönderir." },
+  "hpUpdateMode": { "m": "Güncellemeler" },
+  "hpUpdateManual": { "m": "Elle" },
+  "hpUpdateNotify": { "m": "Denetle ve bildir" },
+  "hpUpdateInstall": { "m": "İndir ve yükle" },
   "accountRestrictedOptionDescription": {
     "m": "Bu Bitwarden dışa aktarma biçimi hesabın şifreleme anahtarını kullanır. HonkPass bu biçimde dosya oluşturmaz."
   },

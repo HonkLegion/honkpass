@@ -1,4 +1,11 @@
 {
+  "hpWebsiteMatchSummary": { "m": "Autoutfylling blir føreslått når adressa samsvarar med denne regelen." },
+  "hpVaultSyncInterval": { "m": "Intervall for synkronisering i bakgrunnen" },
+  "hpGravatarHint": { "m": "HonkPass sender ein SHA-256-hash av e-postadressa di til Gravatar for å hente profilbiletet ditt." },
+  "hpUpdateMode": { "m": "Oppdateringar" },
+  "hpUpdateManual": { "m": "Manuelt" },
+  "hpUpdateNotify": { "m": "Søk og varsle" },
+  "hpUpdateInstall": { "m": "Last ned og installer" },
   "accountRestrictedOptionDescription": {
     "m": "Dette eksportformatet frå Bitwarden brukar krypteringsnøkkelen til kontoen. HonkPass lagar ikkje filer i dette formatet."
   },

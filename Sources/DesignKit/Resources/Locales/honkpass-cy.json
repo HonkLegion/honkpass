@@ -1,4 +1,11 @@
 {
+  "hpWebsiteMatchSummary": { "m": "Cynigir awtolenwi pan fydd y cyfeiriad yn cyfateb i’r rheol hon." },
+  "hpVaultSyncInterval": { "m": "Cyfnod rhwng cysoniadau yn y cefndir" },
+  "hpGravatarHint": { "m": "Mae HonkPass yn anfon stwnsh SHA-256 o’ch cyfeiriad e-bost at Gravatar i nôl eich llun proffil." },
+  "hpUpdateMode": { "m": "Diweddariadau" },
+  "hpUpdateManual": { "m": "Â llaw" },
+  "hpUpdateNotify": { "m": "Gwirio a hysbysu" },
+  "hpUpdateInstall": { "m": "Lawrlwytho a gosod" },
   "accountRestrictedOptionDescription": {
     "m": "Mae’r fformat allforio Bitwarden hwn yn defnyddio allwedd amgryptio’r cyfrif. Nid yw HonkPass yn creu ffeiliau yn y fformat hwn."
   },

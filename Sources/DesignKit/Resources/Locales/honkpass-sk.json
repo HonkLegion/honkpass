@@ -1,4 +1,11 @@
 {
+  "hpWebsiteMatchSummary": { "m": "HonkPass ponúkne vyplnenie, keď adresa zodpovedá tomuto pravidlu." },
+  "hpVaultSyncInterval": { "m": "Interval synchronizácie na pozadí" },
+  "hpGravatarHint": { "m": "HonkPass pošle službe Gravatar odtlačok (SHA-256) vašej e-mailovej adresy a podľa neho načíta profilový obrázok." },
+  "hpUpdateMode": { "m": "Aktualizácie" },
+  "hpUpdateManual": { "m": "Ručne" },
+  "hpUpdateNotify": { "m": "Vyhľadať a upozorniť" },
+  "hpUpdateInstall": { "m": "Stiahnuť a nainštalovať" },
   "honkpassQuickName": {
     "m": "Používateľské meno"
   },

@@ -12,7 +12,7 @@ public enum AppUpdateConfiguration {
               let decoded = Data(base64Encoded: key), decoded.count == 32,
               decoded.contains(where: { $0 != 0 }),
               info["SUVerifyUpdateBeforeExtraction"] as? Bool == true,
-              info["SUAllowsAutomaticUpdates"] as? Bool == false,
+              info["SUAllowsAutomaticUpdates"] as? Bool == true,
               info["SUAutomaticallyUpdate"] as? Bool == false,
               info["SUEnableSystemProfiling"] as? Bool == false else { return false }
         return true
@@ -79,6 +79,35 @@ public final class MacAppUpdater: NSObject, SPUUpdaterDelegate {
         } catch {
             // Sparkle presents its own setup error. Never log arbitrary framework errors.
         }
+    }
+
+    public enum Mode: Hashable {
+        case manual, notify, install
+    }
+
+    public var mode: Mode? {
+        guard let updater else { return nil }
+        guard updater.automaticallyChecksForUpdates else { return .manual }
+        return updater.automaticallyDownloadsUpdates ? .install : .notify
+    }
+
+    public func setMode(_ mode: Mode) {
+        guard let updater else { return }
+        updater.automaticallyChecksForUpdates = mode != .manual
+        updater.automaticallyDownloadsUpdates = mode == .install
+    }
+
+    private var installsOnQuit = false
+
+    public func prepareForTermination() async -> Bool {
+        guard installsOnQuit else { return true }
+        return await driver.gate.begin()
+    }
+
+    public func updater(_ updater: SPUUpdater, willInstallUpdateOnQuit item: SUAppcastItem,
+                        immediateInstallationBlock: @escaping () -> Void) -> Bool {
+        installsOnQuit = true
+        return false
     }
 
     public var canCheckForUpdates: Bool {

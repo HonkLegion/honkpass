@@ -1,4 +1,11 @@
 {
+  "hpWebsiteMatchSummary": { "m": "Helbidea arau honekin bat datorrenean eskaintzen da betetze automatikoa." },
+  "hpVaultSyncInterval": { "m": "Atzeko planoko sinkronizazioaren tartea" },
+  "hpGravatarHint": { "m": "HonkPass-ek zure helbide elektronikoaren SHA-256 laburpena bidaltzen dio Gravatarri zure profileko irudia lortzeko." },
+  "hpUpdateMode": { "m": "Eguneratzeak" },
+  "hpUpdateManual": { "m": "Eskuz" },
+  "hpUpdateNotify": { "m": "Bilatu eta jakinarazi" },
+  "hpUpdateInstall": { "m": "Deskargatu eta instalatu" },
   "accountRestrictedOptionDescription": {
     "m": "Bitwarden-en esportazio-formatu honek kontuaren zifratze-gakoa erabiltzen du. HonkPass-ek ez du formatu horretako fitxategirik sortzen."
   },

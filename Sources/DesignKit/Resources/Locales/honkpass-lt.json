@@ -1,4 +1,11 @@
 {
+  "hpWebsiteMatchSummary": { "m": "Automatinis pildymas siūlomas, kai adresas atitinka šią taisyklę." },
+  "hpVaultSyncInterval": { "m": "Foninio sinchronizavimo intervalas" },
+  "hpGravatarHint": { "m": "„HonkPass“ siunčia jūsų el. pašto adreso SHA-256 maišos reikšmę į „Gravatar“, kad rastų jūsų profilio nuotrauką." },
+  "hpUpdateMode": { "m": "Naujiniai" },
+  "hpUpdateManual": { "m": "Rankiniu būdu" },
+  "hpUpdateNotify": { "m": "Tikrinti ir pranešti" },
+  "hpUpdateInstall": { "m": "Atsisiųsti ir įdiegti" },
   "accountRestrictedOptionDescription": {
     "m": "Šis „Bitwarden“ eksporto formatas naudoja paskyros šifravimo raktą. „HonkPass“ šio formato failų nekuria."
   },

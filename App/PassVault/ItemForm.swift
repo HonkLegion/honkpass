@@ -36,16 +36,31 @@ final class ItemForm {
         didSet { if isAppPickerOpen != oldValue { appPickerRevision = UUID() } }
     }
     private(set) var appPickerRevision = UUID()
-    /// The dialog that adds a custom field, or renames or removes the one at this position.
-    var fieldDialog: FieldDialog?
+    var showsAddField = false
+    private(set) var fieldIDs: [UUID]
+    private(set) var removedField: (field: CustomField, index: Int)?
     /// The SSH key on the clipboard is encrypted: the dialog that asks for its password is open.
     var asksForSSHKeyPassword = false
     /// The help behind the question mark of the authenticator key is open.
     var showsVerificationKeyHelp = false
 
-    enum FieldDialog: Equatable {
-        case add
-        case edit(Int)
+    func addField(_ field: CustomField) {
+        fieldIDs.append(UUID())
+        draft.customFields.append(field)
+    }
+
+    func removeField(_ id: UUID) {
+        guard let index = fieldIDs.firstIndex(of: id) else { return }
+        fieldIDs.remove(at: index)
+        removedField = (draft.customFields.remove(at: index), index)
+    }
+
+    func undoRemoveField() {
+        guard let removedField else { return }
+        let index = min(removedField.index, fieldIDs.count)
+        fieldIDs.insert(UUID(), at: index)
+        draft.customFields.insert(removedField.field, at: index)
+        self.removedField = nil
     }
 
     /// Moves a website of the login to another place in the list. Its match detection stays open with it.
@@ -90,11 +105,13 @@ final class ItemForm {
 
     func moveCustomField(from source: Int, to target: Int) {
         guard draft.customFields.indices.contains(source), draft.customFields.indices.contains(target), source != target else { return }
+        fieldIDs.insert(fieldIDs.remove(at: source), at: target)
         draft.customFields.insert(draft.customFields.remove(at: source), at: target)
     }
 
     init(mode: Mode, draft: ItemDraft) {
         self.mode = mode
+        fieldIDs = draft.customFields.map { _ in UUID() }
         var draft = draft
         // The form of a new login has one row for a website from the start; a login that is
         // there has the rows of its websites and no empty one (`initNewCipher` and

@@ -1,4 +1,11 @@
 {
+  "hpWebsiteMatchSummary": { "m": "Automatsko ispunjavanje nudi se kada adresa odgovara ovom pravilu." },
+  "hpVaultSyncInterval": { "m": "Interval pozadinske sinkronizacije" },
+  "hpGravatarHint": { "m": "HonkPass šalje servisu Gravatar SHA-256 sažetak vaše adrese e-pošte kako bi pronašao vašu profilnu sliku." },
+  "hpUpdateMode": { "m": "Ažuriranja" },
+  "hpUpdateManual": { "m": "Ručno" },
+  "hpUpdateNotify": { "m": "Provjeri i obavijesti" },
+  "hpUpdateInstall": { "m": "Preuzmi i instaliraj" },
   "accountRestrictedOptionDescription": {
     "m": "Ovaj Bitwardenov format izvoza koristi ključ za šifriranje računa. HonkPass ne stvara datoteke u tom formatu."
   },

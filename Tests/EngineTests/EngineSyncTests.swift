@@ -12,6 +12,26 @@ import VaultModel
         try await engine.logIn(server: account.server, email: account.email, masterPassword: account.masterPassword)
     }
 
+    @Test func backgroundSyncRefreshesAnUnlockedVaultAndStopsWhenDisabled() async throws {
+        let clock = ManualClock()
+        var settings = EngineSettings.default
+        settings.syncInterval = .fiveMinutes
+        let (engine, handles) = await makeEngine(settings: [account.userID: settings], clock: clock)
+        try await logIn(engine)
+        let remote = VaultContents(items: [VaultItemSummary(id: "remote", type: .login, name: "Remote change")], folders: [])
+        await handles.server.setContents(remote)
+        await clock.waitForSleeper()
+        clock.advance(by: .seconds(299))
+        #expect(await handles.server.syncCount == 1)
+        clock.advance(by: .seconds(1))
+        _ = try await nextState(of: engine) { $0.vault.items == remote.items && $0.activity == nil }
+        settings.syncInterval = .disabled
+        try await engine.setSettings(settings)
+        clock.advance(by: .seconds(3600))
+        try await engine.sync()
+        #expect(await handles.server.syncCount == 3)
+    }
+
     @Test func aRefusedAccessTokenIsRenewedAndTheSyncRepeated() async throws {
         let (engine, handles) = await makeEngine()
         try await logIn(engine)

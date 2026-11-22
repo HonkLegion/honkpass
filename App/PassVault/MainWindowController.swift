@@ -123,4 +123,15 @@ final class MainWindowController {
     func close() {
         window.performClose(nil)
     }
+
+    func showFromStatusMenu() {
+        // Finish status menu tracking before macOS returns focus to the previous app.
+        DispatchQueue.main.async { [self] in
+            if NSApp.isHidden { NSApp.unhide(nil) }
+            show()
+            let target = window.attachedSheet ?? window
+            target.orderFrontRegardless()
+            target.makeKey()
+        }
+    }
 }

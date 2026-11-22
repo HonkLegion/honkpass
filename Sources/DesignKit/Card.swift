@@ -145,6 +145,26 @@ public struct BWFieldValue: View {
     }
 }
 
+/// A revealed secret scrolls inside the same line occupied by its mask.
+public struct BWRevealedValue<Content: View>: View {
+    private let multiline: Bool
+    private let content: Content
+
+    public init(_ value: String, @ViewBuilder content: () -> Content) {
+        multiline = value.contains(where: \.isNewline)
+        self.content = content()
+    }
+
+    public var body: some View {
+        ScrollView(multiline ? [.horizontal, .vertical] : .horizontal) {
+            content.fixedSize()
+        }
+        .scrollIndicators(.hidden)
+        .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+        .frame(height: TextStyle.body.lineHeight)
+    }
+}
+
 /// The value of a read-only `textarea`: lines of the desktop input font. With `rows` the area is
 /// that many lines high and scrolls; without, it is as high as its text (`cdkTextareaAutosize`).
 public struct BWFieldText: View {

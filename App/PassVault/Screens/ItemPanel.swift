@@ -240,18 +240,16 @@ struct ItemPanel: View {
         return VStack(alignment: .leading, spacing: 0) {
             BWReadOnlyField(BWText["password"]) {
                 if isRevealed {
-                    // span role="textbox" in the content box of the field: it starts at its top.
-                    BWColorPassword(password)
-                        .frame(maxHeight: .infinity, alignment: .top)
+                    BWRevealedValue(password) { BWColorPassword(password) }
                 } else {
                     // `maskedPassword` is always eight bullets.
                     BWFieldValue(String(repeating: "x", count: 8), isHidden: true)
                 }
             } suffix: {
-                if isRevealed {
-                    // The texts "showCharacterCount" and "hideCharacterCount" are not in the desktop locale files.
-                    BWIconButton(.numberedList, label: "", size: .small) { navigation.showsPasswordCount.toggle() }
-                }
+                BWIconButton(.numberedList, label: "", size: .small) { navigation.showsPasswordCount.toggle() }
+                    .disabled(!isRevealed)
+                    .opacity(isRevealed ? 1 : 0)
+                    .accessibilityHidden(!isRevealed)
                 revealButton("password")
                 copyButton(BWText["copyPassword"], password, label: BWText["password"], isSensitive: true)
             }
@@ -431,10 +429,11 @@ struct ItemPanel: View {
         case .hidden(let value):
             let key = "custom-\(index)"
             let isRevealed = revealed.contains(key)
-            // input type="password" "tw-font-mono"; shown, it is a textarea in the same font.
-            BWReadOnlyField(field.name, isTextArea: isRevealed) {
+            BWReadOnlyField(field.name) {
                 if isRevealed {
-                    BWFieldText(value, isMonospaced: true)
+                    BWRevealedValue(value) {
+                        Text(verbatim: value).textSelection(.enabled).textStyle(.body.monospaced)
+                    }
                 } else {
                     BWFieldValue(value, isHidden: true, isMonospaced: true)
                 }

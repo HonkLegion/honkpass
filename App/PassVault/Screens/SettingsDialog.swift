@@ -1,6 +1,7 @@
 import AppKit
 import DesignKit
 import Engine
+import EngineLive
 import SwiftUI
 import VaultModel
 
@@ -337,6 +338,12 @@ struct SettingsDialog: View {
 
     private var options: some View {
         VStack(alignment: .leading, spacing: 0) {
+            BWSelect(BWText["hpVaultSyncInterval"], selection: Binding(get: { settings.syncInterval },
+                     set: { interval in change { $0.syncInterval = interval } }), options: [
+                .init(.disabled, BWText["never"]), .init(.fiveMinutes, BWText["fiveMinutes"]),
+                .init(.fifteenMinutes, BWText["fifteenMinutes"]), .init(.thirtyMinutes, BWText["thirtyMinutes"]),
+                .init(.oneHour, BWText["oneHour"]),
+            ])
             BWSelect(BWText["clearClipboard"], selection: clipboardClearing, options: [
                 .init(ClipboardClearing.never, BWText["never"]),
                 .init(.after(seconds: 10), BWText["tenSeconds"]),
@@ -349,7 +356,8 @@ struct SettingsDialog: View {
             BWCheckbox(BWText["minimizeOnCopyToClipboard"], isOn: $preferences.minimizesOnCopy,
                        hint: BWText["minimizeOnCopyToClipboardDesc"])
                 .padding(.bottom, Metric.space(4))
-            BWCheckbox("Gravatar", isOn: Binding(get: { settings.usesGravatar }, set: { value in change { $0.usesGravatar = value } }))
+            BWCheckbox("Gravatar", isOn: Binding(get: { settings.usesGravatar }, set: { value in change { $0.usesGravatar = value } }),
+                       hint: BWText["hpGravatarHint"])
                 .padding(.bottom, Metric.space(4))
             BWCheckbox(BWText["showIconsChangePasswordUrls"],
                        isOn: Binding(get: { settings.showsWebsiteIcons }, set: { isOn in change { $0.showsWebsiteIcons = isOn } }),
@@ -367,9 +375,24 @@ struct SettingsDialog: View {
     /// The settings of the app for all accounts. Two rows of the reference are left out, since
     /// PassVault has nothing they could turn on: "hardware acceleration", a setting of the
     /// browser engine the reference runs in, and the browser integration of DuckDuckGo.
+    @State private var updateMode: MacAppUpdater.Mode = .notify
+
+    private var updatePreference: some View {
+        BWSelect(BWText["hpUpdateMode"], selection: Binding(get: { updateMode }, set: { mode in
+            guard let updater = preferences.updater else { return }
+            updater.setMode(mode)
+            updateMode = updater.mode ?? .notify
+        }), options: [.init(.manual, BWText["hpUpdateManual"]),
+                      .init(.notify, BWText["hpUpdateNotify"]),
+                      .init(.install, BWText["hpUpdateInstall"])])
+        .onAppear { updateMode = preferences.updater?.mode ?? .notify }
+        .disabled(preferences.updater?.mode == nil)
+    }
+
     private var app: some View {
         VStack(alignment: .leading, spacing: 0) {
             Group {
+                updatePreference
                 BWCheckbox(BWText["runInBackground"],
                            isOn: Binding(get: { preferences.runsInBackground }, set: { preferences.runsInBackground = $0 }),
                            hint: BWText["runInBackgroundDescMac"])

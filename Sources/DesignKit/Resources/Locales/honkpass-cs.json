@@ -1,4 +1,11 @@
 {
+  "hpWebsiteMatchSummary": { "m": "HonkPass nabídne vyplnění, když adresa odpovídá tomuto pravidlu." },
+  "hpVaultSyncInterval": { "m": "Interval synchronizace na pozadí" },
+  "hpGravatarHint": { "m": "HonkPass pošle službě Gravatar otisk (SHA-256) vaší e-mailové adresy a podle něj načte profilový obrázek." },
+  "hpUpdateMode": { "m": "Aktualizace" },
+  "hpUpdateManual": { "m": "Ručně" },
+  "hpUpdateNotify": { "m": "Vyhledat a upozornit" },
+  "hpUpdateInstall": { "m": "Stáhnout a nainstalovat" },
   "autofillConfigurationMessage": { "m": "Zapíná se automatické vyplňování pomocí HonkPassu…" },
   "coachmarkFiltersTitle": { "m": "Kombinujte filtry" },
   "coachmarkFiltersDescription": { "m": "Výsledky můžete zúžit výběrem více filtrů najednou. Filtry zůstanou aktivní, i když přejdete jinam." },

@@ -8,7 +8,7 @@ import Testing
          "SUFeedURL": AppUpdateConfiguration.feedURL,
          "SUPublicEDKey": Data(repeating: 1, count: 32).base64EncodedString(),
          "SUVerifyUpdateBeforeExtraction": true,
-         "SUAllowsAutomaticUpdates": false, "SUAutomaticallyUpdate": false,
+         "SUAllowsAutomaticUpdates": true, "SUAutomaticallyUpdate": false,
          "SUEnableSystemProfiling": false]
     }
 

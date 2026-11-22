@@ -1,4 +1,11 @@
 {
+  "hpWebsiteMatchSummary": { "m": "A HonkPass automatikus kitöltést ajánl, ha a cím megfelel ennek a szabálynak." },
+  "hpVaultSyncInterval": { "m": "Háttérbeli szinkronizálás időköze" },
+  "hpGravatarHint": { "m": "A HonkPass elküldi az e-mail-címed SHA-256 kivonatát a Gravatarnak a profilképed lekéréséhez." },
+  "hpUpdateMode": { "m": "Frissítések" },
+  "hpUpdateManual": { "m": "Kézzel" },
+  "hpUpdateNotify": { "m": "Keresés és értesítés" },
+  "hpUpdateInstall": { "m": "Letöltés és telepítés" },
   "accountRestrictedOptionDescription": {
     "m": "Ez a Bitwarden-exportformátum a fiók titkosítási kulcsát használja. A HonkPass nem készít ilyen formátumú fájlt."
   },

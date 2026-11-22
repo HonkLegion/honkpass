@@ -1,5 +1,13 @@
 import SwiftUI
 
+public extension VerticalAlignment {
+    private enum InputCenter: AlignmentID {
+        static func defaultValue(in context: ViewDimensions) -> CGFloat { context[VerticalAlignment.center] }
+    }
+
+    static let inputCenter = VerticalAlignment(InputCenter.self)
+}
+
 /// `bit-form-field` with `bitInput`: libs/components/src/form-field/form-field.component.html,
 /// field-container.directive.ts and input/input.directive.ts.
 public struct BWFormField<Field: View, Suffix: View>: View {
@@ -152,6 +160,7 @@ public struct BWFieldContainer<Content: View>: View {
             .overlay(RoundedRectangle(cornerRadius: radius).strokeBorder(.theme(borderColour), lineWidth: 1))
             // The ring is one more pixel outside the border.
             .overlay(RoundedRectangle(cornerRadius: radius + 1).strokeBorder(.theme(ringColour), lineWidth: 1).padding(-1))
+            .alignmentGuide(.inputCenter) { $0[VerticalAlignment.center] }
     }
 
     private var borderColour: ThemeColor {
@@ -171,10 +180,12 @@ public struct BWTextInput: View {
     @Binding private var text: String
     private let isSecure: Bool
     private let isMonospaced: Bool
+    private let placeholder: String
 
-    public init(text: Binding<String>, isSecure: Bool = false, isMonospaced: Bool = false) {
+    public init(text: Binding<String>, isSecure: Bool = false, isMonospaced: Bool = false, placeholder: String = "") {
         _text = text
         self.isSecure = isSecure
+        self.placeholder = placeholder
         self.isMonospaced = isMonospaced
     }
 
@@ -183,7 +194,7 @@ public struct BWTextInput: View {
             if isSecure {
                 SecureField("", text: $text)
             } else {
-                TextField("", text: $text)
+                TextField(placeholder, text: $text)
             }
         }
         .textFieldStyle(.plain)

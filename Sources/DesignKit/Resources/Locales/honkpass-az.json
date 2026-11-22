@@ -1,4 +1,11 @@
 {
+  "hpWebsiteMatchSummary": { "m": "Ünvan bu qaydaya uyğun gəldikdə avtomatik doldurma təklif olunur." },
+  "hpVaultSyncInterval": { "m": "Arxa planda sinxronizasiya intervalı" },
+  "hpGravatarHint": { "m": "HonkPass profil şəklinizi tapmaq üçün e-poçt ünvanınızın SHA-256 heşini Gravatar xidmətinə göndərir." },
+  "hpUpdateMode": { "m": "Yeniləmələr" },
+  "hpUpdateManual": { "m": "Əl ilə" },
+  "hpUpdateNotify": { "m": "Yoxla və bildir" },
+  "hpUpdateInstall": { "m": "Endir və quraşdır" },
   "accountRestrictedOptionDescription": {
     "m": "Bu Bitwarden ixrac formatı hesabın şifrələmə açarından istifadə edir. HonkPass bu formatda fayl yaratmır."
   },

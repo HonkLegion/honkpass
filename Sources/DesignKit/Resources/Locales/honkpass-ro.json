@@ -1,4 +1,11 @@
 {
+  "hpWebsiteMatchSummary": { "m": "HonkPass propune completarea automată când adresa respectă această regulă." },
+  "hpVaultSyncInterval": { "m": "Interval de sincronizare în fundal" },
+  "hpGravatarHint": { "m": "HonkPass trimite către Gravatar amprenta SHA-256 a adresei tale de e-mail pentru a găsi imaginea ta de profil." },
+  "hpUpdateMode": { "m": "Actualizări" },
+  "hpUpdateManual": { "m": "Manual" },
+  "hpUpdateNotify": { "m": "Caută și notifică" },
+  "hpUpdateInstall": { "m": "Descarcă și instalează" },
   "accountRestrictedOptionDescription": {
     "m": "Acest format de export Bitwarden folosește cheia de criptare a contului. HonkPass nu creează fișiere în acest format."
   },

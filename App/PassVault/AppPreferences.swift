@@ -1,6 +1,7 @@
 import AppKit
 import DesignKit
 import Foundation
+import EngineLive
 import Observation
 
 /// What the user has set for the app on this Mac, for every account: how it looks and how its
@@ -9,6 +10,8 @@ import Observation
 /// PassVault shares its preferences domain with HonkPass, so the keys carry its name.
 @MainActor @Observable
 final class AppPreferences {
+    var updater: MacAppUpdater?
+
     enum Theme: String, CaseIterable {
         case system, light, dark
     }

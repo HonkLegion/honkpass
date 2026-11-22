@@ -1,4 +1,11 @@
 {
+  "hpWebsiteMatchSummary": { "m": "HonkPass пропонує автозаповнення, коли адреса відповідає цьому правилу." },
+  "hpVaultSyncInterval": { "m": "Інтервал фонової синхронізації" },
+  "hpGravatarHint": { "m": "HonkPass надсилає сервісу Gravatar хеш SHA-256 вашої електронної адреси, щоб знайти зображення профілю." },
+  "hpUpdateMode": { "m": "Оновлення" },
+  "hpUpdateManual": { "m": "Вручну" },
+  "hpUpdateNotify": { "m": "Перевіряти й сповіщати" },
+  "hpUpdateInstall": { "m": "Завантажувати й встановлювати" },
   "accountRestrictedOptionDescription": {
     "m": "Цей формат експорту Bitwarden використовує ключ шифрування облікового запису. HonkPass не створює файлів у цьому форматі."
   },

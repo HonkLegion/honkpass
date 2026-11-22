@@ -19,8 +19,11 @@ func makeEngine(account: FakeAccount = .demo, stored: StoredAccount? = nil, sett
 
 /// A started engine that is logged in to the demo account and unlocked.
 func makeUnlockedEngine(clock: any Clock<Duration> = ContinuousClock()) async throws -> (engine: Engine, handles: FakeHandles) {
-    let result = await makeEngine(clock: clock)
     let account = FakeAccount.demo
+    // Timer-specific tests wait for a single simulated sleeper (clipboard, lock, or SSH).
+    var settings = EngineSettings.default
+    if clock is ManualClock { settings.syncInterval = .disabled }
+    let result = await makeEngine(settings: clock is ManualClock ? [account.userID: settings] : [:], clock: clock)
     try await result.engine.logIn(server: account.server, email: account.email, masterPassword: account.masterPassword)
     return result
 }

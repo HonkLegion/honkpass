@@ -31,7 +31,7 @@ def verify(root, app):
     expected = {"CFBundleIdentifier": BUNDLE_ID, "SUFeedURL": FEED,
                 "SUPublicEDKey": public_key(root), "CFBundleShortVersionString": version,
                 "CFBundleVersion": build, "SUVerifyUpdateBeforeExtraction": True,
-                "SUAllowsAutomaticUpdates": False, "SUAutomaticallyUpdate": False,
+                "SUAllowsAutomaticUpdates": True, "SUAutomaticallyUpdate": False,
                 "SUEnableAutomaticChecks": True, "SUEnableSystemProfiling": False}
     if any(info.get(k) != v for k, v in expected.items()):
         raise ValueError("The signed release identity or update policy differs from the source.")

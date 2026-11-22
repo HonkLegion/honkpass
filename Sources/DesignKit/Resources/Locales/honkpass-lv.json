@@ -1,4 +1,11 @@
 {
+  "hpWebsiteMatchSummary": { "m": "Automātiskā aizpilde tiek piedāvāta, ja adrese atbilst šim noteikumam." },
+  "hpVaultSyncInterval": { "m": "Fona sinhronizācijas intervāls" },
+  "hpGravatarHint": { "m": "HonkPass nosūta pakalpojumam Gravatar jūsu e-pasta adreses SHA-256 jaucējvērtību, lai iegūtu jūsu profila attēlu." },
+  "hpUpdateMode": { "m": "Atjauninājumi" },
+  "hpUpdateManual": { "m": "Manuāli" },
+  "hpUpdateNotify": { "m": "Pārbaudīt un paziņot" },
+  "hpUpdateInstall": { "m": "Lejupielādēt un instalēt" },
   "accountRestrictedOptionDescription": {
     "m": "Šis Bitwarden eksporta formāts izmanto konta šifrēšanas atslēgu. HonkPass neveido šāda formāta failus."
   },

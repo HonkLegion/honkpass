@@ -25,7 +25,7 @@ class ReleaseTests(unittest.TestCase):
         self.info = {"CFBundleIdentifier": BUNDLE_ID, "SUFeedURL": FEED, "SUPublicEDKey": KEY,
                      "CFBundleShortVersionString": "1.0", "CFBundleVersion": "9",
                      "LSMinimumSystemVersion": "26.4", "SUVerifyUpdateBeforeExtraction": True,
-                     "SUAllowsAutomaticUpdates": False, "SUAutomaticallyUpdate": False,
+                     "SUAllowsAutomaticUpdates": True, "SUAutomaticallyUpdate": False,
                      "SUEnableAutomaticChecks": True, "SUEnableSystemProfiling": False}
         self.write_info()
 
@@ -40,7 +40,7 @@ class ReleaseTests(unittest.TestCase):
 
     def test_rejects_stale_build_and_silent_install_policy(self):
         verify(self.root, self.app)
-        for key, value in (("CFBundleVersion", "8"), ("SUAllowsAutomaticUpdates", True),
+        for key, value in (("CFBundleVersion", "8"), ("SUAutomaticallyUpdate", True),
                            ("SUFeedURL", "https://example.test/appcast.xml")):
             original = self.info[key]
             self.info[key] = value

@@ -113,8 +113,9 @@ The approval window identifies the requesting application and the requested key.
 ## Updates
 
 Release builds use Sparkle to find and install signed updates.
-Automatic discovery runs daily. The application menu also provides manual discovery.
-Installation requires your action in Sparkle.
+In Settings, open App Preferences and choose Manual, Check and notify, or Download and install.
+By default, HonkPass checks daily and notifies you. If you enable automatic installation, Sparkle can install a downloaded update when you quit.
+You can also check for updates from the application menu.
 
 Before installation, close editors.
 Finish active operations before you continue.

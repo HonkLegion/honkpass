@@ -1,4 +1,11 @@
 {
+  "hpWebsiteMatchSummary": { "m": "HonkPass biedt automatisch invullen aan als het adres aan deze regel voldoet." },
+  "hpVaultSyncInterval": { "m": "Interval voor synchronisatie op de achtergrond" },
+  "hpGravatarHint": { "m": "HonkPass stuurt een SHA-256-hash van je e-mailadres naar Gravatar om je profielfoto op te halen." },
+  "hpUpdateMode": { "m": "Updates" },
+  "hpUpdateManual": { "m": "Handmatig" },
+  "hpUpdateNotify": { "m": "Zoeken en melden" },
+  "hpUpdateInstall": { "m": "Downloaden en installeren" },
   "accountRestrictedOptionDescription": {
     "m": "Dit exportformaat van Bitwarden gebruikt de versleutelingssleutel van het account. HonkPass maakt geen bestanden in dit formaat."
   },

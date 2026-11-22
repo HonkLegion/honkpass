@@ -212,3 +212,20 @@ public struct StatusLockup<Action: View>: View {
         .frame(maxWidth: .infinity)
     }
 }
+
+/// The same six-dot grip marks rows that can be reordered in the editor.
+public struct ReorderDots: View {
+    public init() {}
+
+    public var body: some View {
+        Canvas { context, _ in
+            for column in 0..<2 {
+                for row in 0..<3 {
+                    let dot = CGRect(x: column * 5, y: row * 5, width: 3, height: 3)
+                    context.fill(Path(ellipseIn: dot), with: .foreground)
+                }
+            }
+        }
+        .frame(width: 8, height: 13)
+    }
+}

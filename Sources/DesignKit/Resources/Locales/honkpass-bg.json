@@ -1,4 +1,11 @@
 {
+  "hpWebsiteMatchSummary": { "m": "Автоматично попълване се предлага, когато адресът отговаря на това правило." },
+  "hpVaultSyncInterval": { "m": "Интервал за синхронизация във фонов режим" },
+  "hpGravatarHint": { "m": "HonkPass изпраща на Gravatar SHA-256 хеш на имейл адреса ви, за да намери профилната ви снимка." },
+  "hpUpdateMode": { "m": "Актуализации" },
+  "hpUpdateManual": { "m": "Ръчно" },
+  "hpUpdateNotify": { "m": "Проверка и известяване" },
+  "hpUpdateInstall": { "m": "Изтегляне и инсталиране" },
   "accountRestrictedOptionDescription": {
     "m": "Този формат за износ на Bitwarden използва ключа за шифроване на акаунта. HonkPass не създава файлове в този формат."
   },
